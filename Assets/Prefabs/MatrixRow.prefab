@@ -91,8 +91,6 @@ GameObject:
   - component: {fileID: 9065783655618706870}
   - component: {fileID: 9065783655618706869}
   - component: {fileID: 7358807873068222176}
-  - component: {fileID: 2658369561171255471}
-  - component: {fileID: 7157183230996217624}
   m_Layer: 5
   m_Name: MatrixRow
   m_TagString: Untagged
@@ -223,40 +221,3 @@ MonoBehaviour:
     stop:
       m_PersistentCalls:
         m_Calls: []
---- !u!114 &2658369561171255471
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9065783655618706859}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 49cea40945879b442becdf275d22a6d8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  variableName: 
-  defaultValue:
-    n: 1
-    d: 2
-  onValueChanged:
-    m_PersistentCalls:
-      m_Calls: []
---- !u!114 &7157183230996217624
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9065783655618706859}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9364361fc8f83724ab14a6bc0d73c524, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  reference:
-    type: 0
-    component: {fileID: 0}
-    value:
-      n: 1
-      d: 0

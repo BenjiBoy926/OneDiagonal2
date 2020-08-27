@@ -17,7 +17,7 @@ public static class MyMath
         return (a / GCD(a, b)) * b;
     }
 
-    public static Vector2Int Reduce(Vector2Int numbers)
+    public static Vector2Int FractionReduce(Vector2Int numbers)
     {
         uint gcd = GCD((uint)Mathf.Abs(numbers.x), (uint)Mathf.Abs(numbers.y));
 
@@ -28,9 +28,9 @@ public static class MyMath
         else return numbers;
     }
 
-    public static Vector2Int Simplify(Vector2Int numbers)
+    public static Vector2Int FractionSimplify(Vector2Int numbers)
     {
-        Vector2Int reduction = Reduce(numbers);
+        Vector2Int reduction = FractionReduce(numbers);
         Vector2Int result = new Vector2Int();
 
         if (numbers.x * numbers.y >= 0)
@@ -45,5 +45,10 @@ public static class MyMath
         result.y = Mathf.Abs(reduction.y);
 
         return result;
+    }
+
+    public static int Index(int i, int j, int rows, int cols)
+    {
+        return Mathf.FloorToInt((float)i / cols) + (j % rows);
     }
 }

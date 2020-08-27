@@ -7,50 +7,62 @@ public class FractionPropertyDrawer : PropertyDrawer
     const float LABEL_WIDTH = 15f;
     const float CENTER_BUFFER = 5f;
 
-    Vector2Int inputs = new Vector2Int();
-    Vector2Int simplified = new Vector2Int();
-
     public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
     {
-        // Store the relative properties
-        SerializedProperty numerator = property.FindPropertyRelative("n");
-        SerializedProperty denominator = property.FindPropertyRelative("d");
-
         // Put in the prefix
         Rect newPosition = EditorGUI.PrefixLabel(position, label);
 
-        // Calculate the width of each number input
-        float numberWidth = (newPosition.width - (2 * LABEL_WIDTH) - CENTER_BUFFER) / 2f;
-
-        // Calculate the rect area of each sub control
-        Rect numeratorLabelRect = new Rect(newPosition.x, newPosition.y, LABEL_WIDTH, newPosition.height);
-        Rect numeratorRect = new Rect(newPosition.x + LABEL_WIDTH, newPosition.y, numberWidth, newPosition.height);
-        Rect denominatorLabelRect = new Rect(newPosition.x + LABEL_WIDTH + numberWidth + CENTER_BUFFER, newPosition.y, LABEL_WIDTH, newPosition.height);
-        Rect denominatorRect = new Rect(newPosition.x + (2 * LABEL_WIDTH) + numberWidth + CENTER_BUFFER, newPosition.y, numberWidth, newPosition.height);
-
+        // Check for changes in fraction
         EditorGUI.BeginChangeCheck();
 
-        // Put the label and the numerator input
-        EditorGUI.LabelField(numeratorLabelRect, new GUIContent("N"));
-        inputs.x = EditorGUI.DelayedIntField(numeratorRect, numerator.intValue);
+        // Put in fraction GUI
+        Vector2Int inputs = OnGUIFraction(newPosition, property);
 
-        // Put the label and the denominator input
-        EditorGUI.LabelField(denominatorLabelRect, new GUIContent("D"));
-        inputs.y = EditorGUI.DelayedIntField(denominatorRect, denominator.intValue);
-
+        // If fraction changes, simplify it
         if(EditorGUI.EndChangeCheck())
         {
-            // Simplify the numbers input
-            simplified = MyMath.Simplify(inputs);
-
-            // Assign the simplified values back into the fraction
-            numerator.intValue = simplified.x;
-            denominator.intValue = simplified.y;
+            SimplifyFraction(inputs, property);
         }
     }
 
     public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
     {
         return base.GetPropertyHeight(property, label);
+    }
+
+    private Vector2Int OnGUIFraction(Rect position, SerializedProperty property)
+    {
+        SerializedProperty numerator = property.FindPropertyRelative("n");
+        SerializedProperty denominator = property.FindPropertyRelative("d");
+        float numberWidth = (position.width - CENTER_BUFFER) / 2f;
+        Vector2Int inputs = new Vector2Int();
+
+        GUIStyle slashStyle = new GUIStyle();
+        slashStyle.alignment = TextAnchor.MiddleCenter;
+        slashStyle.fontStyle = FontStyle.Bold;
+
+        EditorGUIExt.BeginHorizontal(position.position);
+
+        // Put the numerator, slash, denominator
+        inputs.x = EditorGUIExt.DelayedIntField(numberWidth, EditorGUIExt.standardControlHeight, numerator.intValue);
+        EditorGUIExt.LabelField(CENTER_BUFFER, EditorGUIExt.standardControlHeight, new GUIContent("/"), slashStyle);
+        inputs.y = EditorGUIExt.DelayedIntField(numberWidth, EditorGUIExt.standardControlHeight, denominator.intValue);
+
+        EditorGUIExt.EndLayout();
+
+        return inputs;
+    }
+
+    private void SimplifyFraction(Vector2Int inputs, SerializedProperty property)
+    {
+        SerializedProperty numerator = property.FindPropertyRelative("n");
+        SerializedProperty denominator = property.FindPropertyRelative("d");
+
+        // Simplify the numbers input
+        Vector2Int simplified = MyMath.FractionSimplify(inputs);
+
+        // Assign the simplified values back into the fraction
+        numerator.intValue = simplified.x;
+        denominator.intValue = simplified.y;
     }
 }
