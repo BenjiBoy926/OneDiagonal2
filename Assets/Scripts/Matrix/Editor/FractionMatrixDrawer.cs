@@ -19,15 +19,27 @@ public class FractionMatrixDrawer : PropertyDrawer
 
     public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
     {
-        EditorGUIExt.BeginVertical(position.position);
+        int rows = property.FindPropertyRelative("rows").intValue;
 
-        foldout = EditorGUIExt.Foldout(position.width, EditorGUIExt.standardControlHeight, foldout, label);
+        Layout.Builder builder = new Layout.Builder();
+        builder.Orientation(LayoutOrientation.Vertical);
+        builder.PushChild(new LayoutChild(LayoutMargin.Bottom()));
+        builder.PushChild(new LayoutChild(LayoutMargin.Bottom()));
+
+        for(int i = -1; i < rows; i++)
+        {
+            builder.PushChild(new LayoutChild(LayoutMargin.Bottom()));
+        }
+
+        Layout layout = builder.Compile(position);
+
+        foldout = EditorGUI.Foldout(layout.Next(), foldout, label);
 
         if(foldout)
         {
             // Check for change, and add GUI for adjusting rows and cols
             EditorGUI.BeginChangeCheck();
-            OnGUIRowsAndCols(position.width, property);
+            OnGUIRowsAndCols(layout, property);
 
             // If rows or columns change, adjust the property's data array
             if(EditorGUI.EndChangeCheck())
@@ -35,7 +47,7 @@ public class FractionMatrixDrawer : PropertyDrawer
                 AdjustPropertyArray(property);
             }
 
-            OnGUIMatrix(position.width, property);
+            OnGUIMatrix(layout, property);
         }
 
         EditorGUIExt.EndLayout();
@@ -51,29 +63,24 @@ public class FractionMatrixDrawer : PropertyDrawer
         }
     }
 
-    private void OnGUIRowsAndCols(float width, SerializedProperty property)
+    private void OnGUIRowsAndCols(Layout verticalLayout, SerializedProperty property)
     {
         SerializedProperty rows = property.FindPropertyRelative("rows");
 
-        // Calculate int input widths
-        float rowsInputWidth = (width / 2) - ROWS_LABEL_WIDTH - EDGE_BUFFER;
-        float colsInputWidth = (width / 2) - COLS_LABEL_WIDTH - EDGE_BUFFER;
-
-        // Begin a horizontal group
-        EditorGUIExt.BeginHorizontal(EditorGUIExt.currentPosition);
+        Layout.Builder builder = new Layout.Builder();
+        builder.PushChild(new LayoutChild(LayoutSize.Exact(ROWS_LABEL_WIDTH)));
+        builder.PushChild(new LayoutChild(LayoutSize.RatioOfRemainder(0.5f), LayoutMargin.Right(DIMENSION_CENTER_BUFFER)));
+        builder.PushChild(new LayoutChild(LayoutSize.Exact(COLS_LABEL_WIDTH)));
+        builder.PushChild(new LayoutChild(LayoutSize.RatioOfRemainder(0.5f)));
+        Layout layout = builder.Compile(verticalLayout.Next());
 
         // Add label and int for row
-        EditorGUIExt.LabelField(ROWS_LABEL_WIDTH, EditorGUIExt.standardControlHeight, new GUIContent("Rows:"));
-        rows.intValue = EditorGUIExt.DelayedIntField(rowsInputWidth, EditorGUIExt.standardControlHeight, rows.intValue);
-
-        // Add a horizontal space
-        EditorGUIExt.Space(DIMENSION_CENTER_BUFFER);
+        EditorGUI.LabelField(layout.Next(), new GUIContent("Rows:"));
+        rows.intValue = EditorGUI.DelayedIntField(layout.Next(), rows.intValue);
 
         // Add label and int for columns
-        EditorGUIExt.LabelField(COLS_LABEL_WIDTH, EditorGUIExt.standardControlHeight, new GUIContent("Cols:"));
-        cols = EditorGUIExt.DelayedIntField(colsInputWidth, EditorGUIExt.standardControlHeight, cols);
-
-        EditorGUIExt.EndLayout();
+        EditorGUI.LabelField(layout.Next(), new GUIContent("Cols:"));
+        cols = EditorGUI.DelayedIntField(layout.Next(), cols);
     }
 
     private void AdjustPropertyArray(SerializedProperty property)
@@ -91,13 +98,13 @@ public class FractionMatrixDrawer : PropertyDrawer
         }
     }
 
-    private void OnGUIMatrix(float width, SerializedProperty property)
+    private void OnGUIMatrix(Layout verticalLayout, SerializedProperty property)
     {
         SerializedProperty data = property.FindPropertyRelative("data");
         
         int rows = property.FindPropertyRelative("rows").intValue;
 
-        float itemWidth = (width - ITEM_LABEL_WIDTH - ((cols - 1) * HORIZONTAL_ITEM_SPACE)) / cols;
+        //float itemWidth = (width - ITEM_LABEL_WIDTH - ((cols - 1) * HORIZONTAL_ITEM_SPACE)) / cols;
 
         GUIStyle labelStyle = new GUIStyle();
         labelStyle.alignment = TextAnchor.MiddleCenter;
@@ -120,7 +127,7 @@ public class FractionMatrixDrawer : PropertyDrawer
                     // If we're in the top row, put down the column numbers
                     else
                     {
-                        EditorGUIExt.LabelField(itemWidth, EditorGUIExt.standardControlHeight, new GUIContent(j.ToString()), labelStyle);
+                        //EditorGUIExt.LabelField(itemWidth, EditorGUIExt.standardControlHeight, new GUIContent(j.ToString()), labelStyle);
                         EditorGUIExt.Space(HORIZONTAL_ITEM_SPACE);
                     }
                 }
@@ -132,7 +139,7 @@ public class FractionMatrixDrawer : PropertyDrawer
                 // Code in here displays the property
                 else
                 {
-                    EditorGUIExt.PropertyField(itemWidth, EditorGUIExt.standardControlHeight, data.GetArrayElementAtIndex(MyMath.Index(i, j, rows, cols)), GUIContent.none);
+                    //EditorGUIExt.PropertyField(itemWidth, EditorGUIExt.standardControlHeight, data.GetArrayElementAtIndex(MyMath.Index(i, j, rows, cols)), GUIContent.none);
                     EditorGUIExt.Space(HORIZONTAL_ITEM_SPACE);
                 }
             }

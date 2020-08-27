@@ -34,21 +34,22 @@ public class FractionPropertyDrawer : PropertyDrawer
     {
         SerializedProperty numerator = property.FindPropertyRelative("n");
         SerializedProperty denominator = property.FindPropertyRelative("d");
-        float numberWidth = (position.width - CENTER_BUFFER) / 2f;
         Vector2Int inputs = new Vector2Int();
 
         GUIStyle slashStyle = new GUIStyle();
         slashStyle.alignment = TextAnchor.MiddleCenter;
         slashStyle.fontStyle = FontStyle.Bold;
 
-        EditorGUIExt.BeginHorizontal(position.position);
+        Layout.Builder builder = new Layout.Builder();
+        builder.PushChild(new LayoutChild(LayoutSize.RatioOfRemainder(0.5f)));
+        builder.PushChild(new LayoutChild(LayoutSize.Exact(CENTER_BUFFER)));
+        builder.PushChild(new LayoutChild(LayoutSize.RatioOfRemainder(0.5f)));
+        Layout layout = builder.Compile(position);
 
         // Put the numerator, slash, denominator
-        inputs.x = EditorGUIExt.DelayedIntField(numberWidth, EditorGUIExt.standardControlHeight, numerator.intValue);
-        EditorGUIExt.LabelField(CENTER_BUFFER, EditorGUIExt.standardControlHeight, new GUIContent("/"), slashStyle);
-        inputs.y = EditorGUIExt.DelayedIntField(numberWidth, EditorGUIExt.standardControlHeight, denominator.intValue);
-
-        EditorGUIExt.EndLayout();
+        inputs.x = EditorGUI.DelayedIntField(layout.Next(), numerator.intValue);
+        EditorGUI.LabelField(layout.Next(), new GUIContent("/"), slashStyle);
+        inputs.y = EditorGUI.DelayedIntField(layout.Next(), denominator.intValue);
 
         return inputs;
     }
