@@ -47,8 +47,12 @@ public static class MyMath
         return result;
     }
 
-    public static int Index(int i, int j, int rows, int cols)
+    public static int Index2Dto1D(int i, int j, int cols)
     {
-        return Mathf.FloorToInt((float)i / cols) + (j % rows);
+        return (i * cols) + j;
+    }
+    public static Vector2Int Index1Dto2D(int index, int rows, int cols)
+    {
+        return new Vector2Int(Mathf.FloorToInt((float)index / cols), index % rows);
     }
 }

@@ -457,10 +457,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   matrix:
     data:
-    - n: 2
-      d: 1
     - n: 1
       d: 3
+    - n: 1
+      d: 1
+    - n: 2
+      d: 3
+    - n: 1
+      d: 1
+    - n: 1
+      d: 1
+    - n: 1
+      d: 1
+    - n: 1
+      d: 1
+    - n: 1
+      d: 1
     - n: 1
       d: 1
     rows: 3
