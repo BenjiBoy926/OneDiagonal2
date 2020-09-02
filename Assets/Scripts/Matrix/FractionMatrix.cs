@@ -7,14 +7,21 @@ public class FractionMatrix
     [SerializeField]
     private Fraction[] data;
     [SerializeField]
-    private int rows = 1;
+    private int _rows = 1;
 
     // PROPERTIES
-    private int cols
+    public int rows
     {
         get
         {
-            return data.Length / rows;
+            return _rows;
+        }
+    }
+    public int cols
+    {
+        get
+        {
+            return data.Length / _rows;
         }
     }
     public bool isIdentity
@@ -27,7 +34,7 @@ public class FractionMatrix
 
             while (index < data.Length && isIdentity)
             {
-                index2D = MyMath.Index1Dto2D(index, rows, cols);
+                index2D = MyMath.Index1Dto2D(index, _rows, cols);
                 if (index2D.x == index2D.y)
                 {
                     isIdentity = data[index] == Fraction.one;
@@ -52,7 +59,7 @@ public class FractionMatrix
             data[i] = Fraction.zero;
         }
 
-        this.rows = rows;
+        _rows = rows;
     }
     public FractionMatrix(Fraction[] copyData, int rows, int cols)
     {
@@ -64,18 +71,18 @@ public class FractionMatrix
             else data[i] = Fraction.zero;
         }
 
-        this.rows = rows;
+        _rows = rows;
     }
-    public FractionMatrix(FractionMatrix copyMatrix) : this(copyMatrix.data, copyMatrix.rows, copyMatrix.cols) { }
+    public FractionMatrix(FractionMatrix copyMatrix) : this(copyMatrix.data, copyMatrix._rows, copyMatrix.cols) { }
 
     // GET/SET
     public Fraction Get(int i, int j)
     {
-        return data[MyMath.Index2Dto1D(i, j, rows)];
+        return data[MyMath.Index2Dto1D(i, j, _rows)];
     }
     private void Set(int i, int j, Fraction src)
     {
-        data[MyMath.Index2Dto1D(i, j, rows)] = src;
+        data[MyMath.Index2Dto1D(i, j, _rows)] = src;
     }
 
     // ARITHMETIC

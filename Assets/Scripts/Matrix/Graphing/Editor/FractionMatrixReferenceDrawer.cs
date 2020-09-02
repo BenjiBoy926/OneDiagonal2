@@ -6,11 +6,11 @@ public class FractionMatrixReferenceDrawer : PropertyDrawer
 {
     public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
     {
-        EditorReferenceDrawer.OnGUI(position, property, label);
+        ReferenceDrawer.OnGUI(position, property, label);
     }
 
     public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
     {
-        return EditorReferenceDrawer.GetPropertyHeight(property, label);
+        return ReferenceDrawer.GetPropertyHeight(property, label);
     }
 }

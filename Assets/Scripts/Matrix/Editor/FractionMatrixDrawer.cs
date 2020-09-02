@@ -20,14 +20,14 @@ public class FractionMatrixDrawer : PropertyDrawer
 
     private void SetCols(SerializedProperty property)
     {
-        int rows = property.FindPropertyRelative("rows").intValue;
+        int rows = property.FindPropertyRelative("_rows").intValue;
         int arraySize = property.FindPropertyRelative("data").arraySize;
         cols = arraySize / rows;
     }
 
     public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
     {
-        int rows = property.FindPropertyRelative("rows").intValue;
+        int rows = property.FindPropertyRelative("_rows").intValue;
         SetCols(property);
 
         Layout.Builder builder = new Layout.Builder();
@@ -54,7 +54,11 @@ public class FractionMatrixDrawer : PropertyDrawer
                 AdjustPropertyArray(property);
             }
 
-            OnGUIMatrix(layout, property);
+            // If the matrix has some rows and columns, render it
+            if(rows > 0 && cols > 0)
+            {
+                OnGUIMatrix(layout, property);
+            }
         }
 
         EditorGUIExt.EndLayout();
@@ -62,17 +66,16 @@ public class FractionMatrixDrawer : PropertyDrawer
 
     public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
     {
+        int rows = property.FindPropertyRelative("_rows").intValue;
+
         if (!foldout) return EditorGUIExt.standardControlHeight;
-        else
-        {
-            int rows = property.FindPropertyRelative("rows").intValue;
-            return EditorGUIExt.standardControlHeight * (rows + 3);
-        }
+        else if (rows <= 0 || cols <= 0) return EditorGUIExt.standardControlHeight * 2f;
+        else return EditorGUIExt.standardControlHeight * (rows + 3);
     }
 
     private void OnGUIRowsAndCols(Layout verticalLayout, SerializedProperty property)
     {
-        SerializedProperty rows = property.FindPropertyRelative("rows");
+        SerializedProperty rows = property.FindPropertyRelative("_rows");
 
         Layout.Builder builder = new Layout.Builder();
         builder.PushChild(new LayoutChild(LayoutSize.Exact(ROWS_LABEL_WIDTH)));
@@ -93,7 +96,7 @@ public class FractionMatrixDrawer : PropertyDrawer
     private void AdjustPropertyArray(SerializedProperty property)
     {
         SerializedProperty data = property.FindPropertyRelative("data");
-        int rows = property.FindPropertyRelative("rows").intValue;
+        int rows = property.FindPropertyRelative("_rows").intValue;
 
         int oldArraySize = data.arraySize;
         int newArraySize = rows * cols;
@@ -104,7 +107,7 @@ public class FractionMatrixDrawer : PropertyDrawer
     private void OnGUIMatrix(Layout verticalLayout, SerializedProperty property)
     {
         SerializedProperty data = property.FindPropertyRelative("data");
-        int rows = property.FindPropertyRelative("rows").intValue;
+        int rows = property.FindPropertyRelative("_rows").intValue;
 
         GUIStyle labelStyle = new GUIStyle();
         labelStyle.alignment = TextAnchor.MiddleCenter;
