@@ -4,11 +4,11 @@ using UnityEngine.Events;
 public class GetFractionInFractionMatrix : MonoBehaviour
 {
     [SerializeField]
-    private FractionMatrixReference matrix;
+    private Input<FractionMatrix> matrix;
     [SerializeField]
-    private IntReference row;
+    private Input<int> row;
     [SerializeField]
-    private IntReference col;
+    private Input<int> col;
 
     [SerializeField]
     private FractionVariable result;
@@ -18,7 +18,7 @@ public class GetFractionInFractionMatrix : MonoBehaviour
 
     public void Invoke()
     {
-        result.value = matrix.value.Get(row.value, col.value);
+        if (result != null) result.value = matrix.value.Get(row.value, col.value);
         output.Invoke();
     }
 }

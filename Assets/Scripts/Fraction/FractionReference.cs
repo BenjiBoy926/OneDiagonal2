@@ -2,7 +2,7 @@
 using System.Collections;
 
 [System.Serializable]
-public class FractionReference : Reference<Fraction>
+public class FractionReference : Input<Fraction>
 {
     
 }

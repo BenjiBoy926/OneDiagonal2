@@ -3,5 +3,5 @@
 public class FractionMatrixReferenceExample : MonoBehaviour
 {
     [SerializeField]
-    private FractionMatrixReference reference;
+    private Input<FractionMatrix> reference;
 }

@@ -4,9 +4,9 @@ using UnityEngine.Events;
 public class GetMatrixDimension : MonoBehaviour
 {
     [SerializeField]
-    private MatrixDimensionReference dimension;
+    private Input<MatrixDimension> dimension;
     [SerializeField]
-    private FractionMatrixReference matrix;
+    private Input<FractionMatrix> matrix;
 
     [SerializeField]
     private IntVariable result;
@@ -18,9 +18,9 @@ public class GetMatrixDimension : MonoBehaviour
     {
         if (dimension.value == MatrixDimension.Rows)
         {
-            result.value = matrix.value.rows;
+            if (result != null) result.value = matrix.value.rows;
         }
-        else result.value = matrix.value.cols;
+        else if (result != null) result.value = matrix.value.cols;
 
         output.Invoke();
     }
