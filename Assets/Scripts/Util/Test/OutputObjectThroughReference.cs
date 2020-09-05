@@ -8,6 +8,6 @@ public class OutputObjectThroughReference : MonoBehaviour
     
     public void Invoke()
     {
-        
+        reference.value = transform;
     }
 }
