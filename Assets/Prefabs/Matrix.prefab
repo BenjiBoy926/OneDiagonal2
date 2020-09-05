@@ -564,7 +564,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: -300, y: -200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &7922230312787591648
 MonoBehaviour:
@@ -584,11 +584,11 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 4
-  m_Spacing: 0
+  m_Spacing: 10
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
-  m_ChildControlWidth: 0
-  m_ChildControlHeight: 0
+  m_ChildControlWidth: 1
+  m_ChildControlHeight: 1
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
@@ -762,7 +762,11 @@ MonoBehaviour:
     directReference: {fileID: 0}
     indirectReference: {fileID: 0}
     tag: GameController
-  result: {fileID: 8749109956737577706}
+  result:
+    type: 0
+    directReference: {fileID: 8749109956737577706}
+    indirectReference: {fileID: 0}
+    tag: 
   output:
     m_PersistentCalls:
       m_Calls:

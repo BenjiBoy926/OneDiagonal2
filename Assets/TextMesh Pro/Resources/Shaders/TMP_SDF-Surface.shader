@@ -82,7 +82,7 @@ SubShader {
 	half _FaceShininess;
 	half _OutlineShininess;
 
-	struct Input
+	class Input
 	{
 		fixed4	color			: COLOR;
 		float2	uv_MainTex;
@@ -116,7 +116,7 @@ SubShader {
 		#pragma multi_compile_shadowcaster
 		#include "UnityCG.cginc"
 
-		struct v2f {
+		class v2f {
 			V2F_SHADOW_CASTER;
 			float2	uv			: TEXCOORD1;
 			float2	uv2			: TEXCOORD3;

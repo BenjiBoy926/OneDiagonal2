@@ -48,7 +48,7 @@ public class FractionMatrix
         }
     }
 
-    // CONSTRUCTORS
+    // CONclassORS
     public FractionMatrix() { }
     public FractionMatrix(int rows, int cols)
     {

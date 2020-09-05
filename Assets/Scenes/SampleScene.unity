@@ -358,6 +358,51 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2488449200700842936, guid: c4fe36794c3927c468b562a5746fa818,
+        type: 3}
+      propertyPath: _defaultValue.data.Array.size
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 2488449200700842936, guid: c4fe36794c3927c468b562a5746fa818,
+        type: 3}
+      propertyPath: _defaultValue.data.Array.data[9].d
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2488449200700842936, guid: c4fe36794c3927c468b562a5746fa818,
+        type: 3}
+      propertyPath: _defaultValue.data.Array.data[10].d
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2488449200700842936, guid: c4fe36794c3927c468b562a5746fa818,
+        type: 3}
+      propertyPath: _defaultValue.data.Array.data[11].d
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2488449200700842936, guid: c4fe36794c3927c468b562a5746fa818,
+        type: 3}
+      propertyPath: _defaultValue.data.Array.data[12].d
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2488449200700842936, guid: c4fe36794c3927c468b562a5746fa818,
+        type: 3}
+      propertyPath: _defaultValue.data.Array.data[13].d
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2488449200700842936, guid: c4fe36794c3927c468b562a5746fa818,
+        type: 3}
+      propertyPath: _defaultValue.data.Array.data[14].d
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2488449200700842936, guid: c4fe36794c3927c468b562a5746fa818,
+        type: 3}
+      propertyPath: _defaultValue.data.Array.data[15].d
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2488449200700842936, guid: c4fe36794c3927c468b562a5746fa818,
+        type: 3}
+      propertyPath: _defaultValue._rows
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c4fe36794c3927c468b562a5746fa818, type: 3}
 --- !u!1001 &4501634157178989807
@@ -476,6 +521,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Matrix
+      objectReference: {fileID: 0}
+    - target: {fileID: 8934368668186396796, guid: 1da85dfe8722f1a459e2c39530b189f4,
+        type: 3}
+      propertyPath: m_AdditionalShaderChannelsFlag
+      value: 25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1da85dfe8722f1a459e2c39530b189f4, type: 3}

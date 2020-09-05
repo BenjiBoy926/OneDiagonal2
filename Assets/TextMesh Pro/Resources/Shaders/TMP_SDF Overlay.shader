@@ -126,7 +126,7 @@ SubShader {
 		#include "TMPro_Properties.cginc"
 		#include "TMPro.cginc"
 
-		struct vertex_t {
+		class vertex_t {
 			UNITY_VERTEX_INPUT_INSTANCE_ID
 			float4	position		: POSITION;
 			float3	normal			: NORMAL;
@@ -136,7 +136,7 @@ SubShader {
 		};
 
 
-		struct pixel_t {
+		class pixel_t {
 			UNITY_VERTEX_INPUT_INSTANCE_ID
 			UNITY_VERTEX_OUTPUT_STEREO
 			float4	position		: SV_POSITION;

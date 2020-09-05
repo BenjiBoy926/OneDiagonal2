@@ -39,7 +39,7 @@ public class Fraction
         }
     }
 
-    // CONSTRUCTORS
+    // CONclassORS
     public Fraction(int num, int den)
     {
         n = num;
@@ -114,5 +114,14 @@ public class Fraction
     {
         int lcm = (int)MyMath.LCM((uint)a.d, (uint)b.d);
         return new Fraction(a.n * b.d - b.n * a.d, lcm);
-    } 
+    }
+
+    public override string ToString()
+    {
+        if (d == 1 || n == 0)
+        {
+            return n.ToString();
+        }
+        else return n + "/" + d;
+    }
 }

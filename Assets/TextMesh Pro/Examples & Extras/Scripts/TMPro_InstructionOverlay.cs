@@ -5,14 +5,14 @@ using System.Collections;
 namespace TMPro.Examples
 {
     
-    public class TMPro_InstructionOverlay : MonoBehaviour
+    public class TMPro_InclassionOverlay : MonoBehaviour
     {
 
         public enum FpsCounterAnchorPositions { TopLeft, BottomLeft, TopRight, BottomRight };
 
         public FpsCounterAnchorPositions AnchorPosition = FpsCounterAnchorPositions.BottomLeft;
 
-        private const string instructions = "Camera Control - <#ffff00>Shift + RMB\n</color>Zoom - <#ffff00>Mouse wheel.";
+        private const string inclassions = "Camera Control - <#ffff00>Shift + RMB\n</color>Zoom - <#ffff00>Mouse wheel.";
 
         private TextMeshPro m_TextMeshPro;
         private TextContainer m_textContainer;
@@ -46,7 +46,7 @@ namespace TMPro.Examples
             Set_FrameCounter_Position(AnchorPosition);
             //last_AnchorPosition = AnchorPosition;
 
-            m_TextMeshPro.text = instructions;
+            m_TextMeshPro.text = inclassions;
 
         }
 

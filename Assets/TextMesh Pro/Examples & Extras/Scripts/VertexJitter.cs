@@ -16,9 +16,9 @@ namespace TMPro.Examples
         private bool hasTextChanged;
 
         /// <summary>
-        /// Structure to hold pre-computed animation data.
+        /// classure to hold pre-computed animation data.
         /// </summary>
-        private struct VertexAnim
+        private class VertexAnim
         {
             public float angleRange;
             public float angle;

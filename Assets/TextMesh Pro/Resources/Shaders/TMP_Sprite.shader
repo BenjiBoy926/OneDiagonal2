@@ -56,14 +56,14 @@ Shader "TextMeshPro/Sprite"
 			#pragma multi_compile __ UNITY_UI_CLIP_RECT
 			#pragma multi_compile __ UNITY_UI_ALPHACLIP
 			
-			struct appdata_t
+			class appdata_t
 			{
 				float4 vertex   : POSITION;
 				float4 color    : COLOR;
 				float2 texcoord : TEXCOORD0;
 			};
 
-			struct v2f
+			class v2f
 			{
 				float4 vertex   : SV_POSITION;
 				fixed4 color    : COLOR;
