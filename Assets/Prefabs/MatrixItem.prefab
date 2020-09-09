@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 584839720330418435}
   - component: {fileID: 3808958866202743739}
   - component: {fileID: 2336042163319361537}
+  - component: {fileID: 3125234656978308306}
   m_Layer: 0
   m_Name: MatrixItem
   m_TagString: Untagged
@@ -154,6 +155,35 @@ MonoBehaviour:
   _onValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &3125234656978308306
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 309536167358040296}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0abeca7b1c068c646ab5c1b149623a73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hooks:
+  - name: update
+    hook:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 7914735951496019849}
+          m_TargetAssemblyTypeName: GetFractionInFractionMatrix, Assembly-CSharp
+          m_MethodName: Invoke
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &1213663005858500264
 GameObject:
   m_ObjectHideFlags: 0
@@ -182,6 +212,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8548919261515004223}
+  - {fileID: 6461663740068106706}
   m_Father: {fileID: 1631644066926276792}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -261,8 +292,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 8548919261515004223}
-  m_RootOrder: 1
+  m_Father: {fileID: 6461663740068106706}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7914735951496019849
 MonoBehaviour:
@@ -277,30 +308,45 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   matrix:
-    type: 3
-    directValue:
+    referenceType: 2
+    gameObjectReferenceType: 1
+    redirectType: 0
+    redirectDepth: 0
+    direct:
       data: []
       _rows: 1
-    directReference: {fileID: 0}
-    indirectReference: {fileID: 0}
-    tag: GameController
+    indirect: {fileID: 0}
+    redirectVariable: {fileID: 0}
+    redirectTag: MainMatrix
   row:
-    type: 1
-    directValue: 0
-    directReference: {fileID: 1780536234262057137}
-    indirectReference: {fileID: 0}
-    tag: 
+    referenceType: 1
+    gameObjectReferenceType: 0
+    redirectType: 0
+    redirectDepth: 0
+    direct: 0
+    indirect: {fileID: 1780536234262057137}
+    redirectVariable: {fileID: 0}
+    redirectTag: 
   col:
-    type: 1
-    directValue: 0
-    directReference: {fileID: 6540297230850546333}
-    indirectReference: {fileID: 0}
-    tag: 
+    referenceType: 1
+    gameObjectReferenceType: 0
+    redirectType: 0
+    redirectDepth: 0
+    direct: 0
+    indirect: {fileID: 6540297230850546333}
+    redirectVariable: {fileID: 0}
+    redirectTag: 
   result:
-    type: 0
-    directReference: {fileID: 1789374020882765756}
-    indirectReference: {fileID: 0}
-    tag: 
+    referenceType: 1
+    gameObjectReferenceType: 0
+    redirectType: 0
+    redirectDepth: 0
+    direct:
+      n: 1
+      d: 1
+    indirect: {fileID: 1789374020882765756}
+    redirectVariable: {fileID: 0}
+    redirectTag: 
   output:
     m_PersistentCalls:
       m_Calls:
@@ -340,12 +386,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3267520105603698218}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 8548919261515004223}
-  m_RootOrder: 3
+  m_Father: {fileID: 6461663740068106706}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8604766986824242377
 MonoBehaviour:
@@ -360,17 +406,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textMesh:
-    type: 0
-    directValue: {fileID: 3808958866202743739}
-    directReference: {fileID: 0}
-    indirectReference: {fileID: 0}
-    tag: 
+    referenceType: 0
+    gameObjectReferenceType: 0
+    redirectType: 0
+    redirectDepth: 0
+    direct: {fileID: 3808958866202743739}
+    indirect: {fileID: 0}
+    redirectVariable: {fileID: 0}
+    redirectTag: 
   text:
-    type: 1
-    directValue: 
-    directReference: {fileID: 5456266802783780650}
-    indirectReference: {fileID: 0}
-    tag: 
+    referenceType: 1
+    gameObjectReferenceType: 0
+    redirectType: 0
+    redirectDepth: 0
+    direct: 
+    indirect: {fileID: 5456266802783780650}
+    redirectVariable: {fileID: 0}
+    redirectTag: 
   output:
     m_PersistentCalls:
       m_Calls: []
@@ -451,9 +503,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8207753325945992249}
-  - {fileID: 3822500625870374240}
-  - {fileID: 8473908005054667488}
-  - {fileID: 7365806381436885399}
   m_Father: {fileID: 9053630188756427896}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -545,12 +594,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4844674883483712068}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 8548919261515004223}
-  m_RootOrder: 2
+  m_Father: {fileID: 6461663740068106706}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8242740779510131853
 MonoBehaviour:
@@ -565,18 +614,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fraction:
-    type: 1
-    directValue:
+    referenceType: 1
+    gameObjectReferenceType: 0
+    redirectType: 0
+    redirectDepth: 0
+    direct:
       n: 1
       d: 1
-    directReference: {fileID: 1789374020882765756}
-    indirectReference: {fileID: 0}
-    tag: 
+    indirect: {fileID: 1789374020882765756}
+    redirectVariable: {fileID: 0}
+    redirectTag: 
   result:
-    type: 0
-    directReference: {fileID: 5456266802783780650}
-    indirectReference: {fileID: 0}
-    tag: 
+    referenceType: 1
+    gameObjectReferenceType: 0
+    redirectType: 0
+    redirectDepth: 0
+    direct: 
+    indirect: {fileID: 5456266802783780650}
+    redirectVariable: {fileID: 0}
+    redirectTag: 
   output:
     m_PersistentCalls:
       m_Calls:
@@ -592,6 +648,39 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!1 &4974871309939659068
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6461663740068106706}
+  m_Layer: 0
+  m_Name: Update
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6461663740068106706
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4974871309939659068}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 3822500625870374240}
+  - {fileID: 8473908005054667488}
+  - {fileID: 7365806381436885399}
+  m_Father: {fileID: 9053630188756427896}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6061237248292814581
 GameObject:
   m_ObjectHideFlags: 0
@@ -684,21 +773,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   input:
-    type: 1
-    directValue: {x: 0, y: 0}
-    directReference: {fileID: 2336042163319361537}
-    indirectReference: {fileID: 0}
-    tag: 
+    referenceType: 1
+    gameObjectReferenceType: 0
+    redirectType: 0
+    redirectDepth: 0
+    direct: {x: 0, y: 0}
+    indirect: {fileID: 2336042163319361537}
+    redirectVariable: {fileID: 0}
+    redirectTag: 
   x:
-    type: 0
-    directReference: {fileID: 1780536234262057137}
-    indirectReference: {fileID: 0}
-    tag: 
+    referenceType: 1
+    gameObjectReferenceType: 0
+    redirectType: 0
+    redirectDepth: 0
+    direct: 0
+    indirect: {fileID: 1780536234262057137}
+    redirectVariable: {fileID: 0}
+    redirectTag: 
   y:
-    type: 0
-    directReference: {fileID: 6540297230850546333}
-    indirectReference: {fileID: 0}
-    tag: 
+    referenceType: 1
+    gameObjectReferenceType: 0
+    redirectType: 0
+    redirectDepth: 0
+    direct: 0
+    indirect: {fileID: 6540297230850546333}
+    redirectVariable: {fileID: 0}
+    redirectTag: 
   output:
     m_PersistentCalls:
       m_Calls:

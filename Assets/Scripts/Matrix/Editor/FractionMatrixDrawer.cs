@@ -44,6 +44,9 @@ public class FractionMatrixDrawer : PropertyDrawer
 
         if(foldout)
         {
+            int oldIndent = EditorGUI.indentLevel;
+            EditorGUI.indentLevel = 0;
+
             // Check for change, and add GUI for adjusting rows and cols
             EditorGUI.BeginChangeCheck();
             OnGUIRowsAndCols(layout, property);
@@ -59,6 +62,8 @@ public class FractionMatrixDrawer : PropertyDrawer
             {
                 OnGUIMatrix(layout, property);
             }
+
+            EditorGUI.indentLevel = oldIndent;
         }
 
         EditorGUIExt.EndLayout();

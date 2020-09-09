@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2488449200700842936}
   m_Layer: 0
   m_Name: Level1Data
-  m_TagString: GameController
+  m_TagString: MainMatrix
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

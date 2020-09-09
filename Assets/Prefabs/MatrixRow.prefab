@@ -44,22 +44,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   x:
-    type: 1
-    directValue: 0
-    directReference: {fileID: 5626449723828852183}
-    indirectReference: {fileID: 0}
-    tag: 
+    referenceType: 1
+    gameObjectReferenceType: 0
+    redirectType: 0
+    redirectDepth: 0
+    direct: 0
+    indirect: {fileID: 5626449723828852183}
+    redirectVariable: {fileID: 0}
+    redirectTag: 
   y:
-    type: 1
-    directValue: 0
-    directReference: {fileID: 5697302110200224747}
-    indirectReference: {fileID: 0}
-    tag: 
+    referenceType: 1
+    gameObjectReferenceType: 0
+    redirectType: 0
+    redirectDepth: 0
+    direct: 0
+    indirect: {fileID: 5697302110200224747}
+    redirectVariable: {fileID: 0}
+    redirectTag: 
   result:
-    type: 1
-    directReference: {fileID: 0}
-    indirectReference: {fileID: 6707165923292929674}
-    tag: 
+    referenceType: 2
+    gameObjectReferenceType: 0
+    redirectType: 0
+    redirectDepth: 0
+    direct: {x: 0, y: 0}
+    indirect: {fileID: 0}
+    redirectVariable: {fileID: 6707165923292929674}
+    redirectTag: 
   output:
     m_PersistentCalls:
       m_Calls: []
@@ -90,7 +100,6 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 8518255537563832000}
   - {fileID: 4491996725249736347}
   - {fileID: 4649436887707116783}
   m_Father: {fileID: 9065783655618706868}
@@ -131,12 +140,12 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5132385627759741109}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 20, y: 0}
-  m_SizeDelta: {x: 20, y: 0}
+  m_AnchoredPosition: {x: 60, y: 0}
+  m_SizeDelta: {x: 40, y: 0}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!222 &9122876124969264293
 CanvasRenderer:
@@ -220,24 +229,34 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dimension:
-    type: 0
-    directValue: 1
-    directReference: {fileID: 0}
-    indirectReference: {fileID: 0}
-    tag: 
+    referenceType: 0
+    gameObjectReferenceType: 0
+    redirectType: 0
+    redirectDepth: 0
+    direct: 1
+    indirect: {fileID: 0}
+    redirectVariable: {fileID: 0}
+    redirectTag: 
   matrix:
-    type: 3
-    directValue:
+    referenceType: 2
+    gameObjectReferenceType: 1
+    redirectType: 0
+    redirectDepth: 0
+    direct:
       data: []
       _rows: 1
-    directReference: {fileID: 0}
-    indirectReference: {fileID: 0}
-    tag: GameController
+    indirect: {fileID: 0}
+    redirectVariable: {fileID: 0}
+    redirectTag: MainMatrix
   result:
-    type: 0
-    directReference: {fileID: 1743062343415883378}
-    indirectReference: {fileID: 0}
-    tag: 
+    referenceType: 1
+    gameObjectReferenceType: 0
+    redirectType: 0
+    redirectDepth: 0
+    direct: 0
+    indirect: {fileID: 1743062343415883378}
+    redirectVariable: {fileID: 0}
+    redirectTag: 
   output:
     m_PersistentCalls:
       m_Calls:
@@ -331,7 +350,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5132385627759741109}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -499,22 +518,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   start:
-    type: 0
-    directValue: 0
-    directReference: {fileID: 0}
-    indirectReference: {fileID: 0}
-    tag: 
+    referenceType: 0
+    gameObjectReferenceType: 0
+    redirectType: 0
+    redirectDepth: 0
+    direct: 0
+    indirect: {fileID: 0}
+    redirectVariable: {fileID: 0}
+    redirectTag: 
   end:
-    type: 1
-    directValue: 0
-    directReference: {fileID: 1743062343415883378}
-    indirectReference: {fileID: 0}
-    tag: 
+    referenceType: 1
+    gameObjectReferenceType: 0
+    redirectType: 0
+    redirectDepth: 0
+    direct: 0
+    indirect: {fileID: 1743062343415883378}
+    redirectVariable: {fileID: 0}
+    redirectTag: 
   current:
-    type: 0
-    directReference: {fileID: 5697302110200224747}
-    indirectReference: {fileID: 0}
-    tag: 
+    referenceType: 1
+    gameObjectReferenceType: 0
+    redirectType: 0
+    redirectDepth: 0
+    direct: 0
+    indirect: {fileID: 5697302110200224747}
+    redirectVariable: {fileID: 0}
+    redirectTag: 
   outputs:
     start:
       m_PersistentCalls:
@@ -581,29 +610,41 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab:
-    type: 0
-    directValue: {fileID: 309536167358040296, guid: 61e298f87e6d89e498cec8b39124cb0a,
-      type: 3}
-    directReference: {fileID: 0}
-    indirectReference: {fileID: 0}
-    tag: 
+    referenceType: 0
+    gameObjectReferenceType: 0
+    redirectType: 0
+    redirectDepth: 0
+    direct: {fileID: 309536167358040296, guid: 61e298f87e6d89e498cec8b39124cb0a, type: 3}
+    indirect: {fileID: 0}
+    redirectVariable: {fileID: 0}
+    redirectTag: 
   parent:
-    type: 0
-    directValue: {fileID: 5318522848898593930}
-    directReference: {fileID: 0}
-    indirectReference: {fileID: 0}
-    tag: 
+    referenceType: 0
+    gameObjectReferenceType: 0
+    redirectType: 0
+    redirectDepth: 0
+    direct: {fileID: 5318522848898593930}
+    indirect: {fileID: 0}
+    redirectVariable: {fileID: 0}
+    redirectTag: 
   localOrigin:
-    type: 0
-    directValue: {x: 0, y: 0, z: 0}
-    directReference: {fileID: 0}
-    indirectReference: {fileID: 0}
-    tag: 
+    referenceType: 0
+    gameObjectReferenceType: 0
+    redirectType: 0
+    redirectDepth: 0
+    direct: {x: 0, y: 0, z: 0}
+    indirect: {fileID: 0}
+    redirectVariable: {fileID: 0}
+    redirectTag: 
   clone:
-    type: 0
-    directReference: {fileID: 6707165923292929674}
-    indirectReference: {fileID: 0}
-    tag: 
+    referenceType: 1
+    gameObjectReferenceType: 0
+    redirectType: 0
+    redirectDepth: 0
+    direct: {fileID: 0}
+    indirect: {fileID: 6707165923292929674}
+    redirectVariable: {fileID: 0}
+    redirectTag: 
   output:
     m_PersistentCalls:
       m_Calls:
@@ -761,81 +802,6 @@ MonoBehaviour:
   _onValueChanged:
     m_PersistentCalls:
       m_Calls: []
---- !u!1 &8681154144488571625
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 8518255537563832000}
-  - component: {fileID: 3102529908339329153}
-  - component: {fileID: 7620449298067168971}
-  m_Layer: 5
-  m_Name: ScalarDock
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &8518255537563832000
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8681154144488571625}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 5132385627759741109}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -20, y: 0}
-  m_SizeDelta: {x: 20, y: 0}
-  m_Pivot: {x: 0, y: 0.5}
---- !u!222 &3102529908339329153
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8681154144488571625}
-  m_CullTransparentMesh: 0
---- !u!114 &7620449298067168971
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8681154144488571625}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
 --- !u!1 &9065783655618706859
 GameObject:
   m_ObjectHideFlags: 0
@@ -848,7 +814,6 @@ GameObject:
   - component: {fileID: 9065783655618706871}
   - component: {fileID: 9065783655618706870}
   - component: {fileID: 9065783655618706869}
-  - component: {fileID: 7358807873068222176}
   - component: {fileID: 5626449723828852183}
   m_Layer: 5
   m_Name: MatrixRow
@@ -960,29 +925,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &7358807873068222176
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9065783655618706859}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6e1938edb47944b49a347a8de6b06783, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  type: 1
-  events:
-    start:
-      m_PersistentCalls:
-        m_Calls: []
-    step:
-      m_PersistentCalls:
-        m_Calls: []
-    stop:
-      m_PersistentCalls:
-        m_Calls: []
 --- !u!114 &5626449723828852183
 MonoBehaviour:
   m_ObjectHideFlags: 0
