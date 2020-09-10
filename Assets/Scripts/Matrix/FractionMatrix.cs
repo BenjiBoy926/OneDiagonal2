@@ -122,4 +122,22 @@ public class FractionMatrix
         }
         return newMatrix;
     }
+
+    public override string ToString()
+    {
+        System.Text.StringBuilder builder = new System.Text.StringBuilder("[ ");
+
+        for(int i = 0; i < data.Length; i++)
+        {
+            builder.Append(data[i].ToString());
+
+            if(i < data.Length - 1)
+            {
+                builder.Append(", ");
+            }
+        }
+        builder.Append(" ]");
+
+        return builder.ToString();
+    }
 }

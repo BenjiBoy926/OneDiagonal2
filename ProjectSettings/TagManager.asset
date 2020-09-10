@@ -6,6 +6,11 @@ TagManager:
   tags:
   - MultiplyScalar
   - AddingScalar
+  - MatrixItem
+  - MainMatrix
+  - PreviewMatrix
+  - MatrixRow
+  - AdderDock
   layers:
   - Default
   - TransparentFX
