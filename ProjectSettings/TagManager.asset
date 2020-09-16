@@ -14,6 +14,7 @@ TagManager:
   - OperatorDestination
   - Matrix
   - OperationActive
+  - GamePlayTimer
   layers:
   - Default
   - TransparentFX
