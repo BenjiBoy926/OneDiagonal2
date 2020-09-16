@@ -48,7 +48,7 @@ public class FractionMatrix
         }
     }
 
-    // CONclassORS
+    // CONSTRUCTORS
     public FractionMatrix() { }
     public FractionMatrix(int rows, int cols)
     {
@@ -116,10 +116,15 @@ public class FractionMatrix
     public FractionMatrix AddRowToRow(int rowAdd, Fraction scalar, int rowTarget)
     {
         FractionMatrix newMatrix = new FractionMatrix(this);
-        for (int i = 0; i < newMatrix.cols; i++)
+
+        if (rowAdd != rowTarget)
         {
-            newMatrix.Set(rowTarget, i, newMatrix.Get(rowTarget, i) + (newMatrix.Get(rowAdd, i) * scalar));
+            for (int i = 0; i < newMatrix.cols; i++)
+            {
+                newMatrix.Set(rowTarget, i, newMatrix.Get(rowTarget, i) + (newMatrix.Get(rowAdd, i) * scalar));
+            }
         }
+        
         return newMatrix;
     }
 

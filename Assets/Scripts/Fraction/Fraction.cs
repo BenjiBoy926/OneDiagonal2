@@ -24,6 +24,15 @@ public class Fraction
             return d;
         }
     }
+    public Fraction reciprocal
+    {
+        get
+        {
+            return new Fraction(d, n);
+        }
+    }
+
+    // Static properties
     public static Fraction zero
     {
         get
@@ -115,7 +124,34 @@ public class Fraction
         int lcm = (int)MyMath.LCM((uint)a.d, (uint)b.d);
         return new Fraction(a.n * b.d - b.n * a.d, lcm);
     }
+    // Relational
+    public static bool operator<(Fraction a, Fraction b)
+    {
+        return ((a.n * b.d) < (a.d * b.n));
+    }
+    public static bool operator>(Fraction a, Fraction b)
+    {
+        return ((a.n * b.d) > (a.d * b.n));
+    }
+    public static bool operator<=(Fraction a, Fraction b)
+    {
+        return !(a > b);
+    }
+    public static bool operator>=(Fraction a, Fraction b)
+    {
+        return !(a < b);
+    }
+    // Equality
+    public static bool operator==(Fraction a, Fraction b)
+    {
+        return a.n == b.n && a.d == b.d;
+    }
+    public static bool operator!=(Fraction a, Fraction b)
+    {
+        return !(a == b);
+    }
 
+    // Overrides
     public override string ToString()
     {
         if (d == 1 || n == 0)
@@ -123,5 +159,17 @@ public class Fraction
             return n.ToString();
         }
         else return n + "/" + d;
+    }
+    public override bool Equals(object obj)
+    {
+        if (obj.GetType() == typeof(Fraction))
+        {
+            return (Fraction)obj == this;
+        }
+        else return false;
+    }
+    public override int GetHashCode()
+    {
+        return n.GetHashCode() + d.GetHashCode();
     }
 }

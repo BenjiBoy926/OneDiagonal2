@@ -4,13 +4,16 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - MultiplyScalar
-  - AddingScalar
   - MatrixItem
   - MainMatrix
   - PreviewMatrix
   - MatrixRow
   - AdderDock
+  - Scalar
+  - OperatorSource
+  - OperatorDestination
+  - Matrix
+  - OperationActive
   layers:
   - Default
   - TransparentFX
