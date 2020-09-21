@@ -1,0 +1,17 @@
+Sound options for OneDiagonal
+
+Confirm Operation
+06
+
+Swap Scalar sound
+07
+
+Operation Start
+12
+
+Operation preview
+13
+
+Operation cancel
+9
+
