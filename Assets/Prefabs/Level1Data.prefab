@@ -46,15 +46,7 @@ MonoBehaviour:
   _variableName: matrix
   _defaultValue:
     data:
-    - n: 1
-      d: 1
-    - n: 0
-      d: 1
-    - n: 0
-      d: 1
-    - n: 0
-      d: 1
-    - n: 0
+    - n: 3
       d: 1
     - n: 1
       d: 1
@@ -64,6 +56,14 @@ MonoBehaviour:
       d: 1
     - n: 0
       d: 1
+    - n: 0
+      d: 1
+    - n: 0
+      d: 1
+    - n: 0
+      d: 1
+    - n: 1
+      d: 3
     _rows: 3
   _onValueChanged:
     m_PersistentCalls:

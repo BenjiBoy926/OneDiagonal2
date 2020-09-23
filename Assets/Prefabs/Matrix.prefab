@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8195892898638630064}
+  - component: {fileID: 7177972980549607096}
   m_Layer: 0
   m_Name: Initialization
   m_TagString: Untagged
@@ -32,6 +33,33 @@ Transform:
   m_Father: {fileID: 7036059859384293711}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7177972980549607096
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2231620566989780}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29a845bc5af0daa438a5dfe348b831d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  output:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3548460696628873878}
+        m_TargetAssemblyTypeName: GetMatrixDimension, Assembly-CSharp
+        m_MethodName: Invoke
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &77033129834467592
 GameObject:
   m_ObjectHideFlags: 0
@@ -43,7 +71,7 @@ GameObject:
   - component: {fileID: 3563339143958364075}
   - component: {fileID: 9049399385247760992}
   m_Layer: 0
-  m_Name: SetDisableAdd (1)
+  m_Name: SetDisableAdd
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -135,9 +163,11 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 7534915924668932018}
+  - {fileID: 3760397650075030675}
   m_Father: {fileID: 7036059859384293711}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1313636069484838805
 MonoBehaviour:
@@ -170,7 +200,7 @@ MonoBehaviour:
     up:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 956080360811694697}
+        - m_Target: {fileID: 1297786288061520366}
           m_TargetAssemblyTypeName: Branch, Assembly-CSharp
           m_MethodName: Invoke
           m_Mode: 1
@@ -354,82 +384,6 @@ MonoBehaviour:
   _onValueChanged:
     m_PersistentCalls:
       m_Calls: []
---- !u!1 &630793528309306912
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 5087396477372729486}
-  - component: {fileID: 6629266862801894745}
-  m_Layer: 0
-  m_Name: SetMatrixOutputToPreview
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &5087396477372729486
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 630793528309306912}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 763777128878651548}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6629266862801894745
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 630793528309306912}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d63ef90d10318146b8b70cbd50ffbc3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  input:
-    referenceType: 0
-    gameObjectReferenceType: 0
-    redirectType: 0
-    redirectDepth: 0
-    direct: {fileID: 8459617412407663852}
-    indirect: {fileID: 0}
-    redirectVariable: {fileID: 0}
-    redirectTag: 
-  result:
-    referenceType: 1
-    gameObjectReferenceType: 0
-    redirectType: 0
-    redirectDepth: 0
-    direct: {fileID: 0}
-    indirect: {fileID: 60996539840795116}
-    redirectVariable: {fileID: 0}
-    redirectTag: 
-  output:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 9061258281465470369}
-        m_TargetAssemblyTypeName: CompareTag, Assembly-CSharp
-        m_MethodName: Invoke
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!1 &1060075523308780797
 GameObject:
   m_ObjectHideFlags: 0
@@ -679,82 +633,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!1 &1329540682483452461
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 6951972664204069907}
-  - component: {fileID: 1961166723788492247}
-  m_Layer: 0
-  m_Name: SetMatrixOutputToMain
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &6951972664204069907
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1329540682483452461}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 5871159016534969870}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1961166723788492247
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1329540682483452461}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d63ef90d10318146b8b70cbd50ffbc3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  input:
-    referenceType: 2
-    gameObjectReferenceType: 1
-    redirectType: 0
-    redirectDepth: 0
-    direct: {fileID: 0}
-    indirect: {fileID: 0}
-    redirectVariable: {fileID: 0}
-    redirectTag: MainMatrix
-  result:
-    referenceType: 1
-    gameObjectReferenceType: 0
-    redirectType: 0
-    redirectDepth: 0
-    direct: {fileID: 0}
-    indirect: {fileID: 60996539840795116}
-    redirectVariable: {fileID: 0}
-    redirectTag: 
-  output:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 9061258281465470369}
-        m_TargetAssemblyTypeName: CompareTag, Assembly-CSharp
-        m_MethodName: Invoke
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!1 &1400594827599578168
 GameObject:
   m_ObjectHideFlags: 0
@@ -869,7 +747,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7550815700659672017}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &60996539840795116
 MonoBehaviour:
@@ -984,8 +862,8 @@ MonoBehaviour:
   _onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2968394359544939714}
-        m_TargetAssemblyTypeName: FractionMatrixIsIdentity, Assembly-CSharp
+      - m_Target: {fileID: 1176478768363914622}
+        m_TargetAssemblyTypeName: BasicAction, Assembly-CSharp
         m_MethodName: Invoke
         m_Mode: 1
         m_Arguments:
@@ -1052,13 +930,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1952591422489464078}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4329810966752615748}
   - {fileID: 2303098131469618995}
-  m_Father: {fileID: 6174042648316101165}
+  m_Father: {fileID: 2781261752267983911}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8981358041151252341
@@ -1083,7 +961,7 @@ MonoBehaviour:
     redirectVariable: {fileID: 0}
     redirectTag: 
   tagToCheck: Scalar
-  events:
+  boolOutputs:
     _true:
       m_PersistentCalls:
         m_Calls:
@@ -1114,6 +992,9 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+  output:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &2142790404947050809
 GameObject:
   m_ObjectHideFlags: 0
@@ -1339,7 +1220,7 @@ MonoBehaviour:
     redirectVariable: {fileID: 0}
     redirectTag: 
   tagToCheck: Scalar
-  events:
+  boolOutputs:
     _true:
       m_PersistentCalls:
         m_Calls:
@@ -1370,90 +1251,9 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
---- !u!1 &2347755558410899223
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 8952120820941301621}
-  - component: {fileID: 7374399997405555931}
-  m_Layer: 0
-  m_Name: CheckTagOfMatrixOutput
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &8952120820941301621
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2347755558410899223}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 6174042648316101165}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7374399997405555931
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2347755558410899223}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 310e57827a6405f429a6b0ab5ec8dace, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameObjectReference:
-    referenceType: 1
-    gameObjectReferenceType: 0
-    redirectType: 0
-    redirectDepth: 0
-    direct: {fileID: 0}
-    indirect: {fileID: 60996539840795116}
-    redirectVariable: {fileID: 0}
-    redirectTag: 
-  tagToCheck: MainMatrix
-  events:
-    _true:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 8001343324171171003}
-          m_TargetAssemblyTypeName: SetString, Assembly-CSharp
-          m_MethodName: Invoke
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-    _false:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 9150743677537540131}
-          m_TargetAssemblyTypeName: SetString, Assembly-CSharp
-          m_MethodName: Invoke
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
+  output:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &2386458901534211025
 GameObject:
   m_ObjectHideFlags: 0
@@ -1478,12 +1278,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2386458901534211025}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5190769047631348880}
-  m_Father: {fileID: 6174042648316101165}
+  m_Father: {fileID: 2781261752267983911}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &9061258281465470369
@@ -1508,7 +1308,7 @@ MonoBehaviour:
     redirectVariable: {fileID: 0}
     redirectTag: 
   tagToCheck: MatrixRow
-  events:
+  boolOutputs:
     _true:
       m_PersistentCalls:
         m_Calls:
@@ -1539,6 +1339,9 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+  output:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &2441723097093283865
 GameObject:
   m_ObjectHideFlags: 0
@@ -1677,7 +1480,7 @@ MonoBehaviour:
     redirectTag: 
   result:
     referenceType: 2
-    gameObjectReferenceType: 0
+    gameObjectReferenceType: 1
     redirectType: 0
     redirectDepth: 0
     direct:
@@ -1685,12 +1488,12 @@ MonoBehaviour:
       _rows: 1
     indirect: {fileID: 0}
     redirectVariable: {fileID: 60996539840795116}
-    redirectTag: MainMatrix
+    redirectTag: PreviewMatrix
   output:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7374399997405555931}
-        m_TargetAssemblyTypeName: CompareTag, Assembly-CSharp
+      - m_Target: {fileID: 9150743677537540131}
+        m_TargetAssemblyTypeName: Set`1[[System.String, mscorlib
         m_MethodName: Invoke
         m_Mode: 1
         m_Arguments:
@@ -1948,7 +1751,7 @@ MonoBehaviour:
     redirectVariable: {fileID: 0}
     redirectTag: 
   tagToCheck: AdderDock
-  events:
+  boolOutputs:
     _true:
       m_PersistentCalls:
         m_Calls:
@@ -1967,104 +1770,9 @@ MonoBehaviour:
     _false:
       m_PersistentCalls:
         m_Calls: []
---- !u!1 &2930651433382511779
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 5871159016534969870}
-  - component: {fileID: 8400771845347683159}
-  m_Layer: 0
-  m_Name: MatrixOperationMain
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &5871159016534969870
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2930651433382511779}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 6951972664204069907}
-  - {fileID: 5564113794043235059}
-  - {fileID: 3964816519088151356}
-  m_Father: {fileID: 7204234012832259582}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8400771845347683159
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2930651433382511779}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b58ab5d8fd3cde4b9a13eb3e8434f43, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  condition:
-    referenceType: 1
-    gameObjectReferenceType: 0
-    redirectType: 0
-    redirectDepth: 0
-    direct: 0
-    indirect: {fileID: 6061897057840265604}
-    redirectVariable: {fileID: 0}
-    redirectTag: 
-  events:
-    _true:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1961166723788492247}
-          m_TargetAssemblyTypeName: Set`1[[UnityEngine.GameObject, UnityEngine
-          m_MethodName: Invoke
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-        - m_Target: {fileID: 1894438615075415341}
-          m_TargetAssemblyTypeName: EventSender, Assembly-CSharp
-          m_MethodName: Invoke
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-        - m_Target: {fileID: 1494498248982335190}
-          m_TargetAssemblyTypeName: PlayAudioClip, Assembly-CSharp
-          m_MethodName: Invoke
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-    _false:
-      m_PersistentCalls:
-        m_Calls: []
+  output:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &3065866979455246160
 GameObject:
   m_ObjectHideFlags: 0
@@ -2111,73 +1819,6 @@ MonoBehaviour:
   _variableName: currentAdderDock
   _defaultValue: {fileID: 0}
   _onValueChanged:
-    m_PersistentCalls:
-      m_Calls: []
---- !u!1 &3160124880785340699
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 3964816519088151356}
-  - component: {fileID: 1494498248982335190}
-  m_Layer: 0
-  m_Name: PlaySoundEffect
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &3964816519088151356
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3160124880785340699}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 5871159016534969870}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1494498248982335190
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3160124880785340699}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6ca0f60d09bf3045a613642d5637bfb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  source:
-    referenceType: 0
-    gameObjectReferenceType: 0
-    redirectType: 0
-    redirectDepth: 0
-    direct: {fileID: 4600608262226923376}
-    indirect: {fileID: 0}
-    redirectVariable: {fileID: 0}
-    redirectTag: 
-  clip:
-    referenceType: 0
-    gameObjectReferenceType: 0
-    redirectType: 0
-    redirectDepth: 0
-    direct: {fileID: 8300000, guid: ac8a35c9f1eb74a30b15cca5df68110f, type: 3}
-    indirect: {fileID: 0}
-    redirectVariable: {fileID: 0}
-    redirectTag: 
-  soundStart:
-    m_PersistentCalls:
-      m_Calls: []
-  soundEnd:
     m_PersistentCalls:
       m_Calls: []
 --- !u!1 &3188104668938527589
@@ -2228,7 +1869,7 @@ MonoBehaviour:
   _onValueChanged:
     m_PersistentCalls:
       m_Calls: []
---- !u!1 &3268426800763360562
+--- !u!1 &3362251477996369390
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2236,99 +1877,83 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2877264878591881121}
-  - component: {fileID: 5488826191392162169}
+  - component: {fileID: 6166971401494005808}
+  - component: {fileID: 4934374256023983132}
   m_Layer: 0
-  m_Name: PlaySoundEffect
+  m_Name: StartTimerIfNotIdentity
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2877264878591881121
+--- !u!4 &6166971401494005808
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3268426800763360562}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_GameObject: {fileID: 3362251477996369390}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 763777128878651548}
-  m_RootOrder: 1
+  m_Father: {fileID: 3763703991439506920}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5488826191392162169
+--- !u!114 &4934374256023983132
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3268426800763360562}
+  m_GameObject: {fileID: 3362251477996369390}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6ca0f60d09bf3045a613642d5637bfb, type: 3}
+  m_Script: {fileID: 11500000, guid: cb91098da48601f40a465ec5d3858e3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  source:
-    referenceType: 0
-    gameObjectReferenceType: 0
+  input:
+    referenceType: 2
+    gameObjectReferenceType: 1
     redirectType: 0
     redirectDepth: 0
-    direct: {fileID: 4600608262226923376}
+    direct:
+      data: []
+      _rows: 1
     indirect: {fileID: 0}
     redirectVariable: {fileID: 0}
-    redirectTag: 
-  clip:
-    referenceType: 0
-    gameObjectReferenceType: 0
-    redirectType: 0
-    redirectDepth: 0
-    direct: {fileID: 8300000, guid: 3574ad7ac970b424487560607b782f4b, type: 3}
-    indirect: {fileID: 0}
-    redirectVariable: {fileID: 0}
-    redirectTag: 
-  soundStart:
-    m_PersistentCalls:
-      m_Calls: []
-  soundEnd:
-    m_PersistentCalls:
-      m_Calls: []
---- !u!1 &3299332486358788382
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 6174042648316101165}
-  m_Layer: 0
-  m_Name: PerformMatrixOperation
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &6174042648316101165
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3299332486358788382}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 743311465356669510}
-  - {fileID: 2828164542873280717}
-  - {fileID: 1972256076089840660}
-  - {fileID: 8952120820941301621}
-  m_Father: {fileID: 7204234012832259582}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+    redirectTag: MainMatrix
+  outputs:
+    _true:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 3484554565838322375}
+          m_TargetAssemblyTypeName: EventReceiver, Assembly-CSharp
+          m_MethodName: Invoke
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: end
+            m_BoolArgument: 0
+          m_CallState: 2
+    _false:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 3484554565838322375}
+          m_TargetAssemblyTypeName: EventReceiver, Assembly-CSharp
+          m_MethodName: Invoke
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: begin
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &3434078338881716773
 GameObject:
   m_ObjectHideFlags: 0
@@ -2338,8 +1963,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5252195911435473503}
+  - component: {fileID: 6274145329355080727}
   m_Layer: 0
-  m_Name: CancelOperation
+  m_Name: CancelMatrixOperation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2352,15 +1978,53 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3434078338881716773}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 498872709047886641}
   - {fileID: 4158545683254051410}
-  m_Father: {fileID: 7036059859384293711}
-  m_RootOrder: 6
+  m_Father: {fileID: 7204234012832259582}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6274145329355080727
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3434078338881716773}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29a845bc5af0daa438a5dfe348b831d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  output:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1220050387635780096}
+        m_TargetAssemblyTypeName: PlayAudioClip, Assembly-CSharp
+        m_MethodName: Invoke
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 6061897057840265604}
+        m_TargetAssemblyTypeName: Variable`1[[System.Boolean, mscorlib
+        m_MethodName: set_value
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &3496780497763580791
 GameObject:
   m_ObjectHideFlags: 0
@@ -2734,6 +2398,70 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!1 &3917658854541517922
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5564012844917289168}
+  - component: {fileID: 5444338601304953101}
+  m_Layer: 0
+  m_Name: BeginTimer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5564012844917289168
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3917658854541517922}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3300572127135657168}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5444338601304953101
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3917658854541517922}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e77100383920d0b4d9b1f0416917ce23, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hookName:
+    referenceType: 0
+    gameObjectReferenceType: 0
+    redirectType: 0
+    redirectDepth: 0
+    direct: begin
+    indirect: {fileID: 0}
+    redirectVariable: {fileID: 0}
+    redirectTag: 
+  receiver:
+    referenceType: 0
+    gameObjectReferenceType: 0
+    redirectType: 0
+    redirectDepth: 0
+    direct: {fileID: 3484554565838322375}
+    indirect: {fileID: 0}
+    redirectVariable: {fileID: 0}
+    redirectTag: 
+  output:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &3953457078485530869
 GameObject:
   m_ObjectHideFlags: 0
@@ -2782,6 +2510,73 @@ MonoBehaviour:
   _onValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!1 &4109226174110857337
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8343570549009320770}
+  - component: {fileID: 792792337088161792}
+  m_Layer: 0
+  m_Name: PlayOperationConfirmAudio
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8343570549009320770
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4109226174110857337}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3300572127135657168}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &792792337088161792
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4109226174110857337}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6ca0f60d09bf3045a613642d5637bfb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  source:
+    referenceType: 0
+    gameObjectReferenceType: 0
+    redirectType: 0
+    redirectDepth: 0
+    direct: {fileID: 4600608262226923376}
+    indirect: {fileID: 0}
+    redirectVariable: {fileID: 0}
+    redirectTag: 
+  clip:
+    referenceType: 0
+    gameObjectReferenceType: 0
+    redirectType: 0
+    redirectDepth: 0
+    direct: {fileID: 8300000, guid: ac8a35c9f1eb74a30b15cca5df68110f, type: 3}
+    indirect: {fileID: 0}
+    redirectVariable: {fileID: 0}
+    redirectTag: 
+  soundStart:
+    m_PersistentCalls:
+      m_Calls: []
+  soundEnd:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &4200637323127099179
 GameObject:
   m_ObjectHideFlags: 0
@@ -2809,11 +2604,13 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 5871159016534969870}
-  - {fileID: 763777128878651548}
-  - {fileID: 6174042648316101165}
+  - {fileID: 8401097416888006249}
+  - {fileID: 2750083913742340588}
+  - {fileID: 1012578951373341384}
+  - {fileID: 3300572127135657168}
+  - {fileID: 5252195911435473503}
   m_Father: {fileID: 7036059859384293711}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4501634155979702055
 GameObject:
@@ -2930,60 +2727,44 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hooks:
-  - name: operate
-    hook:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 8400771845347683159}
-          m_TargetAssemblyTypeName: Branch, Assembly-CSharp
-          m_MethodName: Invoke
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-  - name: preview
-    hook:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 6618143168202933715}
-          m_TargetAssemblyTypeName: Branch, Assembly-CSharp
-          m_MethodName: Invoke
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-  - name: display
-    hook:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 8001343324171171003}
-          m_TargetAssemblyTypeName: SetString, Assembly-CSharp
-          m_MethodName: Invoke
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
   - name: initialize
     hook:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 3548460696628873878}
-          m_TargetAssemblyTypeName: GetMatrixDimension, Assembly-CSharp
+        - m_Target: {fileID: 7177972980549607096}
+          m_TargetAssemblyTypeName: BasicAction, Assembly-CSharp
+          m_MethodName: Invoke
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - name: enablePreview
+    hook:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2583942379283620706}
+          m_TargetAssemblyTypeName: Branch, Assembly-CSharp
+          m_MethodName: Invoke
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - name: disablePreview
+    hook:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1496277349859279072}
+          m_TargetAssemblyTypeName: BasicAction, Assembly-CSharp
           m_MethodName: Invoke
           m_Mode: 1
           m_Arguments:
@@ -3081,6 +2862,89 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &4667600453614784038
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3760397650075030675}
+  - component: {fileID: 5023670817247014570}
+  m_Layer: 0
+  m_Name: CheckOperationReady
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3760397650075030675
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4667600453614784038}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 810623448387895031}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5023670817247014570
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4667600453614784038}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b58ab5d8fd3cde4b9a13eb3e8434f43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  condition:
+    referenceType: 1
+    gameObjectReferenceType: 0
+    redirectType: 0
+    redirectDepth: 0
+    direct: 0
+    indirect: {fileID: 6477159413300651932}
+    redirectVariable: {fileID: 0}
+    redirectTag: 
+  events:
+    _true:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 6323513980299495733}
+          m_TargetAssemblyTypeName: BasicAction, Assembly-CSharp
+          m_MethodName: Invoke
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    _false:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 6274145329355080727}
+          m_TargetAssemblyTypeName: BasicAction, Assembly-CSharp
+          m_MethodName: Invoke
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &4672331293130525525
 GameObject:
   m_ObjectHideFlags: 0
@@ -3137,7 +3001,7 @@ MonoBehaviour:
     redirectVariable: {fileID: 0}
     redirectTag: 
   tagToCheck: MatrixRow
-  events:
+  boolOutputs:
     _true:
       m_PersistentCalls:
         m_Calls:
@@ -3168,6 +3032,9 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+  output:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &4780316279922571848
 GameObject:
   m_ObjectHideFlags: 0
@@ -3253,7 +3120,7 @@ MonoBehaviour:
     redirectTag: 
   result:
     referenceType: 2
-    gameObjectReferenceType: 0
+    gameObjectReferenceType: 1
     redirectType: 0
     redirectDepth: 0
     direct:
@@ -3261,12 +3128,12 @@ MonoBehaviour:
       _rows: 1
     indirect: {fileID: 0}
     redirectVariable: {fileID: 60996539840795116}
-    redirectTag: MainMatrix
+    redirectTag: PreviewMatrix
   output:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7374399997405555931}
-        m_TargetAssemblyTypeName: CompareTag, Assembly-CSharp
+      - m_Target: {fileID: 9150743677537540131}
+        m_TargetAssemblyTypeName: Set`1[[System.String, mscorlib
         m_MethodName: Invoke
         m_Mode: 1
         m_Arguments:
@@ -3277,6 +3144,103 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!1 &4857764645221760501
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2750083913742340588}
+  - component: {fileID: 2583942379283620706}
+  m_Layer: 0
+  m_Name: EnableOperationPreview
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2750083913742340588
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4857764645221760501}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 7429366419791561000}
+  - {fileID: 2781261752267983911}
+  m_Father: {fileID: 7204234012832259582}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2583942379283620706
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4857764645221760501}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b58ab5d8fd3cde4b9a13eb3e8434f43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  condition:
+    referenceType: 1
+    gameObjectReferenceType: 0
+    redirectType: 0
+    redirectDepth: 0
+    direct: 0
+    indirect: {fileID: 6061897057840265604}
+    redirectVariable: {fileID: 0}
+    redirectTag: 
+  events:
+    _true:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 3358094061814302296}
+          m_TargetAssemblyTypeName: PlayAudioClip, Assembly-CSharp
+          m_MethodName: Invoke
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 9061258281465470369}
+          m_TargetAssemblyTypeName: CompareTag, Assembly-CSharp
+          m_MethodName: Invoke
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 6477159413300651932}
+          m_TargetAssemblyTypeName: Variable`1[[System.Boolean, mscorlib
+          m_MethodName: set_value
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
+    _false:
+      m_PersistentCalls:
+        m_Calls: []
 --- !u!1 &4869247646586242344
 GameObject:
   m_ObjectHideFlags: 0
@@ -3305,12 +3269,10 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8195892898638630064}
-  - {fileID: 8195752964603470687}
   - {fileID: 1323884035837002684}
   - {fileID: 7204234012832259582}
   - {fileID: 810623448387895031}
-  - {fileID: 8401097416888006249}
-  - {fileID: 5252195911435473503}
+  - {fileID: 8195752964603470687}
   m_Father: {fileID: 4501634155979702054}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3390,6 +3352,77 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!1 &5110900746165860038
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7534915924668932018}
+  - component: {fileID: 1297786288061520366}
+  m_Layer: 0
+  m_Name: CheckOperationActive
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7534915924668932018
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5110900746165860038}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 810623448387895031}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1297786288061520366
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5110900746165860038}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b58ab5d8fd3cde4b9a13eb3e8434f43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  condition:
+    referenceType: 1
+    gameObjectReferenceType: 0
+    redirectType: 0
+    redirectDepth: 0
+    direct: 0
+    indirect: {fileID: 6061897057840265604}
+    redirectVariable: {fileID: 0}
+    redirectTag: 
+  events:
+    _true:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 5023670817247014570}
+          m_TargetAssemblyTypeName: Branch, Assembly-CSharp
+          m_MethodName: Invoke
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    _false:
+      m_PersistentCalls:
+        m_Calls: []
 --- !u!1 &5194762221562859429
 GameObject:
   m_ObjectHideFlags: 0
@@ -3502,6 +3535,151 @@ MonoBehaviour:
   _onValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!1 &5319765431736981132
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3300572127135657168}
+  - component: {fileID: 6323513980299495733}
+  m_Layer: 0
+  m_Name: ConfirmMatrixOperation
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3300572127135657168
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5319765431736981132}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 3763703991439506920}
+  - {fileID: 8343570549009320770}
+  - {fileID: 5564012844917289168}
+  m_Father: {fileID: 7204234012832259582}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6323513980299495733
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5319765431736981132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29a845bc5af0daa438a5dfe348b831d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  output:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2660571710159720225}
+        m_TargetAssemblyTypeName: Set`1[[FractionMatrix, Assembly-CSharp
+        m_MethodName: Invoke
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 792792337088161792}
+        m_TargetAssemblyTypeName: PlayAudioClip, Assembly-CSharp
+        m_MethodName: Invoke
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 6061897057840265604}
+        m_TargetAssemblyTypeName: Variable`1[[System.Boolean, mscorlib
+        m_MethodName: set_value
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 5444338601304953101}
+        m_TargetAssemblyTypeName: EventSender, Assembly-CSharp
+        m_MethodName: Invoke
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!1 &5376622134136306573
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7360076977111957626}
+  - component: {fileID: 6477159413300651932}
+  m_Layer: 0
+  m_Name: OperationReady
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7360076977111957626
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5376622134136306573}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7550815700659672017}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6477159413300651932
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5376622134136306573}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc0aaea9a4c20024ba1156f49695384e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _variableName: operationReady
+  _defaultValue: 0
+  _onValueChanged:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &5405663699868622674
 GameObject:
   m_ObjectHideFlags: 0
@@ -3573,6 +3751,73 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!1 &5485868346554616113
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7429366419791561000}
+  - component: {fileID: 3358094061814302296}
+  m_Layer: 0
+  m_Name: PlaySoundEffect
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7429366419791561000
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5485868346554616113}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2750083913742340588}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3358094061814302296
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5485868346554616113}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6ca0f60d09bf3045a613642d5637bfb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  source:
+    referenceType: 0
+    gameObjectReferenceType: 0
+    redirectType: 0
+    redirectDepth: 0
+    direct: {fileID: 4600608262226923376}
+    indirect: {fileID: 0}
+    redirectVariable: {fileID: 0}
+    redirectTag: 
+  clip:
+    referenceType: 0
+    gameObjectReferenceType: 0
+    redirectType: 0
+    redirectDepth: 0
+    direct: {fileID: 8300000, guid: 3574ad7ac970b424487560607b782f4b, type: 3}
+    indirect: {fileID: 0}
+    redirectVariable: {fileID: 0}
+    redirectTag: 
+  soundStart:
+    m_PersistentCalls:
+      m_Calls: []
+  soundEnd:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &5517898598410877818
 GameObject:
   m_ObjectHideFlags: 0
@@ -3582,6 +3827,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4285014557434618255}
+  - component: {fileID: 571741021449832550}
   m_Layer: 0
   m_Name: DisableUnusableWidgets
   m_TagString: Untagged
@@ -3609,6 +3855,33 @@ Transform:
   m_Father: {fileID: 8401097416888006249}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &571741021449832550
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5517898598410877818}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29a845bc5af0daa438a5dfe348b831d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  output:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5433859461531426304}
+        m_TargetAssemblyTypeName: CompareTag, Assembly-CSharp
+        m_MethodName: Invoke
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &5752450614000718113
 GameObject:
   m_ObjectHideFlags: 0
@@ -3976,8 +4249,8 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 1
           m_CallState: 2
-        - m_Target: {fileID: 5433859461531426304}
-          m_TargetAssemblyTypeName: CompareTag, Assembly-CSharp
+        - m_Target: {fileID: 571741021449832550}
+          m_TargetAssemblyTypeName: BasicAction, Assembly-CSharp
           m_MethodName: Invoke
           m_Mode: 1
           m_Arguments:
@@ -4000,70 +4273,18 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 1
           m_CallState: 2
---- !u!1 &6074102481021657638
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 5564113794043235059}
-  - component: {fileID: 1894438615075415341}
-  m_Layer: 0
-  m_Name: BeginTimer
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &5564113794043235059
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6074102481021657638}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 5871159016534969870}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1894438615075415341
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6074102481021657638}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e77100383920d0b4d9b1f0416917ce23, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hookName:
-    referenceType: 0
-    gameObjectReferenceType: 0
-    redirectType: 0
-    redirectDepth: 0
-    direct: begin
-    indirect: {fileID: 0}
-    redirectVariable: {fileID: 0}
-    redirectTag: 
-  receiver:
-    referenceType: 0
-    gameObjectReferenceType: 0
-    redirectType: 0
-    redirectDepth: 0
-    direct: {fileID: 3484554565838322375}
-    indirect: {fileID: 0}
-    redirectVariable: {fileID: 0}
-    redirectTag: 
-  output:
-    m_PersistentCalls:
-      m_Calls: []
+        - m_Target: {fileID: 6477159413300651932}
+          m_TargetAssemblyTypeName: Variable`1[[System.Boolean, mscorlib
+          m_MethodName: set_value
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &6088574222156698864
 GameObject:
   m_ObjectHideFlags: 0
@@ -4319,6 +4540,76 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!1 &6458342797319043841
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1012578951373341384}
+  - component: {fileID: 1496277349859279072}
+  m_Layer: 0
+  m_Name: DisableOperationPreview
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1012578951373341384
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6458342797319043841}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7204234012832259582}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1496277349859279072
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6458342797319043841}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29a845bc5af0daa438a5dfe348b831d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  output:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6477159413300651932}
+        m_TargetAssemblyTypeName: Variable`1[[System.Boolean, mscorlib
+        m_MethodName: set_value
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 8001343324171171003}
+        m_TargetAssemblyTypeName: Set`1[[System.String, mscorlib
+        m_MethodName: Invoke
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &6560395008477894283
 GameObject:
   m_ObjectHideFlags: 0
@@ -4381,6 +4672,7 @@ Transform:
   - {fileID: 8702333105010723603}
   - {fileID: 3102726382082025890}
   - {fileID: 5313874749251105471}
+  - {fileID: 7360076977111957626}
   - {fileID: 8646194520460536856}
   - {fileID: 4524917576676246757}
   - {fileID: 8631602826259320740}
@@ -4518,7 +4810,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1323884035837002684}
   m_Layer: 0
-  m_Name: DisplayMatrix
+  m_Name: MatrixDisplay
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4539,7 +4831,40 @@ Transform:
   - {fileID: 2577830367569794291}
   - {fileID: 1749017098371212264}
   m_Father: {fileID: 7036059859384293711}
-  m_RootOrder: 2
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6905987720473254052
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2781261752267983911}
+  m_Layer: 0
+  m_Name: DoMatrixOperation
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2781261752267983911
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6905987720473254052}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 743311465356669510}
+  - {fileID: 2828164542873280717}
+  - {fileID: 1972256076089840660}
+  m_Father: {fileID: 2750083913742340588}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6961590143004708164
 GameObject:
@@ -4646,7 +4971,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7550815700659672017}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1606867303686031457
 MonoBehaviour:
@@ -4845,8 +5170,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8401097416888006249}
+  - component: {fileID: 1176478768363914622}
   m_Layer: 0
-  m_Name: BeginOperation
+  m_Name: BeginMatrixOperation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4859,16 +5185,43 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7620129035414124298}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5961667334508309746}
   - {fileID: 1036493053605502435}
   - {fileID: 4285014557434618255}
-  m_Father: {fileID: 7036059859384293711}
-  m_RootOrder: 5
+  m_Father: {fileID: 7204234012832259582}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1176478768363914622
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7620129035414124298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29a845bc5af0daa438a5dfe348b831d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  output:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2968394359544939714}
+        m_TargetAssemblyTypeName: FractionMatrixIsIdentity, Assembly-CSharp
+        m_MethodName: Invoke
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &7671428974701657782
 GameObject:
   m_ObjectHideFlags: 0
@@ -5049,91 +5402,6 @@ MonoBehaviour:
   _onValueChanged:
     m_PersistentCalls:
       m_Calls: []
---- !u!1 &7745286155095484073
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 763777128878651548}
-  - component: {fileID: 6618143168202933715}
-  m_Layer: 0
-  m_Name: MatrixOperationPreview
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &763777128878651548
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7745286155095484073}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 5087396477372729486}
-  - {fileID: 2877264878591881121}
-  m_Father: {fileID: 7204234012832259582}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6618143168202933715
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7745286155095484073}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b58ab5d8fd3cde4b9a13eb3e8434f43, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  condition:
-    referenceType: 1
-    gameObjectReferenceType: 0
-    redirectType: 0
-    redirectDepth: 0
-    direct: 0
-    indirect: {fileID: 6061897057840265604}
-    redirectVariable: {fileID: 0}
-    redirectTag: 
-  events:
-    _true:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 6629266862801894745}
-          m_TargetAssemblyTypeName: Set`1[[UnityEngine.GameObject, UnityEngine
-          m_MethodName: Invoke
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-        - m_Target: {fileID: 5488826191392162169}
-          m_TargetAssemblyTypeName: PlayAudioClip, Assembly-CSharp
-          m_MethodName: Invoke
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-    _false:
-      m_PersistentCalls:
-        m_Calls: []
 --- !u!1 &7749885774299198796
 GameObject:
   m_ObjectHideFlags: 0
@@ -5210,7 +5478,7 @@ MonoBehaviour:
     redirectTag: 
   result:
     referenceType: 2
-    gameObjectReferenceType: 0
+    gameObjectReferenceType: 1
     redirectType: 0
     redirectDepth: 0
     direct:
@@ -5218,12 +5486,105 @@ MonoBehaviour:
       _rows: 1
     indirect: {fileID: 0}
     redirectVariable: {fileID: 60996539840795116}
+    redirectTag: PreviewMatrix
+  output:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 9150743677537540131}
+        m_TargetAssemblyTypeName: Set`1[[System.String, mscorlib
+        m_MethodName: Invoke
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!1 &7983759117328184612
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3763703991439506920}
+  - component: {fileID: 2660571710159720225}
+  m_Layer: 0
+  m_Name: SetMainMatrix
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3763703991439506920
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7983759117328184612}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 6166971401494005808}
+  m_Father: {fileID: 3300572127135657168}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2660571710159720225
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7983759117328184612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a49a844f840ca7641a984687d2925522, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  input:
+    referenceType: 1
+    gameObjectReferenceType: 1
+    redirectType: 0
+    redirectDepth: 0
+    direct:
+      data: []
+      _rows: 1
+    indirect: {fileID: 8361918266456919966}
+    redirectVariable: {fileID: 0}
+    redirectTag: PreviewMatrix
+  result:
+    referenceType: 2
+    gameObjectReferenceType: 1
+    redirectType: 0
+    redirectDepth: 0
+    direct:
+      data: []
+      _rows: 1
+    indirect: {fileID: 0}
+    redirectVariable: {fileID: 0}
     redirectTag: MainMatrix
   output:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7374399997405555931}
-        m_TargetAssemblyTypeName: CompareTag, Assembly-CSharp
+      - m_Target: {fileID: 8001343324171171003}
+        m_TargetAssemblyTypeName: Set`1[[System.String, mscorlib
+        m_MethodName: Invoke
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 4934374256023983132}
+        m_TargetAssemblyTypeName: FractionMatrixIsIdentity, Assembly-CSharp
         m_MethodName: Invoke
         m_Mode: 1
         m_Arguments:
@@ -5339,7 +5700,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7550815700659672017}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8361918266456919966
 MonoBehaviour:
@@ -5556,12 +5917,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8576962247932404357}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 7040061015154972116}
-  m_Father: {fileID: 6174042648316101165}
+  m_Father: {fileID: 2781261752267983911}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &482640723376060882
@@ -5586,7 +5947,7 @@ MonoBehaviour:
     redirectVariable: {fileID: 0}
     redirectTag: 
   tagToCheck: AdderDock
-  events:
+  boolOutputs:
     _true:
       m_PersistentCalls:
         m_Calls:
@@ -5605,6 +5966,9 @@ MonoBehaviour:
     _false:
       m_PersistentCalls:
         m_Calls: []
+  output:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &8591883295555942758
 GameObject:
   m_ObjectHideFlags: 0
@@ -5681,77 +6045,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!1 &8763200165444828706
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 498872709047886641}
-  - component: {fileID: 956080360811694697}
-  m_Layer: 0
-  m_Name: CheckOperationActive
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &498872709047886641
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8763200165444828706}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 5252195911435473503}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &956080360811694697
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8763200165444828706}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b58ab5d8fd3cde4b9a13eb3e8434f43, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  condition:
-    referenceType: 1
-    gameObjectReferenceType: 0
-    redirectType: 0
-    redirectDepth: 0
-    direct: 0
-    indirect: {fileID: 6061897057840265604}
-    redirectVariable: {fileID: 0}
-    redirectTag: 
-  events:
-    _true:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1220050387635780096}
-          m_TargetAssemblyTypeName: PlayAudioClip, Assembly-CSharp
-          m_MethodName: Invoke
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-    _false:
-      m_PersistentCalls:
-        m_Calls: []
 --- !u!1 &8781527249671594759
 GameObject:
   m_ObjectHideFlags: 0
@@ -5783,7 +6076,7 @@ Transform:
   - {fileID: 1466804524286228503}
   - {fileID: 2013164963252457998}
   m_Father: {fileID: 7036059859384293711}
-  m_RootOrder: 1
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8792011213133665589
 GameObject:
@@ -5954,7 +6247,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5252195911435473503}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1220050387635780096
 MonoBehaviour:
