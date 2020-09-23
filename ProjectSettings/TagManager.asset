@@ -52,3 +52,6 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: SwapButton
+    uniqueID: 1363244717
+    locked: 0
