@@ -1,23 +1,15 @@
-﻿using UnityEngine;
-using UnityEngine.Events;
-
-public class GetMatrixDimension : MonoBehaviour
+﻿
+public class GetMatrixDimension : SupplierAction<int>
 {
-    public Input<MatrixDimension> dimension;
+    public MatrixDimension dimension;
     public Input<FractionMatrix> matrix;
 
-    public Result<int> result;
-
-    public UnityEvent output;
-
-    public void Invoke()
+    public override int Get()
     {
-        if (dimension.value == MatrixDimension.Rows)
+        if (dimension == MatrixDimension.Rows)
         {
-            result.value = matrix.value.rows;
+            return matrix.value.rows;
         }
-        else result.value = matrix.value.cols;
-
-        output.Invoke();
+        else return matrix.value.cols;
     }
 }

@@ -1,17 +1,12 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
 
-public class GetFractionText : MonoBehaviour
+public class GetFractionText : SupplierAction<string>
 {
     public Input<Fraction> fraction;
 
-    public Result<string> result;
-
-    public UnityEvent output;
-
-    public void Invoke()
+    public override string Get()
     {
-        result.value = fraction.value.ToString();
-        output.Invoke();
+        return fraction.value.ToString();
     }
 }

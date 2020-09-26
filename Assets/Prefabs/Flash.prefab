@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8079774504921126068}
   - component: {fileID: 4558457194097597916}
   m_Layer: 0
-  m_Name: SmoothVector3
+  m_Name: InterpolateVector3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -48,66 +48,99 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf14c0a361cdbbd41919103f2aa7e584, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interpolationFunction:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 1
-      outSlope: 1
-      tangentMode: 34
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 1
-      value: 1
-      inSlope: 1
-      outSlope: 1
-      tangentMode: 34
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  start:
+  min:
+    evaluationType: 0
     referenceType: 0
     gameObjectReferenceType: 0
     redirectType: 0
     redirectDepth: 0
-    direct: {x: 1, y: 1, z: 1}
-    indirect: {fileID: 0}
+    directValue: {x: 1, y: 1, z: 1}
+    directAction: {fileID: 0}
+    indirectValue: {fileID: 0}
+    indirectAction: {fileID: 0}
     redirectVariable: {fileID: 0}
-    redirectTag: 
-  end:
+    redirectAction: {fileID: 0}
+    mainFoldout: 1
+    advancedFoldout: 0
+  max:
+    evaluationType: 0
     referenceType: 0
     gameObjectReferenceType: 0
     redirectType: 0
     redirectDepth: 0
-    direct: {x: 1.5, y: 1.5, z: 1.5}
-    indirect: {fileID: 0}
+    directValue: {x: 2, y: 2, z: 1}
+    directAction: {fileID: 0}
+    indirectValue: {fileID: 0}
+    indirectAction: {fileID: 0}
     redirectVariable: {fileID: 0}
-    redirectTag: 
+    redirectAction: {fileID: 0}
+    mainFoldout: 1
+    advancedFoldout: 0
   time:
+    evaluationType: 0
     referenceType: 0
     gameObjectReferenceType: 0
     redirectType: 0
     redirectDepth: 0
-    direct: 0.2
-    indirect: {fileID: 0}
+    directValue: 0.3
+    directAction: {fileID: 0}
+    indirectValue: {fileID: 0}
+    indirectAction: {fileID: 0}
     redirectVariable: {fileID: 0}
-    redirectTag: 
+    redirectAction: {fileID: 0}
+    mainFoldout: 1
+    advancedFoldout: 0
+  function:
+    evaluationType: 0
+    referenceType: 0
+    gameObjectReferenceType: 0
+    redirectType: 0
+    redirectDepth: 0
+    directValue:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 1
+        outSlope: 1
+        tangentMode: 34
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 1
+        outSlope: 1
+        tangentMode: 34
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    directAction: {fileID: 0}
+    indirectValue: {fileID: 0}
+    indirectAction: {fileID: 0}
+    redirectVariable: {fileID: 0}
+    redirectAction: {fileID: 0}
+    mainFoldout: 1
+    advancedFoldout: 0
   result:
+    evaluationType: 0
     referenceType: 1
     gameObjectReferenceType: 0
     redirectType: 0
     redirectDepth: 0
-    direct: {x: 0, y: 0, z: 0}
-    indirect: {fileID: 4715611472951666283}
+    directValue: {x: 0, y: 0, z: 0}
+    directAction: {fileID: 0}
+    indirectValue: {fileID: 0}
+    indirectAction: {fileID: 0}
     redirectVariable: {fileID: 0}
-    redirectTag: 
+    redirectAction: {fileID: 0}
+    mainFoldout: 1
+    advancedFoldout: 0
   outputs:
     start:
       m_PersistentCalls:
@@ -142,42 +175,6 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
---- !u!1 &5684977880420299261
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2390646537186683941}
-  m_Layer: 0
-  m_Name: Variables
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &2390646537186683941
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5684977880420299261}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 7412117724912640986}
-  m_Father: {fileID: 4252474822579248045}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &6045949011448310323
 GameObject:
   m_ObjectHideFlags: 0
@@ -227,77 +224,34 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   input:
+    evaluationType: 0
     referenceType: 0
     gameObjectReferenceType: 0
     redirectType: 0
     redirectDepth: 0
-    direct: {fileID: 7877765101128903539}
-    indirect: {fileID: 0}
+    directValue: {fileID: 7877765101128903539}
+    directAction: {fileID: 0}
+    indirectValue: {fileID: 0}
+    indirectAction: {fileID: 0}
     redirectVariable: {fileID: 0}
-    redirectTag: 
+    redirectAction: {fileID: 0}
+    mainFoldout: 1
+    advancedFoldout: 0
   newScale:
-    referenceType: 1
+    evaluationType: 1
+    referenceType: 0
     gameObjectReferenceType: 0
     redirectType: 0
     redirectDepth: 0
-    direct: {x: 0, y: 0, z: 0}
-    indirect: {fileID: 4715611472951666283}
+    directValue: {x: 0, y: 0, z: 0}
+    directAction: {fileID: 4558457194097597916}
+    indirectValue: {fileID: 0}
+    indirectAction: {fileID: 0}
     redirectVariable: {fileID: 0}
-    redirectTag: 
+    redirectAction: {fileID: 0}
+    mainFoldout: 1
+    advancedFoldout: 0
   output:
-    m_PersistentCalls:
-      m_Calls: []
---- !u!1 &6191272703409490958
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 7412117724912640986}
-  - component: {fileID: 4715611472951666283}
-  m_Layer: 0
-  m_Name: CurrentSize
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &7412117724912640986
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6191272703409490958}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 2390646537186683941}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &4715611472951666283
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6191272703409490958}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 009cd9fe411015246b6bb0a138357a8a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _variableName: current
-  _defaultValue: {x: 0, y: 0, z: 0}
-  _onValueChanged:
     m_PersistentCalls:
       m_Calls: []
 --- !u!1 &6812124751068225539
@@ -329,7 +283,7 @@ RectTransform:
   m_Children:
   - {fileID: 5356265125581081037}
   m_Father: {fileID: 4252474822579248045}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -366,7 +320,6 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 2390646537186683941}
   - {fileID: 5053347862195522776}
   m_Father: {fileID: 0}
   m_RootOrder: 0

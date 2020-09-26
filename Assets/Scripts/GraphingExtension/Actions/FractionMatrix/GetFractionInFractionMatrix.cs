@@ -1,19 +1,21 @@
 ﻿using UnityEngine;
-using UnityEngine.Events;
 
-public class GetFractionInFractionMatrix : MonoBehaviour
+public class GetFractionInFractionMatrix : SupplierAction<Fraction>
 {
     public Input<FractionMatrix> matrix;
     public Input<int> row;
     public Input<int> col;
 
-    public Result<Fraction> result;
-
-    public UnityEvent output;
-
-    public void Invoke()
+    public override Fraction Get()
     {
-        if (result != null) result.value = matrix.value.Get(row.value, col.value);
-        output.Invoke();
+        try
+        {
+            return matrix.value.Get(row.value, col.value);
+        }
+        catch(System.Exception)
+        {
+            Debug.LogError("[" + row.value + ", " + col.value + "]");
+            return Fraction.zero;
+        }
     }
 }

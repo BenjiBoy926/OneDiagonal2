@@ -1,4 +1,4 @@
-﻿public class SetFractionMatrix : Set<FractionMatrix>
+﻿public class SetFractionMatrix : Setter<FractionMatrix>
 {
     
 }

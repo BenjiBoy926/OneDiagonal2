@@ -1,17 +1,12 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
 
-public class ReciprocateFraction : MonoBehaviour
+public class ReciprocateFraction : SupplierAction<Fraction>
 {
     public Input<Fraction> input;
 
-    public Result<Fraction> result;
-
-    public UnityEvent output;
-
-    public void Invoke()
+    public override Fraction Get()
     {
-        result.value = input.value.reciprocal;
-        output.Invoke();
+        return input.value.reciprocal;
     }
 }

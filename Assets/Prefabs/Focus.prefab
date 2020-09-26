@@ -48,75 +48,108 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf14c0a361cdbbd41919103f2aa7e584, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interpolationFunction:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: -0.0083351135
-      value: 0.99671173
-      inSlope: 0.3725835
-      outSlope: 0.3725835
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 1
-    - serializedVersion: 3
-      time: 0.15451813
-      value: 0.008022308
-      inSlope: -6.308234
-      outSlope: 1.5927014
-      tangentMode: 1
-      weightedMode: 0
-      inWeight: 0.08134093
-      outWeight: 0.25609276
-    - serializedVersion: 3
-      time: 1.0105075
-      value: 0.5048416
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.2529285
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  start:
+  min:
+    evaluationType: 0
     referenceType: 0
     gameObjectReferenceType: 0
     redirectType: 0
     redirectDepth: 0
-    direct: {x: 0.5, y: 0.5, z: 0.5}
-    indirect: {fileID: 0}
+    directValue: {x: 1, y: 1, z: 1}
+    directAction: {fileID: 0}
+    indirectValue: {fileID: 0}
+    indirectAction: {fileID: 0}
     redirectVariable: {fileID: 0}
     redirectTag: 
-  end:
+    mainFoldout: 1
+    advancedFoldout: 0
+  max:
+    evaluationType: 0
     referenceType: 0
     gameObjectReferenceType: 0
     redirectType: 0
     redirectDepth: 0
-    direct: {x: 7, y: 7, z: 7}
-    indirect: {fileID: 0}
+    directValue: {x: 5, y: 5, z: 1}
+    directAction: {fileID: 0}
+    indirectValue: {fileID: 0}
+    indirectAction: {fileID: 0}
     redirectVariable: {fileID: 0}
     redirectTag: 
+    mainFoldout: 1
+    advancedFoldout: 0
   time:
+    evaluationType: 0
     referenceType: 0
     gameObjectReferenceType: 0
     redirectType: 0
     redirectDepth: 0
-    direct: 3
-    indirect: {fileID: 0}
+    directValue: 3
+    directAction: {fileID: 0}
+    indirectValue: {fileID: 0}
+    indirectAction: {fileID: 0}
     redirectVariable: {fileID: 0}
     redirectTag: 
+    mainFoldout: 1
+    advancedFoldout: 0
+  function:
+    evaluationType: 0
+    referenceType: 0
+    gameObjectReferenceType: 0
+    redirectType: 0
+    redirectDepth: 0
+    directValue:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1.0014038
+        inSlope: -0.012315381
+        outSlope: -0.012315381
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 1
+      - serializedVersion: 3
+        time: 0.26813507
+        value: -0.0034866333
+        inSlope: 0
+        outSlope: 2.1935396
+        tangentMode: 1
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0.13063787
+      - serializedVersion: 3
+        time: 0.9783688
+        value: 0.5020978
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    directAction: {fileID: 0}
+    indirectValue: {fileID: 0}
+    indirectAction: {fileID: 0}
+    redirectVariable: {fileID: 0}
+    redirectTag: 
+    mainFoldout: 1
+    advancedFoldout: 0
   result:
+    evaluationType: 0
     referenceType: 1
     gameObjectReferenceType: 0
     redirectType: 0
     redirectDepth: 0
-    direct: {x: 0, y: 0, z: 0}
-    indirect: {fileID: 786600366192855993}
+    directValue: {x: 0, y: 0, z: 0}
+    directAction: {fileID: 0}
+    indirectValue: {fileID: 0}
+    indirectAction: {fileID: 0}
     redirectVariable: {fileID: 0}
     redirectTag: 
+    mainFoldout: 0
+    advancedFoldout: 0
   outputs:
     start:
       m_PersistentCalls:
@@ -200,23 +233,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   input:
+    evaluationType: 0
     referenceType: 0
     gameObjectReferenceType: 0
     redirectType: 0
     redirectDepth: 0
-    direct: {fileID: 8306775230945695380}
-    indirect: {fileID: 0}
+    directValue: {fileID: 8306775230945695380}
+    directAction: {fileID: 0}
+    indirectValue: {fileID: 0}
+    indirectAction: {fileID: 0}
     redirectVariable: {fileID: 0}
     redirectTag: 
+    mainFoldout: 1
+    advancedFoldout: 0
   newScale:
-    referenceType: 1
+    evaluationType: 1
+    referenceType: 0
     gameObjectReferenceType: 0
     redirectType: 0
     redirectDepth: 0
-    direct: {x: 0, y: 0, z: 0}
-    indirect: {fileID: 786600366192855993}
+    directValue: {x: 0, y: 0, z: 0}
+    directAction: {fileID: 3518477862525857756}
+    indirectValue: {fileID: 0}
+    indirectAction: {fileID: 0}
     redirectVariable: {fileID: 0}
     redirectTag: 
+    mainFoldout: 1
+    advancedFoldout: 0
   output:
     m_PersistentCalls:
       m_Calls: []
@@ -249,7 +292,7 @@ RectTransform:
   m_Children:
   - {fileID: 769853279369922991}
   m_Father: {fileID: 6784053358950032821}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -324,42 +367,6 @@ MonoBehaviour:
   disable:
     m_PersistentCalls:
       m_Calls: []
---- !u!1 &7968552775275782057
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1443569541980025597}
-  m_Layer: 0
-  m_Name: Variables
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1443569541980025597
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7968552775275782057}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 6160212233382527435}
-  m_Father: {fileID: 6784053358950032821}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &8306775230945695380
 GameObject:
   m_ObjectHideFlags: 0
@@ -390,7 +397,6 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1443569541980025597}
   - {fileID: 8341098748842972077}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -459,56 +465,3 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 10
   m_TargetDisplay: 0
---- !u!1 &8866252575843927201
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 6160212233382527435}
-  - component: {fileID: 786600366192855993}
-  m_Layer: 0
-  m_Name: CurrentSize
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &6160212233382527435
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8866252575843927201}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1443569541980025597}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &786600366192855993
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8866252575843927201}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 009cd9fe411015246b6bb0a138357a8a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _variableName: current
-  _defaultValue: {x: 0, y: 0, z: 0}
-  _onValueChanged:
-    m_PersistentCalls:
-      m_Calls: []

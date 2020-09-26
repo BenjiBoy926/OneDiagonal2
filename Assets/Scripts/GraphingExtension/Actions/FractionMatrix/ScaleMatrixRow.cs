@@ -1,19 +1,14 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
 
-public class ScaleMatrixRow : MonoBehaviour
+public class ScaleMatrixRow : SupplierAction<FractionMatrix>
 {
     public Input<FractionMatrix> input;
     public Input<int> row;
     public Input<Fraction> scalar;
 
-    public Result<FractionMatrix> result;
-
-    public UnityEvent output;
-
-    public void Invoke()
+    public override FractionMatrix Get()
     {
-        result.value = input.value.ScaleRow(row.value, scalar.value);
-        output.Invoke();
+        return input.value.ScaleRow(row.value, scalar.value);
     }
 }

@@ -1,74 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &448917587804479308
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 973193974337689185}
-  - component: {fileID: 845218947672084143}
-  m_Layer: 0
-  m_Name: SetTimerString
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &973193974337689185
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 448917587804479308}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 3410706956901309796}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &845218947672084143
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 448917587804479308}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9cb580cc9d225d042bf68ac1676ba733, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  textMesh:
-    referenceType: 0
-    gameObjectReferenceType: 0
-    redirectType: 0
-    redirectDepth: 0
-    direct: {fileID: 7904787362595176405}
-    indirect: {fileID: 0}
-    redirectVariable: {fileID: 0}
-    redirectTag: 
-  text:
-    referenceType: 1
-    gameObjectReferenceType: 0
-    redirectType: 0
-    redirectDepth: 0
-    direct: 
-    indirect: {fileID: 2026104278943452321}
-    redirectVariable: {fileID: 0}
-    redirectTag: 
-  output:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1 &1058563178750482013
 GameObject:
   m_ObjectHideFlags: 0
@@ -78,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3299372798442615056}
-  - component: {fileID: 2677366926871299030}
+  - component: {fileID: 6392942062769361759}
   m_Layer: 0
   m_Name: DeltaTime
   m_TagString: Untagged
@@ -105,7 +36,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &2677366926871299030
+--- !u!114 &6392942062769361759
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -114,14 +45,132 @@ MonoBehaviour:
   m_GameObject: {fileID: 1058563178750482013}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 64ec954c8de409a4394ac371ce8884e4, type: 3}
+  m_Script: {fileID: 11500000, guid: 0ad460af2df9dcb4fb19172ff42350c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _variableName: deltaTime
-  _defaultValue: 0
-  _onValueChanged:
+  result:
+    evaluationType: 0
+    referenceType: 1
+    gameObjectReferenceType: 0
+    redirectType: 0
+    redirectDepth: 0
+    directValue: 0
+    directAction: {fileID: 0}
+    indirectValue: {fileID: 0}
+    indirectAction: {fileID: 0}
+    redirectVariable: {fileID: 0}
+    redirectTag: 
+    mainFoldout: 0
+    advancedFoldout: 0
+  output:
     m_PersistentCalls:
       m_Calls: []
+--- !u!1 &3328820411673474546
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6699918008113285755}
+  - component: {fileID: 2231622730376296941}
+  m_Layer: 0
+  m_Name: AccumulateDeltaTime
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &6699918008113285755
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3328820411673474546}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3410706956901309796}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2231622730376296941
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3328820411673474546}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 563ee0820c4309041aa14f8c285488bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  result:
+    evaluationType: 0
+    referenceType: 1
+    gameObjectReferenceType: 0
+    redirectType: 0
+    redirectDepth: 0
+    directValue: 0
+    directAction: {fileID: 0}
+    indirectValue: {fileID: 3712402687575050469}
+    indirectAction: {fileID: 0}
+    redirectVariable: {fileID: 0}
+    redirectTag: 
+    mainFoldout: 0
+    advancedFoldout: 0
+  output:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6261563522864100661}
+        m_TargetAssemblyTypeName: SetTextMeshProText, Assembly-CSharp
+        m_MethodName: Invoke
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  operation: 0
+  _operator:
+    evaluationType: 0
+    referenceType: 1
+    gameObjectReferenceType: 0
+    redirectType: 0
+    redirectDepth: 0
+    directValue: 0
+    directAction: {fileID: 0}
+    indirectValue: {fileID: 3712402687575050469}
+    indirectAction: {fileID: 0}
+    redirectVariable: {fileID: 0}
+    redirectTag: 
+    mainFoldout: 1
+    advancedFoldout: 0
+  operand:
+    evaluationType: 1
+    referenceType: 0
+    gameObjectReferenceType: 0
+    redirectType: 0
+    redirectDepth: 0
+    directValue: 0
+    directAction: {fileID: 6392942062769361759}
+    indirectValue: {fileID: 0}
+    indirectAction: {fileID: 0}
+    redirectVariable: {fileID: 0}
+    redirectTag: 
+    mainFoldout: 1
+    advancedFoldout: 0
 --- !u!1 &3333491889641446255
 GameObject:
   m_ObjectHideFlags: 0
@@ -133,7 +182,6 @@ GameObject:
   - component: {fileID: 7815226002106080265}
   - component: {fileID: 5429729941674533801}
   - component: {fileID: 2130703263403802002}
-  - component: {fileID: 3237405003765531766}
   m_Layer: 0
   m_Name: HeadBanner
   m_TagString: Untagged
@@ -199,51 +247,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &3237405003765531766
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3333491889641446255}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0abeca7b1c068c646ab5c1b149623a73, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hooks:
-  - name: begin
-    hook:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 2978172320689390707}
-          m_TargetAssemblyTypeName: Variable`1[[System.Boolean, mscorlib
-          m_MethodName: set_value
-          m_Mode: 6
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 1
-          m_CallState: 2
-  - name: end
-    hook:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 2978172320689390707}
-          m_TargetAssemblyTypeName: Variable`1[[System.Boolean, mscorlib
-          m_MethodName: set_value
-          m_Mode: 6
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
 --- !u!1 &4409543481419154937
 GameObject:
   m_ObjectHideFlags: 0
@@ -273,10 +276,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1435018332794073405}
-  - {fileID: 4077027539582485616}
-  - {fileID: 7693451987177098043}
-  - {fileID: 7812871401134674944}
-  - {fileID: 973193974337689185}
+  - {fileID: 6699918008113285755}
+  - {fileID: 3978274872854360674}
   m_Father: {fileID: 984991270328103196}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -354,168 +355,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!1 &4735481925550686263
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4077027539582485616}
-  - component: {fileID: 3987863504834263221}
-  m_Layer: 0
-  m_Name: GetDeltaTime
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &4077027539582485616
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4735481925550686263}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 3410706956901309796}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &3987863504834263221
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4735481925550686263}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ad460af2df9dcb4fb19172ff42350c2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  result:
-    referenceType: 1
-    gameObjectReferenceType: 0
-    redirectType: 0
-    redirectDepth: 0
-    direct: 0
-    indirect: {fileID: 2677366926871299030}
-    redirectVariable: {fileID: 0}
-    redirectTag: 
-  output:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 8662906954980265442}
-        m_TargetAssemblyTypeName: AddFloats, Assembly-CSharp
-        m_MethodName: Add
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!1 &5240582415468264320
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 7693451987177098043}
-  - component: {fileID: 8662906954980265442}
-  m_Layer: 0
-  m_Name: AddDeltaTime
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &7693451987177098043
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5240582415468264320}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 3410706956901309796}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &8662906954980265442
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5240582415468264320}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e6de665d2e4c36c4598da39c7ca5c4fb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  float1:
-    referenceType: 1
-    gameObjectReferenceType: 0
-    redirectType: 0
-    redirectDepth: 0
-    direct: 0
-    indirect: {fileID: 3712402687575050469}
-    redirectVariable: {fileID: 0}
-    redirectTag: 
-  float2:
-    referenceType: 1
-    gameObjectReferenceType: 0
-    redirectType: 0
-    redirectDepth: 0
-    direct: 0
-    indirect: {fileID: 2677366926871299030}
-    redirectVariable: {fileID: 0}
-    redirectTag: 
-  result:
-    referenceType: 1
-    gameObjectReferenceType: 0
-    redirectType: 0
-    redirectDepth: 0
-    direct: 0
-    indirect: {fileID: 3712402687575050469}
-    redirectVariable: {fileID: 0}
-    redirectTag: 
-  output:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 5672075132517546110}
-        m_TargetAssemblyTypeName: GetTimerFormattedString, Assembly-CSharp
-        m_MethodName: Invoke
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!1 &5664084359633563225
 GameObject:
   m_ObjectHideFlags: 0
@@ -555,6 +394,85 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &5667805238628997290
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3978274872854360674}
+  - component: {fileID: 6261563522864100661}
+  m_Layer: 0
+  m_Name: UpdateTimerDisplay
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &3978274872854360674
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5667805238628997290}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3410706956901309796}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &6261563522864100661
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5667805238628997290}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cb580cc9d225d042bf68ac1676ba733, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textMesh:
+    evaluationType: 0
+    referenceType: 0
+    gameObjectReferenceType: 0
+    redirectType: 0
+    redirectDepth: 0
+    directValue: {fileID: 7904787362595176405}
+    directAction: {fileID: 0}
+    indirectValue: {fileID: 0}
+    indirectAction: {fileID: 0}
+    redirectVariable: {fileID: 0}
+    redirectTag: 
+    mainFoldout: 1
+    advancedFoldout: 0
+  text:
+    evaluationType: 1
+    referenceType: 0
+    gameObjectReferenceType: 0
+    redirectType: 0
+    redirectDepth: 0
+    directValue: 
+    directAction: {fileID: 967555346718377560}
+    indirectValue: {fileID: 0}
+    indirectAction: {fileID: 0}
+    redirectVariable: {fileID: 0}
+    redirectTag: 
+    mainFoldout: 1
+    advancedFoldout: 0
+  output:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &6144276243863731229
 GameObject:
   m_ObjectHideFlags: 0
@@ -619,6 +537,7 @@ GameObject:
   - component: {fileID: 4909322890208264609}
   - component: {fileID: 9220721424092485268}
   - component: {fileID: 7904787362595176405}
+  - component: {fileID: 2688909377736065428}
   m_Layer: 0
   m_Name: TimerText
   m_TagString: Untagged
@@ -744,6 +663,51 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &2688909377736065428
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7281660380801228608}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0abeca7b1c068c646ab5c1b149623a73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hooks:
+  - name: begin
+    hook:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2978172320689390707}
+          m_TargetAssemblyTypeName: Variable`1[[System.Boolean, mscorlib
+          m_MethodName: set_value
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
+  - name: end
+    hook:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2978172320689390707}
+          m_TargetAssemblyTypeName: Variable`1[[System.Boolean, mscorlib
+          m_MethodName: set_value
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &7791297437754029509
 GameObject:
   m_ObjectHideFlags: 0
@@ -753,7 +717,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 541590901964623112}
-  - component: {fileID: 2026104278943452321}
+  - component: {fileID: 967555346718377560}
   m_Layer: 0
   m_Name: TimerText
   m_TagString: Untagged
@@ -780,7 +744,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &2026104278943452321
+--- !u!114 &967555346718377560
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -789,14 +753,40 @@ MonoBehaviour:
   m_GameObject: {fileID: 7791297437754029509}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1b22cfa99dbcbd14da38ef8fea66b731, type: 3}
+  m_Script: {fileID: 11500000, guid: 3d2c594c18a5e0b418e49ffb3274a339, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _variableName: timerText
-  _defaultValue: 
-  _onValueChanged:
+  result:
+    evaluationType: 0
+    referenceType: 0
+    gameObjectReferenceType: 0
+    redirectType: 0
+    redirectDepth: 0
+    directValue: 
+    directAction: {fileID: 0}
+    indirectValue: {fileID: 0}
+    indirectAction: {fileID: 0}
+    redirectVariable: {fileID: 0}
+    redirectTag: 
+    mainFoldout: 0
+    advancedFoldout: 0
+  output:
     m_PersistentCalls:
       m_Calls: []
+  timer:
+    evaluationType: 0
+    referenceType: 1
+    gameObjectReferenceType: 0
+    redirectType: 0
+    redirectDepth: 0
+    directValue: 0
+    directAction: {fileID: 0}
+    indirectValue: {fileID: 3712402687575050469}
+    indirectAction: {fileID: 0}
+    redirectVariable: {fileID: 0}
+    redirectTag: 
+    mainFoldout: 1
+    advancedFoldout: 0
 --- !u!1 &7902844784591120512
 GameObject:
   m_ObjectHideFlags: 0
@@ -850,87 +840,6 @@ MonoBehaviour:
   _onValueChanged:
     m_PersistentCalls:
       m_Calls: []
---- !u!1 &8216615516939023342
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 7812871401134674944}
-  - component: {fileID: 5672075132517546110}
-  m_Layer: 0
-  m_Name: GetTimerString
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &7812871401134674944
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8216615516939023342}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 3410706956901309796}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &5672075132517546110
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8216615516939023342}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3d2c594c18a5e0b418e49ffb3274a339, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  timer:
-    referenceType: 1
-    gameObjectReferenceType: 0
-    redirectType: 0
-    redirectDepth: 0
-    direct: 0
-    indirect: {fileID: 3712402687575050469}
-    redirectVariable: {fileID: 0}
-    redirectTag: 
-  result:
-    referenceType: 1
-    gameObjectReferenceType: 0
-    redirectType: 0
-    redirectDepth: 0
-    direct: 
-    indirect: {fileID: 2026104278943452321}
-    redirectVariable: {fileID: 0}
-    redirectTag: 
-  output:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 845218947672084143}
-        m_TargetAssemblyTypeName: SetTextMeshProText, Assembly-CSharp
-        m_MethodName: Invoke
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!1 &8328997728612556954
 GameObject:
   m_ObjectHideFlags: 0
@@ -980,20 +889,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   condition:
+    evaluationType: 0
     referenceType: 1
     gameObjectReferenceType: 0
     redirectType: 0
     redirectDepth: 0
-    direct: 0
-    indirect: {fileID: 2978172320689390707}
+    directValue: 0
+    directAction: {fileID: 0}
+    indirectValue: {fileID: 2978172320689390707}
+    indirectAction: {fileID: 0}
     redirectVariable: {fileID: 0}
     redirectTag: 
+    mainFoldout: 1
+    advancedFoldout: 0
   events:
     _true:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 3987863504834263221}
-          m_TargetAssemblyTypeName: GetDeltaTime, Assembly-CSharp
+        - m_Target: {fileID: 2231622730376296941}
+          m_TargetAssemblyTypeName: SupplierAction`1[[System.Single, mscorlib
           m_MethodName: Invoke
           m_Mode: 1
           m_Arguments:
