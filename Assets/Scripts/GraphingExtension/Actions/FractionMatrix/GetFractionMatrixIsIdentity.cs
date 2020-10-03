@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class GetFractionMatrixIsIdentity : SupplierAction<bool>
+public class GetFractionMatrixIsIdentity : Function<bool>
 {
     public Input<FractionMatrix> input;
 

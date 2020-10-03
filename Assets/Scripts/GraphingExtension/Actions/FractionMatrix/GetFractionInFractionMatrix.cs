@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class GetFractionInFractionMatrix : SupplierAction<Fraction>
+public class GetFractionInFractionMatrix : Function<Fraction>
 {
     public Input<FractionMatrix> matrix;
     public Input<int> row;

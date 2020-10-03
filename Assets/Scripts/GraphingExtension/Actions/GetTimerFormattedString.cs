@@ -1,6 +1,6 @@
 ﻿using System;
 
-public class GetTimerFormattedString : SupplierAction<string>
+public class GetTimerFormattedString : Function<string>
 {
     public Input<float> timer;
 

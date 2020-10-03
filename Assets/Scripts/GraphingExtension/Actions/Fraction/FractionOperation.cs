@@ -1,4 +1,4 @@
-﻿public class FractionOperation : SupplierAction<Fraction>
+﻿public class FractionOperation : Function<Fraction>
 {
     public BinaryArithmeticOperation operation;
     public Input<Fraction> _operator;

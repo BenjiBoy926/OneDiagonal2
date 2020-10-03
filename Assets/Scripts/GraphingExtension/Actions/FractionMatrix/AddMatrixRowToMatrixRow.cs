@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
 
-public class AddMatrixRowToMatrixRow : SupplierAction<FractionMatrix>
+public class AddMatrixRowToMatrixRow : Function<FractionMatrix>
 {
     public Input<FractionMatrix> input;
     public Input<int> addingRow;

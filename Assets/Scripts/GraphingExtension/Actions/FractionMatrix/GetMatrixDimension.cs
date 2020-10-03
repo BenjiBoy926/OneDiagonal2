@@ -1,5 +1,5 @@
 ﻿
-public class GetMatrixDimension : SupplierAction<int>
+public class GetMatrixDimension : Function<int>
 {
     public MatrixDimension dimension;
     public Input<FractionMatrix> matrix;

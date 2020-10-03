@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
 
-public class SwapMatrixRows : SupplierAction<FractionMatrix>
+public class SwapMatrixRows : Function<FractionMatrix>
 {
     public Input<FractionMatrix> input;
     public Input<int> row1;

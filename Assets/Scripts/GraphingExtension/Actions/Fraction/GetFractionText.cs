@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
 
-public class GetFractionText : SupplierAction<string>
+public class GetFractionText : Function<string>
 {
     public Input<Fraction> fraction;
 

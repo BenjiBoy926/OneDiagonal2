@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
 
-public class ReciprocateFraction : SupplierAction<Fraction>
+public class ReciprocateFraction : Function<Fraction>
 {
     public Input<Fraction> input;
 

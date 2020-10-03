@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
 
-public class ScaleMatrixRow : SupplierAction<FractionMatrix>
+public class ScaleMatrixRow : Function<FractionMatrix>
 {
     public Input<FractionMatrix> input;
     public Input<int> row;
