@@ -82,7 +82,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 684782259953227191}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e662b514826551540a2cda0d4aee5bba, type: 3}
+  m_Script: {fileID: 11500000, guid: 820cedd3f94a0d349ae787b20d28e297, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   result:
@@ -678,7 +678,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4710340770026687742}
-  - component: {fileID: 2517521209847765084}
+  - component: {fileID: 552987013543291726}
   m_Layer: 5
   m_Name: BeginOperation
   m_TagString: Untagged
@@ -706,7 +706,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &2517521209847765084
+--- !u!114 &552987013543291726
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -715,7 +715,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7259649127509838136}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d63ef90d10318146b8b70cbd50ffbc3, type: 3}
+  m_Script: {fileID: 11500000, guid: 2663faffc8ba2eb4aaf262851daaa1fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   input:
@@ -885,7 +885,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7793035550768038882}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e662b514826551540a2cda0d4aee5bba, type: 3}
+  m_Script: {fileID: 11500000, guid: 820cedd3f94a0d349ae787b20d28e297, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   result:
@@ -1192,8 +1192,8 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 2517521209847765084}
-          m_TargetAssemblyTypeName: Set`1[[UnityEngine.GameObject, UnityEngine
+        - m_Target: {fileID: 552987013543291726}
+          m_TargetAssemblyTypeName: Setter`1[[UnityEngine.GameObject, UnityEngine
           m_MethodName: Invoke
           m_Mode: 1
           m_Arguments:
@@ -1371,7 +1371,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 9098550412969206829}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e662b514826551540a2cda0d4aee5bba, type: 3}
+  m_Script: {fileID: 11500000, guid: 820cedd3f94a0d349ae787b20d28e297, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   result:

@@ -15,6 +15,7 @@ TagManager:
   - Matrix
   - OperationActive
   - GamePlayTimer
+  - HeadBanner
   layers:
   - Default
   - TransparentFX

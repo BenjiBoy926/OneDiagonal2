@@ -110,7 +110,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 75852414819340898}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c055baa45230e334caac3447bda94013, type: 3}
+  m_Script: {fileID: 11500000, guid: c6898caba74032648a411c2462b8050b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   result:
@@ -190,7 +190,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 320916839256805469}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e662b514826551540a2cda0d4aee5bba, type: 3}
+  m_Script: {fileID: 11500000, guid: 820cedd3f94a0d349ae787b20d28e297, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   result:
@@ -1482,7 +1482,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3349103211669319088}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e662b514826551540a2cda0d4aee5bba, type: 3}
+  m_Script: {fileID: 11500000, guid: 820cedd3f94a0d349ae787b20d28e297, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   result:
@@ -1526,7 +1526,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7239271626379892507}
-  - component: {fileID: 5141232786086446670}
+  - component: {fileID: 4238020984489722498}
   m_Layer: 0
   m_Name: BeginOperation
   m_TagString: Untagged
@@ -1554,7 +1554,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &5141232786086446670
+--- !u!114 &4238020984489722498
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1563,7 +1563,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3388518308005190537}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d63ef90d10318146b8b70cbd50ffbc3, type: 3}
+  m_Script: {fileID: 11500000, guid: 2663faffc8ba2eb4aaf262851daaa1fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   input:
@@ -1573,7 +1573,7 @@ MonoBehaviour:
     redirectType: 0
     redirectDepth: 0
     directValue: {fileID: 6998333280497210587}
-    directAction: {fileID: 1607367642834659297}
+    directAction: {fileID: 0}
     indirectValue: {fileID: 0}
     indirectAction: {fileID: 0}
     redirectVariable: {fileID: 0}
@@ -3580,8 +3580,8 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 5141232786086446670}
-          m_TargetAssemblyTypeName: Set`1[[UnityEngine.GameObject, UnityEngine
+        - m_Target: {fileID: 4238020984489722498}
+          m_TargetAssemblyTypeName: Setter`1[[UnityEngine.GameObject, UnityEngine
           m_MethodName: Invoke
           m_Mode: 1
           m_Arguments:

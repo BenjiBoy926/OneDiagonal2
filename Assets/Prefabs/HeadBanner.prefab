@@ -45,12 +45,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1058563178750482013}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ad460af2df9dcb4fb19172ff42350c2, type: 3}
+  m_Script: {fileID: 11500000, guid: 38d77bb95c9b77b4bb1398ba1e6d47c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   result:
     evaluationType: 0
-    referenceType: 1
+    referenceType: 0
     gameObjectReferenceType: 0
     redirectType: 0
     redirectDepth: 0
@@ -59,7 +59,7 @@ MonoBehaviour:
     indirectValue: {fileID: 0}
     indirectAction: {fileID: 0}
     redirectVariable: {fileID: 0}
-    redirectTag: 
+    redirectAction: {fileID: 0}
     mainFoldout: 0
     advancedFoldout: 0
   output:
@@ -110,7 +110,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3328820411673474546}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 563ee0820c4309041aa14f8c285488bf, type: 3}
+  m_Script: {fileID: 11500000, guid: a97b965579fe35d479feb51865ee366b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   result:
@@ -124,8 +124,8 @@ MonoBehaviour:
     indirectValue: {fileID: 3712402687575050469}
     indirectAction: {fileID: 0}
     redirectVariable: {fileID: 0}
-    redirectTag: 
-    mainFoldout: 0
+    redirectAction: {fileID: 0}
+    mainFoldout: 1
     advancedFoldout: 0
   output:
     m_PersistentCalls:
@@ -144,20 +144,6 @@ MonoBehaviour:
         m_CallState: 2
   operation: 0
   _operator:
-    evaluationType: 0
-    referenceType: 1
-    gameObjectReferenceType: 0
-    redirectType: 0
-    redirectDepth: 0
-    directValue: 0
-    directAction: {fileID: 0}
-    indirectValue: {fileID: 3712402687575050469}
-    indirectAction: {fileID: 0}
-    redirectVariable: {fileID: 0}
-    redirectTag: 
-    mainFoldout: 1
-    advancedFoldout: 0
-  operand:
     evaluationType: 1
     referenceType: 0
     gameObjectReferenceType: 0
@@ -168,7 +154,21 @@ MonoBehaviour:
     indirectValue: {fileID: 0}
     indirectAction: {fileID: 0}
     redirectVariable: {fileID: 0}
-    redirectTag: 
+    redirectAction: {fileID: 0}
+    mainFoldout: 1
+    advancedFoldout: 0
+  operand:
+    evaluationType: 0
+    referenceType: 1
+    gameObjectReferenceType: 0
+    redirectType: 0
+    redirectDepth: 0
+    directValue: 0
+    directAction: {fileID: 0}
+    indirectValue: {fileID: 3712402687575050469}
+    indirectAction: {fileID: 0}
+    redirectVariable: {fileID: 0}
+    redirectAction: {fileID: 0}
     mainFoldout: 1
     advancedFoldout: 0
 --- !u!1 &3333491889641446255
@@ -182,9 +182,10 @@ GameObject:
   - component: {fileID: 7815226002106080265}
   - component: {fileID: 5429729941674533801}
   - component: {fileID: 2130703263403802002}
+  - component: {fileID: 6076834884319048035}
   m_Layer: 0
   m_Name: HeadBanner
-  m_TagString: Untagged
+  m_TagString: HeadBanner
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -247,6 +248,51 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &6076834884319048035
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3333491889641446255}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0abeca7b1c068c646ab5c1b149623a73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hooks:
+  - name: begin
+    hook:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2978172320689390707}
+          m_TargetAssemblyTypeName: Variable`1[[System.Boolean, mscorlib
+          m_MethodName: set_value
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
+  - name: end
+    hook:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2978172320689390707}
+          m_TargetAssemblyTypeName: Variable`1[[System.Boolean, mscorlib
+          m_MethodName: set_value
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &4409543481419154937
 GameObject:
   m_ObjectHideFlags: 0
@@ -453,7 +499,7 @@ MonoBehaviour:
     indirectValue: {fileID: 0}
     indirectAction: {fileID: 0}
     redirectVariable: {fileID: 0}
-    redirectTag: 
+    redirectAction: {fileID: 0}
     mainFoldout: 1
     advancedFoldout: 0
   text:
@@ -467,7 +513,7 @@ MonoBehaviour:
     indirectValue: {fileID: 0}
     indirectAction: {fileID: 0}
     redirectVariable: {fileID: 0}
-    redirectTag: 
+    redirectAction: {fileID: 0}
     mainFoldout: 1
     advancedFoldout: 0
   output:
@@ -537,7 +583,6 @@ GameObject:
   - component: {fileID: 4909322890208264609}
   - component: {fileID: 9220721424092485268}
   - component: {fileID: 7904787362595176405}
-  - component: {fileID: 2688909377736065428}
   m_Layer: 0
   m_Name: TimerText
   m_TagString: Untagged
@@ -663,51 +708,6 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &2688909377736065428
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7281660380801228608}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0abeca7b1c068c646ab5c1b149623a73, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hooks:
-  - name: begin
-    hook:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 2978172320689390707}
-          m_TargetAssemblyTypeName: Variable`1[[System.Boolean, mscorlib
-          m_MethodName: set_value
-          m_Mode: 6
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 1
-          m_CallState: 2
-  - name: end
-    hook:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 2978172320689390707}
-          m_TargetAssemblyTypeName: Variable`1[[System.Boolean, mscorlib
-          m_MethodName: set_value
-          m_Mode: 6
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
 --- !u!1 &7791297437754029509
 GameObject:
   m_ObjectHideFlags: 0
@@ -767,7 +767,7 @@ MonoBehaviour:
     indirectValue: {fileID: 0}
     indirectAction: {fileID: 0}
     redirectVariable: {fileID: 0}
-    redirectTag: 
+    redirectAction: {fileID: 0}
     mainFoldout: 0
     advancedFoldout: 0
   output:
@@ -784,7 +784,7 @@ MonoBehaviour:
     indirectValue: {fileID: 3712402687575050469}
     indirectAction: {fileID: 0}
     redirectVariable: {fileID: 0}
-    redirectTag: 
+    redirectAction: {fileID: 0}
     mainFoldout: 1
     advancedFoldout: 0
 --- !u!1 &7902844784591120512
@@ -899,7 +899,7 @@ MonoBehaviour:
     indirectValue: {fileID: 2978172320689390707}
     indirectAction: {fileID: 0}
     redirectVariable: {fileID: 0}
-    redirectTag: 
+    redirectAction: {fileID: 0}
     mainFoldout: 1
     advancedFoldout: 0
   events:
