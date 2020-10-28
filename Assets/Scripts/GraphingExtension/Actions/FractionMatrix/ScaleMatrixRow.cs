@@ -7,7 +7,7 @@ public class ScaleMatrixRow : Function<FractionMatrix>
     public Input<int> row;
     public Input<Fraction> scalar;
 
-    public override FractionMatrix Get()
+    protected override FractionMatrix GetValue()
     {
         return input.value.ScaleRow(row.value, scalar.value);
     }

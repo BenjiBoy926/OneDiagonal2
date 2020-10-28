@@ -4,7 +4,7 @@
     public Input<Fraction> _operator;
     public Input<Fraction> operand;
 
-    public override Fraction Get()
+    protected override Fraction GetValue()
     {
         switch(operation)
         {

@@ -6,7 +6,7 @@ public class GetFractionInFractionMatrix : Function<Fraction>
     public Input<int> row;
     public Input<int> col;
 
-    public override Fraction Get()
+    protected override Fraction GetValue()
     {
         try
         {

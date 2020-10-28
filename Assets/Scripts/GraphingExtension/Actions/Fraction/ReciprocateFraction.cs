@@ -5,7 +5,7 @@ public class ReciprocateFraction : Function<Fraction>
 {
     public Input<Fraction> input;
 
-    public override Fraction Get()
+    protected override Fraction GetValue()
     {
         return input.value.reciprocal;
     }

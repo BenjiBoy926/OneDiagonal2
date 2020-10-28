@@ -4,7 +4,7 @@ public class GetMatrixDimension : Function<int>
     public MatrixDimension dimension;
     public Input<FractionMatrix> matrix;
 
-    public override int Get()
+    protected override int GetValue()
     {
         if (dimension == MatrixDimension.Rows)
         {

@@ -7,7 +7,7 @@ public class SwapMatrixRows : Function<FractionMatrix>
     public Input<int> row1;
     public Input<int> row2;
 
-    public override FractionMatrix Get()
+    protected override FractionMatrix GetValue()
     {
         return input.value.SwapRows(row1.value, row2.value);
     }

@@ -5,7 +5,7 @@ public class GetFractionMatrixIsIdentity : Function<bool>
 {
     public Input<FractionMatrix> input;
 
-    public override bool Get()
+    protected override bool GetValue()
     {
         return input.value.isIdentity;
     }

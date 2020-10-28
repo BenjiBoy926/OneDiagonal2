@@ -5,7 +5,7 @@ public class GetFractionText : Function<string>
 {
     public Input<Fraction> fraction;
 
-    public override string Get()
+    protected override string GetValue()
     {
         return fraction.value.ToString();
     }

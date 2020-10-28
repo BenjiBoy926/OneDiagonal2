@@ -8,7 +8,7 @@ public class AddMatrixRowToMatrixRow : Function<FractionMatrix>
     public Input<Fraction> rowScalar;
     public Input<int> targetRow;
 
-    public override FractionMatrix Get()
+    protected override FractionMatrix GetValue()
     {
         return input.value.AddRowToRow(addingRow.value, rowScalar.value, targetRow.value);
     }
