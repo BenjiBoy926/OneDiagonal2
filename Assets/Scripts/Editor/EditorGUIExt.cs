@@ -6,28 +6,22 @@ public static class EditorGUIExt
 {
     // FIELDS
     private static List<EditorGUILayoutData> layout = new List<EditorGUILayoutData>();
+    private static Stack<int> indentStack = new Stack<int>();
 
     // PROPERTIES
-    public static float standardControlHeight
+    public static float standardControlHeight => EditorGUIUtility.singleLineHeight + EditorGUIUtility.standardVerticalSpacing;
+    public static bool layoutActive => layout.Count > 0;
+    public static Vector2 currentPosition => layoutActive ? layout[layout.Count - 1].position : Vector2.zero;
+
+    // 
+    public static void PushIndent(int newIndent)
     {
-        get
-        {
-            return EditorGUIUtility.singleLineHeight + EditorGUIUtility.standardVerticalSpacing;
-        }
+        indentStack.Push(EditorGUI.indentLevel);
+        EditorGUI.indentLevel = newIndent;
     }
-    public static bool layoutActive
+    public static void PopIndent()
     {
-        get
-        {
-            return layout.Count > 0;
-        }
-    }
-    public static Vector2 currentPosition
-    {
-        get
-        {
-            return layoutActive ? layout[layout.Count - 1].position : Vector2.zero;
-        }
+        EditorGUI.indentLevel = indentStack.Pop();
     }
 
     // Begin layout
