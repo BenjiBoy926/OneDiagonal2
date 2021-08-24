@@ -6,12 +6,13 @@ public struct MatrixOperation
     #endregion
 
     #region Public Properties
+    public MatrixOperation Invalid => RowSwap(-1, -1);
     public bool IsValid => type switch
     {
         Type.Swap => destinationRow >= 0,
         Type.Scale => destinationRow >= 0 && sourceRow >= 0,
         Type.Add => destinationRow >= 0,
-        _ => true;
+        _ => true
     };
     #endregion
 
@@ -33,9 +34,9 @@ public struct MatrixOperation
     #endregion
 
     #region Factory Methods
-    public static MatrixOperation RowSwap(int row1, int row2)
+    public static MatrixOperation RowSwap(int destinationRow, int sourceRow)
     {
-        return new MatrixOperation(Type.Swap, row1, row2, Fraction.one);
+        return new MatrixOperation(Type.Swap, destinationRow, sourceRow, Fraction.one);
     }
     public static MatrixOperation RowScale(int destinationRow, Fraction scalar)
     {

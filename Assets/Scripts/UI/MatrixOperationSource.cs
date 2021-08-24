@@ -7,8 +7,7 @@ using UnityEngine.EventSystems;
 public class MatrixOperationSource : MatrixUIChild, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     #region Public Properties
-    public MatrixOperation GetOperation => operationGetter.Invoke();
-    // Add a property that checks if this source is the source currently on the matrix ui
+    public MatrixOperation Operation => operationGetter.Invoke();
     #endregion
 
     #region Private Fields

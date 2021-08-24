@@ -6,8 +6,9 @@ using TMPro;
 public class MatrixItemUI : MatrixUIChild
 {
     #region Public Properties
-    public Fraction CurrentFraction => rowParent.CurrentRow[col];
-    public Fraction PreviewFraction => rowParent.PreviewRow[col];
+    public Fraction CurrentFraction => rowParent.CurrentRow[columnIndex];
+    public Fraction PreviewFraction => rowParent.PreviewRow[columnIndex];
+    public int ColumnIndex => columnIndex;
     #endregion
 
     #region Private Editor Fields
@@ -18,16 +19,26 @@ public class MatrixItemUI : MatrixUIChild
 
     #region Private Fields
     private MatrixRowUI rowParent;
-    private int col;
+    private int columnIndex;
     #endregion
 
-    public void Setup(MatrixRowUI parent, int col)
+    #region Public Methods
+    public void Setup(MatrixRowUI parent, int columnIndex)
     {
         Start();
 
         this.rowParent = parent;
-        this.col = col;
+        this.columnIndex = columnIndex;
 
         text.text = CurrentFraction.ToString();
     }
+    public void ShowCurrent()
+    {
+        text.text = CurrentFraction.ToString();
+    }
+    public void ShowPreview()
+    {
+        text.text = PreviewFraction.ToString();
+    }
+    #endregion
 }

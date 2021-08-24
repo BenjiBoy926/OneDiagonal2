@@ -11,13 +11,26 @@ public class MatrixUI : MonoBehaviour
     public Matrix PreviewMatrix => previewMatrix;
     #endregion
 
+    #region Private Properties
+    // NOTE: you should only call this if both operationSource and operationDestination are non-null
+    private MatrixOperation IntendedNextOperation
+    {
+        get
+        {
+            MatrixOperation operation = operationSource.Operation;
+            operation.destinationRow = operationDestination.RowIndex;
+            return operation;
+        }
+    }
+    #endregion
+
     #region Private Editor Fields
     [SerializeField]
     [Tooltip("Reference to the prefab to instantiate for each matrix row")]
     private MatrixRowUI rowUIPrefab;
     [SerializeField]
     [Tooltip("Reference to the layout group used to hold all of the rows")]
-    private LayoutGroup rowParent;
+    private RectTransform rowParent;
     #endregion
 
     #region Private Fields
@@ -48,7 +61,7 @@ public class MatrixUI : MonoBehaviour
             // Instantiate a row
             for(int i = 0; i < currentMatrix.rows; i++)
             {
-                MatrixRowUI row = Instantiate(rowUIPrefab, rowParent.transform);
+                MatrixRowUI row = Instantiate(rowUIPrefab, rowParent);
                 row.Setup(i);
                 rowUIs[i] = row;
             }
@@ -65,7 +78,6 @@ public class MatrixUI : MonoBehaviour
     public void SetOperationSource(MatrixOperationSource operationSource)
     {
         this.operationSource = operationSource;
-        Debug.Log("Set operation source", operationSource);
 
         // Play a sound!
         // Set the color of the operation source
@@ -76,37 +88,62 @@ public class MatrixUI : MonoBehaviour
     }
     public void SetOperationDestination(MatrixRowUI operationDestination)
     {
-        this.operationDestination = operationDestination;
-        // Play a sound!
-        // Set the color of the destination
-        // Set the preview matrix and update all ui elements to display the preview
-        Debug.Log("Set operation destination", operationDestination);
+        // Set the destination only if we have a source and the source row index is not the same as the destination row index
+        // (prevents a self-swap and a self-add)
+        if (operationSource && operationSource.Operation.destinationRow != operationDestination.RowIndex)
+        {
+            this.operationDestination = operationDestination;
+            // Play a sound!
+            // Set the color of the destination
+            // Set the preview matrix and update all ui elements to display the preview
+            previewMatrix = currentMatrix.Operate(IntendedNextOperation);
+            ShowPreview();
+        }
     }
     public void UnsetOperationDestination()
     {
-        Debug.Log("Unset operation destination", operationDestination);
         // Set the color of the current destination back to normal
         // Update all the ui elements to display the current matrix
+        ShowCurrent();
         operationDestination = null;
     }
 
     public void ConfirmOperation()
     {
-        Debug.Log("Confirmed intended next operation");
-
         // Check if operation destination is set or not
         if(operationDestination)
         {
             // Update the current matrix
+            currentMatrix = currentMatrix.Operate(IntendedNextOperation);
+            ShowCurrent();
+
             // Set the colors of all the ui elements back to normal
             // Play a sound!
-            // Update all UI elements to display the new matrix
             // Show a fun flash effect
         }
         else
         {
             // Set the colors of all ui elements back to normal
             // Play a sound!
+        }
+
+        // No more operation source or destination
+        operationSource = null;
+        operationDestination = null;
+    }
+
+    public void ShowCurrent()
+    {
+        foreach(MatrixRowUI row in rowUIs)
+        {
+            row.ShowCurrent();
+        }
+    }
+    public void ShowPreview()
+    {
+        foreach(MatrixRowUI row in rowUIs)
+        {
+            row.ShowPreview();
         }
     }
 
