@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using Hellmade.Sound;
 
 public class MatrixUI : MonoBehaviour
 {
@@ -31,6 +32,18 @@ public class MatrixUI : MonoBehaviour
     [SerializeField]
     [Tooltip("Reference to the layout group used to hold all of the rows")]
     private RectTransform rowParent;
+    [SerializeField]
+    [Tooltip("Sound that plays when an operation begins")]
+    private AudioClip operationBeginSound;
+    [SerializeField]
+    [Tooltip("Sound that plays when a new operation destination is set")]
+    private AudioClip operationDestinationSetSound;
+    [SerializeField]
+    [Tooltip("Sound that plays when an operation is confirmed")]
+    private AudioClip operationConfirmSound;
+    [SerializeField]
+    [Tooltip("Sound that plays when an operation is cancelled")]
+    private AudioClip operationCancelSound;
     #endregion
 
     #region Private Fields
@@ -80,6 +93,8 @@ public class MatrixUI : MonoBehaviour
         this.operationSource = operationSource;
 
         // Play a sound!
+        EazySoundManager.PlayUISound(operationBeginSound);
+
         // Set the color of the operation source
         // Grey out the colors of all elements that don't apply for this operation
         // - row swap: all except the rows
@@ -93,7 +108,10 @@ public class MatrixUI : MonoBehaviour
         if (operationSource && operationSource.Operation.destinationRow != operationDestination.RowIndex)
         {
             this.operationDestination = operationDestination;
+
             // Play a sound!
+            EazySoundManager.PlayUISound(operationDestinationSetSound);
+
             // Set the color of the destination
             // Set the preview matrix and update all ui elements to display the preview
             previewMatrix = currentMatrix.Operate(IntendedNextOperation);
@@ -118,13 +136,18 @@ public class MatrixUI : MonoBehaviour
             ShowCurrent();
 
             // Set the colors of all the ui elements back to normal
+
             // Play a sound!
+            EazySoundManager.PlayUISound(operationConfirmSound);
+
             // Show a fun flash effect
         }
         else
         {
             // Set the colors of all ui elements back to normal
+
             // Play a sound!
+            EazySoundManager.PlayUISound(operationCancelSound);
         }
 
         // No more operation source or destination

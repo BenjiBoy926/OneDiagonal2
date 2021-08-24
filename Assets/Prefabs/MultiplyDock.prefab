@@ -358,8 +358,11 @@ MonoBehaviour:
   operationSource: {fileID: 5942293394772041721}
   text: {fileID: 6408785968250494447}
   increaseButton: {fileID: 4327848910085430635}
+  increaseSound: {fileID: 8300000, guid: fc737eb889ce345fdbba19060c241873, type: 3}
   decreaseButton: {fileID: 4611845332202013778}
+  decreaseSound: {fileID: 8300000, guid: 42f9dcb28aeaf43a6a8d1b0fedfa9618, type: 3}
   reciprocateButton: {fileID: 6333854586599559024}
+  reciprocateSound: {fileID: 8300000, guid: 9e3f21a7ecd5c4f9aacbb8322d2e4bd1, type: 3}
 --- !u!1 &8379213594397437754
 GameObject:
   m_ObjectHideFlags: 0

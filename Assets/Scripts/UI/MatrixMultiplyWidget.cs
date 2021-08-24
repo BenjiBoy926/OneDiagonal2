@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Hellmade.Sound;
 
 public class MatrixMultiplyWidget : MatrixUIChild
 {
@@ -21,11 +22,20 @@ public class MatrixMultiplyWidget : MatrixUIChild
     [Tooltip("Button that increases the scalar")]
     private Button increaseButton;
     [SerializeField]
+    [Tooltip("Sound that plays when the scalar increases")]
+    private AudioClip increaseSound;
+    [SerializeField]
     [Tooltip("Button that decreases the scalar")]
     private Button decreaseButton;
     [SerializeField]
+    [Tooltip("Sound that plays when the scalar decreases")]
+    private AudioClip decreaseSound;
+    [SerializeField]
     [Tooltip("Button that toggles if this is a multiplication or division")]
     private Button reciprocateButton;
+    [SerializeField]
+    [Tooltip("Sound that plays when the scalar is reciprocated")]
+    private AudioClip reciprocateSound;
     #endregion
 
     #region Private Data
@@ -55,7 +65,10 @@ public class MatrixMultiplyWidget : MatrixUIChild
         // Increment the scalar. If it is zero, move it past zero to 1/1
         scalar++;
         if (scalar == Fraction.zero) scalar = Fraction.one;
+
         // Play a sound!
+        EazySoundManager.PlayUISound(increaseSound);
+
         UpdateDisplay();
     }
     private void DecrementScalar()
@@ -63,13 +76,19 @@ public class MatrixMultiplyWidget : MatrixUIChild
         // Decrement the scalar. If it is zero, move it past zero to -1/1
         scalar--;
         if (scalar == Fraction.zero) scalar = -Fraction.one;
+
         // Play a sound!
+        EazySoundManager.PlayUISound(decreaseSound);
+
         UpdateDisplay();
     }
     private void ToggleReciprocal()
     {
         reciprocate = !reciprocate;
+        
         // Play a sound!
+        EazySoundManager.PlayUISound(reciprocateSound);
+
         UpdateDisplay();
     }
     private void UpdateDisplay()

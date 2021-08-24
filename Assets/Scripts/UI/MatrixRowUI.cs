@@ -22,6 +22,9 @@ public class MatrixRowUI : MatrixUIChild, IPointerEnterHandler, IPointerExitHand
     [SerializeField]
     [Tooltip("Script used to make the row a source of matrix operations")]
     private MatrixOperationSource operationSource;
+    [SerializeField]
+    [Tooltip("Script used for adding this row to another row")]
+    private MatrixRowAddWidget rowAddWidget;
     #endregion
 
     #region Private Fields
@@ -48,6 +51,7 @@ public class MatrixRowUI : MatrixUIChild, IPointerEnterHandler, IPointerExitHand
 
         // Setup the operation source to request a row swap when dragged
         operationSource.Setup(() => MatrixOperation.RowSwap(-1, rowIndex));
+        rowAddWidget.Setup(rowIndex);
     }
     public void ShowCurrent()
     {

@@ -148,7 +148,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_AdditionalShaderChannelsFlag: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -207,6 +207,13 @@ MonoBehaviour:
   rowUIPrefab: {fileID: 3543821124462672891, guid: 6c1a7bab8d2130a428fb998154ef5f0a,
     type: 3}
   rowParent: {fileID: 4936915225360854192}
+  operationBeginSound: {fileID: 8300000, guid: b896e2c860fa345bcb28f87e366be5bd, type: 3}
+  operationDestinationSetSound: {fileID: 8300000, guid: 3574ad7ac970b424487560607b782f4b,
+    type: 3}
+  operationConfirmSound: {fileID: 8300000, guid: ac8a35c9f1eb74a30b15cca5df68110f,
+    type: 3}
+  operationCancelSound: {fileID: 8300000, guid: 0d3b4c2d4887644c98500ea677917ff4,
+    type: 3}
 --- !u!1 &5405663699868622674
 GameObject:
   m_ObjectHideFlags: 0
@@ -241,8 +248,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -240, y: -40}
+  m_AnchoredPosition: {x: 15, y: 0}
+  m_SizeDelta: {x: -210, y: -40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8684065170821280014
 CanvasRenderer:

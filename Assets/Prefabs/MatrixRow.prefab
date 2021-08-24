@@ -169,6 +169,7 @@ MonoBehaviour:
     type: 3}
   itemParent: {fileID: 7154070194718407302}
   operationSource: {fileID: 3028902319705266852}
+  rowAddWidget: {fileID: 547775832931351853}
 --- !u!1001 &7916175983005436612
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -294,3 +295,15 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 7916175983005436612}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &547775832931351853 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7656681400127338473, guid: 23ca58573ae7d3149b74ca6b10bbdba1,
+    type: 3}
+  m_PrefabInstance: {fileID: 7916175983005436612}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00188ed569104e949a70cf9b7278d08f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
