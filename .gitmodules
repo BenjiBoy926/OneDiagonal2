@@ -1,9 +1,6 @@
 [submodule "Assets/Scripts/Graphing"]
 	path = Assets/Scripts/Graphing
 	url = https://github.com/BenjiBoy926/UnityGraphingComponents.git
-[submodule "Assets/Scripts/UnityLayout"]
-	path = Assets/Scripts/UnityLayout
-	url = https://github.com/BenjiBoy926/UnityLayout.git
 [submodule "Assets/UnityAssets"]
 	path = Assets/UnityAssets
 	url = https://github.com/BenjiBoy926/UnityAssets.git
