@@ -317,7 +317,7 @@ GameObject:
   - component: {fileID: 7687978738430591948}
   - component: {fileID: 4388720306407112122}
   m_Layer: 0
-  m_Name: MultiplyDock
+  m_Name: MatrixMultiplyWidget
   m_TagString: Scalar
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

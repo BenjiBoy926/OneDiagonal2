@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 using Hellmade.Sound;
 
@@ -10,6 +11,9 @@ public class MatrixUI : MonoBehaviour
     #region Public Properties
     public Matrix CurrentMatrix => currentMatrix;
     public Matrix PreviewMatrix => previewMatrix;
+    public UnityEvent OnOperationStart => onOperationStart;
+    public UnityEvent OnOperationFinish => onOperationFinish;
+    public MatrixOperation.Type IntendedNextOperationType => operationSource.Operation.type;
     #endregion
 
     #region Private Properties
@@ -44,6 +48,12 @@ public class MatrixUI : MonoBehaviour
     [SerializeField]
     [Tooltip("Sound that plays when an operation is cancelled")]
     private AudioClip operationCancelSound;
+    [SerializeField]
+    [Tooltip("Event invoked when the matrix begins an operation")]
+    private UnityEvent onOperationStart;
+    [SerializeField]
+    [Tooltip("Event invoked when the matrix finishes an operation")]
+    private UnityEvent onOperationFinish;
     #endregion
 
     #region Private Fields
@@ -95,11 +105,8 @@ public class MatrixUI : MonoBehaviour
         // Play a sound!
         EazySoundManager.PlayUISound(operationBeginSound);
 
-        // Set the color of the operation source
-        // Grey out the colors of all elements that don't apply for this operation
-        // - row swap: all except the rows
-        // - row scale: scalar arrows, row adder widgets
-        // - row add: all scalar widgets and all other row adders
+        // Invoke the operation finish event
+        onOperationStart.Invoke();
     }
     public void SetOperationDestination(MatrixRowUI operationDestination)
     {
@@ -135,8 +142,6 @@ public class MatrixUI : MonoBehaviour
             currentMatrix = currentMatrix.Operate(IntendedNextOperation);
             ShowCurrent();
 
-            // Set the colors of all the ui elements back to normal
-
             // Play a sound!
             EazySoundManager.PlayUISound(operationConfirmSound);
 
@@ -144,8 +149,6 @@ public class MatrixUI : MonoBehaviour
         }
         else
         {
-            // Set the colors of all ui elements back to normal
-
             // Play a sound!
             EazySoundManager.PlayUISound(operationCancelSound);
         }
@@ -153,6 +156,9 @@ public class MatrixUI : MonoBehaviour
         // No more operation source or destination
         operationSource = null;
         operationDestination = null;
+
+        // Invoke operation finished event
+        onOperationFinish.Invoke();
     }
 
     public void ShowCurrent()
