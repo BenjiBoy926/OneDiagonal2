@@ -52,6 +52,10 @@ public class MatrixRowUI : MatrixUIChild, IPointerEnterHandler, IPointerExitHand
         // Setup the operation source to request a row swap when dragged
         operationSource.Setup(() => MatrixOperation.RowSwap(-1, rowIndex));
         rowAddWidget.Setup(rowIndex);
+
+        // Listen for operation start and end
+        MatrixParent.OnOperationStart.AddListener(OnMatrixOperationStarted);
+        MatrixParent.OnOperationFinish.AddListener(OnMatrixOperationFinished);
     }
     public void ShowCurrent()
     {
@@ -71,10 +75,26 @@ public class MatrixRowUI : MatrixUIChild, IPointerEnterHandler, IPointerExitHand
     public void OnPointerEnter(PointerEventData data)
     {
         MatrixParent.SetOperationDestination(this);
+        // Set the color
     }
     public void OnPointerExit(PointerEventData data)
     {
         MatrixParent.UnsetOperationDestination();
+        // Set the color back to normal
+    }
+    #endregion
+
+    #region Private Methods
+    private void OnMatrixOperationStarted()
+    {
+        if(rowAddWidget.IsCurrentOperationSource)
+        {
+            // gotta set the color
+        }
+    }
+    private void OnMatrixOperationFinished()
+    {
+        // Gotta set the color back to normal
     }
     #endregion
 }

@@ -19,6 +19,9 @@ public class MatrixMultiplyWidget : MatrixUIChild
     [Tooltip("Reference to the text used to display the scalar")]
     private TextMeshProUGUI text;
     [SerializeField]
+    [Tooltip("Selectable object to drag to cause a matrix scaling")]
+    private Selectable widget;
+    [SerializeField]
     [Tooltip("Button that increases the scalar")]
     private Button increaseButton;
     [SerializeField]
@@ -49,8 +52,8 @@ public class MatrixMultiplyWidget : MatrixUIChild
         base.Start();
 
         // Set the scalar to 1
-        scalar = Fraction.one;
-        UpdateDisplay();
+        scalar = Fraction.one + Fraction.one;
+        OnScalarChanged();
 
         // Increment/decrement scalar when buttons are clicked
         increaseButton.onClick.AddListener(IncrementScalar);
@@ -59,28 +62,32 @@ public class MatrixMultiplyWidget : MatrixUIChild
 
         // Setup the operation source to do a row scale, won't know destination until it is set on matrix ui
         operationSource.Setup(() => MatrixOperation.RowScale(-1, CurrentScalar));
+
+        // Add listeners for the operation events
+        MatrixParent.OnOperationStart.AddListener(OnMatrixOperationStarted);
+        MatrixParent.OnOperationFinish.AddListener(OnMatrixOperationFinished);
     }
     private void IncrementScalar()
     {
-        // Increment the scalar. If it is zero, move it past zero to 1/1
+        // Increment the scalar. If it is zero, move it past zero to 2/1
         scalar++;
-        if (scalar == Fraction.zero) scalar = Fraction.one;
+        if (scalar == Fraction.zero) scalar = Fraction.one + Fraction.one;
 
         // Play a sound!
         EazySoundManager.PlayUISound(increaseSound);
 
-        UpdateDisplay();
+        OnScalarChanged();
     }
     private void DecrementScalar()
     {
-        // Decrement the scalar. If it is zero, move it past zero to -1/1
+        // Decrement the scalar. If it is one, move it past one to -1/1
         scalar--;
-        if (scalar == Fraction.zero) scalar = -Fraction.one;
+        if (scalar == Fraction.one) scalar = -Fraction.one;
 
         // Play a sound!
         EazySoundManager.PlayUISound(decreaseSound);
 
-        UpdateDisplay();
+        OnScalarChanged();
     }
     private void ToggleReciprocal()
     {
@@ -89,11 +96,36 @@ public class MatrixMultiplyWidget : MatrixUIChild
         // Play a sound!
         EazySoundManager.PlayUISound(reciprocateSound);
 
-        UpdateDisplay();
+        OnScalarChanged();
     }
-    private void UpdateDisplay()
+    private void OnScalarChanged()
     {
+        // Can only reciprocate a fraction that is not 1/1 or -1/1
+        reciprocateButton.interactable = scalar > Fraction.one || scalar < -Fraction.one;
+        if (!reciprocateButton.interactable) reciprocate = false;
         text.text = CurrentScalar.ToString();
+    }
+    private void OnMatrixOperationStarted()
+    {
+        increaseButton.interactable = false;
+        decreaseButton.interactable = false;
+        reciprocateButton.interactable = false;
+
+        if(operationSource.IsCurrentOperationSource)
+        {
+            // Set the color of the widget
+        }
+        else
+        {
+            widget.interactable = false;
+        }
+    }
+    private void OnMatrixOperationFinished()
+    {
+        widget.interactable = true;
+        increaseButton.interactable = true;
+        decreaseButton.interactable = true;
+        reciprocateButton.interactable = true;
     }
     #endregion
 }

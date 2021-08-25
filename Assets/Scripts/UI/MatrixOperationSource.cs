@@ -8,6 +8,7 @@ public class MatrixOperationSource : MatrixUIChild, IBeginDragHandler, IDragHand
 {
     #region Public Properties
     public MatrixOperation Operation => operationGetter.Invoke();
+    public bool IsCurrentOperationSource => MatrixParent.IsCurrentOperationSource(this);
     #endregion
 
     #region Private Fields

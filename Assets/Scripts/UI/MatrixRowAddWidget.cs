@@ -6,6 +6,10 @@ using TMPro;
 
 public class MatrixRowAddWidget : MatrixUIChild
 {
+    #region Public Properties
+    public bool IsCurrentOperationSource => operationSource.IsCurrentOperationSource;
+    #endregion
+
     #region Private Properties
     private Fraction Scalar => adding ? Fraction.one : -Fraction.one;
     #endregion
@@ -17,6 +21,9 @@ public class MatrixRowAddWidget : MatrixUIChild
     [SerializeField]
     [Tooltip("Text that displays a plus when adding and a minus when subtracting")]
     private TextMeshProUGUI text;
+    [SerializeField]
+    [Tooltip("Reference to the selectable attached to this widget")]
+    private Selectable widget;
     #endregion
 
     #region Private Fields
@@ -34,6 +41,9 @@ public class MatrixRowAddWidget : MatrixUIChild
         
         // Update display
         UpdateDisplay();
+
+        MatrixParent.OnOperationStart.AddListener(OnMatrixOperationStarted);
+        MatrixParent.OnOperationFinish.AddListener(OnMatrixOperationFinished);
     }
     public void ToggleAdding()
     {
@@ -47,6 +57,20 @@ public class MatrixRowAddWidget : MatrixUIChild
     {
         if (adding) text.text = "+";
         else text.text = "-";
+    }
+    private void OnMatrixOperationStarted()
+    {
+        // Only interactable if this is the current operation source
+        widget.interactable = operationSource.IsCurrentOperationSource;
+
+        if(widget.interactable)
+        {
+            // gotta set the color
+        }
+    }
+    private void OnMatrixOperationFinished()
+    {
+        widget.interactable = true;
     }
     #endregion
 }

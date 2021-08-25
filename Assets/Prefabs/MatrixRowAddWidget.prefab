@@ -92,7 +92,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 44.75
+  m_fontSize: 72
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -145,7 +145,7 @@ GameObject:
   - component: {fileID: 6020520115814986847}
   - component: {fileID: 1387424920453770849}
   - component: {fileID: 7921422683474021342}
-  - component: {fileID: 7967435133129497221}
+  - component: {fileID: 4548977746506660446}
   - component: {fileID: 7656681400127338473}
   - component: {fileID: 7079468999298555230}
   m_Layer: 5
@@ -213,7 +213,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &7967435133129497221
+--- !u!114 &4548977746506660446
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -222,7 +222,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8276870131106268099}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Script: {fileID: 11500000, guid: 7a98125502f715b4b83cfb77b434e436, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
@@ -254,9 +254,6 @@ MonoBehaviour:
     m_DisabledTrigger: Disabled
   m_Interactable: 1
   m_TargetGraphic: {fileID: 7921422683474021342}
-  m_OnClick:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!114 &7656681400127338473
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -271,6 +268,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   operationSource: {fileID: 7079468999298555230}
   text: {fileID: 7767541638568627829}
+  widget: {fileID: 4548977746506660446}
 --- !u!114 &7079468999298555230
 MonoBehaviour:
   m_ObjectHideFlags: 0

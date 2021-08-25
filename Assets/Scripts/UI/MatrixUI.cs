@@ -112,7 +112,7 @@ public class MatrixUI : MonoBehaviour
     {
         // Set the destination only if we have a source and the source row index is not the same as the destination row index
         // (prevents a self-swap and a self-add)
-        if (operationSource && operationSource.Operation.destinationRow != operationDestination.RowIndex)
+        if (operationSource && operationSource.Operation.sourceRow != operationDestination.RowIndex)
         {
             this.operationDestination = operationDestination;
 
@@ -160,21 +160,23 @@ public class MatrixUI : MonoBehaviour
         // Invoke operation finished event
         onOperationFinish.Invoke();
     }
+    public bool IsCurrentOperationSource(MatrixOperationSource operationSource) => this.operationSource == operationSource;
+    #endregion
 
-    public void ShowCurrent()
+    #region Private Methods
+    private void ShowCurrent()
     {
-        foreach(MatrixRowUI row in rowUIs)
+        foreach (MatrixRowUI row in rowUIs)
         {
             row.ShowCurrent();
         }
     }
-    public void ShowPreview()
+    private void ShowPreview()
     {
-        foreach(MatrixRowUI row in rowUIs)
+        foreach (MatrixRowUI row in rowUIs)
         {
             row.ShowPreview();
         }
     }
-
     #endregion
 }
