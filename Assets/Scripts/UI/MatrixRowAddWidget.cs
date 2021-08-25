@@ -42,6 +42,7 @@ public class MatrixRowAddWidget : MatrixUIChild
         // Update display
         UpdateDisplay();
 
+        // Listen for operation start-finish events on the matrix
         MatrixParent.OnOperationStart.AddListener(OnMatrixOperationStarted);
         MatrixParent.OnOperationFinish.AddListener(OnMatrixOperationFinished);
     }

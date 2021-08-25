@@ -20,6 +20,10 @@ public class MatrixRowAddSignSwitch : MatrixUIChild
     {
         base.Start();
         button.onClick.AddListener(ToggleAdding);
+
+        // Add listeners for operation started and finished events
+        MatrixParent.OnOperationStart.AddListener(OnMatrixOperationStarted);
+        MatrixParent.OnOperationFinish.AddListener(OnMatrixOperationFinished);
     }
     private void ToggleAdding()
     {
@@ -29,6 +33,14 @@ public class MatrixRowAddSignSwitch : MatrixUIChild
             widget.ToggleAdding();
         }
         EazySoundManager.PlayUISound(switchSound);
+    }
+    private void OnMatrixOperationStarted()
+    {
+        button.interactable = false;
+    }
+    private void OnMatrixOperationFinished()
+    {
+        button.interactable = true;
     }
     #endregion
 }

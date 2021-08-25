@@ -37,6 +37,9 @@ public class MatrixUI : MonoBehaviour
     [Tooltip("Reference to the layout group used to hold all of the rows")]
     private RectTransform rowParent;
     [SerializeField]
+    [Tooltip("List of colors mapped to each of the matrix operation types")]
+    private ArrayOnEnum<MatrixOperation.Type, Color> operationColors;
+    [SerializeField]
     [Tooltip("Sound that plays when an operation begins")]
     private AudioClip operationBeginSound;
     [SerializeField]
