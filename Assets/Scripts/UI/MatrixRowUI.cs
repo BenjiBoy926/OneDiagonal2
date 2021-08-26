@@ -113,7 +113,7 @@ public class MatrixRowUI : MatrixUIChild, IPointerEnterHandler, IPointerExitHand
     private void PunchSize()
     {
         rowRectTransform.DOComplete();
-        rowRectTransform.DOPunchScale(Vector3.one * 0.1f, MatrixParent.ScalePunchTime);
+        rowRectTransform.DOPunchScale(Vector3.one * MatrixParent.ScalePunchStrength, MatrixParent.ScalePunchTime);
     }
     #endregion
 }

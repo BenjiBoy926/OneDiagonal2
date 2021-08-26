@@ -11,6 +11,7 @@ public class MatrixUI : MonoBehaviour
     #region Public Properties
     public Matrix CurrentMatrix => currentMatrix;
     public Matrix PreviewMatrix => previewMatrix;
+    public float ScalePunchStrength => scalePunchStrength;
     public float ScalePunchTime => scalePunchTime;
     public UnityEvent OnOperationStart => onOperationStart;
     public UnityEvent OnOperationDestinationSet => onOperationDestinationSet;
@@ -38,12 +39,21 @@ public class MatrixUI : MonoBehaviour
     [SerializeField]
     [Tooltip("Reference to the layout group used to hold all of the rows")]
     private RectTransform rowParent;
+
+    [Header("Operator information")]
+
+    [SerializeField]
+    [Tooltip("Strength of the punch for the elements when they are set as the source/destination of the operation")]
+    private float scalePunchStrength = 0.1f;
     [SerializeField]
     [Tooltip("Time that child elements should take to punch their size for dramatic effect")]
     private float scalePunchTime = 0.2f;
     [SerializeField]
     [Tooltip("List of colors mapped to each of the matrix operation types")]
     private ArrayOnEnum<MatrixOperation.Type, Color> operationColors;
+
+    [Header("Audio")]
+
     [SerializeField]
     [Tooltip("Sound that plays when an operation begins")]
     private AudioClip operationBeginSound;
@@ -56,6 +66,9 @@ public class MatrixUI : MonoBehaviour
     [SerializeField]
     [Tooltip("Sound that plays when an operation is cancelled")]
     private AudioClip operationCancelSound;
+
+    [Header("Events")]
+
     [SerializeField]
     [Tooltip("Event invoked when the matrix begins an operation")]
     private UnityEvent onOperationStart;

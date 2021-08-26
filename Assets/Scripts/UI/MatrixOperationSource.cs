@@ -84,7 +84,7 @@ public class MatrixOperationSource : MatrixUIChild, IBeginDragHandler, IDragHand
         foreach(RectTransform rt in rectTransforms)
         {
             rt.DOComplete();
-            rt.DOPunchScale(Vector3.one * 0.1f, MatrixParent.ScalePunchTime);
+            rt.DOPunchScale(Vector3.one * MatrixParent.ScalePunchStrength, MatrixParent.ScalePunchTime);
         }
     }
     #endregion
