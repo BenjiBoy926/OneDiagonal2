@@ -11,8 +11,10 @@ public class MatrixUI : MonoBehaviour
     #region Public Properties
     public Matrix CurrentMatrix => currentMatrix;
     public Matrix PreviewMatrix => previewMatrix;
+    public float ScalePunchTime => scalePunchTime;
     public UnityEvent OnOperationStart => onOperationStart;
-    public UnityEvent OnOperationFinish => onOperationFinish;
+    public UnityEvent OnOperationDestinationSet => onOperationDestinationSet;
+    public UnityEvent<bool> OnOperationFinish => onOperationFinish;
     public MatrixOperation.Type IntendedNextOperationType => operationSource.Operation.type;
     #endregion
 
@@ -37,6 +39,9 @@ public class MatrixUI : MonoBehaviour
     [Tooltip("Reference to the layout group used to hold all of the rows")]
     private RectTransform rowParent;
     [SerializeField]
+    [Tooltip("Time that child elements should take to punch their size for dramatic effect")]
+    private float scalePunchTime = 0.2f;
+    [SerializeField]
     [Tooltip("List of colors mapped to each of the matrix operation types")]
     private ArrayOnEnum<MatrixOperation.Type, Color> operationColors;
     [SerializeField]
@@ -55,8 +60,11 @@ public class MatrixUI : MonoBehaviour
     [Tooltip("Event invoked when the matrix begins an operation")]
     private UnityEvent onOperationStart;
     [SerializeField]
+    [Tooltip("Event invoked when the operation source is set")]
+    private UnityEvent onOperationDestinationSet;
+    [SerializeField]
     [Tooltip("Event invoked when the matrix finishes an operation")]
-    private UnityEvent onOperationFinish;
+    private UnityEvent<bool> onOperationFinish;
     #endregion
 
     #region Private Fields
@@ -111,11 +119,13 @@ public class MatrixUI : MonoBehaviour
         // Invoke the operation finish event
         onOperationStart.Invoke();
     }
-    public void SetOperationDestination(MatrixRowUI operationDestination)
+    public bool SetOperationDestination(MatrixRowUI operationDestination)
     {
+        bool success = operationSource && operationSource.Operation.sourceRow != operationDestination.RowIndex;
+
         // Set the destination only if we have a source and the source row index is not the same as the destination row index
         // (prevents a self-swap and a self-add)
-        if (operationSource && operationSource.Operation.sourceRow != operationDestination.RowIndex)
+        if (success)
         {
             this.operationDestination = operationDestination;
 
@@ -126,7 +136,12 @@ public class MatrixUI : MonoBehaviour
             // Set the preview matrix and update all ui elements to display the preview
             previewMatrix = currentMatrix.Operate(IntendedNextOperation);
             ShowPreview();
+
+            // Invoke the event for the destination set
+            onOperationDestinationSet.Invoke();
         }
+
+        return success;
     }
     public void UnsetOperationDestination()
     {
@@ -136,10 +151,12 @@ public class MatrixUI : MonoBehaviour
         operationDestination = null;
     }
 
-    public void ConfirmOperation()
+    public bool ConfirmOperation()
     {
+        bool operationSuccess = operationDestination;
+
         // Check if operation destination is set or not
-        if(operationDestination)
+        if(operationSuccess)
         {
             // Update the current matrix
             currentMatrix = currentMatrix.Operate(IntendedNextOperation);
@@ -156,14 +173,18 @@ public class MatrixUI : MonoBehaviour
             EazySoundManager.PlayUISound(operationCancelSound);
         }
 
+        // Invoke operation finished event
+        onOperationFinish.Invoke(operationSuccess);
+
         // No more operation source or destination
         operationSource = null;
         operationDestination = null;
 
-        // Invoke operation finished event
-        onOperationFinish.Invoke();
+        return operationSuccess;
     }
     public bool IsCurrentOperationSource(MatrixOperationSource operationSource) => this.operationSource == operationSource;
+    public bool IsCurrentOperationDestination(MatrixRowUI operationDestination) => this.operationDestination == operationDestination;
+    public Color OperationColor(MatrixOperation.Type operation) => operationColors.Get(operation);
     #endregion
 
     #region Private Methods

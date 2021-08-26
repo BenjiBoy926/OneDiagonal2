@@ -131,16 +131,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1264036137957712285, guid: 1da85dfe8722f1a459e2c39530b189f4,
-        type: 3}
-      propertyPath: operationColors.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1264036137957712285, guid: 1da85dfe8722f1a459e2c39530b189f4,
-        type: 3}
-      propertyPath: operationColors.data.Array.size
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 4501634155979702054, guid: 1da85dfe8722f1a459e2c39530b189f4,
         type: 3}
       propertyPath: m_Pivot.x

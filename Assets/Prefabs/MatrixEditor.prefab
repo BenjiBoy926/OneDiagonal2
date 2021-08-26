@@ -207,6 +207,11 @@ MonoBehaviour:
   rowUIPrefab: {fileID: 3543821124462672891, guid: 6c1a7bab8d2130a428fb998154ef5f0a,
     type: 3}
   rowParent: {fileID: 4936915225360854192}
+  operationColors:
+    data:
+    - {r: 0.5226415, g: 0.5226415, b: 1, a: 1}
+    - {r: 1, g: 1, b: 0.4660377, a: 1}
+    - {r: 1, g: 0.48490566, b: 0.48490566, a: 1}
   operationBeginSound: {fileID: 8300000, guid: b896e2c860fa345bcb28f87e366be5bd, type: 3}
   operationDestinationSetSound: {fileID: 8300000, guid: 3574ad7ac970b424487560607b782f4b,
     type: 3}

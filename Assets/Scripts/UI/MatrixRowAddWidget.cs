@@ -69,7 +69,7 @@ public class MatrixRowAddWidget : MatrixUIChild
             // gotta set the color
         }
     }
-    private void OnMatrixOperationFinished()
+    private void OnMatrixOperationFinished(bool success)
     {
         widget.interactable = true;
     }

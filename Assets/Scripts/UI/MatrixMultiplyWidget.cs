@@ -120,7 +120,7 @@ public class MatrixMultiplyWidget : MatrixUIChild
             widget.interactable = false;
         }
     }
-    private void OnMatrixOperationFinished()
+    private void OnMatrixOperationFinished(bool success)
     {
         widget.interactable = true;
         increaseButton.interactable = true;

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using DG.Tweening;
 
 public class MatrixRowUI : MatrixUIChild, IPointerEnterHandler, IPointerExitHandler
 {
@@ -10,6 +11,7 @@ public class MatrixRowUI : MatrixUIChild, IPointerEnterHandler, IPointerExitHand
     public Fraction[] CurrentRow => MatrixParent.CurrentMatrix.GetRow(rowIndex);
     public Fraction[] PreviewRow => MatrixParent.PreviewMatrix.GetRow(rowIndex);
     public int RowIndex => rowIndex;
+    public bool IsCurrentOperationDestination => MatrixParent.IsCurrentOperationDestination(this);
     #endregion
 
     #region Private Editor Fields
@@ -18,10 +20,13 @@ public class MatrixRowUI : MatrixUIChild, IPointerEnterHandler, IPointerExitHand
     private MatrixItemUI itemUIPrefab;
     [SerializeField]
     [Tooltip("Layout group that the items are instantiated into")]
-    private RectTransform itemParent;
+    private RectTransform rowRectTransform;
+    [SerializeField]
+    [Tooltip("Reference to the graphic to change color on when the row is set as the destination")]
+    private Graphic rowGraphic;
     [SerializeField]
     [Tooltip("Script used to make the row a source of matrix operations")]
-    private MatrixOperationSource operationSource;
+    private MatrixOperationSource rowOperationSource;
     [SerializeField]
     [Tooltip("Script used for adding this row to another row")]
     private MatrixRowAddWidget rowAddWidget;
@@ -30,6 +35,7 @@ public class MatrixRowUI : MatrixUIChild, IPointerEnterHandler, IPointerExitHand
     #region Private Fields
     private int rowIndex;
     private MatrixItemUI[] itemUIs;
+    private Color defaultGraphicColor;
     #endregion
 
     #region Public Methods
@@ -44,18 +50,20 @@ public class MatrixRowUI : MatrixUIChild, IPointerEnterHandler, IPointerExitHand
 
         for(int j = 0; j < MatrixParent.CurrentMatrix.cols; j++)
         {
-            MatrixItemUI itemUI = Instantiate(itemUIPrefab, itemParent);
+            MatrixItemUI itemUI = Instantiate(itemUIPrefab, rowRectTransform);
             itemUI.Setup(this, j);
             itemUIs[j] = itemUI;
         }
 
         // Setup the operation source to request a row swap when dragged
-        operationSource.Setup(() => MatrixOperation.RowSwap(-1, rowIndex));
+        rowOperationSource.Setup(() => MatrixOperation.RowSwap(-1, rowIndex));
         rowAddWidget.Setup(rowIndex);
 
-        // Listen for operation start and end
-        MatrixParent.OnOperationStart.AddListener(OnMatrixOperationStarted);
+        // Listen for operation end
         MatrixParent.OnOperationFinish.AddListener(OnMatrixOperationFinished);
+
+        // Set the default graphic color
+        defaultGraphicColor = rowGraphic.color;
     }
     public void ShowCurrent()
     {
@@ -74,27 +82,38 @@ public class MatrixRowUI : MatrixUIChild, IPointerEnterHandler, IPointerExitHand
 
     public void OnPointerEnter(PointerEventData data)
     {
-        MatrixParent.SetOperationDestination(this);
-        // Set the color
+        if(MatrixParent.SetOperationDestination(this))
+        {
+            // Set the color
+            rowGraphic.color = MatrixParent.OperationColor(MatrixParent.IntendedNextOperationType);
+            PunchSize();
+        }
     }
     public void OnPointerExit(PointerEventData data)
     {
         MatrixParent.UnsetOperationDestination();
-        // Set the color back to normal
+
+        // Set the color back to normal if this is not the operation source
+        if(!rowOperationSource.IsCurrentOperationSource && !rowAddWidget.IsCurrentOperationSource)
+        {
+            rowGraphic.color = defaultGraphicColor;
+        }
     }
     #endregion
 
     #region Private Methods
-    private void OnMatrixOperationStarted()
-    {
-        if(rowAddWidget.IsCurrentOperationSource)
-        {
-            // gotta set the color
-        }
-    }
-    private void OnMatrixOperationFinished()
+    private void OnMatrixOperationFinished(bool success)
     {
         // Gotta set the color back to normal
+        rowGraphic.color = defaultGraphicColor;
+
+        // If operation finish succeeds with this as the destination, then punch the size
+        if (success && IsCurrentOperationDestination) PunchSize();
+    }
+    private void PunchSize()
+    {
+        rowRectTransform.DOComplete();
+        rowRectTransform.DOPunchScale(Vector3.one * 0.1f, MatrixParent.ScalePunchTime);
     }
     #endregion
 }

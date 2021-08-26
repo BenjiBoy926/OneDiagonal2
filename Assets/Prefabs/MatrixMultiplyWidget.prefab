@@ -525,6 +525,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb958985158bc8c4db49194aa90e86dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rectTransforms:
+  - {fileID: 4930562766302567979}
+  graphics:
+  - {fileID: 789753001396996440}
 --- !u!114 &2046414636328861912
 MonoBehaviour:
   m_ObjectHideFlags: 0

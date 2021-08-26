@@ -38,7 +38,7 @@ public class MatrixRowAddSignSwitch : MatrixUIChild
     {
         button.interactable = false;
     }
-    private void OnMatrixOperationFinished()
+    private void OnMatrixOperationFinished(bool success)
     {
         button.interactable = true;
     }

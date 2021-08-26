@@ -115,6 +115,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb958985158bc8c4db49194aa90e86dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rectTransforms:
+  - {fileID: 7154070194718407302}
+  graphics:
+  - {fileID: 7428641008155256609}
 --- !u!1 &9065783655618706859
 GameObject:
   m_ObjectHideFlags: 0
@@ -167,8 +171,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemUIPrefab: {fileID: 2619748870723924317, guid: 61e298f87e6d89e498cec8b39124cb0a,
     type: 3}
-  itemParent: {fileID: 7154070194718407302}
-  operationSource: {fileID: 3028902319705266852}
+  rowRectTransform: {fileID: 7154070194718407302}
+  rowGraphic: {fileID: 7428641008155256609}
+  rowOperationSource: {fileID: 3028902319705266852}
   rowAddWidget: {fileID: 547775832931351853}
 --- !u!1001 &7916175983005436612
 PrefabInstance:
@@ -282,6 +287,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7079468999298555230, guid: 23ca58573ae7d3149b74ca6b10bbdba1,
+        type: 3}
+      propertyPath: graphics.Array.data[1]
+      value: 
+      objectReference: {fileID: 7428641008155256609}
+    - target: {fileID: 7079468999298555230, guid: 23ca58573ae7d3149b74ca6b10bbdba1,
+        type: 3}
+      propertyPath: rectTransforms.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7079468999298555230, guid: 23ca58573ae7d3149b74ca6b10bbdba1,
+        type: 3}
+      propertyPath: rectTransforms.Array.data[0]
+      value: 
+      objectReference: {fileID: 4491996725249736347}
+    - target: {fileID: 7079468999298555230, guid: 23ca58573ae7d3149b74ca6b10bbdba1,
+        type: 3}
+      propertyPath: rectTransforms.Array.data[1]
+      value: 
+      objectReference: {fileID: 7154070194718407302}
     - target: {fileID: 8276870131106268099, guid: 23ca58573ae7d3149b74ca6b10bbdba1,
         type: 3}
       propertyPath: m_Name
