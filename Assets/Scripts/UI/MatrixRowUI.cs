@@ -85,7 +85,7 @@ public class MatrixRowUI : MatrixUIChild, IPointerEnterHandler, IPointerExitHand
         if(MatrixParent.SetOperationDestination(this))
         {
             // Set the color
-            rowGraphic.color = MatrixParent.OperationColor(MatrixParent.IntendedNextOperationType);
+            rowGraphic.color = GameSettings.GetOperatorColor(MatrixParent.IntendedNextOperationType);
             PunchSize();
         }
     }
@@ -108,12 +108,16 @@ public class MatrixRowUI : MatrixUIChild, IPointerEnterHandler, IPointerExitHand
         rowGraphic.color = defaultGraphicColor;
 
         // If operation finish succeeds with this as the destination, then punch the size
-        if (success && IsCurrentOperationDestination) PunchSize();
+        if (success && IsCurrentOperationDestination)
+        {
+            PunchSize();
+            Instantiate(GameSettings.FlashEffect, rowRectTransform);
+        }
     }
     private void PunchSize()
     {
         rowRectTransform.DOComplete();
-        rowRectTransform.DOPunchScale(Vector3.one * MatrixParent.ScalePunchStrength, MatrixParent.ScalePunchTime);
+        rowRectTransform.DOPunchScale(Vector3.one * GameSettings.OperatorPunch, GameSettings.OperatorPunchTime);
     }
     #endregion
 }

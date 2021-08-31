@@ -55,7 +55,7 @@ public class MatrixOperationSource : MatrixUIChild, IBeginDragHandler, IDragHand
         // Set the color of the graphics this source is responsible for
         foreach(Graphic graphic in graphics)
         {
-            graphic.color = MatrixParent.OperationColor(Operation.type);
+            graphic.color = GameSettings.GetOperatorColor(Operation.type);
         }
         PunchSize();
     }
@@ -68,7 +68,16 @@ public class MatrixOperationSource : MatrixUIChild, IBeginDragHandler, IDragHand
     public void OnEndDrag(PointerEventData data)
     {
         bool success = MatrixParent.ConfirmOperation();
-        if (success) PunchSize();
+        if (success)
+        {
+            PunchSize();
+
+            // Create a flash effect for each rect transform
+            foreach(RectTransform rectTransform in rectTransforms)
+            {
+                Instantiate(GameSettings.FlashEffect, rectTransform);
+            }
+        }
 
         // Reset graphics back to defaults
         for(int i = 0; i < graphics.Count; i++)
@@ -84,7 +93,7 @@ public class MatrixOperationSource : MatrixUIChild, IBeginDragHandler, IDragHand
         foreach(RectTransform rt in rectTransforms)
         {
             rt.DOComplete();
-            rt.DOPunchScale(Vector3.one * MatrixParent.ScalePunchStrength, MatrixParent.ScalePunchTime);
+            rt.DOPunchScale(Vector3.one * GameSettings.OperatorPunch, GameSettings.OperatorPunchTime);
         }
     }
     #endregion

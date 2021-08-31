@@ -117,11 +117,12 @@ public class MatrixDrawer : PropertyDrawer
         int rows = property.FindPropertyRelative("_rows").intValue;
 
         // The style for a label of the row, column
-        GUIStyle labelStyle = new GUIStyle();
-        labelStyle.alignment = TextAnchor.MiddleCenter;
-        labelStyle.fontStyle = FontStyle.Bold;
+        GUIStyle labelStyle = new GUIStyle(EditorStyles.boldLabel)
+        {
+            alignment = TextAnchor.MiddleCenter
+        };
 
-        for(int i = -1; i < rows; i++)
+        for (int i = -1; i < rows; i++)
         {
             // Build the horizontal layout that will be in the current part of the vertical layout
             Layout.Builder builder = new Layout.Builder();

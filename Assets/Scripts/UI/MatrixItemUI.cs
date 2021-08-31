@@ -23,22 +23,46 @@ public class MatrixItemUI : MatrixUIChild
     #endregion
 
     #region Public Methods
-    public void Setup(MatrixRowUI parent, int columnIndex)
+    public void Setup(MatrixRowUI rowParent, int columnIndex)
     {
         Start();
 
-        this.rowParent = parent;
+        this.rowParent = rowParent;
         this.columnIndex = columnIndex;
 
-        text.text = CurrentFraction.ToString();
+        // Show the current fraction
+        ShowCurrent();
     }
     public void ShowCurrent()
     {
         text.text = CurrentFraction.ToString();
+        SetColor(CurrentFraction);
     }
     public void ShowPreview()
     {
         text.text = PreviewFraction.ToString();
+        SetColor(PreviewFraction);
+    }
+    #endregion
+
+    #region Private Methods
+    private void SetColor(Fraction displayedFraction)
+    {
+        // Check if we are on the diagonal
+        if(columnIndex == rowParent.RowIndex)
+        {
+            // If we are on the diagonal and displaying a one, then set the good color
+            if (displayedFraction == Fraction.one) text.color = GameSettings.DiagonalColors.goodColor;
+            // If we are on the diagonal but not displaying a one then set the bad color
+            else text.color = GameSettings.DiagonalColors.badColor;
+        }
+        else
+        {
+            // If we are not on the diagonal and displaying a zero then set the good color
+            if (displayedFraction == Fraction.zero) text.color = GameSettings.NotDiagonalColors.goodColor;
+            // If we are not on the diagonal and not displaying a zero then set the bad color
+            else text.color = GameSettings.NotDiagonalColors.badColor;
+        }
     }
     #endregion
 }

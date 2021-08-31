@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0695b44e01d809b45ba7953479bb825b, type: 3}
+  m_Name: Settings
+  m_EditorClassIdentifier: 
+  diagonalColors:
+    goodColor: {r: 0, g: 1, b: 0, a: 1}
+    badColor: {r: 1, g: 0, b: 0, a: 1}
+  notDiagnonalColors:
+    goodColor: {r: 0.5226415, g: 1, b: 0.5226415, a: 1}
+    badColor: {r: 1, g: 0.53207546, b: 0.53207546, a: 1}
+  flashEffect: {fileID: 2930442416200011611, guid: 3e32fe817c969d74cbec821ec9663b34,
+    type: 3}
+  operationColors:
+    data:
+    - {r: 0.139976, g: 0.13072267, b: 0.254717, a: 1}
+    - {r: 0.20784314, g: 0.10980392, b: 0.19809444, a: 1}
+    - {r: 0.18776645, g: 0.1882353, b: 0.09803922, a: 1}
+  operatorPunch: 0.1
+  operatorPunchTime: 0.2

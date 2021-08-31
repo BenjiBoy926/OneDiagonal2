@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2021834651002722784}
   - component: {fileID: 6062181694628558504}
+  - component: {fileID: 6104286464145883861}
   m_Layer: 0
   m_Name: MatrixRowAddSignSwitch
   m_TagString: Untagged
@@ -51,6 +52,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   button: {fileID: 1804536714971480142}
   switchSound: {fileID: 8300000, guid: 9e3f21a7ecd5c4f9aacbb8322d2e4bd1, type: 3}
+--- !u!114 &6104286464145883861
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3857085956190804683}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 306cc8c2b49d7114eaa3623786fc2126, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreLayout: 1
+  m_MinWidth: -1
+  m_MinHeight: -1
+  m_PreferredWidth: -1
+  m_PreferredHeight: -1
+  m_FlexibleWidth: -1
+  m_FlexibleHeight: -1
+  m_LayoutPriority: 1
 --- !u!1001 &777700062892739866
 PrefabInstance:
   m_ObjectHideFlags: 0
