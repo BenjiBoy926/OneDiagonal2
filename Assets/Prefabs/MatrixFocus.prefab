@@ -96,7 +96,7 @@ MonoBehaviour:
   startingScale: 10
   shrinkEndScale: 1
   growEndScale: 10
-  shrinkTime: 1.5
+  shrinkTime: 0.4
   growTime: 3
 --- !u!223 &-5498581241196851646
 Canvas:

@@ -215,7 +215,7 @@ MonoBehaviour:
     type: 3}
   operationCancelSound: {fileID: 8300000, guid: 0d3b4c2d4887644c98500ea677917ff4,
     type: 3}
-  matrixSolveSound: {fileID: 8300000, guid: d7281e096a7d0448cb6b2e9b12d85282, type: 3}
+  matrixSolveSound: {fileID: 8300000, guid: 49caa62bcbd844634880cf7f42639101, type: 3}
   onOperationStart:
     m_PersistentCalls:
       m_Calls: []
