@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7318996513462349274}
   - component: {fileID: 4332154622665492010}
   - component: {fileID: 8550629060411047082}
+  - component: {fileID: -5498581241196851646}
   m_Layer: 0
   m_Name: MatrixFocus
   m_TagString: Untagged
@@ -89,10 +90,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4217ba69d97697b4088cded08ba8693b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canvas: {fileID: -5498581241196851646}
   rectTransform: {fileID: 6820992861071347776}
   image: {fileID: 4332154622665492010}
-  startingScale: 5
+  startingScale: 10
   shrinkEndScale: 1
-  growEndScale: 3
-  shrinkTime: 0.3
-  growTime: 1
+  growEndScale: 10
+  shrinkTime: 1.5
+  growTime: 3
+--- !u!223 &-5498581241196851646
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3750714779491456543}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 2
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 0
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_AdditionalShaderChannelsFlag: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 100
+  m_TargetDisplay: 0

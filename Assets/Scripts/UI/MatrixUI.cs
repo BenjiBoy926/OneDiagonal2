@@ -14,6 +14,7 @@ public class MatrixUI : MonoBehaviour
     public UnityEvent OnOperationStart => onOperationStart;
     public UnityEvent OnOperationDestinationSet => onOperationDestinationSet;
     public UnityEvent<bool> OnOperationFinish => onOperationFinish;
+    public UnityEvent OnMatrixSolved => onMatrixSolved;
     public MatrixOperation.Type IntendedNextOperationType => operationSource.Operation.type;
     #endregion
 
@@ -32,13 +33,16 @@ public class MatrixUI : MonoBehaviour
 
     #region Private Editor Fields
     [SerializeField]
+    [Tooltip("Canvas group that controls the interactability of all children in the matrix")]
+    private CanvasGroup canvasGroup;
+    [SerializeField]
     [Tooltip("Reference to the prefab to instantiate for each matrix row")]
     private MatrixRowUI rowUIPrefab;
     [SerializeField]
     [Tooltip("Reference to the layout group used to hold all of the rows")]
     private RectTransform rowParent;
 
-    [Header("Audio")]
+    [Space]
 
     [SerializeField]
     [Tooltip("Sound that plays when an operation begins")]
@@ -52,8 +56,11 @@ public class MatrixUI : MonoBehaviour
     [SerializeField]
     [Tooltip("Sound that plays when an operation is cancelled")]
     private AudioClip operationCancelSound;
+    [SerializeField]
+    [Tooltip("Sound that plays when the matrix is solved")]
+    private AudioClip matrixSolveSound;
 
-    [Header("Events")]
+    [Space]
 
     [SerializeField]
     [Tooltip("Event invoked when the matrix begins an operation")]
@@ -64,6 +71,9 @@ public class MatrixUI : MonoBehaviour
     [SerializeField]
     [Tooltip("Event invoked when the matrix finishes an operation")]
     private UnityEvent<bool> onOperationFinish;
+    [SerializeField]
+    [Tooltip("")]
+    private UnityEvent onMatrixSolved;
     #endregion
 
     #region Private Fields
@@ -79,6 +89,9 @@ public class MatrixUI : MonoBehaviour
     #region Monobehaviour Messages
     private void Start()
     {
+        // Make sure all elements block raycasts
+        canvasGroup.blocksRaycasts = true;
+
         // Get the data for this specific level based on the level's name
         string expectedDataName = "LevelData/" + SceneManager.GetActiveScene().name + "Data";
         LevelData data = Resources.Load<LevelData>(expectedDataName);
@@ -164,7 +177,16 @@ public class MatrixUI : MonoBehaviour
             // Play a sound!
             EazySoundManager.PlayUISound(operationConfirmSound);
 
-            // Show a fun flash effect
+            // If current matrix is the identity, then invoke the matrix solved event
+            if(currentMatrix.isIdentity)
+            {
+                // None of the children block raycasts now that the matrix is solved
+                canvasGroup.blocksRaycasts = false;
+                // Play a sound!
+                EazySoundManager.PlayUISound(matrixSolveSound);
+                // Invoke the public event
+                onMatrixSolved.Invoke();
+            }
         }
         else
         {

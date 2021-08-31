@@ -27,7 +27,6 @@ public class MatrixFlashEffect : MonoBehaviour
     #region Private Methods
     private void Start()
     {
-        Debug.Break();
         StartCoroutine(FlashRoutine());
     }
     private IEnumerator FlashRoutine()

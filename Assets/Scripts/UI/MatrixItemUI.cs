@@ -13,6 +13,9 @@ public class MatrixItemUI : MatrixUIChild
 
     #region Private Editor Fields
     [SerializeField]
+    [Tooltip("Reference to the object to create a focus effect on the matrix item when the matrix is solved")]
+    private MatrixFocusEffect focusEffect;
+    [SerializeField]
     [Tooltip("Text used to display the current matrix item")]
     private TextMeshProUGUI text;
     #endregion
@@ -29,6 +32,9 @@ public class MatrixItemUI : MatrixUIChild
 
         this.rowParent = rowParent;
         this.columnIndex = columnIndex;
+
+        // Add listener for matrix solved event
+        MatrixParent.OnMatrixSolved.AddListener(OnMatrixSolved);
 
         // Show the current fraction
         ShowCurrent();
@@ -62,6 +68,14 @@ public class MatrixItemUI : MatrixUIChild
             if (displayedFraction == Fraction.zero) text.color = GameSettings.NotDiagonalColors.goodColor;
             // If we are not on the diagonal and not displaying a zero then set the bad color
             else text.color = GameSettings.NotDiagonalColors.badColor;
+        }
+    }
+    private void OnMatrixSolved()
+    {
+        if(columnIndex == rowParent.RowIndex)
+        {
+            MatrixFocusEffect effect = Instantiate(focusEffect, transform);
+            effect.transform.localPosition = Vector3.zero;
         }
     }
     #endregion

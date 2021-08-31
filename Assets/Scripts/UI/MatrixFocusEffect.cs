@@ -8,6 +8,9 @@ public class MatrixFocusEffect : MonoBehaviour
 {
     #region Private Editor Fields
     [SerializeField]
+    [Tooltip("Reference to the canvas used to put this effect over everything")]
+    private Canvas canvas;
+    [SerializeField]
     [Tooltip("Rect transform to grow/shrink for the focus effect")]
     private RectTransform rectTransform;
     [SerializeField]
@@ -39,6 +42,9 @@ public class MatrixFocusEffect : MonoBehaviour
     #region Private Methods
     private void Start()
     {
+        // Override canvas sorting so that the effect is over everything
+        canvas.overrideSorting = true;
+        canvas.sortingOrder = 100;
         StartCoroutine(FocusRoutine());
     }
     private IEnumerator FocusRoutine()

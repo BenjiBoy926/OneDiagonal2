@@ -50,6 +50,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94d43705b107fd842b17f3456ee7d08b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  focusEffect: {fileID: 8550629060411047082, guid: 309800d3dbb9f0f499a0095fcb81be91,
+    type: 3}
   text: {fileID: 1469971569435153140}
 --- !u!114 &8932768337501707731
 MonoBehaviour:
