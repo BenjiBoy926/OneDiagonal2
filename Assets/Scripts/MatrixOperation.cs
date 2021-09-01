@@ -1,4 +1,5 @@
 
+[System.Serializable]
 public struct MatrixOperation
 {
     #region Typedefs
@@ -6,7 +7,13 @@ public struct MatrixOperation
     #endregion
 
     #region Public Properties
-    public MatrixOperation Invalid => RowSwap(-1, -1);
+    public static MatrixOperation Invalid => RowSwap(-1, -1);
+    public MatrixOperation Inverse => type switch
+    {
+        Type.Scale => RowScale(destinationRow, scalar.reciprocal),
+        Type.Add => RowAdd(sourceRow, destinationRow, -scalar),
+        _ => this
+    };
     public bool IsValid => type switch
     {
         Type.Swap => destinationRow >= 0,

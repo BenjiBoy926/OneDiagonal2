@@ -12,24 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c986a704009dcf48bcdb0a8bd8f88dd, type: 3}
   m_Name: TestSceneData
   m_EditorClassIdentifier: 
-  startingValue:
-    data:
-    - n: 1
+  size: 3
+  intendedSolution:
+  - type: 2
+    destinationRow: 0
+    sourceRow: 1
+    scalar:
+      n: -1
       d: 1
-    - n: 1
-      d: 1
-    - n: 0
-      d: 1
-    - n: 0
-      d: 1
-    - n: 1
-      d: 1
-    - n: 0
-      d: 1
-    - n: 0
-      d: 1
-    - n: 0
-      d: 1
-    - n: 1
-      d: 1
-    _rows: 3

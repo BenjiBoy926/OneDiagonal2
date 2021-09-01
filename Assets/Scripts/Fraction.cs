@@ -80,11 +80,11 @@ public class Fraction
     // Positive/negate
     public static Fraction operator +(Fraction a)
     {
-        return new Fraction(Mathf.Abs(a.n), a.d);
+        return new Fraction(a);
     }
     public static Fraction operator -(Fraction a)
     {
-        return new Fraction(-Mathf.Abs(a.n), a.d);
+        return new Fraction(-a.n, a.d);
     }
     // Increment/Decrement
     public static Fraction operator++(Fraction a)

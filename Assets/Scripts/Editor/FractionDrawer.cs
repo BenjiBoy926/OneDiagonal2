@@ -4,8 +4,7 @@ using UnityEditor;
 [CustomPropertyDrawer(typeof(Fraction))]
 public class FractionPropertyDrawer : PropertyDrawer
 {
-    const float LABEL_WIDTH = 15f;
-    const float CENTER_BUFFER = 5f;
+    const float CENTER_BUFFER = 15f;
 
     public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
     {
@@ -36,7 +35,7 @@ public class FractionPropertyDrawer : PropertyDrawer
         SerializedProperty denominator = property.FindPropertyRelative("d");
         Vector2Int inputs = new Vector2Int();
 
-        GUIStyle slashStyle = new GUIStyle();
+        GUIStyle slashStyle = new GUIStyle(EditorStyles.boldLabel);
         slashStyle.alignment = TextAnchor.MiddleCenter;
         slashStyle.fontStyle = FontStyle.Bold;
 
@@ -46,10 +45,17 @@ public class FractionPropertyDrawer : PropertyDrawer
         builder.PushChild(new LayoutChild(LayoutSize.RatioOfRemainder(0.5f)));
         Layout layout = builder.Compile(position);
 
+        // Reset to no indent
+        int oldIndent = EditorGUI.indentLevel;
+        EditorGUI.indentLevel = 0;
+
         // Put the numerator, slash, denominator
         inputs.x = EditorGUI.DelayedIntField(layout.Next(), numerator.intValue);
         EditorGUI.LabelField(layout.Next(), new GUIContent("/"), slashStyle);
         inputs.y = EditorGUI.DelayedIntField(layout.Next(), denominator.intValue);
+
+        // Restore old indent
+        EditorGUI.indentLevel = oldIndent;
 
         return inputs;
     }

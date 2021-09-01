@@ -63,6 +63,18 @@ public class Matrix
     }
     private Matrix(Matrix copyMatrix) : this(copyMatrix.data, copyMatrix._rows, copyMatrix.cols) { }
 
+    // FACTORIES
+
+    public static Matrix Identity(int size)
+    {
+        Matrix matrix = new Matrix(size, size);
+        for(int i = 0; i < size; i++)
+        {
+            matrix.Set(i, i, Fraction.one);
+        }
+        return matrix;
+    }
+
     // GET/SET
     public Fraction Get(int i, int j)
     {
