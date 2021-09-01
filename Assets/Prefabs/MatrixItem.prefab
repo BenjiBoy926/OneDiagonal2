@@ -53,6 +53,8 @@ MonoBehaviour:
   focusEffect: {fileID: 8550629060411047082, guid: 309800d3dbb9f0f499a0095fcb81be91,
     type: 3}
   text: {fileID: 1469971569435153140}
+  focusPreviewEffect: {fileID: 1095029982541794794, guid: 2f7a449c293a9a7449645cd628dbae92,
+    type: 3}
 --- !u!114 &8932768337501707731
 MonoBehaviour:
   m_ObjectHideFlags: 0

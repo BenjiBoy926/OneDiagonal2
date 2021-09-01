@@ -13,6 +13,7 @@ public class MatrixUI : MonoBehaviour
     public Matrix PreviewMatrix => previewMatrix;
     public UnityEvent OnOperationStart => onOperationStart;
     public UnityEvent OnOperationDestinationSet => onOperationDestinationSet;
+    public UnityEvent OnOperationDestinationUnset => onOperationDestinationUnset;
     public UnityEvent<bool> OnOperationFinish => onOperationFinish;
     public UnityEvent OnMatrixSolved => onMatrixSolved;
     public MatrixOperation.Type IntendedNextOperationType => operationSource.Operation.type;
@@ -57,6 +58,9 @@ public class MatrixUI : MonoBehaviour
     [Tooltip("Sound that plays when an operation is cancelled")]
     private AudioClip operationCancelSound;
     [SerializeField]
+    [Tooltip("Sound that plays when the player previews an operation that would result in them solving the puzzle")]
+    private AudioClip previewIdentitySound;
+    [SerializeField]
     [Tooltip("Sound that plays when the matrix is solved")]
     private AudioClip matrixSolveSound;
 
@@ -68,6 +72,9 @@ public class MatrixUI : MonoBehaviour
     [SerializeField]
     [Tooltip("Event invoked when the operation source is set")]
     private UnityEvent onOperationDestinationSet;
+    [SerializeField]
+    [Tooltip("Event invoked when the operation destination is unset")]
+    private UnityEvent onOperationDestinationUnset;
     [SerializeField]
     [Tooltip("Event invoked when the matrix finishes an operation")]
     private UnityEvent<bool> onOperationFinish;
@@ -149,6 +156,12 @@ public class MatrixUI : MonoBehaviour
             previewMatrix = currentMatrix.Operate(IntendedNextOperation);
             ShowPreview();
 
+            // If we are previewing the identity then play the sound
+            if(previewMatrix.isIdentity)
+            {
+                EazySoundManager.PlayUISound(previewIdentitySound);
+            }
+
             // Invoke the event for the destination set
             onOperationDestinationSet.Invoke();
         }
@@ -161,6 +174,9 @@ public class MatrixUI : MonoBehaviour
         // Update all the ui elements to display the current matrix
         ShowCurrent();
         operationDestination = null;
+
+        // Invoke the event
+        onOperationDestinationUnset.Invoke();
     }
 
     public bool ConfirmOperation()

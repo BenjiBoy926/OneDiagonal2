@@ -18,11 +18,15 @@ public class MatrixItemUI : MatrixUIChild
     [SerializeField]
     [Tooltip("Text used to display the current matrix item")]
     private TextMeshProUGUI text;
+    [SerializeField]
+    [Tooltip("Reference to the object used to create the preview focus effect")]
+    private MatrixFocusPreviewEffect focusPreviewEffect;
     #endregion
 
     #region Private Fields
     private MatrixRowUI rowParent;
     private int columnIndex;
+    private MatrixFocusPreviewEffect currentPreviewEffect;
     #endregion
 
     #region Public Methods
@@ -33,8 +37,9 @@ public class MatrixItemUI : MatrixUIChild
         this.rowParent = rowParent;
         this.columnIndex = columnIndex;
 
-        // Add listener for matrix solved event
+        // Add listener for matrix events
         MatrixParent.OnMatrixSolved.AddListener(OnMatrixSolved);
+        MatrixParent.OnOperationDestinationUnset.AddListener(OnMatrixOperationDestinationUnset);
 
         // Show the current fraction
         ShowCurrent();
@@ -48,6 +53,12 @@ public class MatrixItemUI : MatrixUIChild
     {
         text.text = PreviewFraction.ToString();
         SetColor(PreviewFraction);
+
+        // If this is along the diagonal and the preview is the identity then create the preview effect
+        if(columnIndex == rowParent.RowIndex && MatrixParent.PreviewMatrix.isIdentity)
+        {
+            currentPreviewEffect = Instantiate(focusPreviewEffect, transform);
+        }
     }
     #endregion
 
@@ -77,6 +88,10 @@ public class MatrixItemUI : MatrixUIChild
             MatrixFocusEffect effect = Instantiate(focusEffect, transform);
             effect.transform.localPosition = Vector3.zero;
         }
+    }
+    private void OnMatrixOperationDestinationUnset()
+    {
+        if (currentPreviewEffect) currentPreviewEffect.FadeOut();
     }
     #endregion
 }
