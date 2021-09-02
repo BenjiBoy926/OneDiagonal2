@@ -11,6 +11,9 @@ public class MatrixFlashEffect : MonoBehaviour
     [Tooltip("Reference to the rect transform on this flash effect")]
     private RectTransform rectTransform;
     [SerializeField]
+    [Tooltip("Canvas used to place this object on top of other objects")]
+    private Canvas canvas;
+    [SerializeField]
     [Tooltip("Image for the flash effect display")]
     private Image image;
 
@@ -27,6 +30,10 @@ public class MatrixFlashEffect : MonoBehaviour
     #region Private Methods
     private void Start()
     {
+        // Sort the flash to be above other things
+        canvas.overrideSorting = true;
+        canvas.sortingOrder = 10;
+        // Start the flash routine
         StartCoroutine(FlashRoutine());
     }
     private IEnumerator FlashRoutine()

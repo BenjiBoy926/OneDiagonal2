@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7000655486527566905}
+  - component: {fileID: 7966066980572661641}
   - component: {fileID: 7973719709833339150}
   - component: {fileID: 6065026091768984816}
   - component: {fileID: 2930442416200011611}
@@ -39,6 +40,27 @@ RectTransform:
   m_AnchoredPosition: {x: -9.90741, y: -23.996841}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!223 &7966066980572661641
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8549008059062818672}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 2
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 1
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_AdditionalShaderChannelsFlag: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 10
+  m_TargetDisplay: 0
 --- !u!222 &7973719709833339150
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -90,6 +112,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rectTransform: {fileID: 7000655486527566905}
+  canvas: {fileID: 7966066980572661641}
   image: {fileID: 6065026091768984816}
   flashTime: 0.2
   finalScale: 2

@@ -241,5 +241,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Matrix
       objectReference: {fileID: 0}
+    - target: {fileID: 4936915225360854192, guid: 1da85dfe8722f1a459e2c39530b189f4,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1da85dfe8722f1a459e2c39530b189f4, type: 3}
