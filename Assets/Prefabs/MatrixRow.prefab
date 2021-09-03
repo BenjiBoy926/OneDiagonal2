@@ -37,7 +37,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 10, y: 0}
+  m_AnchoredPosition: {x: 5, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8598898810525686947
@@ -91,8 +91,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Padding:
-    m_Left: 10
-    m_Right: 10
+    m_Left: 0
+    m_Right: 0
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 4
@@ -120,8 +120,6 @@ MonoBehaviour:
   - {fileID: 7154070194718407302}
   graphics:
   - {fileID: 7428641008155256609}
-  flashEffectPrefab: {fileID: 2930442416200011611, guid: 3e32fe817c969d74cbec821ec9663b34,
-    type: 3}
 --- !u!114 &7880415090126026423
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -194,8 +192,6 @@ MonoBehaviour:
   rowGraphic: {fileID: 7428641008155256609}
   rowOperationSource: {fileID: 3028902319705266852}
   rowAddWidget: {fileID: 547775832931351853}
-  flashEffectPrefab: {fileID: 2930442416200011611, guid: 3e32fe817c969d74cbec821ec9663b34,
-    type: 3}
 --- !u!114 &2486076060908494331
 MonoBehaviour:
   m_ObjectHideFlags: 0

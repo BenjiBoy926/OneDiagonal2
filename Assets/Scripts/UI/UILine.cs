@@ -61,6 +61,12 @@ public class UILine : MonoBehaviour
     #endregion
 
     #region Public Methods
+    public void SetPoints(Vector3 start, Vector3 end)
+    {
+        this.start = start;
+        this.end = end;
+        Redraw();
+    }
     public void Redraw()
     {
         // Anchor and pivot in the center
@@ -74,7 +80,7 @@ public class UILine : MonoBehaviour
         float angle = 0f;
         if(diff.magnitude > 0.001f) angle = Mathf.Atan(diff.y / diff.x) * Mathf.Rad2Deg;
 
-        // Set size delta (is width and height since center is anchor
+        // Set size delta (is width and height since center is anchor)
         RectTransform.position = midpoint;
         RectTransform.sizeDelta = new Vector2(Length, thickness);
         RectTransform.localRotation = Quaternion.Euler(0f, 0f, angle);

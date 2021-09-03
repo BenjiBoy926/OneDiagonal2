@@ -8,6 +8,7 @@ using DG.Tweening;
 public class MatrixRowUI : MatrixUIChild, IPointerEnterHandler, IPointerExitHandler
 {
     #region Public Properties
+    public MatrixItemUI[] ItemUIs => itemUIs;
     public Fraction[] CurrentRow => MatrixParent.CurrentMatrix.GetRow(rowIndex);
     public Fraction[] PreviewRow => MatrixParent.PreviewMatrix.GetRow(rowIndex);
     public int RowIndex => rowIndex;

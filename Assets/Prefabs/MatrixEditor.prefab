@@ -208,6 +208,8 @@ MonoBehaviour:
   rowUIPrefab: {fileID: 3543821124462672891, guid: 6c1a7bab8d2130a428fb998154ef5f0a,
     type: 3}
   rowParent: {fileID: 4936915225360854192}
+  highlightPrefab: {fileID: 5456217070561094153, guid: 92ef7303c2b1fd5418f30fd4bf3998a4,
+    type: 3}
   operationBeginSound: {fileID: 8300000, guid: b896e2c860fa345bcb28f87e366be5bd, type: 3}
   operationDestinationSetSound: {fileID: 8300000, guid: 3574ad7ac970b424487560607b782f4b,
     type: 3}

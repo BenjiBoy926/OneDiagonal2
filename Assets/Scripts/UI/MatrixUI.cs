@@ -9,6 +9,7 @@ using Hellmade.Sound;
 public class MatrixUI : MonoBehaviour
 {
     #region Public Properties
+    public MatrixRowUI[] RowUIs => rowUIs;
     public Matrix CurrentMatrix => currentMatrix;
     public Matrix PreviewMatrix => previewMatrix;
     public UnityEvent OnOperationStart => onOperationStart;
@@ -42,6 +43,9 @@ public class MatrixUI : MonoBehaviour
     [SerializeField]
     [Tooltip("Reference to the layout group used to hold all of the rows")]
     private RectTransform rowParent;
+    [SerializeField]
+    [Tooltip("Object used to create a fun highlight effect when the player solves the puzzle")]
+    private MatrixDiagonalHighlightEffect highlightPrefab;
 
     [Space]
 
@@ -200,6 +204,8 @@ public class MatrixUI : MonoBehaviour
                 canvasGroup.blocksRaycasts = false;
                 // Play a sound!
                 EazySoundManager.PlayUISound(matrixSolveSound);
+                // Create the highlight effect
+                Instantiate(highlightPrefab, transform);
                 // Invoke the public event
                 onMatrixSolved.Invoke();
             }
