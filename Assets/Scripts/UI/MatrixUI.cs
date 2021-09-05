@@ -83,7 +83,7 @@ public class MatrixUI : MonoBehaviour
     [Tooltip("Event invoked when the matrix finishes an operation")]
     private UnityEvent<bool> onOperationFinish;
     [SerializeField]
-    [Tooltip("")]
+    [Tooltip("Event invoked when the matrix is solved")]
     private UnityEvent onMatrixSolved;
     #endregion
 
@@ -103,30 +103,18 @@ public class MatrixUI : MonoBehaviour
         // Make sure all elements block raycasts
         canvasGroup.blocksRaycasts = true;
 
-        // Get the data for this specific level based on the level's name
-        string expectedDataName = "LevelData/" + SceneManager.GetActiveScene().name + "Data";
-        LevelData data = Resources.Load<LevelData>(expectedDataName);
+        // Get the starting matrix of the current level data
+        currentMatrix = LevelSettings.GetLevelData(GameplayManager.CurrentLevel).GetStartingMatrix();
 
-        if(data)
+        // Initialize the list of rows
+        rowUIs = new MatrixRowUI[currentMatrix.rows];
+
+        // Instantiate a row
+        for (int i = 0; i < currentMatrix.rows; i++)
         {
-            // Initialize the UI
-            currentMatrix = data.GetStartingMatrix();
-
-            // Initialize the list of rows
-            rowUIs = new MatrixRowUI[currentMatrix.rows];
-
-            // Instantiate a row
-            for(int i = 0; i < currentMatrix.rows; i++)
-            {
-                MatrixRowUI row = Instantiate(rowUIPrefab, rowParent);
-                row.Setup(i);
-                rowUIs[i] = row;
-            }
-        }
-        else
-        {
-            Debug.LogWarning("MatrixUI: expected LevelData asset resource named '" + expectedDataName + "', but could not find any. " +
-                "Make sure you have a LevelData asset with the name '" + expectedDataName + "' in a folder named 'Resources' somewhere in the project assets");
+            MatrixRowUI row = Instantiate(rowUIPrefab, rowParent);
+            row.Setup(i);
+            rowUIs[i] = row;
         }
     }
     #endregion

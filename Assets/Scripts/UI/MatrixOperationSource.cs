@@ -55,7 +55,7 @@ public class MatrixOperationSource : MatrixUIChild, IBeginDragHandler, IDragHand
         // Set the color of the graphics this source is responsible for
         foreach(Graphic graphic in graphics)
         {
-            graphic.color = GameSettings.GetOperatorColor(Operation.type);
+            graphic.color = UISettings.GetOperatorColor(Operation.type);
         }
         PunchSize();
     }
@@ -75,7 +75,7 @@ public class MatrixOperationSource : MatrixUIChild, IBeginDragHandler, IDragHand
             // Create a flash effect for each rect transform
             foreach(RectTransform rectTransform in rectTransforms)
             {
-                Instantiate(GameSettings.FlashEffect, rectTransform);
+                Instantiate(UISettings.FlashEffect, rectTransform);
             }
         }
 
@@ -93,7 +93,7 @@ public class MatrixOperationSource : MatrixUIChild, IBeginDragHandler, IDragHand
         foreach(RectTransform rt in rectTransforms)
         {
             rt.DOComplete();
-            rt.DOPunchScale(Vector3.one * GameSettings.OperatorPunch, GameSettings.OperatorPunchTime);
+            rt.DOPunchScale(Vector3.one * UISettings.OperatorPunch, UISettings.OperatorPunchTime);
         }
     }
     #endregion

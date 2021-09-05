@@ -69,16 +69,16 @@ public class MatrixItemUI : MatrixUIChild
         if(columnIndex == rowParent.RowIndex)
         {
             // If we are on the diagonal and displaying a one, then set the good color
-            if (displayedFraction == Fraction.one) text.color = GameSettings.DiagonalColors.goodColor;
+            if (displayedFraction == Fraction.one) text.color = UISettings.DiagonalColors.goodColor;
             // If we are on the diagonal but not displaying a one then set the bad color
-            else text.color = GameSettings.DiagonalColors.badColor;
+            else text.color = UISettings.DiagonalColors.badColor;
         }
         else
         {
             // If we are not on the diagonal and displaying a zero then set the good color
-            if (displayedFraction == Fraction.zero) text.color = GameSettings.NotDiagonalColors.goodColor;
+            if (displayedFraction == Fraction.zero) text.color = UISettings.NotDiagonalColors.goodColor;
             // If we are not on the diagonal and not displaying a zero then set the bad color
-            else text.color = GameSettings.NotDiagonalColors.badColor;
+            else text.color = UISettings.NotDiagonalColors.badColor;
         }
     }
     private void OnMatrixSolved()
