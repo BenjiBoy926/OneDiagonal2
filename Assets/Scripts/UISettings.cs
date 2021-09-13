@@ -2,31 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Settings", menuName = "Settings")]
-public class UISettings : ScriptableObject
+[CreateAssetMenu]
+public class UISettings : ScriptableObjectSingleton<UISettings>
 {
-    #region Private Properties
-    private static UISettings Instance
-    {
-        get
-        {
-            if(!instance)
-            {
-                // Load the resource
-                instance = Resources.Load<UISettings>(nameof(UISettings));
-
-                // If the instance still could not be loaded then throw an exception
-                if (!instance) throw new MissingReferenceException(nameof(UISettings) + ": no instance of type " + nameof(UISettings) + 
-                    " could be loaded from the resources folder. Make sure an instance of type " +
-                    nameof(UISettings) + " with the name " + nameof(UISettings) + 
-                    " exists in a folder named 'Resources'");
-            }
-            // Return the loaded instance
-            return instance;
-        }
-    }
-    #endregion
-
     #region Public Properties
     public static MatrixItemColor DiagonalColors => Instance.diagonalColors;
     public static MatrixItemColor NotDiagonalColors => Instance.notDiagnonalColors;
@@ -55,11 +33,6 @@ public class UISettings : ScriptableObject
     [SerializeField]
     [Tooltip("Time that the operator should take to punch it's scale when set as the source/destination")]
     private float operatorPunchTime = 0.2f;
-    #endregion
-
-    #region Private Fields
-    // Reference to the ui settings singleton instance
-    private static UISettings instance;
     #endregion
 
     #region Public Methods
