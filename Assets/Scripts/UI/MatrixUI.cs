@@ -18,11 +18,8 @@ public class MatrixUI : MonoBehaviour
     public UnityEvent<bool> OnOperationFinish => onOperationFinish;
     public UnityEvent OnMatrixSolved => onMatrixSolved;
     public MatrixOperation.Type IntendedNextOperationType => operationSource.Operation.type;
-    #endregion
-
-    #region Private Properties
     // NOTE: you should only call this if both operationSource and operationDestination are non-null
-    private MatrixOperation IntendedNextOperation
+    public MatrixOperation IntendedNextOperation
     {
         get
         {
@@ -104,7 +101,7 @@ public class MatrixUI : MonoBehaviour
         canvasGroup.blocksRaycasts = true;
 
         // Get the starting matrix of the current level data
-        currentMatrix = LevelSettings.GetLevelData(GameplayManager.CurrentLevel).GetStartingMatrix();
+        currentMatrix = GameplayManager.CurrentLevelData.GetStartingMatrix();
 
         // Initialize the list of rows
         rowUIs = new MatrixRowUI[currentMatrix.rows];
