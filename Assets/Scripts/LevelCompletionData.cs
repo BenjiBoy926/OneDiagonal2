@@ -7,7 +7,8 @@ public class LevelCompletionData
 {
     #region Public Properties
     public bool Completed => completed;
-    public int MinimumMoves => minimumMoves;
+    public int FewestMoves => fewestMoves;
+    public string FewestMovesString => completed ? fewestMoves.ToString() : "--";
     #endregion
 
     #region Private Editor Fields
@@ -15,8 +16,8 @@ public class LevelCompletionData
     [Tooltip("True if the player has completed this level before")]
     private bool completed;
     [SerializeField]
-    [Tooltip("Number of moves it took the player to complete the level")]
-    private int minimumMoves;
+    [Tooltip("Fewest moves it has taken the player to complete the level")]
+    private int fewestMoves;
     #endregion
 
     #region Constructors
@@ -24,15 +25,16 @@ public class LevelCompletionData
     public LevelCompletionData(bool completed, int minimumMoves)
     {
         this.completed = completed;
-        this.minimumMoves = minimumMoves;
+        this.fewestMoves = minimumMoves;
     }
+    public LevelCompletionData(LevelCompletionData other) : this(other.completed, other.fewestMoves) { }
     #endregion
 
     #region Public Methods
     public void CompleteLevel(int moves)
     {
         completed = true;
-        minimumMoves = Mathf.Min(minimumMoves, moves);
+        fewestMoves = Mathf.Min(fewestMoves, moves);
     }
     #endregion
 }

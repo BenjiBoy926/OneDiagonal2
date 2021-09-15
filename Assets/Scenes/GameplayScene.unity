@@ -130,6 +130,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 70007550792410614, guid: 1da85dfe8722f1a459e2c39530b189f4,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 307047282639975821, guid: 1da85dfe8722f1a459e2c39530b189f4,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4501634155979702054, guid: 1da85dfe8722f1a459e2c39530b189f4,
         type: 3}
       propertyPath: m_Pivot.x
@@ -239,6 +249,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: MatrixEditor
+      objectReference: {fileID: 0}
+    - target: {fileID: 4936915225360854192, guid: 1da85dfe8722f1a459e2c39530b189f4,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7188160422483528650, guid: 1da85dfe8722f1a459e2c39530b189f4,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7939470371399679206, guid: 1da85dfe8722f1a459e2c39530b189f4,
+        type: 3}
+      propertyPath: m_PixelPerfect
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7939470371399679206, guid: 1da85dfe8722f1a459e2c39530b189f4,
+        type: 3}
+      propertyPath: m_OverridePixelPerfect
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1da85dfe8722f1a459e2c39530b189f4, type: 3}

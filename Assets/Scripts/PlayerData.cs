@@ -36,7 +36,6 @@ public class PlayerData
     #endregion
 
     #region Private Editor Fields
-    // Will these array on enum fields be properly serialized?
     [SerializeField]
     [Tooltip("List of completion data for every level")]
     private ArrayOnEnum<LevelType, LevelCompletionDataList> completionDatas;
@@ -80,12 +79,36 @@ public class PlayerData
     #endregion
 
     #region Public Methods
+    // Get the completion data for the specified level
+    public static LevelCompletionData GetCompletionData(LevelID id) => Instance.completionDatas.Get(id.Type).completionData[id.Index];
     // Save the current instance of the player data to the file
     public static void Save()
     {
+        // Note: we store the instance first because Load might open the same file,
+        // resulting in a sharing violation
+        PlayerData currentInstance = Instance;
+
         FileStream file = new FileStream(savePath, FileMode.OpenOrCreate);
-        formatter.Serialize(file, Instance);
+        formatter.Serialize(file, currentInstance);
         file.Close();
+    }
+    public static PlayerData Load()
+    {
+        // Data to load from file, or gives default data
+        PlayerData data;
+
+        // If a save file exists, load it
+        if (SaveFileExists())
+        {
+            FileStream file = new FileStream(savePath, FileMode.Open);
+            data = (PlayerData)formatter.Deserialize(file);
+            file.Close();
+        }
+        // If no save file exists, create a new player data
+        else data = new PlayerData();
+
+        // Return the instance
+        return data;
     }
     // Delete the current instance of the player data
     public static void Delete()
@@ -97,22 +120,5 @@ public class PlayerData
         }
     }
     public static bool SaveFileExists() => File.Exists(savePath);
-    #endregion
-
-    #region Private Methods
-    private static PlayerData Load()
-    {
-        // If a save file exists, load it
-        if (SaveFileExists())
-        {
-            FileStream file = new FileStream(savePath, FileMode.Open);
-            instance = (PlayerData)formatter.Deserialize(file);
-        }
-        // If no save file exists, create a new player data
-        else instance = new PlayerData();
-
-        // Return the instance
-        return instance;
-    }
     #endregion
 }

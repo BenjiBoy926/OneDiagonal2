@@ -28,6 +28,7 @@ public class MatrixUI : MonoBehaviour
             return operation;
         }
     }
+    public int CurrentMoves => currentMoves;
     #endregion
 
     #region Private Editor Fields
@@ -92,6 +93,9 @@ public class MatrixUI : MonoBehaviour
 
     private MatrixOperationSource operationSource;
     private MatrixRowUI operationDestination;
+
+    // Current number of operations the player has performed on the matrix
+    private int currentMoves = 0;
     #endregion
 
     #region Monobehaviour Messages
@@ -175,8 +179,10 @@ public class MatrixUI : MonoBehaviour
         // Check if operation destination is set or not
         if(operationSuccess)
         {
-            // Update the current matrix
+            // Update the current matrix and current moves
             currentMatrix = currentMatrix.Operate(IntendedNextOperation);
+            currentMoves++;
+
             ShowCurrent();
 
             // Play a sound!
