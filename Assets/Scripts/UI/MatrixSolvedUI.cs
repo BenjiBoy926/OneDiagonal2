@@ -43,6 +43,9 @@ public class MatrixSolvedUI : MatrixUIChild
     [SerializeField]
     [Tooltip("Button that sends the player to the next stage")]
     private Button advanceButton;
+    [SerializeField]
+    [Tooltip("Button that replays the current level")]
+    private Button replayButton;
 
     [Space]
 
@@ -61,9 +64,6 @@ public class MatrixSolvedUI : MatrixUIChild
     [SerializeField]
     [Tooltip("Time to wait between showing the fewest moves text and updating the fewest moves text")]
     private float fewestMovesTextUpdateWait = 1f;
-    [SerializeField]
-    [Tooltip("Time to wait between updating the fewest moves text and showing the ending buttons")]
-    private float endingButtonsWait = 1f;
 
     [Space]
 
@@ -96,16 +96,18 @@ public class MatrixSolvedUI : MatrixUIChild
         fewestMovesText.textRoot.gameObject.SetActive(false);
         mainMenuButton.gameObject.SetActive(false);
         advanceButton.gameObject.SetActive(false);
+        replayButton.gameObject.SetActive(false);
 
         mainMenuButton.onClick.AddListener(() => SceneManager.LoadScene("MainMenu"));
         // If this is the last level, the advance button is not interactable
-        if (LevelSettings.IsLastLevel(GameplayManager.CurrentLevelID))
+        if (LevelSettings.IsLastLevel(GameplayManager.CurrentLevelID) && GameplayManager.CurrentLevelID.Type == LevelType.Enumerated)
         {
             advanceButton.interactable = false;
             advanceButtonGroup.alpha = 0.5f;
         }
         // It this is not the last level, the advance button will play the next level
         else advanceButton.onClick.AddListener(() => GameplayManager.PlayNextLevel());
+        replayButton.onClick.AddListener(() => GameplayManager.ReplayLevel());
 
         // Create a copy of the current level completion data at the start
         completionDataOnPuzzleStart = new LevelCompletionData(GameplayManager.CurrentLevelCompletionData);
@@ -126,6 +128,11 @@ public class MatrixSolvedUI : MatrixUIChild
         panel.enabled = true;
         yield return panel.DOColor(new Color(0f, 0f, 0f, 0.8f), congratsWait)
             .WaitForCompletion();
+
+        // Show the buttons
+        mainMenuButton.gameObject.SetActive(true);
+        advanceButton.gameObject.SetActive(true);
+        replayButton.gameObject.SetActive(true);
 
         // Enable the text and play the reveal sound
         congratsText.enabled = true;
@@ -159,12 +166,8 @@ public class MatrixSolvedUI : MatrixUIChild
 
             // Punch the scale to make it really flashy
             fewestMovesText.textRoot.DOKill();
-            fewestMovesText.textRoot
-                .DOPunchScale(Vector3.one * UISettings.OperatorPunch, UISettings.OperatorPunchTime);
+            fewestMovesText.textRoot.DOPunchScale(Vector3.one * UISettings.OperatorPunch, UISettings.OperatorPunchTime);
         }
-
-        // Wait for the ending buttons to appear
-        yield return new WaitForSeconds(endingButtonsWait);
 
         // Show the buttons
         mainMenuButton.gameObject.SetActive(true);

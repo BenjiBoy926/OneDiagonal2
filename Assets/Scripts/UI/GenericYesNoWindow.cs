@@ -60,7 +60,7 @@ public class GenericYesNoWindow : MonoBehaviour
     /// <param name="prefabPath">The resources path to find the prefab in. 
     /// If null or white space, we use a default path</param>
     /// <returns>The instance of the window that was created</returns>
-    public static GenericYesNoWindow CreateWindowFromResources(Transform parent, string prefabPath = null)
+    public static GenericYesNoWindow CreateFromResource(Transform parent, string prefabPath = null)
     {
         // If argument is null or white space then use the default
         if (string.IsNullOrWhiteSpace(prefabPath)) prefabPath = defaultPrefabPath;

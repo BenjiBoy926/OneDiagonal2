@@ -32,6 +32,7 @@ public class GameplayManager : MatrixUIChild
         CurrentLevelID = level;
         SceneManager.LoadScene("GameplayScene");
     }
+    public static void ReplayLevel() => PlayLevel(CurrentLevelID);
     public static void PlayNextLevel() => PlayLevel(new LevelID(CurrentLevelID.Type, CurrentLevelID.Index + 1));
     #endregion
 }
