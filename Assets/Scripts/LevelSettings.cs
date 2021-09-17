@@ -40,7 +40,7 @@ public class LevelSettings : ScriptableObjectSingleton<LevelSettings>
     #endregion
 
     #region Public Methods
-    public static LevelData[] GetLevelData(LevelType type) => Instance.levelDatas.Get(type).list;
+    public static int TotalLevelsOfType(LevelType type) => Instance.levelDatas.Get(type).list.Length;
     public static LevelData GetLevelData(LevelID id) => Instance.levelDatas.Get(id.Type).list[id.Index];
     public static bool IsLastLevel(LevelID id) => id.Index == (Instance.levelDatas.Get(id.Type).list.Length - 1);
     #endregion

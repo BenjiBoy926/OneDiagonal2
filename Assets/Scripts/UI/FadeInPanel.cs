@@ -34,7 +34,8 @@ public class FadeInPanel : MonoBehaviour
     {
         if(!callbackIsAdded)
         {
-            SceneManager.sceneLoaded += CreateFromResource;        
+            SceneManager.sceneLoaded += CreateFromResource;
+            callbackIsAdded = true;
         }
     }
     private static void CreateFromResource(Scene scene, LoadSceneMode mode)

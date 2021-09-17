@@ -14,12 +14,12 @@ public class PlayerData
     public class LevelCompletionDataList
     {
         // List of completion datas
-        public LevelCompletionData[] completionData;
+        public LevelCompletionData[] array;
 
         // Constructor to create the array with a defined size
         public LevelCompletionDataList(int size)
         {
-            completionData = new LevelCompletionData[size];
+            array = new LevelCompletionData[size];
         }
     }
     #endregion
@@ -62,14 +62,14 @@ public class PlayerData
 
         foreach(LevelType type in levelTypes)
         {
-            int numLevelsOfType = LevelSettings.GetLevelData(type).Length;
+            int numLevelsOfType = LevelSettings.TotalLevelsOfType(type);
             // Set the completion data list to a new list
             completionDatas.Set(type, new LevelCompletionDataList(numLevelsOfType));
 
             // Set each completion data to the default
             for (int i = 0; i < numLevelsOfType; i++)
             {
-                completionDatas.Get(type).completionData[i] = new LevelCompletionData();
+                completionDatas.Get(type).array[i] = new LevelCompletionData();
             }
         }
 
@@ -80,7 +80,8 @@ public class PlayerData
 
     #region Public Methods
     // Get the completion data for the specified level
-    public static LevelCompletionData GetCompletionData(LevelID id) => Instance.completionDatas.Get(id.Type).completionData[id.Index];
+    public static LevelCompletionData GetCompletionData(LevelID id) => Instance.completionDatas.Get(id.Type).array[id.Index];
+    public static void UnlockOperation(MatrixOperation.Type type) => Instance.operationsUnlocked.Set(type, true);
     // Save the current instance of the player data to the file
     public static void Save()
     {
@@ -88,9 +89,8 @@ public class PlayerData
         // resulting in a sharing violation
         PlayerData currentInstance = Instance;
 
-        FileStream file = new FileStream(savePath, FileMode.OpenOrCreate);
+        using FileStream file = new FileStream(savePath, FileMode.OpenOrCreate);
         formatter.Serialize(file, currentInstance);
-        file.Close();
     }
     public static PlayerData Load()
     {
@@ -100,9 +100,31 @@ public class PlayerData
         // If a save file exists, load it
         if (SaveFileExists())
         {
-            FileStream file = new FileStream(savePath, FileMode.Open);
+            using FileStream file = new FileStream(savePath, FileMode.Open);
             data = (PlayerData)formatter.Deserialize(file);
-            file.Close();
+
+            // Check for discrepancies between the loaded player data and the level settings
+            // If there are discrepancies, we don't have any way of resolving them, so we
+            // delete the player's save file and create a new data
+            
+            // Get a list of the level types
+            LevelType[] levelTypes = (LevelType[])System.Enum.GetValues(typeof(LevelType));
+
+            // Loop over all level types
+            foreach (LevelType type in levelTypes)
+            {
+                // Get the number of levels with this type
+                int numLevelsOfType = LevelSettings.TotalLevelsOfType(type);
+
+                // If the levels on the level settings are not equal to the completion datas,
+                // delete the save file and create new data
+                if(numLevelsOfType != data.completionDatas.Get(type).array.Length)
+                {
+                    Delete();
+                    data = new PlayerData();
+                    break;
+                }
+            }
         }
         // If no save file exists, create a new player data
         else data = new PlayerData();

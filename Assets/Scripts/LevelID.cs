@@ -26,4 +26,26 @@ public struct LevelID
         this.index = index;
     }
     #endregion
+
+    #region Overrides
+    public override bool Equals(object obj)
+    {
+        if (obj == null) return false;
+        else if (obj.GetType() == GetType()) return this == (LevelID)obj;
+        else return false;
+    }
+    public override int GetHashCode()
+    {
+        return type.GetHashCode() + index.GetHashCode();
+    }
+    public override string ToString()
+    {
+        return $"Level ID: {type}, {index}";
+    }
+    #endregion
+
+    #region Operators
+    public static bool operator==(LevelID a, LevelID b) => a.type == b.type && a.index == b.index;
+    public static bool operator !=(LevelID a, LevelID b) => !(a == b);
+    #endregion
 }

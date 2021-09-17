@@ -31,7 +31,7 @@ public class ReturnToMainMenu : MonoBehaviour
     {
         if(!current)
         {
-            current = GenericYesNoWindow.CreateFromResource(windowParent);
+            current = GenericYesNoWindow.InstantiateFromResource(windowParent);
             current.Setup("Are you sure you want to return to the main menu?", LoadMainMenu, null, null);
         }
     }

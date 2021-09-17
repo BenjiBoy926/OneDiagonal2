@@ -39,6 +39,21 @@ MonoBehaviour:
           scalar:
             n: 0
             d: 0
+      - size: 4
+        type: 0
+        intendedSolution:
+        - type: 0
+          destinationRow: 0
+          sourceRow: 3
+          scalar:
+            n: 0
+            d: 0
+        - type: 0
+          destinationRow: 1
+          sourceRow: 2
+          scalar:
+            n: 0
+            d: 0
     - list:
       - size: 3
         type: 1
