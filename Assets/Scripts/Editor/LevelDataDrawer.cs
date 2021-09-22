@@ -11,6 +11,7 @@ public class LevelDataDrawer : PropertyDrawer
         SerializedProperty size = property.FindPropertyRelative(nameof(size));
         SerializedProperty type = property.FindPropertyRelative(nameof(type));
         SerializedProperty intendedSolution = property.FindPropertyRelative(nameof(intendedSolution));
+        SerializedProperty tutorials = property.FindPropertyRelative(nameof(tutorials));
 
         // Set height for only one control
         position.height = LayoutUtilities.standardControlHeight;
@@ -34,7 +35,11 @@ public class LevelDataDrawer : PropertyDrawer
             if(type.enumValueIndex == 0)
             {
                 EditorGUI.PropertyField(position, intendedSolution, true);
-            } 
+                position.y += EditorGUI.GetPropertyHeight(intendedSolution, true);
+            }
+
+            // Edit the tutorials
+            EditorGUI.PropertyField(position, tutorials, true);
 
             EditorGUI.indentLevel--;
         }
@@ -44,12 +49,14 @@ public class LevelDataDrawer : PropertyDrawer
     {
         SerializedProperty type = property.FindPropertyRelative(nameof(type));
         SerializedProperty intendedSolution = property.FindPropertyRelative(nameof(intendedSolution));
+        SerializedProperty tutorials = property.FindPropertyRelative(nameof(tutorials));
 
         float height = LayoutUtilities.standardControlHeight;
 
         if(property.isExpanded)
         {
             height += LayoutUtilities.standardControlHeight * 2f;
+            height += EditorGUI.GetPropertyHeight(tutorials, true);
 
             if (type.enumValueIndex == 0)
             {

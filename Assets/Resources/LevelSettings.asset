@@ -24,6 +24,27 @@ MonoBehaviour:
           scalar:
             n: 0
             d: 0
+        tutorials:
+        - optionalUnlockData:
+            willUnlock: 0
+            unlocker:
+              operationType: 0
+              unlockSprite: {fileID: 0}
+          title: Welcome to One Diagonal!
+          sprite: {fileID: 21300000, guid: 28bde2d4c5546644b9bfbb368561ea62, type: 3}
+          video: {fileID: 0}
+          explanation: Use the power of MATH to manipulate a MATRIX until you're
+            left with just one row of ones!
+        - optionalUnlockData:
+            willUnlock: 1
+            unlocker:
+              operationType: 0
+              unlockSprite: {fileID: 0}
+          title: Row Swap
+          sprite: {fileID: 0}
+          video: {fileID: 0}
+          explanation: Click and drag one row onto another row to swap their positions
+            in the matrix.
       - size: 3
         type: 0
         intendedSolution:
@@ -39,6 +60,7 @@ MonoBehaviour:
           scalar:
             n: 0
             d: 0
+        tutorials: []
       - size: 4
         type: 0
         intendedSolution:
@@ -54,13 +76,17 @@ MonoBehaviour:
           scalar:
             n: 0
             d: 0
+        tutorials: []
     - list:
       - size: 3
         type: 1
         intendedSolution: []
+        tutorials: []
       - size: 4
         type: 1
         intendedSolution: []
+        tutorials: []
       - size: 5
         type: 1
         intendedSolution: []
+        tutorials: []

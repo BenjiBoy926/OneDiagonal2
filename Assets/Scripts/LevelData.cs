@@ -12,6 +12,10 @@ public class LevelData
     }
     #endregion
 
+    #region Public Properties
+    public TutorialData[] Tutorials => tutorials;
+    #endregion
+
     #region Private Editor Fields
     [SerializeField]
     [Tooltip("Size of the matrix to solve")]
@@ -22,6 +26,9 @@ public class LevelData
     [SerializeField]
     [Tooltip("List of operations the player is expected to take to solve the puzzle")]
     private List<MatrixOperation> intendedSolution;
+    [SerializeField]
+    [Tooltip("List of tutorials that introduce this level the first time that it is played")]
+    private TutorialData[] tutorials;
     #endregion
 
     #region Public Methods

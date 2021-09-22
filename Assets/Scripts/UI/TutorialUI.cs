@@ -67,6 +67,8 @@ public class TutorialUI : MonoBehaviour
     #region Public Methods
     public void Open(TutorialData tutorial)
     {
+        Debug.Log("Opening tutorial");
+
         if (tutorial.OptionalUnlockData.WillUnlock)
         {
             // Disable object while unlock Ui is going
