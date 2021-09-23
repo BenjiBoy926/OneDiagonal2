@@ -149,6 +149,8 @@ GameObject:
   - component: {fileID: 547775832931351853}
   - component: {fileID: 1145246461182613402}
   - component: {fileID: 6924643205269805486}
+  - component: {fileID: 6520319434065003216}
+  - component: {fileID: 6120421098110725276}
   m_Layer: 5
   m_Name: RowAdderWidget
   m_TagString: AdderDock
@@ -308,6 +310,33 @@ MonoBehaviour:
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
   m_LayoutPriority: 1
+--- !u!114 &6520319434065003216
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2235669520526461191}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 376fff73acbdc2a4eadcfb3d222ffda9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  group: {fileID: 6120421098110725276}
+  operation: 2
+  disabledAlpha: 0.3
+--- !u!225 &6120421098110725276
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2235669520526461191}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &4216204542442891872
 GameObject:
   m_ObjectHideFlags: 0

@@ -81,6 +81,7 @@ public class PlayerData
     #region Public Methods
     // Get the completion data for the specified level
     public static LevelCompletionData GetCompletionData(LevelID id) => Instance.completionDatas.Get(id.Type).array[id.Index];
+    public static bool OperationUnlocked(MatrixOperation.Type type) => Instance.operationsUnlocked.Get(type);
     public static void UnlockOperation(MatrixOperation.Type type) => Instance.operationsUnlocked.Set(type, true);
     // Save the current instance of the player data to the file
     public static void Save()
@@ -89,8 +90,10 @@ public class PlayerData
         // resulting in a sharing violation
         PlayerData currentInstance = Instance;
 
-        using FileStream file = new FileStream(savePath, FileMode.OpenOrCreate);
-        formatter.Serialize(file, currentInstance);
+        using (FileStream file = new FileStream(savePath, FileMode.OpenOrCreate))
+        {
+            formatter.Serialize(file, currentInstance);
+        }
     }
     public static PlayerData Load()
     {
@@ -100,13 +103,16 @@ public class PlayerData
         // If a save file exists, load it
         if (SaveFileExists())
         {
-            using FileStream file = new FileStream(savePath, FileMode.Open);
-            data = (PlayerData)formatter.Deserialize(file);
+            // Use the file to deserialize the data
+            using (FileStream file = new FileStream(savePath, FileMode.Open))
+            {
+                data = (PlayerData)formatter.Deserialize(file);
+            }
 
             // Check for discrepancies between the loaded player data and the level settings
             // If there are discrepancies, we don't have any way of resolving them, so we
             // delete the player's save file and create a new data
-            
+
             // Get a list of the level types
             LevelType[] levelTypes = (LevelType[])System.Enum.GetValues(typeof(LevelType));
 

@@ -8,6 +8,7 @@ public class UnlockOperation
     #region Public Properties
     public MatrixOperation.Type OperationType => operationType;
     public Sprite UnlockSprite => unlockSprite;
+    public string UnlockItem => unlockItem;
     #endregion
 
     #region Private Editor Fields
@@ -17,6 +18,9 @@ public class UnlockOperation
     [SerializeField]
     [Tooltip("The sprite to display when unlocking this operation")]
     private Sprite unlockSprite;
+    [SerializeField]
+    [Tooltip("The name identifier of the item being unlocked")]
+    private string unlockItem;
     #endregion
 
     #region Public Methods

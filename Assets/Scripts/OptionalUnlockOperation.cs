@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class ConditionalUnlockOperation
+public class OptionalUnlockOperation
 {
     #region Public Properties
     public bool WillUnlock => willUnlock;

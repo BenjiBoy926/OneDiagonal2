@@ -98,8 +98,8 @@ public class MatrixUI : MonoBehaviour
     private int currentMoves = 0;
     #endregion
 
-    #region Monobehaviour Messages
-    private void Start()
+    #region Public Methods
+    public void Setup()
     {
         // Make sure all elements block raycasts
         canvasGroup.blocksRaycasts = true;
@@ -118,9 +118,6 @@ public class MatrixUI : MonoBehaviour
             rowUIs[i] = row;
         }
     }
-    #endregion
-
-    #region Public Methods
     public void SetOperationSource(MatrixOperationSource operationSource)
     {
         this.operationSource = operationSource;

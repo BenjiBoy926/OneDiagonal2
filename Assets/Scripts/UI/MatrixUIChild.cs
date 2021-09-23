@@ -15,8 +15,10 @@ public class MatrixUIChild : UIBehaviour
 
     protected override void Start()
     {
+        // Call start for UIBehaviour
         base.Start();
 
+        // Get the matrix parent
         matrixParent = GetComponentInParent<MatrixUI>();
 
         if(!matrixParent)

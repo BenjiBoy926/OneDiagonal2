@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class GameplayManager : MatrixUIChild
+public class GameplayManager : MonoBehaviour
 {
     #region Public Properties
     // The current level being played
@@ -12,15 +12,25 @@ public class GameplayManager : MatrixUIChild
     public static LevelCompletionData CurrentLevelCompletionData => PlayerData.GetCompletionData(CurrentLevelID);
     #endregion
 
+    #region Private Editor Fields
+    [SerializeField]
+    [Tooltip("Reference to the manager used to setup tutorials")]
+    private TutorialManager tutorialManager;
+    [SerializeField]
+    [Tooltip("Reference to the matrix ui to setup at the start")]
+    private MatrixUI matrixUI;
+    #endregion
+
     #region Monobehaviour Messages
-    protected override void Start()
+    private void Start()
     {
-        base.Start();
+        tutorialManager.Setup(CurrentLevelData.Tutorials);
+        matrixUI.Setup();
 
         // As soon as the matrix is solved, update the level completion data for this level
-        MatrixParent.OnMatrixSolved.AddListener(() =>
+        matrixUI.OnMatrixSolved.AddListener(() =>
         {
-            CurrentLevelCompletionData.CompleteLevel(MatrixParent.CurrentMoves);
+            CurrentLevelCompletionData.CompleteLevel(matrixUI.CurrentMoves);
             PlayerData.Save();
         });
     }

@@ -30,6 +30,7 @@ MonoBehaviour:
             unlocker:
               operationType: 0
               unlockSprite: {fileID: 0}
+              unlockItem: 
           title: Welcome to One Diagonal!
           sprite: {fileID: 21300000, guid: 28bde2d4c5546644b9bfbb368561ea62, type: 3}
           video: {fileID: 0}
@@ -40,6 +41,7 @@ MonoBehaviour:
             unlocker:
               operationType: 0
               unlockSprite: {fileID: 0}
+              unlockItem: the Row Swap
           title: Row Swap
           sprite: {fileID: 0}
           video: {fileID: 0}
@@ -77,6 +79,27 @@ MonoBehaviour:
             n: 0
             d: 0
         tutorials: []
+      - size: 3
+        type: 0
+        intendedSolution:
+        - type: 1
+          destinationRow: 1
+          sourceRow: 3
+          scalar:
+            n: 2
+            d: 1
+        tutorials:
+        - optionalUnlockData:
+            willUnlock: 1
+            unlocker:
+              operationType: 1
+              unlockSprite: {fileID: 0}
+              unlockItem: the Row Scale
+          title: Row Scale
+          sprite: {fileID: 0}
+          video: {fileID: 0}
+          explanation: Click and drag the Row Scale widget to multiply all of the
+            numbers in a row by a numer
     - list:
       - size: 3
         type: 1

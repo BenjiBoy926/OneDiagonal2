@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
-[CustomPropertyDrawer(typeof(ConditionalUnlockOperation))]
-public class ConditionalUnlockOperationDrawer : PropertyDrawer
+[CustomPropertyDrawer(typeof(OptionalUnlockOperation))]
+public class OptionalUnlockOperationDrawer : PropertyDrawer
 {
     public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
     {
@@ -12,6 +12,7 @@ public class ConditionalUnlockOperationDrawer : PropertyDrawer
         SerializedProperty unlocker = property.FindPropertyRelative(nameof(unlocker));
         SerializedProperty operationType = unlocker.FindPropertyRelative(nameof(operationType));
         SerializedProperty unlockSprite = unlocker.FindPropertyRelative(nameof(unlockSprite));
+        SerializedProperty unlockItem = unlocker.FindPropertyRelative(nameof(unlockItem));
 
         // Set height for only one control
         position.height = LayoutUtilities.standardControlHeight;
@@ -29,6 +30,8 @@ public class ConditionalUnlockOperationDrawer : PropertyDrawer
             EditorGUI.PropertyField(position, operationType);
             position.y += position.height;
             EditorGUI.PropertyField(position, unlockSprite);
+            position.y += position.height;
+            EditorGUI.PropertyField(position, unlockItem);
 
             EditorGUI.indentLevel--;
         }
@@ -41,7 +44,7 @@ public class ConditionalUnlockOperationDrawer : PropertyDrawer
 
         if(willUnlock.boolValue)
         {
-            height *= 3f;
+            height *= 4f;
         }
 
         return height;

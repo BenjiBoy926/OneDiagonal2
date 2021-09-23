@@ -7,10 +7,6 @@ using DG.Tweening;
 
 public class TutorialManager : MonoBehaviour
 {
-    #region Public Properties
-    public static TutorialData[] CurrentTutorials => GameplayManager.CurrentLevelData.Tutorials; 
-    #endregion
-
     #region Private Editor Fields
     [SerializeField]
     [Tooltip("Image on the root of the tutorial uis")]
@@ -23,17 +19,27 @@ public class TutorialManager : MonoBehaviour
     private float fadeOutTime = 0.3f;
     #endregion
 
-    #region Monobehaviour Callbacks
-    private void Start()
+    #region Private Fields
+    private TutorialData[] tutorials;
+    #endregion
+
+    #region Public Methods
+    public void Setup(TutorialData[] tutorials)
     {
         // If there is some data then fade in the back panel
-        if (CurrentTutorials.Length > 0)
+        if (tutorials.Length > 0)
         {
             rootPanel.gameObject.SetActive(true);
             rootPanel.color = Color.clear;
 
+            // At the very start, unlock all upgrades in all tutorials
+            foreach (TutorialData tutorial in tutorials)
+            {
+                tutorial.OptionalUnlockData.TryUnlock();
+            }
+
             // When fading is finished then setup all the uis
-            rootPanel.DOColor(new Color(0f, 0f, 0f, 0.8f), fadeInTime).OnComplete(() => SetupTutorialUIs());
+            rootPanel.DOColor(new Color(0f, 0f, 0f, 0.8f), fadeInTime).OnComplete(() => SetupTutorialUIs(tutorials));
         }
         // If there is no data make sure that the panel is inactive
         else rootPanel.gameObject.SetActive(false);
@@ -41,33 +47,38 @@ public class TutorialManager : MonoBehaviour
     #endregion
 
     #region Private Methods
-    private void SetupTutorialUIs()
+    private void SetupTutorialUIs(TutorialData[] tutorials)
     {
-        // An array of uis for each tutorial
-        TutorialUI[] uis = new TutorialUI[CurrentTutorials.Length];
-        uis[0] = TutorialUI.InstantiateFromResources(rootPanel.transform);
-        uis[0].Open(CurrentTutorials[0]);
-
         // Local function returns the functor that opens the correct tutorial
-        // this prevents capturing of the "i" variable
-        UnityAction OpenTutorial(int i)
+        // this prevents capturing local variables
+        UnityAction OpenTutorial(TutorialUI tutorial, TutorialData data)
         {
-            return () => uis[i].Open(CurrentTutorials[i]);
+            return () => tutorial.Open(data);
         }
 
+        // The current and previous UI
+        TutorialUI current = TutorialUI.InstantiateFromResources(rootPanel.transform);
+        TutorialUI previous = current;
+
+        // Open the current UI
+        current.Open(tutorials[0]);
+
         // Run a loop through all tutorials after the first one
-        for (int i = 1; i < CurrentTutorials.Length; i++)
+        for (int i = 1; i < tutorials.Length; i++)
         {
             // Create the ui, starting off disabled
-            uis[i] = TutorialUI.InstantiateFromResources(rootPanel.transform);
-            uis[i].RootRect.gameObject.SetActive(false);
+            current = TutorialUI.InstantiateFromResources(rootPanel.transform);
+            current.RootRect.gameObject.SetActive(false);
 
             // When the previous ui is closed, then open the next one
-            uis[i - 1].OnTutorialClosed.AddListener(OpenTutorial(i));
+            previous.OnTutorialClosed.AddListener(OpenTutorial(current, tutorials[i]));
+
+            // Update previous to current before moving on
+            previous = current;
         }
 
         // When the last tutorial is closed then finish the tutorial
-        uis[uis.Length - 1].OnTutorialClosed.AddListener(Finish);
+        current.OnTutorialClosed.AddListener(Finish);
     }
     private void Finish()
     {

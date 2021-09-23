@@ -21,18 +21,27 @@ public class MatrixMultiplyWidget : MatrixUIChild
     [SerializeField]
     [Tooltip("Selectable object to drag to cause a matrix scaling")]
     private Selectable widget;
+
+    [Space]
+
     [SerializeField]
     [Tooltip("Button that increases the scalar")]
     private Button increaseButton;
     [SerializeField]
     [Tooltip("Sound that plays when the scalar increases")]
     private AudioClip increaseSound;
+
+    [Space]
+
     [SerializeField]
     [Tooltip("Button that decreases the scalar")]
     private Button decreaseButton;
     [SerializeField]
     [Tooltip("Sound that plays when the scalar decreases")]
     private AudioClip decreaseSound;
+
+    [Space]
+
     [SerializeField]
     [Tooltip("Button that toggles if this is a multiplication or division")]
     private Button reciprocateButton;
@@ -51,7 +60,7 @@ public class MatrixMultiplyWidget : MatrixUIChild
     {
         base.Start();
 
-        // Set the scalar to 1
+        // Set the scalar to 2
         scalar = Fraction.one + Fraction.one;
         OnScalarChanged();
 
@@ -110,15 +119,7 @@ public class MatrixMultiplyWidget : MatrixUIChild
         increaseButton.interactable = false;
         decreaseButton.interactable = false;
         reciprocateButton.interactable = false;
-
-        if(operationSource.IsCurrentOperationSource)
-        {
-            // Set the color of the widget
-        }
-        else
-        {
-            widget.interactable = false;
-        }
+        widget.interactable = operationSource.IsCurrentOperationSource;
     }
     private void OnMatrixOperationFinished(bool success)
     {

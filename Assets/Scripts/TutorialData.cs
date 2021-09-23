@@ -7,7 +7,7 @@ using UnityEngine.Video;
 public class TutorialData
 {
     #region Public Properties
-    public ConditionalUnlockOperation OptionalUnlockData => optionalUnlockData;
+    public OptionalUnlockOperation OptionalUnlockData => optionalUnlockData;
     public string Title => title;
     public Sprite Sprite => sprite;
     public VideoClip Video => video;
@@ -17,7 +17,7 @@ public class TutorialData
     #region Private Editor Fields
     [SerializeField]
     [Tooltip("Unlock data for this tutorial")]
-    private ConditionalUnlockOperation optionalUnlockData;
+    private OptionalUnlockOperation optionalUnlockData;
     [SerializeField]
     [Tooltip("Title of the tutorial")]
     private string title;

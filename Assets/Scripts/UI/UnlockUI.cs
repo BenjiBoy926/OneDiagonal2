@@ -72,7 +72,7 @@ public class UnlockUI : MonoBehaviour
         spinningTransform.DORotate(Vector3.forward * rotationSpeed, 1f).SetLoops(-1).SetEase(Ease.Linear);
 
         // Setup the text and image
-        congrats.text = "Congratulations!\nYou've unlocked the operation: Row " + unlock.OperationType.ToString();
+        congrats.text = "You've unlocked " + unlock.UnlockItem + "!";
         unlockImage.sprite = unlock.UnlockSprite;
 
         // Close the ui when the button is clicked
