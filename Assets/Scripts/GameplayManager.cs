@@ -24,7 +24,15 @@ public class GameplayManager : MonoBehaviour
     #region Monobehaviour Messages
     private void Start()
     {
-        tutorialManager.Setup(CurrentLevelData.Tutorials);
+        // Only display the level if it has not been encountered yet
+        if(!CurrentLevelCompletionData.Encountered)
+        {
+            tutorialManager.OpenTutorials(CurrentLevelData.Tutorials, true);
+        }
+        // As soon as the level starts, this level is marked as "encountered"
+        CurrentLevelCompletionData.EncounterLevel();
+        PlayerData.Save();
+
         matrixUI.Setup();
 
         // As soon as the matrix is solved, update the level completion data for this level

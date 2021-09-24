@@ -24,7 +24,7 @@ public class TutorialManager : MonoBehaviour
     #endregion
 
     #region Public Methods
-    public void Setup(TutorialData[] tutorials)
+    public void OpenTutorials(TutorialData[] tutorials, bool displayUpgrades)
     {
         // If there is some data then fade in the back panel
         if (tutorials.Length > 0)
@@ -39,7 +39,7 @@ public class TutorialManager : MonoBehaviour
             }
 
             // When fading is finished then setup all the uis
-            rootPanel.DOColor(new Color(0f, 0f, 0f, 0.8f), fadeInTime).OnComplete(() => SetupTutorialUIs(tutorials));
+            rootPanel.DOColor(new Color(0f, 0f, 0f, 0.8f), fadeInTime).OnComplete(() => SetupTutorialUIs(tutorials, displayUpgrades));
         }
         // If there is no data make sure that the panel is inactive
         else rootPanel.gameObject.SetActive(false);
@@ -47,13 +47,13 @@ public class TutorialManager : MonoBehaviour
     #endregion
 
     #region Private Methods
-    private void SetupTutorialUIs(TutorialData[] tutorials)
+    private void SetupTutorialUIs(TutorialData[] tutorials, bool displayUpgrades)
     {
         // Local function returns the functor that opens the correct tutorial
         // this prevents capturing local variables
         UnityAction OpenTutorial(TutorialUI tutorial, TutorialData data)
         {
-            return () => tutorial.Open(data);
+            return () => tutorial.Open(data, displayUpgrades);
         }
 
         // The current and previous UI
@@ -61,7 +61,7 @@ public class TutorialManager : MonoBehaviour
         TutorialUI previous = current;
 
         // Open the current UI
-        current.Open(tutorials[0]);
+        current.Open(tutorials[0], displayUpgrades);
 
         // Run a loop through all tutorials after the first one
         for (int i = 1; i < tutorials.Length; i++)

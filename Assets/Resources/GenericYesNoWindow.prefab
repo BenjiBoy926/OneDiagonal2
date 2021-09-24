@@ -892,10 +892,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbc8c765cb910eb409fc0f46033987cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  window: {fileID: 8764041663126515172}
   messageText: {fileID: 8551789764650911827}
-  yesButton: {fileID: 8670358496751545055}
-  noButton: {fileID: 142550838929835519}
-  closeButton: {fileID: 3816013501527717286}
+  responseButtons:
+    data:
+    - {fileID: 8670358496751545055}
+    - {fileID: 142550838929835519}
+    - {fileID: 3816013501527717286}
 --- !u!1 &7004276554635324011
 GameObject:
   m_ObjectHideFlags: 0

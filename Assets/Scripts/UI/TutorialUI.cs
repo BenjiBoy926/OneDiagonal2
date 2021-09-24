@@ -38,24 +38,6 @@ public class TutorialUI : MonoBehaviour
     [Space]
 
     [SerializeField]
-    [Tooltip("Time it takes for the tutorial to grow into view")]
-    private float growTime = 0.3f;
-    [SerializeField]
-    [Tooltip("Time it takes for the tutorial to shrink out of view")]
-    private float shrinkTime = 0.3f;
-
-    [Space]
-
-    [SerializeField]
-    [Tooltip("Sound that plays when the tutorial appears")]
-    private AudioClip appearSound;
-    [SerializeField]
-    [Tooltip("Sound that plays when the tutorial disappears")]
-    private AudioClip disappearSound;
-
-    [Space]
-
-    [SerializeField]
     [Tooltip("Event invoked when the tutorial is closed")]
     private UnityEvent onTutorialClosed;
     #endregion
@@ -65,11 +47,9 @@ public class TutorialUI : MonoBehaviour
     #endregion
 
     #region Public Methods
-    public void Open(TutorialData tutorial)
+    public void Open(TutorialData tutorial, bool displayUpdgrade)
     {
-        Debug.Log("Opening tutorial");
-
-        if (tutorial.OptionalUnlockData.WillUnlock)
+        if (tutorial.OptionalUnlockData.WillUnlock && displayUpdgrade)
         {
             // Disable object while unlock Ui is going
             rootRect.gameObject.SetActive(false);
@@ -83,11 +63,8 @@ public class TutorialUI : MonoBehaviour
     }
     public void Close()
     {
-        // Play the disappearing sound
-        EazySoundManager.PlayUISound(disappearSound);
-
         // Shrink out of view
-        rootRect.DOScale(0f, shrinkTime).OnComplete(() =>
+        UISettings.CloseWindow(rootRect).OnComplete(() =>
         {
             onTutorialClosed.Invoke();
             Destroy(gameObject);
@@ -106,8 +83,7 @@ public class TutorialUI : MonoBehaviour
         rootRect.gameObject.SetActive(true);
 
         // Scale the root rect into view
-        rootRect.localScale = Vector3.one * 0.2f;
-        rootRect.DOScale(Vector3.one, growTime).SetEase(Ease.InOutBack);
+        UISettings.OpenWindow(rootRect);
 
         // Set the display items
         title.text = tutorial.Title;
@@ -122,9 +98,6 @@ public class TutorialUI : MonoBehaviour
 
         // When button is clicked then close the tutorial
         closeButton.onClick.AddListener(Close);
-
-        // Play the appear sound
-        EazySoundManager.PlayUISound(appearSound);
     }
     #endregion
 }

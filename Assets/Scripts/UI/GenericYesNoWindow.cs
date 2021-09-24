@@ -4,59 +4,71 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 using TMPro;
+using DG.Tweening;
 
 public class GenericYesNoWindow : MonoBehaviour
 {
+    #region Public Typedefs
+    public enum ResponseType { Yes, No, Cancel }
+    #endregion
+
     #region Private Editor Fields
+    [SerializeField]
+    [Tooltip("Rect transform for the window that shrinks in and out of view")]
+    private RectTransform window;
+
+    [Space]
+
     [SerializeField]
     [Tooltip("Used to display the yes-no question text")]
     private TextMeshProUGUI messageText;
     [SerializeField]
-    private Button yesButton;
-    [SerializeField]
-    private Button noButton;
-    [SerializeField]
-    private Button closeButton;
+    [Tooltip("List of buttons for each action on the yes-no window")]
+    private ArrayOnEnum<ResponseType, Button> responseButtons;
     #endregion
 
     #region Private Fields
     private static string defaultPrefabName => nameof(GenericYesNoWindow);
     private static string defaultPrefabPath => defaultPrefabName;
+    // List of functions to invoke for each window action
+    private ArrayOnEnum<ResponseType, UnityAction> responses = new ArrayOnEnum<ResponseType, UnityAction>();
     #endregion
 
     #region Monobehaviour Messages
     private void Start()
     {
-        void DestroyCallback() => Destroy(gameObject);
-        yesButton.onClick.AddListener(DestroyCallback);
-        noButton.onClick.AddListener(DestroyCallback);
-        closeButton.onClick.AddListener(DestroyCallback);
+        // Local function returns a functor with the parameter 
+        // so that the loop control variable is not captured in a lambda
+        UnityAction CloseWindowFunctor(ResponseType response) => () => Close(response);
+
+        // Make each button close the window with the corresponding action
+        for(int i = 0; i < responseButtons.Data.Length; i++)
+        {
+            responseButtons.Data[i].onClick.AddListener(CloseWindowFunctor((ResponseType)i));
+        }
     }
     #endregion
 
     #region Public Methods
-    /// <summary>
-    /// Setup the message and yes-no actions of the generic window
-    /// </summary>
-    /// <param name="message"></param>
-    /// <param name="yesAction"></param>
-    /// <param name="noAction"></param>
-    public void Setup(string message, UnityAction yesAction, UnityAction noAction, UnityAction closeAction)
+    public void Open(string message)
     {
         // Setup the text and button callbacks
         messageText.text = message;
-        if (yesAction != null) yesButton.onClick.AddListener(yesAction);
-        if (noAction != null) noButton.onClick.AddListener(noAction);
-        if (closeAction != null) closeButton.onClick.AddListener(closeAction);
+        UISettings.OpenWindow(window);
     }
+    public void Close(ResponseType action)
+    {
+        UISettings.CloseWindow(window).OnComplete(() =>
+        {
+            // Try to get and invoke the requested response
+            UnityAction response = responses.Get(action);
+            if (response != null) response.Invoke();
 
-    /// <summary>
-    /// Create a window by loading a prefab from the resources folder and instantiating it
-    /// </summary>
-    /// <param name="parent">Parent to instantiate the window under</param>
-    /// <param name="prefabPath">The resources path to find the prefab in. 
-    /// If null or white space, we use a default path</param>
-    /// <returns>The instance of the window that was created</returns>
+            // Destroy the window
+            Destroy(gameObject);
+        });
+    }
+    public void SetResponse(ResponseType action, UnityAction response) => responses.Set(action, response);
     public static GenericYesNoWindow InstantiateFromResource(Transform parent, string prefabPath = null)
     {
         if (string.IsNullOrWhiteSpace(prefabPath)) prefabPath = defaultPrefabPath;

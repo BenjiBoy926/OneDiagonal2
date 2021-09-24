@@ -39,7 +39,8 @@ public abstract class OptionalConfirmButton : MonoBehaviour
         if (requireConfirmation && !confirmationWindow)
         {
             confirmationWindow = GenericYesNoWindow.InstantiateFromResource(windowParent);
-            confirmationWindow.Setup(confirmationMessage, ButtonAction, null, null);
+            confirmationWindow.Open(confirmationMessage);
+            confirmationWindow.SetResponse(GenericYesNoWindow.ResponseType.Yes, ButtonAction);
         }
         // If confirmation is not required then perform the action immediately
         else if (!requireConfirmation) ButtonAction();

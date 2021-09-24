@@ -6,12 +6,16 @@ using UnityEngine;
 public class LevelCompletionData
 {
     #region Public Properties
+    public bool Encountered => encountered;
     public bool Completed => completed;
     public int FewestMoves => fewestMoves;
     public string FewestMovesString => completed ? fewestMoves.ToString() : "--";
     #endregion
 
     #region Private Editor Fields
+    [SerializeField]
+    [Tooltip("True if the player has encountered this level before")]
+    private bool encountered;
     [SerializeField]
     [Tooltip("True if the player has completed this level before")]
     private bool completed;
@@ -31,6 +35,7 @@ public class LevelCompletionData
     #endregion
 
     #region Public Methods
+    public void EncounterLevel() => encountered = true;
     public void CompleteLevel(int moves)
     {
         completed = true;

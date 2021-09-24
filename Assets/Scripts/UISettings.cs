@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
+using Hellmade.Sound;
 
 [CreateAssetMenu]
 public class UISettings : ScriptableObjectSingleton<UISettings>
@@ -25,6 +27,9 @@ public class UISettings : ScriptableObjectSingleton<UISettings>
     [SerializeField]
     [Tooltip("Color of the matrix items not on the diagonal")]
     private MatrixItemColor notDiagnonalColors;
+
+    [Space]
+
     [SerializeField]
     [Tooltip("Reference to the prefab to use for the operator flash effect")]
     private MatrixFlashEffect flashEffect;
@@ -37,9 +42,44 @@ public class UISettings : ScriptableObjectSingleton<UISettings>
     [SerializeField]
     [Tooltip("Time that the operator should take to punch it's scale when set as the source/destination")]
     private float operatorPunchTime = 0.2f;
+
+    [Space]
+
+    [SerializeField]
+    [Tooltip("Sound played when a window appears")]
+    private AudioClip windowOpenSound;
+    [SerializeField]
+    [Tooltip("Time it takes for a window to grow into view")]
+    private float windowOpenTime = 0.3f;
+    [SerializeField]
+    [Tooltip("Sound played when a window disappears")]
+    private AudioClip windowCloseSound;
+    [SerializeField]
+    [Tooltip("Time it takes for a window shrink out of view")]
+    private float windowCloseTime = 0.3f;
     #endregion
 
     #region Public Methods
     public static Color GetOperatorColor(MatrixOperation.Type type) => Instance.operationColors.Get(type);
+    public static DG.Tweening.Core.TweenerCore<Vector3, Vector3, DG.Tweening.Plugins.Options.VectorOptions> OpenWindow(RectTransform windowTransform)
+    {
+        // Play the appear sound
+        EazySoundManager.PlayUISound(Instance.windowOpenSound);
+
+        // Set scale to zero at first
+        windowTransform.localScale = Vector3.zero;
+        // Return the tween that makes the window appear
+        return windowTransform.DOScale(1f, Instance.windowOpenTime).SetEase(Ease.OutBack);
+    }
+    public static DG.Tweening.Core.TweenerCore<Vector3, Vector3, DG.Tweening.Plugins.Options.VectorOptions> CloseWindow(RectTransform windowTransform)
+    {
+        // Play the appear sound
+        EazySoundManager.PlayUISound(Instance.windowCloseSound);
+
+        // Set scale to zero at first
+        windowTransform.localScale = Vector3.one;
+        // Return the tween that makes the window disappear
+        return windowTransform.DOScale(0f, Instance.windowCloseTime).SetEase(Ease.OutQuint);
+    }
     #endregion
 }

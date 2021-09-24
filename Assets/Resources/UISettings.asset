@@ -27,3 +27,7 @@ MonoBehaviour:
     - {r: 0.21698111, g: 0.21698111, b: 0.17890707, a: 1}
   operatorPunch: 0.1
   operatorPunchTime: 0.2
+  windowOpenSound: {fileID: 8300000, guid: 54c5476c618d3461b832d0ac4b685a4f, type: 3}
+  windowOpenTime: 0.3
+  windowCloseSound: {fileID: 8300000, guid: 2eae66430c79749d9b13ab56bc988740, type: 3}
+  windowCloseTime: 0.3

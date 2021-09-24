@@ -35,10 +35,6 @@ public class UnlockUI : MonoBehaviour
     [SerializeField]
     [Tooltip("Time it takes for the unlock ui to grow to full size")]
     private float growTime = 3f;
-    [SerializeField]
-    [Tooltip("Time it takes for the ui to shrink out of view")]
-    private float shrinkTime = 0.3f;
-    [SerializeField]
     [Tooltip("Amount that the spinning transform rotates each second")]
     private float rotationSpeed = 30f;
 
@@ -64,8 +60,11 @@ public class UnlockUI : MonoBehaviour
     {
         rootTransform.gameObject.SetActive(true);
 
+        // Play the sound when we are displayed
+        EazySoundManager.PlayUISound(displaySound);
+
         // Start tiny then scale
-        rootTransform.localScale = Vector3.one * 0.2f;
+        rootTransform.localScale = Vector3.one * 0.1f;
         rootTransform.DOScale(1f, growTime).SetEase(Ease.InOutBack);
 
         // Have the spinning transform rotate infinitely
@@ -77,14 +76,10 @@ public class UnlockUI : MonoBehaviour
 
         // Close the ui when the button is clicked
         closeButton.onClick.AddListener(Close);
-
-        // Play the sound when we are displayed
-        EazySoundManager.PlayUISound(displaySound);
     }
     public void Close()
     {
-        rootTransform.DOKill();
-        rootTransform.DOScale(0f, shrinkTime).OnComplete(() => 
+        UISettings.CloseWindow(rootTransform).OnComplete(() => 
         {
             onUnlockFinished.Invoke();
             Destroy(gameObject);

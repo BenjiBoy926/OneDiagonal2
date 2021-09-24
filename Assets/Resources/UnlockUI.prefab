@@ -266,8 +266,6 @@ MonoBehaviour:
   rootTransform: {fileID: 1935814890744625515}
   closeButton: {fileID: 3021415689943319562}
   growTime: 3
-  shrinkTime: 0.3
-  rotationSpeed: 30
   displaySound: {fileID: 8300000, guid: 6f576776784bb472d91de8066c25d0bb, type: 3}
   onUnlockFinished:
     m_PersistentCalls:
