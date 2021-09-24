@@ -36,16 +36,13 @@ public class MatrixSolvedUI : MatrixUIChild
     private MovesText fewestMovesText;
     [SerializeField]
     [Tooltip("Button that sends the player back to main menu")]
-    private Button mainMenuButton;
-    [SerializeField]
-    [Tooltip("Canvas group attached to the advance button, useful for change alpha levels of all graphics at once")]
-    private CanvasGroup advanceButtonGroup;
+    private GameObject mainMenuButton;
     [SerializeField]
     [Tooltip("Button that sends the player to the next stage")]
-    private Button advanceButton;
+    private GameObject advanceButton;
     [SerializeField]
     [Tooltip("Button that replays the current level")]
-    private Button replayButton;
+    private GameObject replayButton;
 
     [Space]
 
@@ -94,20 +91,9 @@ public class MatrixSolvedUI : MatrixUIChild
         congratsText.enabled = false;
         movesText.textRoot.gameObject.SetActive(false);
         fewestMovesText.textRoot.gameObject.SetActive(false);
-        mainMenuButton.gameObject.SetActive(false);
-        advanceButton.gameObject.SetActive(false);
-        replayButton.gameObject.SetActive(false);
-
-        mainMenuButton.onClick.AddListener(() => SceneManager.LoadScene("MainMenu"));
-        // If this is the last level, the advance button is not interactable
-        if (LevelSettings.IsLastLevel(GameplayManager.CurrentLevelID) && GameplayManager.CurrentLevelID.Type == LevelType.Enumerated)
-        {
-            advanceButton.interactable = false;
-            advanceButtonGroup.alpha = 0.5f;
-        }
-        // It this is not the last level, the advance button will play the next level
-        else advanceButton.onClick.AddListener(() => GameplayManager.PlayNextLevel());
-        replayButton.onClick.AddListener(() => GameplayManager.ReplayLevel());
+        mainMenuButton.SetActive(false);
+        advanceButton.SetActive(false);
+        replayButton.SetActive(false);
 
         // Create a copy of the current level completion data at the start
         completionDataOnPuzzleStart = new LevelCompletionData(GameplayManager.CurrentLevelCompletionData);
@@ -130,9 +116,9 @@ public class MatrixSolvedUI : MatrixUIChild
             .WaitForCompletion();
 
         // Show the buttons
-        mainMenuButton.gameObject.SetActive(true);
-        advanceButton.gameObject.SetActive(true);
-        replayButton.gameObject.SetActive(true);
+        mainMenuButton.SetActive(true);
+        advanceButton.SetActive(true);
+        replayButton.SetActive(true);
 
         // Enable the text and play the reveal sound
         congratsText.enabled = true;
@@ -168,10 +154,6 @@ public class MatrixSolvedUI : MatrixUIChild
             fewestMovesText.textRoot.DOKill();
             fewestMovesText.textRoot.DOPunchScale(Vector3.one * UISettings.OperatorPunch, UISettings.OperatorPunchTime);
         }
-
-        // Show the buttons
-        mainMenuButton.gameObject.SetActive(true);
-        advanceButton.gameObject.SetActive(true);
     }
     #endregion
 }
