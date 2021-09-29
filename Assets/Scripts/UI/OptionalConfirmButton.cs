@@ -2,31 +2,39 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 
-public abstract class OptionalConfirmButton : MonoBehaviour
+public class OptionalConfirmButton : MonoBehaviour
 {
-    #region Private Editor Fields
+    #region Public Properties
+    public UnityEvent OnConfirm => onConfirm;
+    #endregion
+
+    #region Protected Editor Fields
     [SerializeField]
     [Tooltip("Button that performs an action when clicked")]
-    private Button actionButton;
+    protected Button actionButton;
     [SerializeField]
     [Tooltip("If true then the action needs confirmation to be performed")]
-    private bool requireConfirmation;
+    protected bool requireConfirmation;
     [SerializeField]
     [Tooltip("Reference to the transform that the window will be instantiated under")]
-    private Transform windowParent;
+    protected Transform windowParent;
     [SerializeField]
     [TextArea(3, 10)]
     [Tooltip("Message to put in the window that asks for confirmation")]
-    private string confirmationMessage = "Are you sure that you want to ...?";
+    protected string confirmationMessage = "Are you sure that you want to ...?";
+    [SerializeField]
+    [Tooltip("Event invoked when the button action runs")]
+    private UnityEvent onConfirm;
     #endregion
 
-    #region Private Fields
-    private GenericYesNoWindow confirmationWindow;
+    #region Protected Fields
+    protected GenericYesNoWindow confirmationWindow;
     #endregion
 
     #region Monobehaviour Messages
-    private void Start()
+    protected virtual void Start()
     {
         actionButton.onClick.AddListener(OnButtonClicked);
     }
@@ -45,6 +53,9 @@ public abstract class OptionalConfirmButton : MonoBehaviour
         // If confirmation is not required then perform the action immediately
         else if (!requireConfirmation) ButtonAction();
     }
-    protected abstract void ButtonAction();
+    protected virtual void ButtonAction()
+    {
+        onConfirm.Invoke();
+    }
     #endregion
 }

@@ -17,16 +17,16 @@ public class NextLevelButton : MonoBehaviour
     #region Monobehaviour Messages
     private void Start()
     {
-        if(LevelSettings.IsLastLevel(GameplayManager.CurrentLevelID))
-        {
-            group.alpha = 0.3f;
-            group.blocksRaycasts = false;
-        }
-        else
+        if(!LevelSettings.IsLastLevel(GameplayManager.CurrentLevelID) && GameplayManager.CurrentLevelID.Type != LevelType.FreePlay)
         {
             group.alpha = 1f;
             group.blocksRaycasts = true;
             button.onClick.AddListener(GameplayManager.PlayNextLevel);
+        }
+        else
+        {
+            group.alpha = 0.3f;
+            group.blocksRaycasts = false;
         }
     }
     #endregion

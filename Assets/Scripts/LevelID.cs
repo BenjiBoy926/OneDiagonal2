@@ -8,6 +8,9 @@ public struct LevelID
     #region Public Properties
     public LevelType Type => type;
     public int Index => index;
+    public LevelData Data => LevelSettings.GetLevelData(this);
+    public bool IsValid => Data != null;
+    public static LevelID Invalid => new LevelID(0, -1);
     #endregion
 
     #region Private Editor Fields

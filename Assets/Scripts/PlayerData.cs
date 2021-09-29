@@ -35,6 +35,14 @@ public class PlayerData
     }
     #endregion
 
+    #region Public Properties
+    public static bool FreePlayUnlocked
+    {
+        get => Instance.freePlayUnlocked;
+        set => Instance.freePlayUnlocked = value;
+    }
+    #endregion
+
     #region Private Editor Fields
     [SerializeField]
     [Tooltip("List of completion data for every level")]
@@ -42,6 +50,9 @@ public class PlayerData
     [SerializeField]
     [Tooltip("Matrix operation types currently unlocked. Parallel to the MatrixOperation.Type enum")]
     private ArrayOnEnum<MatrixOperation.Type, bool> operationsUnlocked;
+    [SerializeField]
+    [Tooltip("True if free play has been unlocked")]
+    private bool freePlayUnlocked = false;
     #endregion
 
     #region Private Fields
@@ -81,6 +92,7 @@ public class PlayerData
     #region Public Methods
     // Get the completion data for the specified level
     public static LevelCompletionData GetCompletionData(LevelID id) => Instance.completionDatas.Get(id.Type).array[id.Index];
+    public static LevelCompletionData[] GetCompletionDatasWithType(LevelType levelType) => Instance.completionDatas.Get(levelType).array;
     public static bool OperationUnlocked(MatrixOperation.Type type) => Instance.operationsUnlocked.Get(type);
     public static void UnlockOperation(MatrixOperation.Type type) => Instance.operationsUnlocked.Set(type, true);
     // Save the current instance of the player data to the file

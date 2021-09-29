@@ -53,6 +53,6 @@ public static class MyMath
     }
     public static Vector2Int Index1Dto2D(int index, int rows, int cols)
     {
-        return new Vector2Int(Mathf.FloorToInt((float)index / cols), index % rows);
+        return new Vector2Int(index / cols, index % rows);
     }
 }

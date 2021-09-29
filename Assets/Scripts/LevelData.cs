@@ -13,6 +13,7 @@ public class LevelData
     #endregion
 
     #region Public Properties
+    public int Size => size;
     public TutorialData[] Tutorials => tutorials;
     #endregion
 
@@ -38,6 +39,7 @@ public class LevelData
 
         if(type == Type.Fixed)
         {
+            // Perform the inverse of each operation in the reverse order
             for (int i = intendedSolution.Count - 1; i >= 0; i--)
             {
                 startingMatrix = startingMatrix.Operate(intendedSolution[i].Inverse);
@@ -45,7 +47,8 @@ public class LevelData
         }
         else
         {
-            // Do many, MANY things
+            // Create a random matrix with the given size
+            startingMatrix = MatrixRandomizer.Create(size);
         }
         
         return startingMatrix;

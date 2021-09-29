@@ -72,7 +72,7 @@ public class GenericYesNoWindow : MonoBehaviour
     public static GenericYesNoWindow InstantiateFromResource(Transform parent, string prefabPath = null)
     {
         if (string.IsNullOrWhiteSpace(prefabPath)) prefabPath = defaultPrefabPath;
-        return ResourcesExtensions.InstantiateFromResources<GenericYesNoWindow>(defaultPrefabPath, parent);
+        return ResourcesExtensions.InstantiateFromResources<GenericYesNoWindow>(prefabPath, parent);
     }
     #endregion
 }

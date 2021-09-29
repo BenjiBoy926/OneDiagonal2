@@ -8,5 +8,6 @@ public class ReplayLevelButton : OptionalConfirmButton
     protected override void ButtonAction()
     {
         GameplayManager.ReplayLevel();
+        base.ButtonAction();
     }
 }

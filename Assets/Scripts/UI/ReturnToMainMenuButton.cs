@@ -9,5 +9,6 @@ public class ReturnToMainMenuButton : OptionalConfirmButton
     protected override void ButtonAction()
     {
         SceneManager.LoadScene("MainMenu");
+        base.ButtonAction();
     }
 }
