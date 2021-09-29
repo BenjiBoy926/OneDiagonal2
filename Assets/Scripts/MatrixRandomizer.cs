@@ -34,51 +34,108 @@ public class MatrixRandomizer
     {
         Matrix matrix = Matrix.Identity(size);
 
+        // Get all the possible row scales and row adds
+        Dictionary<int, List<MatrixOperation>> rowScales = GetRowScaleOperations(size);
+        Dictionary<int, List<MatrixOperation>> rowAdds = GetRowAddOperations(size);
+
+        // Temporary dictionary used to store row scaling that is not allowed
+        Dictionary<int, List<MatrixOperation>> disallowedRowScales = new Dictionary<int, List<MatrixOperation>>();
+
+        for(int i = 0; i < operations; i++)
+        {
+            // Choose either scaling or adding
+            bool chooseScaling = Random.Range(0, 2) == 0 && rowScales.Count > 0;
+            List<MatrixOperation> randomList;
+            MatrixOperation randomOperation;
+
+            if(chooseScaling)
+            {
+                // Get all entries as an array
+                KeyValuePair<int, List<MatrixOperation>>[] array = rowScales.ToArray();
+                // Choose a random list in the array
+                randomList = array[Random.Range(0, array.Length)].Value;
+            }
+            else
+            {
+                // Get a random list from the row adds
+                randomList = rowAdds[Random.Range(0, size)];
+            }
+
+            // Choose a random element of the list
+            randomOperation = randomList[Random.Range(0, randomList.Count)];
+            // Randomly choose the operation or its inverse
+            randomOperation = RandomlyChooseThisOrInverse(randomOperation);
+
+            // Operate on the matrix with the random operation
+            matrix = matrix.Operate(randomOperation);
+
+            // If this is a row scale, remove row scales from the dictionary to randomly choose from
+            if(randomOperation.type == MatrixOperation.Type.Scale)
+            {
+                List<MatrixOperation> removedList = rowScales[randomOperation.destinationRow];
+                rowScales.Remove(randomOperation.destinationRow);
+                disallowedRowScales.Add(randomOperation.destinationRow, removedList);
+            }
+            // We are allowed to apply a scaling to this row again if we just added a different row to it
+            else if(disallowedRowScales.ContainsKey(randomOperation.destinationRow))
+            {
+                rowScales.Add(randomOperation.destinationRow, disallowedRowScales[randomOperation.destinationRow]);
+                disallowedRowScales.Remove(randomOperation.destinationRow);
+            }
+        }
+
         return matrix;
     }
     #endregion
 
     #region Private Methods
-    private static MatrixOperation[] GetRowScaleOperations(int rows)
+    // Return a dictionary that maps the destination row 
+    // with the list of row scale operations that operate on that row
+    private static Dictionary<int, List<MatrixOperation>> GetRowScaleOperations(int rows)
     {
-        MatrixOperation[] rowScales = new MatrixOperation[Mathf.Abs(maxMultiplier - minMultiplier) + 1];
+        Dictionary<int, List<MatrixOperation>> operations = new Dictionary<int, List<MatrixOperation>>();
 
         // Iterate over all rows
         for(int i = 0; i < rows; i++)
         {
+            // Add a new list at this key in the dictionary
+            operations.Add(i, new List<MatrixOperation>());
+
             // Create a row scale operation for every scalar on every row
             for(int scalar = minMultiplier; scalar <= maxMultiplier; scalar++)
             {
-                int index = Mathf.Abs(minMultiplier - scalar);
-                rowScales[index] = MatrixOperation.RowScale(i, new Fraction(scalar, 1));
-            }
-        }
-
-        // Choose only scalars below or equal to -1, and above 1
-        rowScales = rowScales.Where(x => x.scalar <= -Fraction.one && x.scalar > Fraction.one).ToArray();
-        return rowScales;
-    }
-    private static MatrixOperation[] GetRowAddOperations(int rows)
-    {
-        MatrixOperation[] rowAdds = new MatrixOperation[rows * (rows - 1)];
-
-        // Loop through all possible source rows
-        for(int source = 0; source < rows; source++)
-        {
-            // Loop through all possible destination rows
-            for(int destination = 0; destination < rows; destination++)
-            {
-                // If the source is not the destination then add a matrix operation
-                if(source != destination)
+                if(scalar <= -1 || scalar >= 2)
                 {
-                    int col = destination > source ? destination - 1 : destination;
-                    int index = MyMath.Index2Dto1D(source, col, rows - 1);
-                    rowAdds[index] = MatrixOperation.RowAdd(source, destination, Fraction.one);
+                    operations[i].Add(MatrixOperation.RowScale(i, new Fraction(scalar, 1)));
                 }
             }
         }
 
-        return rowAdds;
+        return operations;
+    }
+    // Return a dictionary that maps the destination row to a list of row add operations
+    private static Dictionary<int, List<MatrixOperation>> GetRowAddOperations(int rows)
+    {
+        Dictionary<int, List<MatrixOperation>> operations = new Dictionary<int, List<MatrixOperation>>();
+
+        // Loop through all possible destination rows
+        for (int destination = 0; destination < rows; destination++)
+        {
+            // Add a new list for this key
+            operations.Add(destination, new List<MatrixOperation>());
+
+            // Loop through all possible source rows
+            for (int source = 0; source < rows; source++)
+            {
+                // If the source is not the destination then add a matrix operation
+                if (source != destination)
+                {
+                    operations[destination].Add(MatrixOperation.RowAdd(source, destination, Fraction.one));
+                }
+            }
+        }
+
+        return operations;
     }
     private static MatrixOperation RandomlyChooseThisOrInverse(MatrixOperation matrixOperation)
     {
