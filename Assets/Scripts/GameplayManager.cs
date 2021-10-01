@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class GameplayManager : MonoBehaviour
 {
@@ -19,12 +20,15 @@ public class GameplayManager : MonoBehaviour
     [SerializeField]
     [Tooltip("Reference to the matrix ui to setup at the start")]
     private MatrixUI matrixUI;
+    [SerializeField]
+    [Tooltip("Text that displays the current level being played")]
+    private TextMeshProUGUI levelTitle;
     #endregion
 
     #region Monobehaviour Messages
     private void Start()
     {
-        // Only display the level if it has not been encountered yet
+        // Only display the tutorial if it has not been encountered yet
         if(!CurrentLevelCompletionData.Encountered)
         {
             tutorialManager.OpenTutorials(CurrentLevelData.Tutorials, true);
@@ -41,6 +45,9 @@ public class GameplayManager : MonoBehaviour
             CurrentLevelCompletionData.CompleteLevel(matrixUI.CurrentMoves);
             PlayerData.Save();
         });
+
+        // Set the text to show the name of the level
+        levelTitle.text = CurrentLevelID.Data.Name;
     }
     #endregion
 

@@ -8,6 +8,7 @@ public class LevelDataDrawer : PropertyDrawer
 {
     public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
     {
+        SerializedProperty name = property.FindPropertyRelative(nameof(name));
         SerializedProperty size = property.FindPropertyRelative(nameof(size));
         SerializedProperty type = property.FindPropertyRelative(nameof(type));
         SerializedProperty intendedSolution = property.FindPropertyRelative(nameof(intendedSolution));
@@ -24,6 +25,9 @@ public class LevelDataDrawer : PropertyDrawer
         {
             EditorGUI.indentLevel++;
 
+            // Edit the name
+            EditorGUI.PropertyField(position, name);
+            position.y += position.height;
             // Edit the size
             EditorGUI.PropertyField(position, size);
             position.y += position.height;
@@ -55,7 +59,7 @@ public class LevelDataDrawer : PropertyDrawer
 
         if(property.isExpanded)
         {
-            height += LayoutUtilities.standardControlHeight * 2f;
+            height += LayoutUtilities.standardControlHeight * 3f;
             height += EditorGUI.GetPropertyHeight(tutorials, true);
 
             if (type.enumValueIndex == 0)

@@ -13,11 +13,15 @@ public class LevelData
     #endregion
 
     #region Public Properties
+    public string Name => name;
     public int Size => size;
     public TutorialData[] Tutorials => tutorials;
     #endregion
 
     #region Private Editor Fields
+    [SerializeField]
+    [Tooltip("String title for this level")]
+    private string name = "Level";
     [SerializeField]
     [Tooltip("Size of the matrix to solve")]
     private int size = 3;

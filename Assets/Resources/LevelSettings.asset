@@ -15,7 +15,8 @@ MonoBehaviour:
   levelDatas:
     data:
     - list:
-      - size: 3
+      - name: Level 1
+        size: 3
         type: 0
         intendedSolution:
         - type: 0
@@ -47,7 +48,8 @@ MonoBehaviour:
           video: {fileID: 0}
           explanation: Click and drag one row onto another row to swap their positions
             in the matrix.
-      - size: 3
+      - name: Level 2
+        size: 3
         type: 0
         intendedSolution:
         - type: 0
@@ -63,7 +65,8 @@ MonoBehaviour:
             n: 0
             d: 0
         tutorials: []
-      - size: 4
+      - name: Level 3
+        size: 4
         type: 0
         intendedSolution:
         - type: 0
@@ -79,7 +82,8 @@ MonoBehaviour:
             n: 0
             d: 0
         tutorials: []
-      - size: 3
+      - name: Level 4
+        size: 3
         type: 0
         intendedSolution:
         - type: 1
@@ -101,15 +105,18 @@ MonoBehaviour:
           explanation: Click and drag the Row Scale widget to multiply all of the
             numbers in a row by a numer
     - list:
-      - size: 3
+      - name: Free Play - Easy (3x3)
+        size: 3
         type: 1
         intendedSolution: []
         tutorials: []
-      - size: 4
+      - name: Free Play - Medium (4x4)
+        size: 4
         type: 1
         intendedSolution: []
         tutorials: []
-      - size: 5
+      - name: Free Play - Hard (5x5)
+        size: 5
         type: 1
         intendedSolution: []
         tutorials: []

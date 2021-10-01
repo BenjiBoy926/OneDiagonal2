@@ -40,17 +40,18 @@ public class LevelSelectorButton : MonoBehaviour
         if (button.interactable) button.onClick.AddListener(() => GameplayManager.PlayLevel(levelID));
 
         // Setup the text of the button
-        text.text = ButtonText(levelID);
-    }
-    #endregion
-
-    #region Private Methods
-    private string ButtonText(LevelID levelID)
-    {
-        switch(levelID.Type)
+        if (levelID.Type == LevelType.Enumerated)
         {
-            case LevelType.FreePlay: return "Free Play - " + levelID.Data.Size + "x" + levelID.Data.Size;
-            default: return (levelID.Index + 1).ToString();
+            text.text = (levelID.Index + 1).ToString();
+        }
+        else text.text = levelID.Data.Name;
+
+        if(levelID.Type == LevelType.FreePlay)
+        {
+            Color darkGreen = new Color(0.1f, 0.3f, 0.1f);
+            Color darkRed = new Color(0.3f, 0.1f, 0.1f);
+            float t = (float)levelID.Index / (LevelSettings.GetAllLevelIDsOfType(LevelType.FreePlay).Length - 1);
+            button.targetGraphic.color = Color.Lerp(darkGreen, darkRed, t);
         }
     }
     #endregion
