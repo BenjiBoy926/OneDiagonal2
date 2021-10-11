@@ -23,11 +23,24 @@ public class GameplayManager : MonoBehaviour
     [SerializeField]
     [Tooltip("Text that displays the current level being played")]
     private TextMeshProUGUI levelTitle;
+
+    [Space]
+
+    [SerializeField]
+    [Tooltip("If true, play the exact level given when the gameplay manager is awake." +
+        "  NOTE: if this is checked, then the argument of the 'PlayLevel' method is ignored")]
+    private bool setLevelIDOnAwake = false;
+    [SerializeField]
+    [Tooltip("Level to play when the manager starts")]
+    private LevelID levelID;
     #endregion
 
     #region Monobehaviour Messages
     private void Start()
     {
+        // If we play a specific level on awake then set it here
+        if (setLevelIDOnAwake) CurrentLevelID = levelID;
+
         // Only display the tutorial if it has not been encountered yet
         if(!CurrentLevelCompletionData.Encountered)
         {

@@ -46,6 +46,7 @@ public class LevelSelectorButton : MonoBehaviour
         }
         else text.text = levelID.Data.Name;
 
+        // Modify the colors for the free play levels
         if(levelID.Type == LevelType.FreePlay)
         {
             Color darkGreen = new Color(0.1f, 0.3f, 0.1f);

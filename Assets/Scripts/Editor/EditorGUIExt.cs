@@ -4,6 +4,35 @@ using System.Collections.Generic;
 
 public static class EditorGUIExt
 {
+    #region Public Methods
+    public static int Popup(Rect position, int index, string[] values, GUIContent label)
+    {
+        position = EditorGUI.PrefixLabel(position, label);
+
+        // Wipe indent so that rects are property placed
+        int oldIndent = EditorGUI.indentLevel;
+        EditorGUI.indentLevel = 0;
+
+        if (values.Length > 0)
+        {
+            // Make sure index is not an invalid value
+            index = Mathf.Clamp(index, 0, values.Length);
+            index = EditorGUI.Popup(position, index, values);
+        }
+        else
+        {
+            EditorGUI.LabelField(position, "Nothing to select");
+            index = -1;
+        }
+
+        // Restore the old indent
+        EditorGUI.indentLevel = oldIndent;
+
+        return index;
+    }
+    #endregion
+
+    #region Deprecated
     // FIELDS
     private static List<EditorGUILayoutData> layout = new List<EditorGUILayoutData>();
     private static Stack<int> indentStack = new Stack<int>();
@@ -107,4 +136,5 @@ public static class EditorGUIExt
             layout[layout.Count - 1] = layout[layout.Count - 1].AddGUIElement(width, height);
         }
     }
+    #endregion
 }

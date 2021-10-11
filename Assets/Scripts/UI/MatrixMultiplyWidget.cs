@@ -26,7 +26,10 @@ public class MatrixMultiplyWidget : MatrixUIChild
 
     [SerializeField]
     [Tooltip("Button that increases the scalar")]
-    private Button increaseButton;
+    private RepeatButton increaseButton;
+    [SerializeField]
+    [Tooltip("Selectable component attached to the increase button")]
+    private Selectable increaseSelectable;
     [SerializeField]
     [Tooltip("Sound that plays when the scalar increases")]
     private AudioClip increaseSound;
@@ -35,7 +38,10 @@ public class MatrixMultiplyWidget : MatrixUIChild
 
     [SerializeField]
     [Tooltip("Button that decreases the scalar")]
-    private Button decreaseButton;
+    private RepeatButton decreaseButton;
+    [SerializeField]
+    [Tooltip("Selectable component attached to the decrease button")]
+    private Selectable decreaseSelectable;
     [SerializeField]
     [Tooltip("Sound that plays when the scalar decreases")]
     private AudioClip decreaseSound;
@@ -65,8 +71,8 @@ public class MatrixMultiplyWidget : MatrixUIChild
         OnScalarChanged();
 
         // Increment/decrement scalar when buttons are clicked
-        increaseButton.onClick.AddListener(IncrementScalar);
-        decreaseButton.onClick.AddListener(DecrementScalar);
+        increaseButton.RepeatAction.AddListener(IncrementScalar);
+        decreaseButton.RepeatAction.AddListener(DecrementScalar);
         reciprocateButton.onClick.AddListener(ToggleReciprocal);
 
         // Setup the operation source to do a row scale, won't know destination until it is set on matrix ui
@@ -116,16 +122,16 @@ public class MatrixMultiplyWidget : MatrixUIChild
     }
     private void OnMatrixOperationStarted()
     {
-        increaseButton.interactable = false;
-        decreaseButton.interactable = false;
-        reciprocateButton.interactable = false;
         widget.interactable = operationSource.IsCurrentOperationSource;
+        increaseSelectable.interactable = false;
+        decreaseSelectable.interactable = false;
+        reciprocateButton.interactable = false;
     }
     private void OnMatrixOperationFinished(bool success)
     {
         widget.interactable = true;
-        increaseButton.interactable = true;
-        decreaseButton.interactable = true;
+        increaseSelectable.interactable = true;
+        decreaseSelectable.interactable = true;
         reciprocateButton.interactable = true;
     }
     #endregion

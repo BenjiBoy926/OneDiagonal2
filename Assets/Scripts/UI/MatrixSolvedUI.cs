@@ -35,6 +35,9 @@ public class MatrixSolvedUI : MatrixUIChild
     [Tooltip("Text that shows the player the fewest number of moves it took them to solve the puzzle last time")]
     private MovesText fewestMovesText;
     [SerializeField]
+    [Tooltip("Object that shows additional congratulatory text if the player gets a new high score")]
+    private GameObject highScoreCongratsObject;
+    [SerializeField]
     [Tooltip("Button that sends the player back to main menu")]
     private GameObject mainMenuButton;
     [SerializeField]
@@ -91,6 +94,7 @@ public class MatrixSolvedUI : MatrixUIChild
         congratsText.enabled = false;
         movesText.textRoot.gameObject.SetActive(false);
         fewestMovesText.textRoot.gameObject.SetActive(false);
+        highScoreCongratsObject.SetActive(false);
         mainMenuButton.SetActive(false);
         advanceButton.SetActive(false);
         replayButton.SetActive(false);
@@ -145,6 +149,9 @@ public class MatrixSolvedUI : MatrixUIChild
         {
             // Wait for the update to happen
             yield return new WaitForSeconds(fewestMovesTextUpdateWait);
+
+            // Enable the congrats object
+            highScoreCongratsObject.SetActive(true);
 
             // Give the actual fewest moves
             fewestMovesText.text.text = GameplayManager.CurrentLevelCompletionData.FewestMovesString;
