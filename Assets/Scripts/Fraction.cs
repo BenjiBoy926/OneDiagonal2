@@ -10,47 +10,20 @@ public class Fraction
     private int d = 1;
 
     // PROPERTIES
-    public int numerator
-    {
-        get
-        {
-            return n;
-        }
-    }
-    public int denominator
-    {
-        get
-        {
-            return d;
-        }
-    }
-    public Fraction reciprocal
-    {
-        get
-        {
-            return new Fraction(d, n);
-        }
-    }
+    public int numerator => n;
+    public int denominator => d;
+    public Fraction reciprocal => new Fraction(d, n);
 
     // Static properties
-    public static Fraction zero
-    {
-        get
-        {
-            return new Fraction(0, 1);
-        }
-    }
-    public static Fraction one
-    {
-        get
-        {
-            return new Fraction(1, 1);
-        }
-    }
+    public static Fraction zero => new Fraction(0, 1);
+    public static Fraction one => new Fraction(1, 1);
 
-    // CONclassORS
+    // CONSTRUCTORS
     public Fraction(int num, int den)
     {
+        // Make sure that you do not set the denominator to zero
+        if (den == 0) throw new System.DivideByZeroException($"{nameof(Fraction)}: cannot create a fraction with a denominator of zero");
+
         n = num;
         d = den;
         Simplify();

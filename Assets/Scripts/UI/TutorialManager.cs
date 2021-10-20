@@ -19,10 +19,6 @@ public class TutorialManager : MonoBehaviour
     private float fadeOutTime = 0.3f;
     #endregion
 
-    #region Private Fields
-    private TutorialData[] tutorials;
-    #endregion
-
     #region Public Methods
     public void OpenTutorials(TutorialData[] tutorials, bool displayUpgrades)
     {

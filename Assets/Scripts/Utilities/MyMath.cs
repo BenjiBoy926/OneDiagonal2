@@ -14,6 +14,7 @@ public static class MyMath
 
     public static uint LCM(uint a, uint b)
     {
+        if (GCD(a, b) == 0) Debug.Log($"Why is GCD zero?\n\ta: {a}\n\tb: {b}");
         return (a / GCD(a, b)) * b;
     }
 

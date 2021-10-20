@@ -26,6 +26,9 @@ public class TutorialUI : MonoBehaviour
     [Tooltip("Reference to the image that displays the tutorial sprite")]
     private Image image;
     [SerializeField]
+    [Tooltip("Reference to the raw image that displays the video texture")]
+    private RawImage videoImage;
+    [SerializeField]
     [Tooltip("Reference to the player that plays the tutorial video")]
     private VideoPlayer videoPlayer;
     [SerializeField]
@@ -93,8 +96,8 @@ public class TutorialUI : MonoBehaviour
 
         // Only enable visual elements that have data from the tutorial data
         image.enabled = tutorial.Sprite;
-        videoPlayer.enabled = tutorial.Video;
-        if (videoPlayer.enabled) videoPlayer.Play();
+        videoImage.enabled = tutorial.Video;
+        if (videoImage.enabled) videoPlayer.Play();
 
         // When button is clicked then close the tutorial
         closeButton.onClick.AddListener(Close);

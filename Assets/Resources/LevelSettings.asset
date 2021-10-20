@@ -45,7 +45,7 @@ MonoBehaviour:
               unlockItem: the Row Swap
           title: Row Swap
           sprite: {fileID: 0}
-          video: {fileID: 0}
+          video: {fileID: 32900000, guid: 6ccd525eefa0b8149a31c69d9800e0f5, type: 3}
           explanation: Click and drag one row onto another row to swap their positions
             in the matrix.
       - name: Level 2
@@ -101,7 +101,7 @@ MonoBehaviour:
               unlockItem: the Row Scale
           title: Row Scale
           sprite: {fileID: 0}
-          video: {fileID: 0}
+          video: {fileID: 32900000, guid: 705ea4074c68ca9429f248d45ebe395e, type: 3}
           explanation: Click and drag the Row Scale widget to multiply all of the
             numbers in a row by a numer
     - list:

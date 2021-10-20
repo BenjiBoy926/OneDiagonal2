@@ -240,6 +240,7 @@ GameObject:
   - component: {fileID: 2476807015135832361}
   - component: {fileID: 4832833896594638186}
   - component: {fileID: 3745964651035125904}
+  - component: {fileID: 1132404830544497231}
   m_Layer: 0
   m_Name: Video
   m_TagString: Untagged
@@ -261,10 +262,10 @@ RectTransform:
   m_Father: {fileID: 9209100820053472697}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: -20}
-  m_SizeDelta: {x: -40, y: 140}
+  m_SizeDelta: {x: 0, y: 140}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!222 &2476807015135832361
 CanvasRenderer:
@@ -318,7 +319,7 @@ VideoPlayer:
   m_TargetMaterialRenderer: {fileID: 0}
   m_TargetMaterialProperty: _MainTex
   m_RenderMode: 2
-  m_AspectRatio: 2
+  m_AspectRatio: 0
   m_DataSource: 0
   m_PlaybackSpeed: 1
   m_AudioOutputMode: 2
@@ -332,10 +333,24 @@ VideoPlayer:
   m_ControlledAudioTrackCount: 1
   m_PlayOnAwake: 1
   m_SkipOnDrop: 1
-  m_Looping: 0
+  m_Looping: 1
   m_WaitForFirstFrame: 1
   m_FrameReadyEventEnabled: 0
   m_VideoShaders: []
+--- !u!114 &1132404830544497231
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2319310530369996188}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86710e43de46f6f4bac7c8e50813a599, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AspectMode: 2
+  m_AspectRatio: 2.4
 --- !u!1 &3377172677071405267
 GameObject:
   m_ObjectHideFlags: 0
@@ -720,13 +735,10 @@ MonoBehaviour:
   rootRect: {fileID: 7716865547767900078}
   title: {fileID: 4888891511493927588}
   image: {fileID: 3458989514463501531}
+  videoImage: {fileID: 4832833896594638186}
   videoPlayer: {fileID: 3745964651035125904}
   explanation: {fileID: 6395936789864533990}
   closeButton: {fileID: 6974146019268845536}
-  growTime: 0.3
-  shrinkTime: 0.3
-  appearSound: {fileID: 8300000, guid: 54c5476c618d3461b832d0ac4b685a4f, type: 3}
-  disappearSound: {fileID: 8300000, guid: 2eae66430c79749d9b13ab56bc988740, type: 3}
   onTutorialClosed:
     m_PersistentCalls:
       m_Calls: []

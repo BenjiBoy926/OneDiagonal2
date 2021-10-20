@@ -99,13 +99,13 @@ public class MatrixUI : MonoBehaviour
     #endregion
 
     #region Public Methods
-    public void Setup()
+    public void Setup(LevelData currentLevelData)
     {
         // Make sure all elements block raycasts
         canvasGroup.blocksRaycasts = true;
 
         // Get the starting matrix of the current level data
-        currentMatrix = GameplayManager.CurrentLevelData.GetStartingMatrix();
+        currentMatrix = currentLevelData.GetStartingMatrix();
 
         // Initialize the list of rows
         rowUIs = new MatrixRowUI[currentMatrix.rows];
