@@ -102,10 +102,8 @@ public class PlayerData
         // resulting in a sharing violation
         PlayerData currentInstance = Instance;
 
-        using (FileStream file = new FileStream(savePath, FileMode.OpenOrCreate))
-        {
-            formatter.Serialize(file, currentInstance);
-        }
+        using FileStream file = new FileStream(savePath, FileMode.OpenOrCreate);
+        formatter.Serialize(file, currentInstance);
     }
     public static PlayerData Load()
     {

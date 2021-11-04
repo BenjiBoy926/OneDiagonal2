@@ -14,6 +14,7 @@ public class LevelData
 
     #region Public Properties
     public string Name => name;
+    public string EditorDisplayName => name + (tutorials.Length > 0 ? "*" : "");
     public int Size => size;
     public TutorialData[] Tutorials => tutorials;
     #endregion

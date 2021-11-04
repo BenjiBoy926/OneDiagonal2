@@ -9,9 +9,8 @@ public class HillClimbingLocalSearch<Config> : LocalSearch<Config>
     public HillClimbingLocalSearch(Func<Config, List<Config>> getNeighbors, 
         Func<Config, int> getValue,
         Func<List<Config>, Config> tieBreaker, 
-        Func<Config, bool> goalTest, 
         Func<Config, int, bool> terminalTest)
-        : base(getNeighbors, getValue, tieBreaker, goalTest, terminalTest) { }
+        : base(getNeighbors, getValue, tieBreaker, terminalTest) { }
     #endregion
 
     #region Public Methods
@@ -22,7 +21,7 @@ public class HillClimbingLocalSearch<Config> : LocalSearch<Config>
         int currentIteration = 0;
 
         // Loop while the resume condition returns true
-        while(!goalTest.Invoke(resultingConfiguration) && !terminalTest(resultingConfiguration, currentIteration))
+        while(!terminalTest(resultingConfiguration, currentIteration))
         {
             // Get the neighbors of the current configuration
             List<Config> neighbors = getNeighbors.Invoke(resultingConfiguration);
@@ -49,9 +48,9 @@ public class HillClimbingLocalSearch<Config> : LocalSearch<Config>
                 }
             }
 
-            // If there are no neighbors with a higher value, we couldn't satisfying the 
-            // goal test, so return now with value "false"
-            if (neighborsWithHighestValue.Count == 0) return false;
+            // If there are no neighbors with a higher value, 
+            // we know that this configuration is the local maximum, so return true that we found a local max
+            if (neighborsWithHighestValue.Count == 0) return true;
             // If there is only one neighbor with the lowest cost, choose it as the current config
             if (neighborsWithHighestValue.Count == 1) resultingConfiguration = neighborsWithHighestValue[0];
             // If there are multiple neighbors with the same lowest cost,
@@ -62,8 +61,8 @@ public class HillClimbingLocalSearch<Config> : LocalSearch<Config>
             currentIteration++;
         }
 
-        // After the loop, return true if the resulting configuration is a goal
-        return goalTest.Invoke(resultingConfiguration);
+        // If the terminal test is hit, we failed to find a local max
+        return false;
     }
     #endregion
 }

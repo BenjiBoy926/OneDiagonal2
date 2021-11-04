@@ -35,7 +35,7 @@ public class MainMenu : MonoBehaviour
     private void Start()
     {
         // TEMP
-        //PlayerData.UnlockOperation(MatrixOperation.Type.Add);
+        PlayerData.UnlockOperation(MatrixOperation.Type.Add);
 
         bool anyLevelsCompleted = PlayerData
             .GetCompletionDatasWithType(LevelType.Enumerated)

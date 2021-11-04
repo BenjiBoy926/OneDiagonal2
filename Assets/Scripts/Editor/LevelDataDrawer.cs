@@ -14,6 +14,13 @@ public class LevelDataDrawer : PropertyDrawer
         SerializedProperty intendedSolution = property.FindPropertyRelative(nameof(intendedSolution));
         SerializedProperty tutorials = property.FindPropertyRelative(nameof(tutorials));
 
+        // Add an asterisk next to the names of levels with tutorials in them
+        if (tutorials.arraySize > 0)
+        {
+            label = new GUIContent(label);
+            label.text += "*";
+        }
+
         // Set height for only one control
         position.height = LayoutUtilities.standardControlHeight;
 

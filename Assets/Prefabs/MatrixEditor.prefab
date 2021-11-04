@@ -687,7 +687,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4045425636102b428a9507889939f75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialWaitTime: 0.3
+  initialWaitTime: 0.5
   repeatWaitTime: 0.1
   repeatAction:
     m_PersistentCalls:
@@ -1569,7 +1569,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4045425636102b428a9507889939f75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialWaitTime: 0.3
+  initialWaitTime: 0.5
   repeatWaitTime: 0.1
   repeatAction:
     m_PersistentCalls:

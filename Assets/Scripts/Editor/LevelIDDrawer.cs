@@ -33,7 +33,7 @@ public class LevelIDDrawer : PropertyDrawer
             // Get a list of all possible level ids with this type
             LevelID[] levelIDs = LevelSettings.GetAllLevelIDsOfType((LevelType)type.enumValueIndex);
             // Select the names of the levels with this type
-            string[] names = levelIDs.Select(id => id.Data.Name).ToArray();
+            string[] names = levelIDs.Select(id => id.Data.EditorDisplayName).ToArray();
             // Edit the property as a popup with the names of all the levels in this type
             index.intValue = EditorGUIExt.Popup(position, index.intValue, names, new GUIContent(property.displayName));
 

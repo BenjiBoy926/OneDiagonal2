@@ -10,6 +10,7 @@ public class Matrix
     private int _rows = 1;
 
     // PROPERTIES
+    public int size => data.Length;
     public int rows => _rows;
     public int cols => data.Length / _rows;
     public bool isIdentity
