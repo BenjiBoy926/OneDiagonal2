@@ -460,6 +460,79 @@ MonoBehaviour:
             n: 1
             d: 5
         tutorials: []
+      - name: Level 19
+        size: 3
+        type: 0
+        intendedSolution:
+        - type: 2
+          destinationRow: 0
+          sourceRow: 2
+          scalar:
+            n: 1
+            d: 1
+        tutorials:
+        - optionalUnlockData:
+            willUnlock: 1
+            unlocker:
+              operationType: 2
+              unlockSprite: {fileID: 0}
+              unlockItem: Row Adding
+          title: Row Adding
+          sprite: {fileID: 0}
+          video: {fileID: 32900000, guid: 004224f97ab893e4d99348857e04d0f2, type: 3}
+          explanation: Click and drag from the plus sign to add all of the numbers
+            in one row to all of the numbers in another row.
+      - name: Level 20
+        size: 3
+        type: 0
+        intendedSolution:
+        - type: 2
+          destinationRow: 0
+          sourceRow: 2
+          scalar:
+            n: 1
+            d: 1
+        - type: 2
+          destinationRow: 0
+          sourceRow: 1
+          scalar:
+            n: 1
+            d: 1
+        tutorials: []
+      - name: Level 21
+        size: 3
+        type: 0
+        intendedSolution:
+        - type: 2
+          destinationRow: 2
+          sourceRow: 0
+          scalar:
+            n: 1
+            d: 1
+        - type: 2
+          destinationRow: 1
+          sourceRow: 0
+          scalar:
+            n: 1
+            d: 1
+        tutorials: []
+      - name: Level 22
+        size: 3
+        type: 0
+        intendedSolution:
+        - type: 2
+          destinationRow: 2
+          sourceRow: 0
+          scalar:
+            n: 1
+            d: 1
+        - type: 2
+          destinationRow: 1
+          sourceRow: 0
+          scalar:
+            n: 1
+            d: 1
+        tutorials: []
     - list:
       - name: Free Play - Easy (3x3)
         size: 3

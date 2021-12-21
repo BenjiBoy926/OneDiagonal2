@@ -248,7 +248,7 @@ PrefabInstance:
     - target: {fileID: 8373380489381727700, guid: 768bbb1d6f2fae8409fb21fbd1099d46,
         type: 3}
       propertyPath: levelToRecord.index
-      value: 11
+      value: 18
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 768bbb1d6f2fae8409fb21fbd1099d46, type: 3}

@@ -68,7 +68,9 @@ public class UnlockUI : MonoBehaviour
         rootTransform.DOScale(1f, growTime).SetEase(Ease.InOutBack);
 
         // Have the spinning transform rotate infinitely
-        spinningTransform.DORotate(Vector3.forward * rotationSpeed, 1f).SetLoops(-1, LoopType.Incremental).SetEase(Ease.Linear);
+        spinningTransform.DORotate(Vector3.forward * rotationSpeed, 1f)
+            .SetLoops(-1, LoopType.Incremental)
+            .SetEase(Ease.Linear);
 
         // Setup the text and image
         congrats.text = "You've unlocked " + unlock.UnlockItem + "!";

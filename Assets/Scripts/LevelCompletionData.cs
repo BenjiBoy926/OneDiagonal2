@@ -26,10 +26,10 @@ public class LevelCompletionData
 
     #region Constructors
     public LevelCompletionData() : this(false, int.MaxValue) { }
-    public LevelCompletionData(bool completed, int minimumMoves)
+    public LevelCompletionData(bool completed, int fewestMoves)
     {
         this.completed = completed;
-        this.fewestMoves = minimumMoves;
+        this.fewestMoves = fewestMoves;
     }
     public LevelCompletionData(LevelCompletionData other) : this(other.completed, other.fewestMoves) { }
     #endregion
