@@ -29,10 +29,6 @@ public class LevelSettings : ScriptableObjectSingleton<LevelSettings>
     }
     #endregion
 
-    #region Private Properties
-    private static LevelSettings Instance => GetOrCreateInstance(nameof(LevelSettings), nameof(LevelSettings));
-    #endregion
-
     #region Private Editor Fields
     [SerializeField]
     [Tooltip("List of all level data for all levels")]

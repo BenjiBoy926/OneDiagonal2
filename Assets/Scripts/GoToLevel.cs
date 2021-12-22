@@ -13,6 +13,7 @@ public class GoToLevel : MonoBehaviour
     #region Monobehaviour Messages
     private void Awake()
     {
+        PlayerData.UnlockAllOperations();
         GameplayManager.PlayLevel(level);
     }
     #endregion

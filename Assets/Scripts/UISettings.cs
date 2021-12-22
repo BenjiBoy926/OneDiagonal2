@@ -7,10 +7,6 @@ using Hellmade.Sound;
 [CreateAssetMenu]
 public class UISettings : ScriptableObjectSingleton<UISettings>
 {
-    #region Private Properties
-    private static UISettings Instance => GetOrCreateInstance(nameof(UISettings), nameof(UISettings));
-    #endregion
-
     #region Public Properties
     public static MatrixItemColor DiagonalColors => Instance.diagonalColors;
     public static MatrixItemColor NotDiagonalColors => Instance.notDiagnonalColors;

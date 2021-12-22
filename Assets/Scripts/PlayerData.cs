@@ -95,6 +95,15 @@ public class PlayerData
     public static LevelCompletionData[] GetCompletionDatasWithType(LevelType levelType) => Instance.completionDatas.Get(levelType).array;
     public static bool OperationUnlocked(MatrixOperation.Type type) => Instance.operationsUnlocked.Get(type);
     public static void UnlockOperation(MatrixOperation.Type type) => Instance.operationsUnlocked.Set(type, true);
+    public static void UnlockAllOperations()
+    {
+        MatrixOperation.Type[] operations = (MatrixOperation.Type[])System.Enum.GetValues(typeof(MatrixOperation.Type));
+
+        foreach(MatrixOperation.Type type in operations)
+        {
+            UnlockOperation(type);
+        }
+    }
     // Save the current instance of the player data to the file
     public static void Save()
     {

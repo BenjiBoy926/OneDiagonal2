@@ -20,15 +20,8 @@ public class RecorderLevelManager : MonoBehaviour
     #region Monobehaviour Messages
     private void Start()
     {
-        // Get a list of all types
-        MatrixOperation.Type[] types = (MatrixOperation.Type[])System.Enum.GetValues(typeof(MatrixOperation.Type));
-
-        // Unlock all operations so that recording will work
-        foreach(MatrixOperation.Type type in types)
-        {
-            PlayerData.UnlockOperation(type);
-        }
-
+        // Unlock all operations
+        PlayerData.UnlockAllOperations();
         // Setup the matrix ui
         matrixUI.Setup(LevelSettings.GetLevelData(levelToRecord));
     }
