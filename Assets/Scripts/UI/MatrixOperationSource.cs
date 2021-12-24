@@ -26,6 +26,7 @@ public class MatrixOperationSource : MatrixUIChild, IPointerDownHandler, IPointe
     private Func<MatrixOperation> operationGetter = () => MatrixOperation.RowSwap(-1, -1);
     // Default colors for each of the graphics in the list
     private List<Color> defaultColors = new List<Color>();
+    private bool dragging = false;
     #endregion
 
     #region Public Methods
@@ -60,15 +61,15 @@ public class MatrixOperationSource : MatrixUIChild, IPointerDownHandler, IPointe
         }
         PunchSize();
     }
-    // Pointer up should do the same thing as ending a drag
+    // Do the same thing on pointer up if we did not drag the operator
     public void OnPointerUp(PointerEventData data)
     {
-        OnEndDrag(data);
+        if (!dragging) OnEndDrag(data);
     }
     // We only have this so that EndDrag actually works
     public void OnBeginDrag(PointerEventData data)
     {
-        // Do literally nothing at all
+        dragging = true;
     }
     // We only have this so that EndDrag actually works
     public void OnDrag(PointerEventData data)
@@ -95,6 +96,8 @@ public class MatrixOperationSource : MatrixUIChild, IPointerDownHandler, IPointe
         {
             graphics[i].color = defaultColors[i];
         }
+
+        dragging = false;
     }
     #endregion
 

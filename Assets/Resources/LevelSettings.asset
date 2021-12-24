@@ -300,89 +300,89 @@ MonoBehaviour:
             n: 1
             d: 4
         tutorials: []
-      - name: Level 10
-        size: 4
-        type: 0
-        intendedSolution:
-        - type: 1
-          destinationRow: 0
-          sourceRow: 2
-          scalar:
-            n: 2
-            d: 1
-        - type: 1
-          destinationRow: 1
-          sourceRow: 2
-          scalar:
-            n: -1
-            d: 5
-        - type: 1
-          destinationRow: 2
-          sourceRow: 2
-          scalar:
-            n: -3
-            d: 1
-        - type: 1
-          destinationRow: 3
-          sourceRow: 2
-          scalar:
-            n: 1
-            d: 4
-        - type: 0
-          destinationRow: 0
-          sourceRow: 2
-          scalar:
-            n: 1
-            d: 4
-        - type: 0
-          destinationRow: 1
-          sourceRow: 3
-          scalar:
-            n: 1
-            d: 4
-        tutorials: []
-      - name: Level 10
-        size: 4
-        type: 0
-        intendedSolution:
-        - type: 1
-          destinationRow: 0
-          sourceRow: 2
-          scalar:
-            n: 2
-            d: 1
-        - type: 1
-          destinationRow: 1
-          sourceRow: 2
-          scalar:
-            n: -1
-            d: 5
-        - type: 1
-          destinationRow: 2
-          sourceRow: 2
-          scalar:
-            n: -3
-            d: 1
-        - type: 1
-          destinationRow: 3
-          sourceRow: 2
-          scalar:
-            n: 1
-            d: 4
-        - type: 0
-          destinationRow: 0
-          sourceRow: 3
-          scalar:
-            n: 1
-            d: 4
-        - type: 0
-          destinationRow: 1
-          sourceRow: 2
-          scalar:
-            n: 1
-            d: 4
-        tutorials: []
       - name: Level 11
+        size: 4
+        type: 0
+        intendedSolution:
+        - type: 1
+          destinationRow: 0
+          sourceRow: 2
+          scalar:
+            n: 2
+            d: 1
+        - type: 1
+          destinationRow: 1
+          sourceRow: 2
+          scalar:
+            n: -1
+            d: 5
+        - type: 1
+          destinationRow: 2
+          sourceRow: 2
+          scalar:
+            n: -3
+            d: 1
+        - type: 1
+          destinationRow: 3
+          sourceRow: 2
+          scalar:
+            n: 1
+            d: 4
+        - type: 0
+          destinationRow: 0
+          sourceRow: 2
+          scalar:
+            n: 1
+            d: 4
+        - type: 0
+          destinationRow: 1
+          sourceRow: 3
+          scalar:
+            n: 1
+            d: 4
+        tutorials: []
+      - name: Level 12
+        size: 4
+        type: 0
+        intendedSolution:
+        - type: 1
+          destinationRow: 0
+          sourceRow: 2
+          scalar:
+            n: 2
+            d: 1
+        - type: 1
+          destinationRow: 1
+          sourceRow: 2
+          scalar:
+            n: -1
+            d: 5
+        - type: 1
+          destinationRow: 2
+          sourceRow: 2
+          scalar:
+            n: -3
+            d: 1
+        - type: 1
+          destinationRow: 3
+          sourceRow: 2
+          scalar:
+            n: 1
+            d: 4
+        - type: 0
+          destinationRow: 0
+          sourceRow: 3
+          scalar:
+            n: 1
+            d: 4
+        - type: 0
+          destinationRow: 1
+          sourceRow: 2
+          scalar:
+            n: 1
+            d: 4
+        tutorials: []
+      - name: Level 13
         size: 3
         type: 0
         intendedSolution:
@@ -404,7 +404,7 @@ MonoBehaviour:
           video: {fileID: 32900000, guid: 004224f97ab893e4d99348857e04d0f2, type: 3}
           explanation: Click and drag from the plus sign to add all of the numbers
             in one row to all of the numbers in another row.
-      - name: Level 12
+      - name: Level 14
         size: 3
         type: 0
         intendedSolution:
@@ -417,46 +417,6 @@ MonoBehaviour:
         - type: 2
           destinationRow: 0
           sourceRow: 1
-          scalar:
-            n: 1
-            d: 1
-        tutorials: []
-      - name: Level 13
-        size: 3
-        type: 0
-        intendedSolution:
-        - type: 2
-          destinationRow: 2
-          sourceRow: 0
-          scalar:
-            n: 1
-            d: 1
-        - type: 2
-          destinationRow: 1
-          sourceRow: 0
-          scalar:
-            n: 1
-            d: 1
-        tutorials: []
-      - name: Level 14
-        size: 3
-        type: 0
-        intendedSolution:
-        - type: 2
-          destinationRow: 1
-          sourceRow: 2
-          scalar:
-            n: 1
-            d: 1
-        - type: 2
-          destinationRow: 2
-          sourceRow: 0
-          scalar:
-            n: 1
-            d: 1
-        - type: 2
-          destinationRow: 1
-          sourceRow: 2
           scalar:
             n: 1
             d: 1
@@ -467,6 +427,46 @@ MonoBehaviour:
         intendedSolution:
         - type: 2
           destinationRow: 2
+          sourceRow: 0
+          scalar:
+            n: 1
+            d: 1
+        - type: 2
+          destinationRow: 1
+          sourceRow: 0
+          scalar:
+            n: 1
+            d: 1
+        tutorials: []
+      - name: Level 16
+        size: 3
+        type: 0
+        intendedSolution:
+        - type: 2
+          destinationRow: 1
+          sourceRow: 2
+          scalar:
+            n: 1
+            d: 1
+        - type: 2
+          destinationRow: 2
+          sourceRow: 0
+          scalar:
+            n: 1
+            d: 1
+        - type: 2
+          destinationRow: 1
+          sourceRow: 2
+          scalar:
+            n: 1
+            d: 1
+        tutorials: []
+      - name: Level 17
+        size: 3
+        type: 0
+        intendedSolution:
+        - type: 2
+          destinationRow: 2
           sourceRow: 1
           scalar:
             n: 1
@@ -484,7 +484,7 @@ MonoBehaviour:
             n: 1
             d: 1
         tutorials: []
-      - name: Level 16
+      - name: Level 18
         size: 3
         type: 0
         intendedSolution:
@@ -507,7 +507,7 @@ MonoBehaviour:
             n: 1
             d: 1
         tutorials: []
-      - name: Level 17
+      - name: Level 19
         size: 3
         type: 0
         intendedSolution:
@@ -530,7 +530,7 @@ MonoBehaviour:
             n: 1
             d: 1
         tutorials: []
-      - name: Level 18
+      - name: Level 20
         size: 3
         type: 0
         intendedSolution:
@@ -552,35 +552,6 @@ MonoBehaviour:
           video: {fileID: 32900000, guid: f233b73a234316548b81e6547790e547, type: 3}
           explanation: Use the reverse arrows to switch between adding and subtracting
             rows.
-      - name: Level 10
-        size: 4
-        type: 0
-        intendedSolution:
-        - type: 1
-          destinationRow: 0
-          sourceRow: 2
-          scalar:
-            n: 2
-            d: 1
-        - type: 1
-          destinationRow: 1
-          sourceRow: 2
-          scalar:
-            n: -1
-            d: 5
-        - type: 1
-          destinationRow: 2
-          sourceRow: 2
-          scalar:
-            n: -3
-            d: 1
-        - type: 1
-          destinationRow: 3
-          sourceRow: 2
-          scalar:
-            n: 1
-            d: 4
-        tutorials: []
     - list:
       - name: Free Play - Easy (3x3)
         size: 3
