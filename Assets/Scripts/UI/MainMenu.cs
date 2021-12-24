@@ -34,9 +34,6 @@ public class MainMenu : MonoBehaviour
     #region Monobehaviour Messages
     private void Start()
     {
-        // TEMP
-        PlayerData.UnlockOperation(MatrixOperation.Type.Add);
-
         bool anyLevelsCompleted = PlayerData
             .GetCompletionDatasWithType(LevelType.Enumerated)
             .Any(x => x.Completed);
