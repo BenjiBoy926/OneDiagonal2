@@ -87,10 +87,22 @@ MonoBehaviour:
         type: 0
         intendedSolution:
         - type: 1
-          destinationRow: 1
+          destinationRow: 0
           sourceRow: 3
           scalar:
             n: 2
+            d: 1
+        - type: 1
+          destinationRow: 1
+          sourceRow: 3
+          scalar:
+            n: 4
+            d: 1
+        - type: 1
+          destinationRow: 2
+          sourceRow: 3
+          scalar:
+            n: 3
             d: 1
         tutorials:
         - optionalUnlockData:
@@ -112,53 +124,19 @@ MonoBehaviour:
           destinationRow: 0
           sourceRow: 3
           scalar:
-            n: 3
+            n: -2
             d: 1
-        - type: 1
-          destinationRow: 1
-          sourceRow: 3
-          scalar:
-            n: 4
-            d: 1
-        - type: 1
-          destinationRow: 2
-          sourceRow: 3
-          scalar:
-            n: 5
-            d: 1
-        tutorials: []
-      - name: Level 6
-        size: 3
-        type: 0
-        intendedSolution:
-        - type: 1
-          destinationRow: 0
-          sourceRow: 3
-          scalar:
-            n: 9
-            d: 1
-        - type: 1
-          destinationRow: 1
-          sourceRow: 3
-          scalar:
-            n: 2
-            d: 1
-        - type: 1
-          destinationRow: 2
-          sourceRow: 3
-          scalar:
-            n: 5
-            d: 1
-        tutorials: []
-      - name: Level 7
-        size: 3
-        type: 0
-        intendedSolution:
         - type: 1
           destinationRow: 1
           sourceRow: 3
           scalar:
             n: -1
+            d: 1
+        - type: 1
+          destinationRow: 2
+          sourceRow: 3
+          scalar:
+            n: -3
             d: 1
         tutorials:
         - optionalUnlockData:
@@ -172,38 +150,15 @@ MonoBehaviour:
           video: {fileID: 32900000, guid: cbe54abf93d53054380adefdd38d02fb, type: 3}
           explanation: Remember that you can multiply a negative number by a negative
             number to flip it to a positive number!
-      - name: Level 8
-        size: 3
+      - name: Level 6
+        size: 4
         type: 0
         intendedSolution:
         - type: 1
           destinationRow: 0
           sourceRow: 3
           scalar:
-            n: -3
-            d: 1
-        - type: 1
-          destinationRow: 1
-          sourceRow: 3
-          scalar:
-            n: -4
-            d: 1
-        - type: 1
-          destinationRow: 2
-          sourceRow: 3
-          scalar:
-            n: -5
-            d: 1
-        tutorials: []
-      - name: Level 9
-        size: 3
-        type: 0
-        intendedSolution:
-        - type: 1
-          destinationRow: 0
-          sourceRow: 3
-          scalar:
-            n: -9
+            n: 3
             d: 1
         - type: 1
           destinationRow: 1
@@ -215,68 +170,45 @@ MonoBehaviour:
           destinationRow: 2
           sourceRow: 3
           scalar:
-            n: -5
-            d: 1
-        tutorials: []
-      - name: Level 10
-        size: 4
-        type: 0
-        intendedSolution:
-        - type: 1
-          destinationRow: 0
-          sourceRow: 3
-          scalar:
-            n: 7
-            d: 1
-        - type: 1
-          destinationRow: 1
-          sourceRow: 3
-          scalar:
-            n: -10
-            d: 1
-        - type: 1
-          destinationRow: 2
-          sourceRow: 3
-          scalar:
-            n: 2
+            n: 5
             d: 1
         - type: 1
           destinationRow: 3
           sourceRow: 3
           scalar:
-            n: 4
+            n: -4
             d: 1
         tutorials: []
-      - name: Level 11
+      - name: Level 7
         size: 4
         type: 0
         intendedSolution:
         - type: 1
           destinationRow: 0
-          sourceRow: 3
-          scalar:
-            n: 4
-            d: 1
-        - type: 1
-          destinationRow: 1
-          sourceRow: 3
-          scalar:
-            n: 3
-            d: 1
-        - type: 1
-          destinationRow: 2
           sourceRow: 3
           scalar:
             n: -9
             d: 1
         - type: 1
-          destinationRow: 3
+          destinationRow: 1
+          sourceRow: 3
+          scalar:
+            n: 2
+            d: 1
+        - type: 1
+          destinationRow: 2
           sourceRow: 3
           scalar:
             n: -7
             d: 1
+        - type: 1
+          destinationRow: 3
+          sourceRow: 3
+          scalar:
+            n: 5
+            d: 1
         tutorials: []
-      - name: Level 12
+      - name: Level 8
         size: 3
         type: 0
         intendedSolution:
@@ -298,169 +230,7 @@ MonoBehaviour:
           video: {fileID: 32900000, guid: e6f7b67ee30b22f48a1ff74fd154cabf, type: 3}
           explanation: Use the "reverse" icon to switch between multiplying and dividing
             a row by the given number.
-      - name: Level 13
-        size: 3
-        type: 0
-        intendedSolution:
-        - type: 1
-          destinationRow: 0
-          sourceRow: 3
-          scalar:
-            n: 1
-            d: 3
-        - type: 1
-          destinationRow: 1
-          sourceRow: 3
-          scalar:
-            n: 1
-            d: 4
-        - type: 1
-          destinationRow: 2
-          sourceRow: 3
-          scalar:
-            n: 1
-            d: 5
-        tutorials: []
-      - name: Level 14
-        size: 3
-        type: 0
-        intendedSolution:
-        - type: 1
-          destinationRow: 0
-          sourceRow: 3
-          scalar:
-            n: 1
-            d: 9
-        - type: 1
-          destinationRow: 1
-          sourceRow: 3
-          scalar:
-            n: 1
-            d: 2
-        - type: 1
-          destinationRow: 2
-          sourceRow: 3
-          scalar:
-            n: 1
-            d: 5
-        tutorials: []
-      - name: Level 15
-        size: 4
-        type: 0
-        intendedSolution:
-        - type: 1
-          destinationRow: 0
-          sourceRow: 3
-          scalar:
-            n: 9
-            d: 1
-        - type: 1
-          destinationRow: 1
-          sourceRow: 3
-          scalar:
-            n: 1
-            d: 2
-        - type: 1
-          destinationRow: 2
-          sourceRow: 3
-          scalar:
-            n: -5
-            d: 1
-        - type: 1
-          destinationRow: 3
-          sourceRow: 3
-          scalar:
-            n: -1
-            d: 4
-        tutorials: []
-      - name: Level 16
-        size: 4
-        type: 0
-        intendedSolution:
-        - type: 1
-          destinationRow: 0
-          sourceRow: 3
-          scalar:
-            n: 1
-            d: 4
-        - type: 1
-          destinationRow: 1
-          sourceRow: 3
-          scalar:
-            n: -7
-            d: 1
-        - type: 1
-          destinationRow: 2
-          sourceRow: 3
-          scalar:
-            n: -1
-            d: 3
-        - type: 1
-          destinationRow: 3
-          sourceRow: 3
-          scalar:
-            n: 2
-            d: 1
-        tutorials: []
-      - name: Level 17
-        size: 4
-        type: 0
-        intendedSolution:
-        - type: 1
-          destinationRow: 0
-          sourceRow: 3
-          scalar:
-            n: 10
-            d: 1
-        - type: 1
-          destinationRow: 1
-          sourceRow: 3
-          scalar:
-            n: -1
-            d: 5
-        - type: 1
-          destinationRow: 2
-          sourceRow: 3
-          scalar:
-            n: 2
-            d: 1
-        - type: 1
-          destinationRow: 3
-          sourceRow: 3
-          scalar:
-            n: -10
-            d: 1
-        tutorials: []
-      - name: Level 18
-        size: 4
-        type: 0
-        intendedSolution:
-        - type: 1
-          destinationRow: 0
-          sourceRow: 3
-          scalar:
-            n: -11
-            d: 1
-        - type: 1
-          destinationRow: 1
-          sourceRow: 3
-          scalar:
-            n: -1
-            d: 7
-        - type: 1
-          destinationRow: 2
-          sourceRow: 3
-          scalar:
-            n: 3
-            d: 1
-        - type: 1
-          destinationRow: 3
-          sourceRow: 3
-          scalar:
-            n: 1
-            d: 5
-        tutorials: []
-      - name: Level 19
+      - name: Level 9
         size: 3
         type: 0
         intendedSolution:
@@ -482,7 +252,7 @@ MonoBehaviour:
           video: {fileID: 32900000, guid: 004224f97ab893e4d99348857e04d0f2, type: 3}
           explanation: Click and drag from the plus sign to add all of the numbers
             in one row to all of the numbers in another row.
-      - name: Level 20
+      - name: Level 10
         size: 3
         type: 0
         intendedSolution:
@@ -499,7 +269,7 @@ MonoBehaviour:
             n: 1
             d: 1
         tutorials: []
-      - name: Level 21
+      - name: Level 11
         size: 3
         type: 0
         intendedSolution:
@@ -516,7 +286,7 @@ MonoBehaviour:
             n: 1
             d: 1
         tutorials: []
-      - name: Level 22
+      - name: Level 12
         size: 3
         type: 0
         intendedSolution:
@@ -539,7 +309,7 @@ MonoBehaviour:
             n: 1
             d: 1
         tutorials: []
-      - name: Level 23
+      - name: Level 13
         size: 3
         type: 0
         intendedSolution:
@@ -562,7 +332,7 @@ MonoBehaviour:
             n: 1
             d: 1
         tutorials: []
-      - name: Level 24
+      - name: Level 14
         size: 3
         type: 0
         intendedSolution:
@@ -585,7 +355,7 @@ MonoBehaviour:
             n: 1
             d: 1
         tutorials: []
-      - name: Level 25
+      - name: Level 15
         size: 3
         type: 0
         intendedSolution:
@@ -608,7 +378,7 @@ MonoBehaviour:
             n: 1
             d: 1
         tutorials: []
-      - name: Level 26
+      - name: Level 16
         size: 3
         type: 0
         intendedSolution:
