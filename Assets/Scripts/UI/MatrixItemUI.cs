@@ -51,6 +51,21 @@ public class MatrixItemUI : MatrixUIChild
     }
     public void ShowPreview()
     {
+        // Get the intended next operation
+        //MatrixOperation intendedOperation = MatrixParent.IntendedNextOperation;
+        //// Get the fraction that will be operating on this fraction, if any
+        //Fraction operatingFraction = new Fraction();
+        //bool hasOperatingFraction = intendedOperation.OperatingFraction(MatrixParent.CurrentMatrix, 
+        //    rowParent.RowIndex, columnIndex, ref operatingFraction);
+
+        //// If this matrix item is being operated on, then display the full operation
+        //if (hasOperatingFraction)
+        //{
+        //    text.text = $"{CurrentFraction} {intendedOperation.OperationString} {operatingFraction} = {PreviewFraction}";
+        //}
+        //// If this matrix item is not affected by the operation, display the fraction alone
+        //else text.text = PreviewFraction.ToString();
+
         text.text = PreviewFraction.ToString();
         SetColor(PreviewFraction);
 

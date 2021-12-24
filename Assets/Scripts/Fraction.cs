@@ -1,13 +1,13 @@
 ﻿using UnityEngine;
 
 [System.Serializable]
-public class Fraction
+public struct Fraction
 {
     // FIELDS
     [SerializeField]
     private int n;
     [SerializeField]
-    private int d = 1;
+    private int d;
 
     // PROPERTIES
     public int numerator => n;
@@ -30,7 +30,6 @@ public class Fraction
     }
     public Fraction(int num) : this(num, 1) { }
     public Fraction(Fraction src) : this(src.n, src.d) { }
-    public Fraction() : this(one) { }
 
     private void Simplify()
     {
@@ -100,11 +99,11 @@ public class Fraction
     // Relational
     public static bool operator<(Fraction a, Fraction b)
     {
-        return ((a.n * b.d) < (a.d * b.n));
+        return (a.n * b.d) < (a.d * b.n);
     }
     public static bool operator>(Fraction a, Fraction b)
     {
-        return ((a.n * b.d) > (a.d * b.n));
+        return (a.n * b.d) > (a.d * b.n);
     }
     public static bool operator<=(Fraction a, Fraction b)
     {
@@ -135,10 +134,8 @@ public class Fraction
     }
     public override bool Equals(object obj)
     {
-        if (obj.GetType() == typeof(Fraction))
-        {
-            return (Fraction)obj == this;
-        }
+        if (obj == null) return false;
+        else if (obj is Fraction fraction) return this == fraction;
         else return false;
     }
     public override int GetHashCode()

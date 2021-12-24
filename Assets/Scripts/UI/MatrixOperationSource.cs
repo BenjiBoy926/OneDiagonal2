@@ -6,7 +6,7 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using DG.Tweening;
 
-public class MatrixOperationSource : MatrixUIChild, IBeginDragHandler, IDragHandler, IEndDragHandler
+public class MatrixOperationSource : MatrixUIChild, IPointerDownHandler, IPointerUpHandler, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     #region Public Properties
     public MatrixOperation Operation => operationGetter.Invoke();
@@ -46,20 +46,31 @@ public class MatrixOperationSource : MatrixUIChild, IBeginDragHandler, IDragHand
             defaultColors.Add(graphic.color);
         }
     }
+    #endregion
 
-    // When the source begins dragging, set the intended next operation
-    public void OnBeginDrag(PointerEventData data)
+    #region Pointer Interface Implementations
+    public void OnPointerDown(PointerEventData data)
     {
         MatrixParent.SetOperationSource(this);
 
         // Set the color of the graphics this source is responsible for
-        foreach(Graphic graphic in graphics)
+        foreach (Graphic graphic in graphics)
         {
             graphic.color = UISettings.GetOperatorColor(Operation.type);
         }
         PunchSize();
     }
-    // We only have this so that BeginDrag and EndDrag actually work
+    // Pointer up should do the same thing as ending a drag
+    public void OnPointerUp(PointerEventData data)
+    {
+        OnEndDrag(data);
+    }
+    // We only have this so that EndDrag actually works
+    public void OnBeginDrag(PointerEventData data)
+    {
+        // Do literally nothing at all
+    }
+    // We only have this so that EndDrag actually works
     public void OnDrag(PointerEventData data)
     {
         // Do literally nothing at all
