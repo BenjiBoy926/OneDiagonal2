@@ -22,9 +22,9 @@ MonoBehaviour:
     type: 3}
   operationColors:
     data:
-    - {r: 0.21604496, g: 0.21009256, b: 0.2735849, a: 1}
-    - {r: 0.2264151, g: 0.18241367, b: 0.22289498, a: 1}
-    - {r: 0.21698111, g: 0.21698111, b: 0.17890707, a: 1}
+    - {r: 0, g: 0.5660378, b: 0.5660378, a: 1}
+    - {r: 0.49056602, g: 0, b: 0.49056602, a: 1}
+    - {r: 0.4811321, g: 0.4811321, b: 0, a: 1}
   operatorPunch: 0.1
   operatorPunchTime: 0.2
   windowOpenSound: {fileID: 8300000, guid: 54c5476c618d3461b832d0ac4b685a4f, type: 3}
