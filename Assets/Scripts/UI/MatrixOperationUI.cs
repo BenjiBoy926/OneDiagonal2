@@ -1,20 +1,28 @@
 using System.Collections;
 using System.Collections.Generic;
+
 using UnityEngine;
+
+using TMPro;
 
 public class MatrixOperationUI : MatrixUIChild
 {
-    #region Private Editor Fields
-    [SerializeField]
-    [Tooltip("Main canvas to instantiate all lines under")]
-    private Canvas canvas;
-    [SerializeField]
-    [Tooltip("Line prefab to use for each operation type")]
-    private ArrayOnEnum<MatrixOperation.Type, UILine> linePrefabs;
+    #region Private Properties
+    private string DisplayFormat => MatrixParent.IntendedNextOperationType switch
+    {
+        MatrixOperation.Type.Swap => "{0} <-> {1}",
+        MatrixOperation.Type.Scale => "{0} = {1} * {0}",
+        MatrixOperation.Type.Add => "{1} = {1} {2} {0}",
+        _ => ""
+    };
+    private string SourceRowName => RowName(MatrixParent.IntendedNextOperation.sourceRow);
+    private string DestinationRowName => RowName(MatrixParent.IntendedNextOperation.destinationRow);
     #endregion
 
-    #region Private Fields
-    private ArrayOnEnum<MatrixOperation.Type, List<UILine>> lineInstances = new ArrayOnEnum<MatrixOperation.Type, List<UILine>>();
+    #region Private Editor Fields
+    [SerializeField]
+    [Tooltip("Text used to display the operation in progress")]
+    private TextMeshProUGUI text;
     #endregion
 
     #region Child Overrides
@@ -22,82 +30,63 @@ public class MatrixOperationUI : MatrixUIChild
     {
         base.Start();
 
-        // The matrix UI seems too congested for all the fun operation lines to fit
-        // There must be some other way to add clarity to some of the more confusing math concepts...
+        text.text = "";
 
-        // Get all matrix operation types
-        //MatrixOperation.Type[] types = (MatrixOperation.Type[])System.Enum.GetValues(typeof(MatrixOperation.Type));
-        //foreach(MatrixOperation.Type type in types)
-        //{
-        //    // Set this list of line instances to a new list
-        //    lineInstances.Set(type, new List<UILine>());
-
-        //    // Create a line for each column in the matrix
-        //    for(int i = 0; i < MatrixParent.Cols; i++)
-        //    {
-        //        UILine lineInstance = Instantiate(linePrefabs.Get(type), canvas.transform);
-        //        lineInstances.Get(type).Add(lineInstance);
-        //        lineInstance.gameObject.SetActive(false);
-        //    }
-        //}
-
-        //// Listen for operation events
-        //MatrixParent.OnOperationDestinationSet.AddListener(OnOperationSet);
-        //MatrixParent.OnOperationDestinationUnset.AddListener(OnOperationUnset);
-        //MatrixParent.OnOperationFinish.AddListener(x => OnOperationFinished());
+        // Listen for operation events
+        MatrixParent.OnOperationStart.AddListener(OnOperationStart);
+        MatrixParent.OnOperationDestinationSet.AddListener(OnOperationDestinationSet);
+        MatrixParent.OnOperationDestinationUnset.AddListener(OnOperationDestinationUnset);
+        MatrixParent.OnOperationFinish.AddListener(x => OnOperationFinished());
     }
     #endregion
 
     #region Event Listeners
-    private void OnOperationSet()
+    private void OnOperationStart()
     {
-        MatrixOperation.Type intendedType = MatrixParent.IntendedNextOperationType;
-
-        if (intendedType == MatrixOperation.Type.Scale)
-        {
-            // Not implemented yet
-        }
-        // For anything other than scale, just make the source point to the destination
-        else PointFromSourceToDestination(lineInstances.Get(intendedType));
+        UpdateText();
+    }
+    private void OnOperationDestinationSet()
+    {
+        UpdateText();
     }
     // Operation unset is the same as operation confirm -
     // just disable the lines
-    private void OnOperationUnset()
+    private void OnOperationDestinationUnset()
     {
-        OnOperationFinished();
+        UpdateText();
     }
     private void OnOperationFinished()
     {
         // Disable all of the lines
-        foreach (List<UILine> instances in lineInstances.Data)
-        {
-            foreach (UILine line in instances)
-            {
-                line.gameObject.SetActive(false);
-            }
-        }
+        text.text = "";
     }
     #endregion
 
     #region Helper Methods
-    // Point each of the lines in the list from each matrix item in the source
-    // to each matrix item in the destination
-    private void PointFromSourceToDestination(List<UILine> lines)
+    private string RowName(int row)
+    {
+        if (row >= 0 && row < MatrixParent.Rows)
+        {
+            return $"R{row + 1}";
+        }
+        else return "?";
+    }
+    private void UpdateText()
     {
         MatrixOperation intendedOperation = MatrixParent.IntendedNextOperation;
-        MatrixRowUI source = MatrixParent.RowUIs[intendedOperation.sourceRow];
-        MatrixRowUI destination = MatrixParent.RowUIs[intendedOperation.destinationRow];
 
-        // Set the start/end points of each ui line in the list
-        // to point from each source item to each destination item
-        for(int i = 0; i < MatrixParent.Cols; i++)
+        switch(intendedOperation.type)
         {
-            Vector3 start = source.ItemUIs[i].transform.position;
-            Vector3 end = destination.ItemUIs[i].transform.position;
-
-            // Enable the line and set the points
-            lines[i].gameObject.SetActive(true);
-            lines[i].SetPoints(start, end);
+            case MatrixOperation.Type.Swap:
+                text.text = string.Format(DisplayFormat, SourceRowName, DestinationRowName);
+                break;
+            case MatrixOperation.Type.Scale:
+                text.text = string.Format(DisplayFormat, DestinationRowName, intendedOperation.scalar);
+                break;
+            case MatrixOperation.Type.Add:
+                char symbol = intendedOperation.scalar < Fraction.zero ? '-' : '+';
+                text.text = string.Format(DisplayFormat, SourceRowName, DestinationRowName, symbol);
+                break;
         }
     }
     #endregion

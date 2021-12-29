@@ -29,7 +29,13 @@ public class MatrixUI : MonoBehaviour
         get
         {
             MatrixOperation operation = operationSource.Operation;
-            operation.destinationRow = operationDestination.RowIndex;
+
+            // If a destination exists then set it
+            if (operationDestination)
+            {
+                operation.destinationRow = operationDestination.RowIndex;
+            }
+
             return operation;
         }
     }
