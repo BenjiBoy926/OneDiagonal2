@@ -56,6 +56,11 @@ public class UISettings : ScriptableObjectSingleton<UISettings>
     #endregion
 
     #region Public Methods
+    public static void PunchOperator(Transform op)
+    {
+        op.DOComplete();
+        op.DOPunchScale(Vector3.one * OperatorPunch, OperatorPunchTime);
+    }
     public static Color GetOperatorColor(MatrixOperation.Type type) => Instance.operationColors.Get(type);
     public static DG.Tweening.Core.TweenerCore<Vector3, Vector3, DG.Tweening.Plugins.Options.VectorOptions> OpenWindow(RectTransform windowTransform)
     {

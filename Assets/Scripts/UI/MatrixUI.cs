@@ -28,15 +28,19 @@ public class MatrixUI : MonoBehaviour
     {
         get
         {
-            MatrixOperation operation = operationSource.Operation;
-
-            // If a destination exists then set it
-            if (operationDestination)
+            if (operationSource)
             {
-                operation.destinationRow = operationDestination.RowIndex;
-            }
+                MatrixOperation operation = operationSource.Operation;
 
-            return operation;
+                // If a destination exists then set it
+                if (operationDestination)
+                {
+                    operation.destinationRow = operationDestination.RowIndex;
+                }
+
+                return operation;
+            }
+            else return MatrixOperation.Invalid;
         }
     }
     public int CurrentMoves => currentMoves;
@@ -171,13 +175,16 @@ public class MatrixUI : MonoBehaviour
     }
     public void UnsetOperationDestination()
     {
-        // Set the color of the current destination back to normal
-        // Update all the ui elements to display the current matrix
-        ShowCurrent();
-        operationDestination = null;
+        if (operationDestination)
+        {
+            // Set the color of the current destination back to normal
+            // Update all the ui elements to display the current matrix
+            ShowCurrent();
+            operationDestination = null;
 
-        // Invoke the event
-        onOperationDestinationUnset.Invoke();
+            // Invoke the event
+            onOperationDestinationUnset.Invoke();
+        }
     }
 
     public bool ConfirmOperation()

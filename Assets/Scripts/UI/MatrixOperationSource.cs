@@ -99,8 +99,7 @@ public class MatrixOperationSource : MatrixUIChild, IPointerDownHandler, IPointe
     {
         foreach(RectTransform rt in rectTransforms)
         {
-            rt.DOComplete();
-            rt.DOPunchScale(Vector3.one * UISettings.OperatorPunch, UISettings.OperatorPunchTime);
+            UISettings.PunchOperator(rt);
         }
     }
     private void SetGraphicsActive(bool active)

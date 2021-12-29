@@ -44,10 +44,12 @@ public class MatrixOperationUI : MatrixUIChild
     private void OnOperationStart()
     {
         UpdateText();
+        text.color = UISettings.GetOperatorColor(MatrixParent.IntendedNextOperationType);
     }
     private void OnOperationDestinationSet()
     {
         UpdateText();
+        UISettings.PunchOperator(text.transform);
     }
     // Operation unset is the same as operation confirm -
     // just disable the lines

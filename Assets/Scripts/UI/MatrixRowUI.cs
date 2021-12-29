@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using DG.Tweening;
+using TMPro;
 
 public class MatrixRowUI : MatrixUIChild, IPointerEnterHandler, IPointerExitHandler
 {
@@ -16,6 +17,9 @@ public class MatrixRowUI : MatrixUIChild, IPointerEnterHandler, IPointerExitHand
     #endregion
 
     #region Private Editor Fields
+    [SerializeField]
+    [Tooltip("Text used to label this row")]
+    private TextMeshProUGUI label;
     [SerializeField]
     [Tooltip("Prefab instantiated for each matrix item")]
     private MatrixItemUI itemUIPrefab;
@@ -65,6 +69,7 @@ public class MatrixRowUI : MatrixUIChild, IPointerEnterHandler, IPointerExitHand
         Start();
 
         this.rowIndex = rowIndex;
+        label.text = $"R{rowIndex + 1}:";
 
         // Initialize the lsit of item uis
         itemUIs = new MatrixItemUI[MatrixParent.CurrentMatrix.cols];
@@ -109,7 +114,7 @@ public class MatrixRowUI : MatrixUIChild, IPointerEnterHandler, IPointerExitHand
             outlineGraphic.enabled = true;
             outlineGraphic.color = UISettings.GetOperatorColor(MatrixParent.IntendedNextOperationType);
             // Do a short grow animation
-            PunchSize();
+            UISettings.PunchOperator(transform);
 
             MatrixOperation intendedOperation = MatrixParent.IntendedNextOperation;
 
@@ -165,14 +170,9 @@ public class MatrixRowUI : MatrixUIChild, IPointerEnterHandler, IPointerExitHand
         // If operation finish succeeds with this as the destination, then punch the size
         if (success && IsCurrentOperationDestination)
         {
-            PunchSize();
+            UISettings.PunchOperator(transform);
             Instantiate(UISettings.FlashEffect, rowRectTransform);
         }
-    }
-    private void PunchSize()
-    {
-        rowRectTransform.DOComplete();
-        rowRectTransform.DOPunchScale(Vector3.one * UISettings.OperatorPunch, UISettings.OperatorPunchTime);
     }
     #endregion
 }
