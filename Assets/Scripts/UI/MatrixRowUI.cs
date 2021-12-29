@@ -24,7 +24,7 @@ public class MatrixRowUI : MatrixUIChild, IPointerEnterHandler, IPointerExitHand
     private RectTransform rowRectTransform;
     [SerializeField]
     [Tooltip("Reference to the graphic to change color on when the row is set as the destination")]
-    private Graphic rowGraphic;
+    private Graphic outlineGraphic;
     [SerializeField]
     [Tooltip("Script used to make the row a source of matrix operations")]
     private MatrixOperationSource rowOperationSource;
@@ -57,7 +57,6 @@ public class MatrixRowUI : MatrixUIChild, IPointerEnterHandler, IPointerExitHand
     #region Private Fields
     private int rowIndex;
     private MatrixItemUI[] itemUIs;
-    private Color defaultGraphicColor;
     #endregion
 
     #region Public Methods
@@ -85,7 +84,7 @@ public class MatrixRowUI : MatrixUIChild, IPointerEnterHandler, IPointerExitHand
         MatrixParent.OnOperationFinish.AddListener(OnMatrixOperationFinished);
 
         // Set the default graphic color
-        defaultGraphicColor = rowGraphic.color;
+        outlineGraphic.enabled = false;
     }
     public void ShowCurrent()
     {
@@ -106,8 +105,9 @@ public class MatrixRowUI : MatrixUIChild, IPointerEnterHandler, IPointerExitHand
     {
         if(MatrixParent.SetOperationDestination(this))
         {
-            // Set the color
-            rowGraphic.color = UISettings.GetOperatorColor(MatrixParent.IntendedNextOperationType);
+            // Enable the outline
+            outlineGraphic.enabled = true;
+            outlineGraphic.color = UISettings.GetOperatorColor(MatrixParent.IntendedNextOperationType);
             // Do a short grow animation
             PunchSize();
 
@@ -151,7 +151,7 @@ public class MatrixRowUI : MatrixUIChild, IPointerEnterHandler, IPointerExitHand
         // Set the color back to normal if this is not the operation source
         if(!rowOperationSource.IsCurrentOperationSource && !rowAddWidget.IsCurrentOperationSource)
         {
-            rowGraphic.color = defaultGraphicColor;
+            outlineGraphic.enabled = false;
         }
     }
     #endregion
@@ -160,7 +160,7 @@ public class MatrixRowUI : MatrixUIChild, IPointerEnterHandler, IPointerExitHand
     private void OnMatrixOperationFinished(bool success)
     {
         // Gotta set the color back to normal
-        rowGraphic.color = defaultGraphicColor;
+        outlineGraphic.enabled = false;
 
         // If operation finish succeeds with this as the destination, then punch the size
         if (success && IsCurrentOperationDestination)

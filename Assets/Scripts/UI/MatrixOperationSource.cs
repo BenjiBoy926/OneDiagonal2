@@ -24,8 +24,6 @@ public class MatrixOperationSource : MatrixUIChild, IPointerDownHandler, IPointe
 
     #region Private Fields
     private Func<MatrixOperation> operationGetter = () => MatrixOperation.RowSwap(-1, -1);
-    // Default colors for each of the graphics in the list
-    private List<Color> defaultColors = new List<Color>();
     private bool dragging = false;
     #endregion
 
@@ -41,11 +39,8 @@ public class MatrixOperationSource : MatrixUIChild, IPointerDownHandler, IPointe
             if (IsCurrentOperationSource) PunchSize();
         });
 
-        // Add the color of each graphic to the list of default colors
-        foreach(Graphic graphic in graphics)
-        {
-            defaultColors.Add(graphic.color);
-        }
+        // Start all graphics as disabled
+        SetGraphicsActive(false);
     }
     #endregion
 
@@ -57,6 +52,7 @@ public class MatrixOperationSource : MatrixUIChild, IPointerDownHandler, IPointe
         // Set the color of the graphics this source is responsible for
         foreach (Graphic graphic in graphics)
         {
+            graphic.enabled = true;
             graphic.color = UISettings.GetOperatorColor(Operation.type);
         }
         PunchSize();
@@ -91,11 +87,8 @@ public class MatrixOperationSource : MatrixUIChild, IPointerDownHandler, IPointe
             }
         }
 
-        // Reset graphics back to defaults
-        for(int i = 0; i < graphics.Count; i++)
-        {
-            graphics[i].color = defaultColors[i];
-        }
+        // Disable graphics
+        SetGraphicsActive(false);
 
         dragging = false;
     }
@@ -108,6 +101,13 @@ public class MatrixOperationSource : MatrixUIChild, IPointerDownHandler, IPointe
         {
             rt.DOComplete();
             rt.DOPunchScale(Vector3.one * UISettings.OperatorPunch, UISettings.OperatorPunchTime);
+        }
+    }
+    private void SetGraphicsActive(bool active)
+    {
+        foreach(Graphic graphic in graphics)
+        {
+            graphic.enabled = active;
         }
     }
     #endregion
