@@ -1740,6 +1740,7 @@ GameObject:
   - component: {fileID: 2508343184307097932}
   - component: {fileID: 8402493356794422097}
   - component: {fileID: 3945212605694670654}
+  - component: {fileID: 6204661242435352764}
   m_Layer: 0
   m_Name: MatrixEditor
   m_TagString: Matrix
@@ -1937,6 +1938,24 @@ MonoBehaviour:
   rootPanel: {fileID: 792742940180004819}
   fadeInTime: 0.3
   fadeOutTime: 0.3
+--- !u!114 &6204661242435352764
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4501634155979702055}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9cd78fd8eb8c6340b3216c5cfd70c5a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canvas: {fileID: 8934368668186396796}
+  linePrefabs:
+    data:
+    - {fileID: 1302436679891914678, guid: 2b9d9b7e0ba1ba94caef4351fec0157d, type: 3}
+    - {fileID: 2035975644854210610, guid: 492bb24311016154291fbb15db649f65, type: 3}
+    - {fileID: 641722952683460883, guid: 91328a3c40f59ac4db130180b660c8df, type: 3}
 --- !u!1 &4770444419303134258
 GameObject:
   m_ObjectHideFlags: 0
@@ -3506,7 +3525,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: e07056a84f971b5449c754dc306504f8, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 761dfee68acf20b4f97644014c4e2193, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

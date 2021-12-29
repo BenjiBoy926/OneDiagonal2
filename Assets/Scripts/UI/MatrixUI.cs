@@ -12,6 +12,8 @@ public class MatrixUI : MonoBehaviour
     public MatrixRowUI[] RowUIs => rowUIs;
     public Matrix CurrentMatrix => currentMatrix;
     public Matrix PreviewMatrix => previewMatrix;
+    public int Rows => CurrentMatrix.rows;
+    public int Cols => CurrentMatrix.cols;
     public UnityEvent OnOperationStart => onOperationStart;
     public UnityEvent OnOperationDestinationSet => onOperationDestinationSet;
     public UnityEvent OnOperationDestinationUnset => onOperationDestinationUnset;

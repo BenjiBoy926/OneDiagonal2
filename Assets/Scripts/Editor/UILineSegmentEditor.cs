@@ -3,15 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
-[CustomEditor(typeof(UILine)), CanEditMultipleObjects]
-public class UILineEditor : Editor
+[CustomEditor(typeof(UILineSegment)), CanEditMultipleObjects]
+public class UILineSegmentEditor : Editor
 {
+    private DrivenRectTransformTracker tracker = new DrivenRectTransformTracker();
+
     public override void OnInspectorGUI()
     {
         // Get the target as the script itself
-        UILine targetScript = (UILine)target;
+        UILineSegment targetScript = (UILineSegment)target;
         // Create a tracker to drive the aspects of the rect transform
-        DrivenRectTransformTracker tracker = new DrivenRectTransformTracker();
         tracker.Add(target, targetScript.RectTransform,
             DrivenTransformProperties.AnchoredPosition |
             DrivenTransformProperties.SizeDelta |

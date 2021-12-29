@@ -18,7 +18,7 @@ public class MatrixDiagonalHighlightEffect : MatrixUIChild
     private Image image;
     [SerializeField]
     [Tooltip("Script that helps draw a line between the desired points")]
-    private UILine line;
+    private UILineSegment line;
 
     [Space]
 

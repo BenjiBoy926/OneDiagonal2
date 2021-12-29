@@ -19,6 +19,78 @@
   <defs
      id="defs2">
     <marker
+       inkscape:stockid="TriangleInM"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="marker7403"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         id="path7401"
+         d="M 5.77,0.0 L -2.88,5.0 L -2.88,-5.0 L 5.77,0.0 z "
+         style="fill-rule:evenodd;stroke:#00ffff;stroke-width:1pt;stroke-opacity:1;fill:#00ffff;fill-opacity:1"
+         transform="scale(-0.4)" />
+    </marker>
+    <marker
+       inkscape:isstock="true"
+       style="overflow:visible"
+       id="marker6531"
+       refX="0.0"
+       refY="0.0"
+       orient="auto"
+       inkscape:stockid="TriangleInM"
+       inkscape:collect="always">
+      <path
+         transform="scale(-0.4)"
+         style="fill-rule:evenodd;stroke:#00ffff;stroke-width:1pt;stroke-opacity:1;fill:#00ffff;fill-opacity:1"
+         d="M 5.77,0.0 L -2.88,5.0 L -2.88,-5.0 L 5.77,0.0 z "
+         id="path6529" />
+    </marker>
+    <marker
+       inkscape:isstock="true"
+       style="overflow:visible"
+       id="marker6455"
+       refX="0.0"
+       refY="0.0"
+       orient="auto"
+       inkscape:stockid="TriangleInS">
+      <path
+         transform="scale(-0.2)"
+         style="fill-rule:evenodd;stroke:#00ffff;stroke-width:1pt;stroke-opacity:1;fill:#00ffff;fill-opacity:1"
+         d="M 5.77,0.0 L -2.88,5.0 L -2.88,-5.0 L 5.77,0.0 z "
+         id="path6453" />
+    </marker>
+    <marker
+       inkscape:isstock="true"
+       style="overflow:visible"
+       id="marker5770"
+       refX="0.0"
+       refY="0.0"
+       orient="auto"
+       inkscape:stockid="Arrow2Sstart">
+      <path
+         transform="scale(0.3) translate(-2.3,0)"
+         d="M 8.7185878,4.0337352 L -2.2072895,0.016013256 L 8.7185884,-4.0017078 C 6.9730900,-1.6296469 6.9831476,1.6157441 8.7185878,4.0337352 z "
+         style="fill-rule:evenodd;stroke-width:0.625;stroke-linejoin:round;stroke:#00ffff;stroke-opacity:1;fill:#00ffff;fill-opacity:1"
+         id="path5768" />
+    </marker>
+    <marker
+       inkscape:stockid="TriangleInM"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="marker4830"
+       style="overflow:visible"
+       inkscape:isstock="true"
+       inkscape:collect="always">
+      <path
+         id="path4828"
+         d="M 5.77,0.0 L -2.88,5.0 L -2.88,-5.0 L 5.77,0.0 z "
+         style="fill-rule:evenodd;stroke:#00ffff;stroke-width:1pt;stroke-opacity:1;fill:#00ffff;fill-opacity:1"
+         transform="scale(-0.4)" />
+    </marker>
+    <marker
        inkscape:isstock="true"
        style="overflow:visible"
        id="marker2461"
@@ -47,20 +119,6 @@
          style="fill-rule:evenodd;stroke:#fdfdfd;stroke-width:1pt;stroke-opacity:1;fill:#ffffff;fill-opacity:1"
          transform="scale(-0.2)" />
     </marker>
-    <marker
-       inkscape:isstock="true"
-       style="overflow:visible"
-       id="marker2167"
-       refX="0.0"
-       refY="0.0"
-       orient="auto"
-       inkscape:stockid="TriangleInM">
-      <path
-         transform="scale(-0.4)"
-         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1;fill:#000000;fill-opacity:1"
-         d="M 5.77,0.0 L -2.88,5.0 L -2.88,-5.0 L 5.77,0.0 z "
-         id="path2165" />
-    </marker>
   </defs>
   <sodipodi:namedview
      id="base"
@@ -69,17 +127,18 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.4"
-     inkscape:cx="402.18392"
-     inkscape:cy="309.9933"
+     inkscape:zoom="0.35"
+     inkscape:cx="-86.329149"
+     inkscape:cy="-596.30592"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
      inkscape:window-width="1920"
-     inkscape:window-height="1001"
+     inkscape:window-height="991"
      inkscape:window-x="-9"
      inkscape:window-y="-9"
-     inkscape:window-maximized="1" />
+     inkscape:window-maximized="1"
+     inkscape:snap-global="false" />
   <metadata
      id="metadata5">
     <rdf:RDF>
@@ -88,7 +147,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -226,5 +285,332 @@
        height="33.72937"
        x="110.04081"
        y="188.57059" />
+    <rect
+       style="opacity:0.98999999;fill:#343434;fill-opacity:1;fill-rule:nonzero;stroke:#00ffff;stroke-width:3;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect32"
+       width="37.952274"
+       height="37.952274"
+       x="-69.653717"
+       y="231.18765"
+       inkscape:export-filename="C:\Users\creat\Desktop\hobbies\unity\OneDiagonal2\Assets\Sprites\Icons\swap icon.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <path
+       style="opacity:0.98999999;fill:none;fill-opacity:1;fill-rule:nonzero;stroke:#00ffff;stroke-width:2.81174994;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker-start:url(#marker4830)"
+       d="m -58.255506,243.92288 h 19.573143"
+       id="path4560"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="C:\Users\creat\Desktop\hobbies\unity\OneDiagonal2\Assets\Sprites\Icons\swap icon.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <path
+       inkscape:connector-curvature="0"
+       id="path4826"
+       d="M -42.92088,256.10427 H -62.494024"
+       style="opacity:0.98999999;fill:none;fill-opacity:1;fill-rule:nonzero;stroke:#00ffff;stroke-width:2.81174994;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker-start:url(#marker6531)"
+       inkscape:export-filename="C:\Users\creat\Desktop\hobbies\unity\OneDiagonal2\Assets\Sprites\Icons\swap icon.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <circle
+       style="opacity:0.98999999;fill:#343434;fill-opacity:1;fill-rule:nonzero;stroke:#ff00ff;stroke-width:3;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="path7367"
+       cx="-100.45062"
+       cy="251.14113"
+       r="18.708866"
+       inkscape:export-filename="C:\Users\creat\Desktop\hobbies\unity\OneDiagonal2\Assets\Sprites\Icons\scale icon.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:72.94425964px;line-height:1.25;font-family:DashNess;-inkscape-font-specification:DashNess;letter-spacing:0px;word-spacing:0px;fill:#ff00ff;fill-opacity:1;stroke:none;stroke-width:1.82360637"
+       x="-114.88061"
+       y="292.78378"
+       id="text7371"
+       inkscape:export-filename="C:\Users\creat\Desktop\hobbies\unity\OneDiagonal2\Assets\Sprites\Icons\scale icon.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96"><tspan
+         sodipodi:role="line"
+         id="tspan7369"
+         x="-114.88061"
+         y="292.78378"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Arial;-inkscape-font-specification:Arial;fill:#ff00ff;fill-opacity:1;stroke-width:1.82360637">*</tspan></text>
+    <path
+       sodipodi:type="star"
+       style="opacity:0.98999999;fill:#323232;fill-opacity:1;fill-rule:nonzero;stroke:#ffff00;stroke-width:3;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="path7373"
+       sodipodi:sides="3"
+       sodipodi:cx="-156.86661"
+       sodipodi:cy="247.341"
+       sodipodi:r1="24.104355"
+       sodipodi:r2="12.052178"
+       sodipodi:arg1="-0.52359878"
+       sodipodi:arg2="0.52359878"
+       inkscape:flatsided="false"
+       inkscape:rounded="0"
+       inkscape:randomized="0"
+       d="m -135.99162,235.28883 -10.4375,18.07826 -10.43749,18.07827 -10.43749,-18.07827 -10.43749,-18.07826 20.87498,0 z"
+       inkscape:transform-center-x="-2.672899e-05"
+       inkscape:transform-center-y="6.0260884"
+       inkscape:export-filename="C:\Users\creat\Desktop\hobbies\unity\OneDiagonal2\Assets\Sprites\Icons\add icon.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <text
+       inkscape:export-ydpi="96"
+       inkscape:export-xdpi="96"
+       inkscape:export-filename="C:\Users\creat\Desktop\hobbies\unity\OneDiagonal2\Assets\Sprites\Icons\add icon.png"
+       id="text7377"
+       y="260.65045"
+       x="-168.28827"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:37.34632874px;line-height:1.25;font-family:DashNess;-inkscape-font-specification:DashNess;letter-spacing:0px;word-spacing:0px;fill:#ffff00;fill-opacity:1;stroke:none;stroke-width:0.93365824"
+       xml:space="preserve"><tspan
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Arial;-inkscape-font-specification:Arial;fill:#ffff00;fill-opacity:1;stroke-width:0.93365824"
+         y="260.65045"
+         x="-168.28827"
+         id="tspan7375"
+         sodipodi:role="line">+</tspan></text>
+    <rect
+       inkscape:export-ydpi="96"
+       inkscape:export-xdpi="96"
+       inkscape:export-filename="C:\Users\creat\Desktop\hobbies\unity\OneDiagonal2\Assets\Sprites\Icons\thumbnail.png"
+       y="455.94833"
+       x="16.767687"
+       height="35.954704"
+       width="111.17197"
+       id="rect7391"
+       style="opacity:0.98999999;fill:#343434;fill-opacity:1;fill-rule:nonzero;stroke:#00ffff;stroke-width:3;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+    <path
+       inkscape:export-ydpi="96"
+       inkscape:export-xdpi="96"
+       inkscape:export-filename="C:\Users\creat\Desktop\hobbies\unity\OneDiagonal2\Assets\Sprites\Icons\thumbnail.png"
+       inkscape:connector-curvature="0"
+       id="path7393"
+       d="M 64.775744,467.87378 H 84.348887"
+       style="opacity:0.98999999;fill:none;fill-opacity:1;fill-rule:nonzero;stroke:#00ffff;stroke-width:2.81174994;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker-start:url(#marker4830)" />
+    <path
+       inkscape:export-ydpi="96"
+       inkscape:export-xdpi="96"
+       inkscape:export-filename="C:\Users\creat\Desktop\hobbies\unity\OneDiagonal2\Assets\Sprites\Icons\thumbnail.png"
+       style="opacity:0.98999999;fill:none;fill-opacity:1;fill-rule:nonzero;stroke:#00ffff;stroke-width:2.81174994;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker-start:url(#marker7403)"
+       d="M 80.11037,480.05517 H 60.537226"
+       id="path7395"
+       inkscape:connector-curvature="0" />
+    <rect
+       style="opacity:0.98999999;fill:#343434;fill-opacity:1;fill-rule:nonzero;stroke:#00ffff;stroke-width:3;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect7681"
+       width="111.17197"
+       height="35.954704"
+       x="16.767687"
+       y="411.30017"
+       inkscape:export-filename="C:\Users\creat\Desktop\hobbies\unity\OneDiagonal2\Assets\Sprites\Icons\thumbnail.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <path
+       style="opacity:0.98999999;fill:none;fill-opacity:1;fill-rule:nonzero;stroke:#00ffff;stroke-width:2.81174994;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker-start:url(#marker4830)"
+       d="M 64.775744,423.22562 H 84.348887"
+       id="path7683"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="C:\Users\creat\Desktop\hobbies\unity\OneDiagonal2\Assets\Sprites\Icons\thumbnail.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <path
+       inkscape:connector-curvature="0"
+       id="path7685"
+       d="M 80.11037,435.40701 H 60.537226"
+       style="opacity:0.98999999;fill:none;fill-opacity:1;fill-rule:nonzero;stroke:#00ffff;stroke-width:2.81174994;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker-start:url(#marker7403)"
+       inkscape:export-filename="C:\Users\creat\Desktop\hobbies\unity\OneDiagonal2\Assets\Sprites\Icons\thumbnail.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <rect
+       inkscape:export-ydpi="96"
+       inkscape:export-xdpi="96"
+       inkscape:export-filename="C:\Users\creat\Desktop\hobbies\unity\OneDiagonal2\Assets\Sprites\Icons\thumbnail.png"
+       y="366.32101"
+       x="16.767687"
+       height="35.954704"
+       width="111.17197"
+       id="rect7687"
+       style="opacity:0.98999999;fill:#343434;fill-opacity:1;fill-rule:nonzero;stroke:#00ffff;stroke-width:3;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+    <path
+       inkscape:export-ydpi="96"
+       inkscape:export-xdpi="96"
+       inkscape:export-filename="C:\Users\creat\Desktop\hobbies\unity\OneDiagonal2\Assets\Sprites\Icons\thumbnail.png"
+       inkscape:connector-curvature="0"
+       id="path7689"
+       d="M 64.775744,378.24645 H 84.348887"
+       style="opacity:0.98999999;fill:none;fill-opacity:1;fill-rule:nonzero;stroke:#00ffff;stroke-width:2.81174994;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker-start:url(#marker4830)" />
+    <path
+       inkscape:export-ydpi="96"
+       inkscape:export-xdpi="96"
+       inkscape:export-filename="C:\Users\creat\Desktop\hobbies\unity\OneDiagonal2\Assets\Sprites\Icons\thumbnail.png"
+       style="opacity:0.98999999;fill:none;fill-opacity:1;fill-rule:nonzero;stroke:#00ffff;stroke-width:2.81174994;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker-start:url(#marker7403)"
+       d="M 80.11037,390.42784 H 60.537226"
+       id="path7691"
+       inkscape:connector-curvature="0" />
+    <circle
+       inkscape:export-ydpi="96"
+       inkscape:export-xdpi="96"
+       inkscape:export-filename="C:\Users\creat\Desktop\hobbies\unity\OneDiagonal2\Assets\Sprites\Icons\thumbnail.png"
+       r="18.708866"
+       cy="428.78992"
+       cx="-22.041862"
+       id="circle7693"
+       style="opacity:0.98999999;fill:#343434;fill-opacity:1;fill-rule:nonzero;stroke:#ff00ff;stroke-width:3;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+    <text
+       inkscape:export-ydpi="96"
+       inkscape:export-xdpi="96"
+       inkscape:export-filename="C:\Users\creat\Desktop\hobbies\unity\OneDiagonal2\Assets\Sprites\Icons\thumbnail.png"
+       id="text7697"
+       y="470.43259"
+       x="-36.471848"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:72.94425964px;line-height:1.25;font-family:DashNess;-inkscape-font-specification:DashNess;letter-spacing:0px;word-spacing:0px;fill:#ff00ff;fill-opacity:1;stroke:none;stroke-width:1.82360637"
+       xml:space="preserve"><tspan
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Arial;-inkscape-font-specification:Arial;fill:#ff00ff;fill-opacity:1;stroke-width:1.82360637"
+         y="470.43259"
+         x="-36.471848"
+         id="tspan7695"
+         sodipodi:role="line">*</tspan></text>
+    <path
+       inkscape:export-ydpi="96"
+       inkscape:export-xdpi="96"
+       inkscape:export-filename="C:\Users\creat\Desktop\hobbies\unity\OneDiagonal2\Assets\Sprites\Icons\thumbnail.png"
+       inkscape:transform-center-y="6.0260884"
+       inkscape:transform-center-x="-2.672899e-05"
+       d="m -2.0203621,456.78287 -10.4374909,18.07827 -10.437493,18.07827 -10.437492,-18.07827 -10.437491,-18.07826 20.874983,-10e-6 z"
+       inkscape:randomized="0"
+       inkscape:rounded="0"
+       inkscape:flatsided="false"
+       sodipodi:arg2="0.52359878"
+       sodipodi:arg1="-0.52359878"
+       sodipodi:r2="12.052178"
+       sodipodi:r1="24.104355"
+       sodipodi:cy="468.83505"
+       sodipodi:cx="-22.895345"
+       sodipodi:sides="3"
+       id="path7699"
+       style="opacity:0.98999999;fill:#323232;fill-opacity:1;fill-rule:nonzero;stroke:#ff00ff;stroke-width:3;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       sodipodi:type="star" />
+    <path
+       sodipodi:type="star"
+       style="opacity:0.98999999;fill:#323232;fill-opacity:1;fill-rule:nonzero;stroke:#ff00ff;stroke-width:3;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="path7705"
+       sodipodi:sides="3"
+       sodipodi:cx="-22.360805"
+       sodipodi:cy="-389.11017"
+       sodipodi:r1="24.104355"
+       sodipodi:r2="12.052178"
+       sodipodi:arg1="-0.52359878"
+       sodipodi:arg2="0.52359878"
+       inkscape:flatsided="false"
+       inkscape:rounded="0"
+       inkscape:randomized="0"
+       d="m -1.4858219,-401.16235 -10.4374911,18.07827 -10.437492,18.07827 -10.437493,-18.07827 -10.437491,-18.07827 20.874984,0 z"
+       inkscape:transform-center-x="-2.672899e-05"
+       inkscape:transform-center-y="-6.0260796"
+       inkscape:export-filename="C:\Users\creat\Desktop\hobbies\unity\OneDiagonal2\Assets\Sprites\Icons\thumbnail.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96"
+       transform="scale(1,-1)" />
+    <path
+       inkscape:export-ydpi="96"
+       inkscape:export-xdpi="96"
+       inkscape:export-filename="C:\Users\creat\Desktop\hobbies\unity\OneDiagonal2\Assets\Sprites\Icons\thumbnail.png"
+       inkscape:transform-center-y="6.0260884"
+       inkscape:transform-center-x="-2.672899e-05"
+       d="m 184.36449,458.29481 -10.4375,18.07826 -10.43749,18.07827 -10.43749,-18.07827 -10.43749,-18.07826 20.87498,0 z"
+       inkscape:randomized="0"
+       inkscape:rounded="0"
+       inkscape:flatsided="false"
+       sodipodi:arg2="0.52359878"
+       sodipodi:arg1="-0.52359878"
+       sodipodi:r2="12.052178"
+       sodipodi:r1="24.104355"
+       sodipodi:cy="470.34698"
+       sodipodi:cx="163.4895"
+       sodipodi:sides="3"
+       id="path7707"
+       style="opacity:0.98999999;fill:#323232;fill-opacity:1;fill-rule:nonzero;stroke:#ffff00;stroke-width:3;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       sodipodi:type="star" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:37.34632874px;line-height:1.25;font-family:DashNess;-inkscape-font-specification:DashNess;letter-spacing:0px;word-spacing:0px;fill:#ffff00;fill-opacity:1;stroke:none;stroke-width:0.93365824"
+       x="152.06786"
+       y="483.6564"
+       id="text7711"
+       inkscape:export-filename="C:\Users\creat\Desktop\hobbies\unity\OneDiagonal2\Assets\Sprites\Icons\thumbnail.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96"><tspan
+         sodipodi:role="line"
+         id="tspan7709"
+         x="152.06786"
+         y="483.6564"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Arial;-inkscape-font-specification:Arial;fill:#ffff00;fill-opacity:1;stroke-width:0.93365824">+</tspan></text>
+    <path
+       sodipodi:type="star"
+       style="opacity:0.98999999;fill:#323232;fill-opacity:1;fill-rule:nonzero;stroke:#ffff00;stroke-width:3;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="path7713"
+       sodipodi:sides="3"
+       sodipodi:cx="163.4895"
+       sodipodi:cy="424.98983"
+       sodipodi:r1="24.104355"
+       sodipodi:r2="12.052178"
+       sodipodi:arg1="-0.52359878"
+       sodipodi:arg2="0.52359878"
+       inkscape:flatsided="false"
+       inkscape:rounded="0"
+       inkscape:randomized="0"
+       d="m 184.36449,412.93766 -10.4375,18.07827 -10.43749,18.07826 -10.43749,-18.07826 -10.43749,-18.07827 20.87498,0 z"
+       inkscape:transform-center-x="-2.672899e-05"
+       inkscape:transform-center-y="6.0260884"
+       inkscape:export-filename="C:\Users\creat\Desktop\hobbies\unity\OneDiagonal2\Assets\Sprites\Icons\thumbnail.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <text
+       inkscape:export-ydpi="96"
+       inkscape:export-xdpi="96"
+       inkscape:export-filename="C:\Users\creat\Desktop\hobbies\unity\OneDiagonal2\Assets\Sprites\Icons\thumbnail.png"
+       id="text7717"
+       y="438.29926"
+       x="152.06786"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:37.34632874px;line-height:1.25;font-family:DashNess;-inkscape-font-specification:DashNess;letter-spacing:0px;word-spacing:0px;fill:#ffff00;fill-opacity:1;stroke:none;stroke-width:0.93365824"
+       xml:space="preserve"><tspan
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Arial;-inkscape-font-specification:Arial;fill:#ffff00;fill-opacity:1;stroke-width:0.93365824"
+         y="438.29926"
+         x="152.06786"
+         id="tspan7715"
+         sodipodi:role="line">+</tspan></text>
+    <path
+       inkscape:export-ydpi="96"
+       inkscape:export-xdpi="96"
+       inkscape:export-filename="C:\Users\creat\Desktop\hobbies\unity\OneDiagonal2\Assets\Sprites\Icons\thumbnail.png"
+       inkscape:transform-center-y="6.0260884"
+       inkscape:transform-center-x="-2.672899e-05"
+       d="m 184.36449,369.09238 -10.4375,18.07827 -10.43749,18.07827 -10.43749,-18.07827 -10.43749,-18.07827 20.87498,0 z"
+       inkscape:randomized="0"
+       inkscape:rounded="0"
+       inkscape:flatsided="false"
+       sodipodi:arg2="0.52359878"
+       sodipodi:arg1="-0.52359878"
+       sodipodi:r2="12.052178"
+       sodipodi:r1="24.104355"
+       sodipodi:cy="381.14456"
+       sodipodi:cx="163.4895"
+       sodipodi:sides="3"
+       id="path7719"
+       style="opacity:0.98999999;fill:#323232;fill-opacity:1;fill-rule:nonzero;stroke:#ffff00;stroke-width:3;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       sodipodi:type="star" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:37.34632874px;line-height:1.25;font-family:DashNess;-inkscape-font-specification:DashNess;letter-spacing:0px;word-spacing:0px;fill:#ffff00;fill-opacity:1;stroke:none;stroke-width:0.93365824"
+       x="152.06786"
+       y="394.45401"
+       id="text7723"
+       inkscape:export-filename="C:\Users\creat\Desktop\hobbies\unity\OneDiagonal2\Assets\Sprites\Icons\thumbnail.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96"><tspan
+         sodipodi:role="line"
+         id="tspan7721"
+         x="152.06786"
+         y="394.45401"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Arial;-inkscape-font-specification:Arial;fill:#ffff00;fill-opacity:1;stroke-width:0.93365824">+</tspan></text>
   </g>
 </svg>

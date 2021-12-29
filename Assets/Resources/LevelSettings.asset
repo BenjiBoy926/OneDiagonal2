@@ -41,7 +41,8 @@ MonoBehaviour:
             willUnlock: 1
             unlocker:
               operationType: 0
-              unlockSprite: {fileID: 0}
+              unlockSprite: {fileID: 21300000, guid: ed762f80780867246acc3e4669900190,
+                type: 3}
               unlockItem: the Row Swap
           title: Row Swap
           sprite: {fileID: 0}
@@ -109,7 +110,8 @@ MonoBehaviour:
             willUnlock: 1
             unlocker:
               operationType: 1
-              unlockSprite: {fileID: 0}
+              unlockSprite: {fileID: 21300000, guid: 446b97dcc528a1b43824ba191d912905,
+                type: 3}
               unlockItem: the Row Scale
           title: Row Scale
           sprite: {fileID: 0}
@@ -397,7 +399,8 @@ MonoBehaviour:
             willUnlock: 1
             unlocker:
               operationType: 2
-              unlockSprite: {fileID: 0}
+              unlockSprite: {fileID: 21300000, guid: 631dbdcd25be48443aec50c7e60e181e,
+                type: 3}
               unlockItem: Row Adding
           title: Row Adding
           sprite: {fileID: 0}

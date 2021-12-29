@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5456217070561094155}
   - component: {fileID: 5456217070561094156}
   - component: {fileID: 5456217070561094153}
-  - component: {fileID: 5456217070561094154}
+  - component: {fileID: 1572320042893090595}
   m_Layer: 0
   m_Name: DiagonalHighlight
   m_TagString: Untagged
@@ -114,11 +114,11 @@ MonoBehaviour:
   canvas: {fileID: 5456217070561094152}
   rectTransform: {fileID: 5456217070561094157}
   image: {fileID: 5456217070561094156}
-  line: {fileID: 5456217070561094154}
+  line: {fileID: 1572320042893090595}
   shrinkTime: 0.2
   startingScale: 3
   endingScale: 1
---- !u!114 &5456217070561094154
+--- !u!114 &1572320042893090595
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -127,9 +127,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 5456217070561094158}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 50abad82a32f5a649a4b98e68926ed33, type: 3}
+  m_Script: {fileID: 11500000, guid: 81dc15fa60ed91e4cb19e95d6ee0c86a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   start: {x: 0, y: 0, z: 0}
   end: {x: 0, y: 0, z: 0}
   thickness: 50
+  drawGizmos: 0
