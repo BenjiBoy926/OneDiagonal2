@@ -88,6 +88,7 @@ GameObject:
   - component: {fileID: 641722952683460885}
   - component: {fileID: 641722952683460883}
   - component: {fileID: 641722952683460882}
+  - component: {fileID: -7576594180619906090}
   m_Layer: 5
   m_Name: AddingLine
   m_TagString: Untagged
@@ -184,6 +185,18 @@ MonoBehaviour:
   end: {x: 200, y: 0, z: 0}
   thickness: 10
   drawGizmos: 0
+--- !u!225 &-7576594180619906090
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 641722952683460887}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
 --- !u!1 &641722953863279876
 GameObject:
   m_ObjectHideFlags: 0

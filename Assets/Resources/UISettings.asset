@@ -16,15 +16,15 @@ MonoBehaviour:
     goodColor: {r: 0, g: 1, b: 0, a: 1}
     badColor: {r: 1, g: 0, b: 0, a: 1}
   notDiagnonalColors:
-    goodColor: {r: 0.5226415, g: 1, b: 0.5226415, a: 1}
-    badColor: {r: 1, g: 0.53207546, b: 0.53207546, a: 1}
+    goodColor: {r: 0.5, g: 1, b: 0.5, a: 1}
+    badColor: {r: 1, g: 0.5, b: 0.5, a: 1}
   flashEffect: {fileID: 2930442416200011611, guid: 3e32fe817c969d74cbec821ec9663b34,
     type: 3}
   operationColors:
     data:
-    - {r: 0, g: 0.4056604, b: 0.4056604, a: 1}
-    - {r: 0.4056604, g: 0, b: 0.4056604, a: 1}
-    - {r: 0.3962264, g: 0.3962264, b: 0, a: 1}
+    - {r: 0, g: 1, b: 1, a: 1}
+    - {r: 1, g: 0, b: 1, a: 1}
+    - {r: 1, g: 1, b: 0, a: 1}
   operatorPunch: 0.1
   operatorPunchTime: 0.2
   windowOpenSound: {fileID: 8300000, guid: 54c5476c618d3461b832d0ac4b685a4f, type: 3}
