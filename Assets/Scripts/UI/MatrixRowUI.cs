@@ -69,7 +69,7 @@ public class MatrixRowUI : MatrixUIChild, IPointerEnterHandler, IPointerExitHand
         Start();
 
         this.rowIndex = rowIndex;
-        label.text = $"R{rowIndex + 1}:";
+        label.text = (rowIndex + 1).ToString();
 
         // Initialize the lsit of item uis
         itemUIs = new MatrixItemUI[MatrixParent.CurrentMatrix.cols];

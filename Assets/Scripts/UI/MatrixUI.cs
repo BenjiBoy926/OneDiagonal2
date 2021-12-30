@@ -23,7 +23,6 @@ public class MatrixUI : MonoBehaviour
     public UnityEvent OnMatrixSolved => onMatrixSolved;
     // NOTE: you should only call this if the operations source is non-null
     public MatrixOperation.Type IntendedNextOperationType => operationSource.Operation.type;
-    // NOTE: you should only call this if both operationSource and operationDestination are non-null
     public MatrixOperation IntendedNextOperation
     {
         get

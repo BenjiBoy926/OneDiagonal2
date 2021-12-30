@@ -328,7 +328,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelToRecord:
     type: 0
-    index: 3
+    index: 12
   matrixUI: {fileID: 8398672740377852025}
 --- !u!1001 &7279178675885677028
 PrefabInstance:
@@ -484,8 +484,33 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8496787878601091418, guid: 1da85dfe8722f1a459e2c39530b189f4,
         type: 3}
-      propertyPath: m_SizeDelta.y
+      propertyPath: m_Pivot.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8496787878601091418, guid: 1da85dfe8722f1a459e2c39530b189f4,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8496787878601091418, guid: 1da85dfe8722f1a459e2c39530b189f4,
+        type: 3}
+      propertyPath: m_AnchorMin.x
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8496787878601091418, guid: 1da85dfe8722f1a459e2c39530b189f4,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8496787878601091418, guid: 1da85dfe8722f1a459e2c39530b189f4,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8496787878601091418, guid: 1da85dfe8722f1a459e2c39530b189f4,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 8496787878601091418, guid: 1da85dfe8722f1a459e2c39530b189f4,
         type: 3}

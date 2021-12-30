@@ -404,7 +404,7 @@ MonoBehaviour:
               unlockItem: Row Adding
           title: Row Adding
           sprite: {fileID: 0}
-          video: {fileID: 32900000, guid: 004224f97ab893e4d99348857e04d0f2, type: 3}
+          video: {fileID: 32900000, guid: bc26b14396e8f5549b949aa3ddd62589, type: 3}
           explanation: Click and drag from the plus sign to add all of the numbers
             in one row to all of the numbers in another row.
       - name: Level 14
