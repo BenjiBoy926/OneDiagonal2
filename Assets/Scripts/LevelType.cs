@@ -1,1 +1,1 @@
-public enum LevelType { Enumerated, FreePlay }
+public enum LevelType { Enumerated, FreePlay, Recorded }

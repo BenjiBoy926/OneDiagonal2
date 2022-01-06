@@ -46,7 +46,7 @@ MonoBehaviour:
               unlockItem: the Row Swap
           title: Row Swap
           sprite: {fileID: 0}
-          video: {fileID: 32900000, guid: 6ccd525eefa0b8149a31c69d9800e0f5, type: 3}
+          video: {fileID: 32900000, guid: 2ba4d3388b46abf44b3552245f5d5ca6, type: 3}
           explanation: Click and drag one row onto another row to swap their positions
             in the matrix.
       - name: Level 2
@@ -115,7 +115,7 @@ MonoBehaviour:
               unlockItem: the Row Scale
           title: Row Scale
           sprite: {fileID: 0}
-          video: {fileID: 32900000, guid: 705ea4074c68ca9429f248d45ebe395e, type: 3}
+          video: {fileID: 32900000, guid: 8e6352f400e7e1c4ea92cd5a845c3250, type: 3}
           explanation: Click and drag the Row Scale widget to multiply all of the
             numbers in a row by a numer
       - name: Level 5
@@ -149,7 +149,7 @@ MonoBehaviour:
               unlockItem: 
           title: Multiply by a Negative
           sprite: {fileID: 0}
-          video: {fileID: 32900000, guid: cbe54abf93d53054380adefdd38d02fb, type: 3}
+          video: {fileID: 32900000, guid: 9ed507afd7abc404084d0323e611a2e0, type: 3}
           explanation: Remember that you can multiply a negative number by a negative
             number to flip it to a positive number!
       - name: Level 6
@@ -241,7 +241,7 @@ MonoBehaviour:
               unlockItem: 
           title: Row Divide
           sprite: {fileID: 0}
-          video: {fileID: 32900000, guid: e6f7b67ee30b22f48a1ff74fd154cabf, type: 3}
+          video: {fileID: 32900000, guid: 743c088bdc6a9934ea2373d03f030ef2, type: 3}
           explanation: Use the "reverse" icon to switch between multiplying and dividing
             a row by the given number.
       - name: Level 9
@@ -404,7 +404,7 @@ MonoBehaviour:
               unlockItem: Row Adding
           title: Row Adding
           sprite: {fileID: 0}
-          video: {fileID: 32900000, guid: bc26b14396e8f5549b949aa3ddd62589, type: 3}
+          video: {fileID: 32900000, guid: e97c0ed4acf694e429a8fd1049548502, type: 3}
           explanation: Click and drag from the plus sign to add all of the numbers
             in one row to all of the numbers in another row.
       - name: Level 14
@@ -552,7 +552,7 @@ MonoBehaviour:
               unlockItem: 
           title: Row Subtraction
           sprite: {fileID: 0}
-          video: {fileID: 32900000, guid: f233b73a234316548b81e6547790e547, type: 3}
+          video: {fileID: 32900000, guid: dba9cb92478d88d4992274202dd6c361, type: 3}
           explanation: Use the reverse arrows to switch between adding and subtracting
             rows.
     - list:
@@ -570,4 +570,71 @@ MonoBehaviour:
         size: 5
         type: 1
         intendedSolution: []
+        tutorials: []
+    - list:
+      - name: Swap
+        size: 3
+        type: 0
+        intendedSolution:
+        - type: 0
+          destinationRow: 1
+          sourceRow: 2
+          scalar:
+            n: 0
+            d: 0
+        tutorials: []
+      - name: Multiply
+        size: 3
+        type: 0
+        intendedSolution:
+        - type: 1
+          destinationRow: 1
+          sourceRow: 0
+          scalar:
+            n: 2
+            d: 1
+        tutorials: []
+      - name: Multiply By Negative
+        size: 3
+        type: 0
+        intendedSolution:
+        - type: 1
+          destinationRow: 1
+          sourceRow: 0
+          scalar:
+            n: -2
+            d: 1
+        tutorials: []
+      - name: Divide
+        size: 3
+        type: 0
+        intendedSolution:
+        - type: 1
+          destinationRow: 1
+          sourceRow: 0
+          scalar:
+            n: 1
+            d: 2
+        tutorials: []
+      - name: Add
+        size: 3
+        type: 0
+        intendedSolution:
+        - type: 2
+          destinationRow: 1
+          sourceRow: 2
+          scalar:
+            n: 1
+            d: 1
+        tutorials: []
+      - name: Subtract
+        size: 3
+        type: 0
+        intendedSolution:
+        - type: 2
+          destinationRow: 1
+          sourceRow: 2
+          scalar:
+            n: -1
+            d: 1
         tutorials: []

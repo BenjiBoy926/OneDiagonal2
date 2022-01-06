@@ -100,13 +100,15 @@ public class MatrixUI : MonoBehaviour
     #endregion
 
     #region Private Fields
-    private MatrixRowUI[] rowUIs;
+    private MatrixRowUI[] rowUIs = new MatrixRowUI[0];
 
     private Matrix currentMatrix;
     private Matrix previewMatrix;
 
     private MatrixOperationSource operationSource;
     private MatrixRowUI operationDestination;
+
+    private MatrixDiagonalHighlightEffect currentHighlight;
 
     // Current number of operations the player has performed on the matrix
     private int currentMoves = 0;
@@ -121,6 +123,15 @@ public class MatrixUI : MonoBehaviour
         // Get the starting matrix of the current level data
         currentMatrix = currentLevelData.GetStartingMatrix();
 
+        // If we have a highlight active then destroy it
+        if (currentHighlight) Destroy(currentHighlight.gameObject);
+
+        // Destroy any existing rows
+        foreach(MatrixRowUI row in rowUIs)
+        {
+            Destroy(row.gameObject);
+        }
+
         // Initialize the list of rows
         rowUIs = new MatrixRowUI[currentMatrix.rows];
 
@@ -131,6 +142,9 @@ public class MatrixUI : MonoBehaviour
             row.Setup(i);
             rowUIs[i] = row;
         }
+
+        // Force the row parent to rebuild now that new rows are in it
+        LayoutRebuilder.ForceRebuildLayoutImmediate(rowParent);
     }
     public void SetOperationSource(MatrixOperationSource operationSource)
     {
@@ -210,7 +224,7 @@ public class MatrixUI : MonoBehaviour
                 // Play a sound!
                 EazySoundManager.PlayUISound(matrixSolveSound);
                 // Create the highlight effect
-                Instantiate(highlightPrefab, transform);
+                currentHighlight = Instantiate(highlightPrefab, transform);
                 // Invoke the public event
                 onMatrixSolved.Invoke();
             }

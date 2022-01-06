@@ -37,6 +37,7 @@ public class LevelSettings : ScriptableObjectSingleton<LevelSettings>
 
     #region Public Methods
     public static int TotalLevelsOfType(LevelType type) => Instance.levelDatas.Get(type).list.Length;
+    public static LevelData[] GetAllLevelDataOfType(LevelType type) => Instance.levelDatas.Get(type).list;
     public static LevelData GetLevelData(LevelID id)
     {
         LevelData[] list = Instance.levelDatas.Get(id.Type).list;
