@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 using DG.Tweening;
 using TMPro;
 
-public class MatrixRowUI : MatrixUIChild, IPointerEnterHandler, IPointerExitHandler
+public class MatrixRowUI : MatrixUIChild
 {
     #region Public Properties
     public MatrixItemUI[] ItemUIs => itemUIs;
@@ -35,6 +35,12 @@ public class MatrixRowUI : MatrixUIChild, IPointerEnterHandler, IPointerExitHand
     [SerializeField]
     [Tooltip("Script used for adding this row to another row")]
     private MatrixRowAddWidget rowAddWidget;
+    [SerializeField]
+    [Tooltip("Event trigger used to detect mouse enter/exit")]
+    private EventTrigger mouseDetector;
+    [SerializeField]
+    [Tooltip("Root object for all row elements that are not in the layout")]
+    private Transform nonLayoutObjects;
 
     [Header("Cursors")]
 
@@ -90,6 +96,27 @@ public class MatrixRowUI : MatrixUIChild, IPointerEnterHandler, IPointerExitHand
 
         // Set the default graphic color
         outlineGraphic.enabled = false;
+
+        // Setup the entry from on pointer enter
+        EventTrigger.Entry pointerEnter = new EventTrigger.Entry
+        {
+            eventID = EventTriggerType.PointerEnter,
+            callback = new EventTrigger.TriggerEvent()
+        };
+        pointerEnter.callback.AddListener(data => OnPointerEnter());
+        mouseDetector.triggers.Add(pointerEnter);
+
+        // Setup the entry from on pointer exit
+        EventTrigger.Entry pointerExit = new EventTrigger.Entry
+        {
+            eventID = EventTriggerType.PointerExit,
+            callback = new EventTrigger.TriggerEvent()
+        };
+        pointerExit.callback.AddListener(data => OnPointerExit());
+        mouseDetector.triggers.Add(pointerExit);
+
+        // Set non layout objects to last sibling
+        nonLayoutObjects.SetAsLastSibling();
     }
     public void ShowCurrent()
     {
@@ -106,7 +133,7 @@ public class MatrixRowUI : MatrixUIChild, IPointerEnterHandler, IPointerExitHand
         }
     }
 
-    public void OnPointerEnter(PointerEventData data)
+    public void OnPointerEnter()
     {
         if(MatrixParent.SetOperationDestination(this))
         {
@@ -147,7 +174,7 @@ public class MatrixRowUI : MatrixUIChild, IPointerEnterHandler, IPointerExitHand
             }
         }
     }
-    public void OnPointerExit(PointerEventData data)
+    public void OnPointerExit()
     {
         MatrixParent.UnsetOperationDestination();
         // In any case set cursor to default
