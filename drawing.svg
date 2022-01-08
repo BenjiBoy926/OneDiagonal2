@@ -127,9 +127,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.7"
-     inkscape:cx="-2.7780052"
-     inkscape:cy="-479.29657"
+     inkscape:zoom="0.49497475"
+     inkscape:cx="-984.95905"
+     inkscape:cy="-143.11322"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -156,10 +156,10 @@
      inkscape:groupmode="layer"
      id="layer1">
     <rect
-       style="fill:#030f03;fill-opacity:1;stroke:none;stroke-width:2;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       style="fill:#030f03;fill-opacity:1;stroke:none;stroke-width:2.23766732;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
        id="rect2905"
        width="138.44562"
-       height="90.069832"
+       height="112.74841"
        x="38.597519"
        y="163.09798" />
     <rect
@@ -279,7 +279,7 @@
       </g>
     </g>
     <rect
-       style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:4.72152185;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:4.722;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
        id="rect2949"
        width="33.72937"
        height="33.72937"
@@ -509,12 +509,53 @@
        style="opacity:0.98999999;fill:#323232;fill-opacity:1;fill-rule:nonzero;stroke:#ffff00;stroke-width:5;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
        sodipodi:type="star" />
     <path
-       style="opacity:0.98999999;fill:#323232;fill-opacity:1;fill-rule:nonzero;stroke:#00ff02;stroke-width:5;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-       d="M 33.237199,368.50337 138.36599,477.69712 c 10.83415,19.30881 -12.85002,33.12515 -24.29923,15.32125 L 11.785398,386.03423 c -15.9351786,-16.66786 9.800996,-35.65449 21.451801,-17.53086 z"
-       id="path1073"
+       inkscape:export-ydpi="96"
+       inkscape:export-xdpi="96"
+       inkscape:export-filename="C:\Users\creat\Desktop\hobbies\unity\OneDiagonal2\Assets\Sprites\RoundEndedRectOutline.png"
+       sodipodi:nodetypes="ccccc"
        inkscape:connector-curvature="0"
-       sodipodi:nodetypes="cccsc"
+       id="path4651"
+       d="m 94.688544,241.46207 h 20.000006 c 15.09915,0.2337 15.47669,20 0,20 H 94.688544 c -15.31931,0 -15.45965,-20 0,-20 z"
+       style="opacity:0.98999999;fill:none;fill-opacity:1;fill-rule:nonzero;stroke:#ffffff;stroke-width:5;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+    <path
+       style="opacity:0.98999999;fill:#343434;fill-opacity:0.99215686;fill-rule:nonzero;stroke:#00ff00;stroke-width:5;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       d="m 36.238648,367.62986 93.345392,103.81346 c 18.56057,20.12495 -5.02129,36.95419 -20.98367,18.97058 L 15.254992,386.60043 c -16.8697936,-20.39401 4.822339,-37.33124 20.983656,-18.97057 z"
+       id="path4653"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccccc"
        inkscape:export-filename="C:\Users\creat\Desktop\hobbies\unity\OneDiagonal2\Assets\Sprites\Icons\thumbnail2.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96"
+       inkscape:transform-center-x="-50.523363"
+       inkscape:transform-center-y="56.024642" />
+    <path
+       inkscape:export-ydpi="96"
+       inkscape:export-xdpi="96"
+       inkscape:export-filename="C:\Users\creat\Desktop\hobbies\unity\OneDiagonal2\Assets\Sprites\Icons\subtract icon.png"
+       inkscape:transform-center-y="6.0260884"
+       inkscape:transform-center-x="-2.672899e-05"
+       d="m -135.99162,292.74119 -10.4375,18.07826 -10.43749,18.07827 -10.43749,-18.07827 -10.43749,-18.07826 20.87498,0 z"
+       inkscape:randomized="0"
+       inkscape:rounded="0"
+       inkscape:flatsided="false"
+       sodipodi:arg2="0.52359878"
+       sodipodi:arg1="-0.52359878"
+       sodipodi:r2="12.052178"
+       sodipodi:r1="24.104355"
+       sodipodi:cy="304.79338"
+       sodipodi:cx="-156.86661"
+       sodipodi:sides="3"
+       id="path4669"
+       style="opacity:0.98999999;fill:#323232;fill-opacity:1;fill-rule:nonzero;stroke:#ffff00;stroke-width:3;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       sodipodi:type="star" />
+    <rect
+       style="opacity:0.98999999;fill:#ffff00;fill-opacity:0.99215686;fill-rule:nonzero;stroke:none;stroke-width:4.17003536;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect4675"
+       width="16.649948"
+       height="3.6556242"
+       x="-165.31873"
+       y="303.10693"
+       inkscape:export-filename="C:\Users\creat\Desktop\hobbies\unity\OneDiagonal2\Assets\Sprites\Icons\subtract icon.png"
        inkscape:export-xdpi="96"
        inkscape:export-ydpi="96" />
   </g>

@@ -51,7 +51,7 @@ public class MatrixFocusEffect : MonoBehaviour
     {
         // Set transparent and ending color versions
         Color transparent = new Color(image.color.r, image.color.g, image.color.b, 0f);
-        Color endingColor = new Color(image.color.r, image.color.g, image.color.b, 0.5f);
+        Color endingColor = image.color;
 
         // Start the correct scale and color
         rectTransform.localScale = Vector3.one * startingScale;

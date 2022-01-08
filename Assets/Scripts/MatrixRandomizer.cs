@@ -17,7 +17,7 @@ public class MatrixRandomizer
         get => maxMultiplier;
         set => maxMultiplier = Mathf.Max(value, minMultiplier);
     }
-    public static int Operations { get; set; } = 10;
+    public static int Operations { get; set; } = 5;
     #endregion
 
     #region Private Fields
@@ -33,14 +33,8 @@ public class MatrixRandomizer
         // Create an object to help find a fun matrix to solve
         HillClimbingLocalSearch<Matrix> finder = new HillClimbingLocalSearch<Matrix>(
             GetNeighbors, FunValue, TieBreaker, SearchTerminateTest);
-        // Matrix that results from the search
-        Matrix result;
-
-        // Run the search. If it couldn't meet the goal test then log a warning
-        if(!finder.Search(matrix, out result))
-        {
-            Debug.Log($"{nameof(MatrixRandomizer)}: failed to find a matrix with the max fun value after 100 interations");
-        }
+        // Run the search
+        finder.Search(matrix, out Matrix result);
 
         return result;
     }
@@ -163,7 +157,7 @@ public class MatrixRandomizer
     // Don't bother search for more than 100 iterations
     private static bool SearchTerminateTest(Matrix matrix, int iteration)
     {
-        return iteration >= 100;
+        return iteration >= Operations;
     }
     // Randomly choose a matrix - used in hill climbing search
     private static Matrix TieBreaker(List<Matrix> matrices)

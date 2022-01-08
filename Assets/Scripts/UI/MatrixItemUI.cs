@@ -37,6 +37,13 @@ public class MatrixItemUI : MatrixUIChild
         this.rowParent = rowParent;
         this.columnIndex = columnIndex;
 
+        // Instantiate a preview effect to use when previewing the win state
+        if (rowParent.RowIndex == columnIndex)
+        {
+            currentPreviewEffect = Instantiate(focusPreviewEffect, transform);
+            currentPreviewEffect.gameObject.SetActive(false);
+        }
+
         // Add listener for matrix events
         MatrixParent.OnMatrixSolved.AddListener(OnMatrixSolved);
         MatrixParent.OnOperationDestinationUnset.AddListener(OnMatrixOperationDestinationUnset);
@@ -58,7 +65,7 @@ public class MatrixItemUI : MatrixUIChild
         // If this is along the diagonal and the preview is the identity then create the preview effect
         if(columnIndex == rowParent.RowIndex && MatrixParent.PreviewMatrix.isIdentity)
         {
-            currentPreviewEffect = Instantiate(focusPreviewEffect, transform);
+            currentPreviewEffect.FadeIn();
         }
     }
     #endregion
@@ -88,11 +95,14 @@ public class MatrixItemUI : MatrixUIChild
         {
             MatrixFocusEffect effect = Instantiate(focusEffect, transform);
             effect.transform.localPosition = Vector3.zero;
+
+            // Fade out the current preview effect
+            if (currentPreviewEffect) currentPreviewEffect.FadeOut();
         }
     }
     private void OnMatrixOperationDestinationUnset()
     {
-        if (currentPreviewEffect) currentPreviewEffect.FadeOut();
+        if (MatrixParent.PreviewMatrix.isIdentity && currentPreviewEffect) currentPreviewEffect.FadeOut();
     }
     #endregion
 }

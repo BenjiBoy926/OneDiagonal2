@@ -10,8 +10,8 @@ public class MatrixOperationUI : MatrixUIChild
     #region Private Properties
     private string DisplayFormat => MatrixParent.IntendedNextOperationType switch
     {
-        MatrixOperation.Type.Swap => "{0} <-> {1}",
-        MatrixOperation.Type.Scale => "{0} = {1} * {0}",
+        MatrixOperation.Type.Swap => "{0} {2} {1}",
+        MatrixOperation.Type.Scale => "{0} = {1} {2} {0}",
         MatrixOperation.Type.Add => "{1} = {1} {2} {0}",
         _ => ""
     };
@@ -76,18 +76,26 @@ public class MatrixOperationUI : MatrixUIChild
     private void UpdateText()
     {
         MatrixOperation intendedOperation = MatrixParent.IntendedNextOperation;
+        string sprite;
 
         switch(intendedOperation.type)
         {
             case MatrixOperation.Type.Swap:
-                text.text = string.Format(DisplayFormat, SourceRowName, DestinationRowName);
+                sprite = "<sprite=\"swap icon\" index=0>";
+                text.text = string.Format(DisplayFormat, SourceRowName, DestinationRowName, sprite);
                 break;
             case MatrixOperation.Type.Scale:
-                text.text = string.Format(DisplayFormat, DestinationRowName, intendedOperation.scalar);
+                sprite = "<sprite=\"scale icon\" index=0>";
+                text.text = string.Format(DisplayFormat, DestinationRowName, intendedOperation.scalar, sprite);
                 break;
             case MatrixOperation.Type.Add:
-                char symbol = intendedOperation.scalar < Fraction.zero ? '-' : '+';
-                text.text = string.Format(DisplayFormat, SourceRowName, DestinationRowName, symbol);
+                if (intendedOperation.scalar < Fraction.zero)
+                {
+                    sprite = "<sprite=\"subtract icon\" index=0>";
+                }
+                else sprite = "<sprite=\"add icon\" index=0>";
+
+                text.text = string.Format(DisplayFormat, SourceRowName, DestinationRowName, sprite);
                 break;
         }
     }

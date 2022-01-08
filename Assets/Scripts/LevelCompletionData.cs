@@ -38,6 +38,7 @@ public class LevelCompletionData
     public void EncounterLevel() => encountered = true;
     public void CompleteLevel(int moves)
     {
+        EncounterLevel();
         completed = true;
         fewestMoves = Mathf.Min(fewestMoves, moves);
     }

@@ -7,7 +7,6 @@ using DG.Tweening;
 public class MatrixFocusPreviewEffect : MonoBehaviour
 {
     #region Private Properties
-    private Color TranslucentColor => new Color(image.color.r, image.color.g, image.color.b, 0.5f);
     private Color TransparentColor => new Color(image.color.r, image.color.g, image.color.b, 0f);
     #endregion
 
@@ -46,29 +45,51 @@ public class MatrixFocusPreviewEffect : MonoBehaviour
 
     #region Private Fields
     private Coroutine fadeInRoutine;
+    private Color defaultColor;
     #endregion
 
     #region Monobehaviour Messages
-    private void Start()
+    // This needs to execute right after instantiation
+    // because the owning object disables it immediately
+    private void Awake()
     {
+        defaultColor = image.color;
         // Make sure the effect is right on the parent
         rectTransform.localPosition = Vector3.zero;
         // Change the sort so that this object is above other objects
         canvas.overrideSorting = true;
         canvas.sortingOrder = 10;
-        FadeIn();
     }
     #endregion
 
     #region Public Methods
     public void FadeIn()
     {
+        // Enable itself if not already enabled
+        if (!gameObject.activeSelf) gameObject.SetActive(true);
+
+        // Start the fade in routine
         fadeInRoutine = StartCoroutine(FadeInRoutine());
     }
     public void FadeOut()
     {
-        if (fadeInRoutine != null) StopCoroutine(fadeInRoutine);
-        StartCoroutine(FadeOutRoutine());
+        if (fadeInRoutine != null)
+        {
+            StopCoroutine(fadeInRoutine);
+            fadeInRoutine = null;
+        }
+
+        // Complete any active tweens
+        rectTransform.DOComplete();
+        image.DOComplete();
+
+        // Set the initial size of the rect transform and color of the image
+        rectTransform.localScale = Vector3.one * smallSize;
+        image.color = defaultColor;
+
+        // Change the scale over time
+        rectTransform.DOScale(largeSize, sizeChangeTime);
+        image.DOColor(TransparentColor, colorChangeTime).WaitForCompletion();
     }
     #endregion
 
@@ -81,31 +102,14 @@ public class MatrixFocusPreviewEffect : MonoBehaviour
 
         // Change to small size and wait for completion
         rectTransform.DOScale(smallSize, sizeChangeTime);
-        yield return image.DOColor(TranslucentColor, sizeChangeTime).WaitForCompletion();
+        yield return image.DOColor(defaultColor, sizeChangeTime).WaitForCompletion();
 
         // Make the image flash
         for(int i = 0; i < numFlashes; i++)
         {
             yield return image.DOColor(TransparentColor, colorChangeTime).WaitForCompletion();
-            yield return image.DOColor(TranslucentColor, colorChangeTime).WaitForCompletion();
+            yield return image.DOColor(defaultColor, colorChangeTime).WaitForCompletion();
         }
-    }
-    private IEnumerator FadeOutRoutine()
-    {
-        // Complete any active tweens
-        rectTransform.DOComplete();
-        image.DOComplete();
-
-        // Set the initial size of the rect transform and color of the image
-        rectTransform.localScale = Vector3.one * smallSize;
-        image.color = TranslucentColor;
-
-        // Change the scale over time
-        rectTransform.DOScale(largeSize, sizeChangeTime);
-        yield return image.DOColor(TransparentColor, colorChangeTime).WaitForCompletion();
-
-        // Destroy the game object
-        Destroy(gameObject);
     }
     #endregion
 }
