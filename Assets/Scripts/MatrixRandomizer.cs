@@ -48,10 +48,7 @@ public class MatrixRandomizer
     public static int FunValue(Matrix matrix)
     {
         int value = 0;
-        // Total fractions that are negative
-        int totalNegativeFractions = 0;
-        // Total fractions with denominator that is not 1
-        int totalPartialFractions = 0;
+        Dictionary<Fraction, int> fractionIndex = new Dictionary<Fraction, int>();
 
         for(int i = 0; i < matrix.rows; i++)
         {
@@ -84,20 +81,20 @@ public class MatrixRandomizer
                 }
                 if (current.denominator > MaxAllowableNumber) value -= current.denominator - MaxAllowableNumber;
 
-                // Update counts for number of negative and partial fractions
-                if (current.numerator < 0) totalNegativeFractions++;
-                if (current.denominator > 1) totalPartialFractions++;
+                // Update fraction counts
+                if (fractionIndex.ContainsKey(current))
+                {
+                    fractionIndex[current]++;
+                }
+                else fractionIndex[current] = 1;
             }
         }
 
-        // Compute total positive fractions and total whole numbers
-        int totalPositiveFractions = matrix.size - totalNegativeFractions;
-        int totalWholeNumbers = matrix.size - totalPartialFractions;
-
-        // Dock points for matrices more out of balance - uneven positive / negative numbers
-        // or uneven whole numbers / partial fractions
-        value -= Mathf.Abs(totalPositiveFractions - totalNegativeFractions);
-        value -= Mathf.Abs(totalWholeNumbers - totalPartialFractions);
+        // Reduce the score for each subsequent appearance of the same fraction
+        foreach(int count in fractionIndex.Values)
+        {
+            value -= count - 1;
+        }
 
         return value;
     }

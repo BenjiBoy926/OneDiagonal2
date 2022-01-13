@@ -53,7 +53,7 @@ public class LevelData
         else
         {
             // Create a random matrix with the given size
-            MatrixRandomizer.Operations = (size - 2) * 5;
+            MatrixRandomizer.Operations = (size * 2) - 1;
             startingMatrix = MatrixRandomizer.Create(size);
         }
         
