@@ -27,19 +27,22 @@ public class MatrixFlashEffect : MonoBehaviour
     private float finalScale = 5f;
     #endregion
 
+    #region Public Methods
+    public void Flash(Color color)
+    {
+        image.color = color;
+
+        // Start the flash routine
+        StartCoroutine(FlashRoutine());
+    }
+    #endregion
+
     #region Private Methods
     private void Start()
     {
         // Sort the flash to be above other things
         canvas.overrideSorting = true;
         canvas.sortingOrder = 10;
-        // Start the flash routine
-        StartCoroutine(FlashRoutine());
-    }
-    private IEnumerator FlashRoutine()
-    {
-        // End color of the flash
-        Color endColor = new Color(image.color.r, image.color.g, image.color.b, 0f);
 
         // Stretch the rect transform across the whole parent
         rectTransform.anchorMin = Vector2.zero;
@@ -50,6 +53,11 @@ public class MatrixFlashEffect : MonoBehaviour
         rectTransform.anchoredPosition = Vector2.zero;
         // Ensure correct starting scale
         rectTransform.localScale = Vector3.one;
+    }
+    private IEnumerator FlashRoutine()
+    {
+        // End color of the flash
+        Color endColor = new Color(image.color.r, image.color.g, image.color.b, 0f);
 
         // Scale the rect transform and change the color over time
         rectTransform.DOScale(finalScale, flashTime);

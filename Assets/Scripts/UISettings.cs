@@ -10,7 +10,6 @@ public class UISettings : ScriptableObjectSingleton<UISettings>
     #region Public Properties
     public static MatrixItemColor DiagonalColors => Instance.diagonalColors;
     public static MatrixItemColor NotDiagonalColors => Instance.notDiagnonalColors;
-    public static MatrixFlashEffect FlashEffect => Instance.flashEffect;
     public static float OperatorPunch => Instance.operatorPunch;
     public static float OperatorPunchTime => Instance.operatorPunchTime;
     #endregion
@@ -26,9 +25,6 @@ public class UISettings : ScriptableObjectSingleton<UISettings>
 
     [Space]
 
-    [SerializeField]
-    [Tooltip("Reference to the prefab to use for the operator flash effect")]
-    private MatrixFlashEffect flashEffect;
     [SerializeField]
     [Tooltip("Colors that the operators use when performing row operations on the matrix")]
     private ArrayOnEnum<MatrixOperation.Type, Color> operationColors;

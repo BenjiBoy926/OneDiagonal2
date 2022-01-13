@@ -4,10 +4,30 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using UnityEngine.Serialization;
 using DG.Tweening;
 
 public class MatrixOperationSource : MatrixUIChild, IPointerDownHandler, IPointerUpHandler, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
+    #region Public Typedefs
+    [System.Serializable]
+    public class TransformTarget
+    {
+        public RectTransform transform;
+        public MatrixFlashEffect flashEffect;
+
+        public void Punch()
+        {
+            UISettings.PunchOperator(transform);
+        }
+        public void Flash(Color color)
+        {
+            MatrixFlashEffect effectInstance = Instantiate(flashEffect, transform);
+            effectInstance.Flash(color);
+        }
+    }
+    #endregion
+
     #region Public Properties
     public MatrixOperation Operation => operationGetter.Invoke();
     public bool IsCurrentOperationSource => MatrixParent.IsCurrentOperationSource(this);
@@ -16,7 +36,8 @@ public class MatrixOperationSource : MatrixUIChild, IPointerDownHandler, IPointe
     #region Private Editor Fields
     [SerializeField]
     [Tooltip("Rect transform to punch the scale of when the operation begins, and destination is set")]
-    private List<RectTransform> rectTransforms;
+    [FormerlySerializedAs("rectTransforms")]
+    private List<TransformTarget> targets;
     [SerializeField]
     [Tooltip("List of graphics to change color when this is used as the operation source")]
     private List<Graphic> graphics;
@@ -75,15 +96,19 @@ public class MatrixOperationSource : MatrixUIChild, IPointerDownHandler, IPointe
     // When the source stops dragging, ask the matrix to confirm operation
     public void OnEndDrag(PointerEventData data)
     {
+        // Attempt to confirm the operation
+        MatrixOperation.Type confirmedOperation = MatrixParent.IntendedNextOperationType;
         bool success = MatrixParent.ConfirmOperation();
+
+        // If successful, use some fun effects
         if (success)
         {
             PunchSize();
 
             // Create a flash effect for each rect transform
-            foreach(RectTransform rectTransform in rectTransforms)
+            foreach(TransformTarget target in targets)
             {
-                Instantiate(UISettings.FlashEffect, rectTransform);
+                target.Flash(UISettings.GetOperatorColor(confirmedOperation));
             }
         }
 
@@ -97,9 +122,9 @@ public class MatrixOperationSource : MatrixUIChild, IPointerDownHandler, IPointe
     #region Private Methods
     private void PunchSize()
     {
-        foreach(RectTransform rt in rectTransforms)
+        foreach(TransformTarget target in targets)
         {
-            UISettings.PunchOperator(rt);
+            target.Punch();
         }
     }
     private void SetGraphicsActive(bool active)

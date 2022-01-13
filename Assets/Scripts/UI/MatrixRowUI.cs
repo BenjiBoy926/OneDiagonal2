@@ -27,6 +27,9 @@ public class MatrixRowUI : MatrixUIChild
     [Tooltip("Layout group that the items are instantiated into")]
     private RectTransform rowRectTransform;
     [SerializeField]
+    [Tooltip("Prefab used to create a flash effect on the matrix row when an operation is confirmed")]
+    private MatrixFlashEffect flashEffect;
+    [SerializeField]
     [Tooltip("Reference to the graphic to change color on when the row is set as the destination")]
     private Graphic outlineGraphic;
     [SerializeField]
@@ -198,7 +201,8 @@ public class MatrixRowUI : MatrixUIChild
         if (success && IsCurrentOperationDestination)
         {
             UISettings.PunchOperator(transform);
-            Instantiate(UISettings.FlashEffect, rowRectTransform);
+            MatrixFlashEffect flash = Instantiate(flashEffect, rowRectTransform);
+            flash.Flash(UISettings.GetOperatorColor(MatrixParent.IntendedNextOperationType));
         }
     }
     #endregion

@@ -3641,8 +3641,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb958985158bc8c4db49194aa90e86dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rectTransforms:
-  - {fileID: 6401806503195197771}
+  targets:
+  - transform: {fileID: 6401806503195197771}
+    flashEffect: {fileID: 5579261382817344406, guid: 32213c3f356bf0149bd97b77439af291,
+      type: 3}
   graphics:
   - {fileID: 4618886082398543878}
 --- !u!114 &62341116066652088

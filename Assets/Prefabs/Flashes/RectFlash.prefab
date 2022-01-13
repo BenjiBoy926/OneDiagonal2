@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2930442416200011611}
   - component: {fileID: -8393632706909225532}
   m_Layer: 0
-  m_Name: MatrixFlash
+  m_Name: RectFlash
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
