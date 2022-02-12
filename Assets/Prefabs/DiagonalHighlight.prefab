@@ -98,7 +98,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1.2
+  m_PixelsPerUnitMultiplier: 5
 --- !u!114 &5456217070561094153
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -131,6 +131,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   start: {x: -18.64, y: 0, z: 0}
-  end: {x: 139.03, y: 0, z: 0}
-  thickness: 80
+  end: {x: 139.33, y: 0, z: 0}
+  thickness: 50
   drawGizmos: 0
