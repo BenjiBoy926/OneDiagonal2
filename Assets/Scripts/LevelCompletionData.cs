@@ -21,7 +21,7 @@ public class LevelCompletionData
     private bool completed;
     [SerializeField]
     [Tooltip("Fewest moves it has taken the player to complete the level")]
-    private int fewestMoves;
+    private int fewestMoves = int.MaxValue;
     #endregion
 
     #region Constructors

@@ -131,6 +131,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   start: {x: -18.64, y: 0, z: 0}
-  end: {x: 139.33, y: 0, z: 0}
+  end: {x: 138.57, y: 0, z: 0}
   thickness: 50
   drawGizmos: 0

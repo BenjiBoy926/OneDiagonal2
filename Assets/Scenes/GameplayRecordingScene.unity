@@ -130,9 +130,19 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 212432822203184106, guid: 768bbb1d6f2fae8409fb21fbd1099d46,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 2416080379839149396, guid: 768bbb1d6f2fae8409fb21fbd1099d46,
         type: 3}
       propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2589429922737278022, guid: 768bbb1d6f2fae8409fb21fbd1099d46,
+        type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6592656440382252738, guid: 768bbb1d6f2fae8409fb21fbd1099d46,
@@ -244,6 +254,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: MatrixEditorForRecording
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009306981529988201, guid: 768bbb1d6f2fae8409fb21fbd1099d46,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 7348855411099843602, guid: 768bbb1d6f2fae8409fb21fbd1099d46,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 8373380489381727700, guid: 768bbb1d6f2fae8409fb21fbd1099d46,
         type: 3}

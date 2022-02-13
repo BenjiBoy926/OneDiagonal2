@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 1251769632}
   - component: {fileID: 1251769633}
   m_Layer: 0
-  m_Name: UnlockEverything
+  m_Name: UnlockAnything
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -167,3 +167,115 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2a73a4bfe48e6542b3697f9968a87dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  data:
+    completionDatas:
+      data:
+      - array:
+        - encountered: 1
+          completed: 1
+          fewestMoves: 0
+        - encountered: 1
+          completed: 1
+          fewestMoves: 0
+        - encountered: 1
+          completed: 1
+          fewestMoves: 0
+        - encountered: 1
+          completed: 1
+          fewestMoves: 0
+        - encountered: 1
+          completed: 1
+          fewestMoves: 0
+        - encountered: 1
+          completed: 1
+          fewestMoves: 0
+        - encountered: 1
+          completed: 1
+          fewestMoves: 0
+        - encountered: 1
+          completed: 1
+          fewestMoves: 0
+        - encountered: 1
+          completed: 1
+          fewestMoves: 0
+        - encountered: 1
+          completed: 1
+          fewestMoves: 0
+        - encountered: 1
+          completed: 1
+          fewestMoves: 0
+        - encountered: 1
+          completed: 1
+          fewestMoves: 0
+        - encountered: 1
+          completed: 1
+          fewestMoves: 0
+        - encountered: 1
+          completed: 1
+          fewestMoves: 0
+        - encountered: 1
+          completed: 1
+          fewestMoves: 0
+        - encountered: 1
+          completed: 1
+          fewestMoves: 0
+        - encountered: 1
+          completed: 1
+          fewestMoves: 0
+        - encountered: 1
+          completed: 1
+          fewestMoves: 0
+        - encountered: 1
+          completed: 1
+          fewestMoves: 0
+        - encountered: 1
+          completed: 1
+          fewestMoves: 0
+        - encountered: 1
+          completed: 1
+          fewestMoves: 0
+        - encountered: 1
+          completed: 1
+          fewestMoves: 0
+        - encountered: 1
+          completed: 1
+          fewestMoves: 0
+        - encountered: 1
+          completed: 1
+          fewestMoves: 0
+        levelTypeFilter: Enumerated
+      - array:
+        - encountered: 0
+          completed: 0
+          fewestMoves: 0
+        - encountered: 0
+          completed: 0
+          fewestMoves: 0
+        - encountered: 0
+          completed: 0
+          fewestMoves: 0
+        levelTypeFilter: FreePlay
+      - array:
+        - encountered: 0
+          completed: 0
+          fewestMoves: 0
+        - encountered: 0
+          completed: 0
+          fewestMoves: 0
+        - encountered: 0
+          completed: 0
+          fewestMoves: 0
+        - encountered: 0
+          completed: 0
+          fewestMoves: 0
+        - encountered: 0
+          completed: 0
+          fewestMoves: 0
+        - encountered: 0
+          completed: 0
+          fewestMoves: 0
+        levelTypeFilter: Recorded
+    operationsUnlocked:
+      data: 000000
+    freePlayUnlocked: 0
+  save: 0

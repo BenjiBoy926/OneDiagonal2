@@ -8,31 +8,18 @@ using UnityEngine;
 [System.Serializable]
 public class PlayerData
 {
-    #region Public Typedefs
-    // So that the array on enum is property serialized
-    [System.Serializable]
-    public class LevelCompletionDataList
-    {
-        // List of completion datas
-        public LevelCompletionData[] array;
-
-        // Constructor to create the array with a defined size
-        public LevelCompletionDataList(int size)
-        {
-            array = new LevelCompletionData[size];
-        }
-    }
-    #endregion
-
     #region Private Properties
     private static PlayerData Instance
     {
         get
         {
-            if (instance == null) instance = Load();
+            if (instance == null) SetInstanceFromFile();
             return instance;
         }
     }
+    // This has to be a property instead of a readonly field
+    // because of serialization problems
+    private static string SavePath => Application.persistentDataPath + fileName;
     #endregion
 
     #region Public Properties
@@ -58,7 +45,6 @@ public class PlayerData
     #region Private Fields
     private static PlayerData instance = null;
     private static readonly string fileName = "OneDiagonalSaveData.dat";
-    private static readonly string savePath = Application.persistentDataPath + fileName;
     private static readonly BinaryFormatter formatter = new BinaryFormatter();
     #endregion
 
@@ -80,7 +66,7 @@ public class PlayerData
             // Set each completion data to the default
             for (int i = 0; i < numLevelsOfType; i++)
             {
-                completionDatas.Get(type).array[i] = new LevelCompletionData();
+                completionDatas.Get(type).Array[i] = new LevelCompletionData();
             }
         }
 
@@ -90,9 +76,11 @@ public class PlayerData
     #endregion
 
     #region Public Methods
+    public static void SetInstanceFromFile() => SetInstance(Load());
+    public static void SetInstance(PlayerData newInstance) => instance = newInstance;
     // Get the completion data for the specified level
-    public static LevelCompletionData GetCompletionData(LevelID id) => Instance.completionDatas.Get(id.Type).array[id.Index];
-    public static LevelCompletionData[] GetCompletionDatasWithType(LevelType levelType) => Instance.completionDatas.Get(levelType).array;
+    public static LevelCompletionData GetCompletionData(LevelID id) => Instance.completionDatas.Get(id.Type).Array[id.Index];
+    public static LevelCompletionData[] GetCompletionDatasWithType(LevelType levelType) => Instance.completionDatas.Get(levelType).Array;
     public static bool OperationUnlocked(MatrixOperation.Type type) => Instance.operationsUnlocked.Get(type);
     public static void UnlockOperation(MatrixOperation.Type type) => Instance.operationsUnlocked.Set(type, true);
     public static void UnlockAllOperations()
@@ -111,7 +99,7 @@ public class PlayerData
         // resulting in a sharing violation
         PlayerData currentInstance = Instance;
 
-        using FileStream file = new FileStream(savePath, FileMode.OpenOrCreate);
+        using FileStream file = new FileStream(SavePath, FileMode.OpenOrCreate);
         formatter.Serialize(file, currentInstance);
     }
     public static PlayerData Load()
@@ -123,7 +111,7 @@ public class PlayerData
         if (SaveFileExists())
         {
             // Use the file to deserialize the data
-            using (FileStream file = new FileStream(savePath, FileMode.Open))
+            using (FileStream file = new FileStream(SavePath, FileMode.Open))
             {
                 data = (PlayerData)formatter.Deserialize(file);
             }
@@ -143,7 +131,7 @@ public class PlayerData
 
                 // If the levels on the level settings are not equal to the completion datas,
                 // delete the save file and create new data
-                if(numLevelsOfType != data.completionDatas.Get(type).array.Length)
+                if(numLevelsOfType != data.completionDatas.Get(type).Array.Length)
                 {
                     Delete();
                     data = new PlayerData();
@@ -162,10 +150,10 @@ public class PlayerData
     {
         if(SaveFileExists())
         {
-            File.Delete(savePath);
+            File.Delete(SavePath);
             instance = null;
         }
     }
-    public static bool SaveFileExists() => File.Exists(savePath);
+    public static bool SaveFileExists() => File.Exists(SavePath);
     #endregion
 }
