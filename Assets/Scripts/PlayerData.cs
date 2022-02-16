@@ -48,34 +48,37 @@ public class PlayerData
     private static readonly BinaryFormatter formatter = new BinaryFormatter();
     #endregion
 
-    #region Constructors
-    private PlayerData()
+    #region Public Methods
+    public static PlayerData Create()
     {
+        // Create a player data object
+        PlayerData data = new PlayerData();
+
         // Initialize the array on enum
-        completionDatas = new ArrayOnEnum<LevelType, LevelCompletionDataList>();
+        data.completionDatas = new ArrayOnEnum<LevelType, LevelCompletionDataList>();
 
         // Get a list of the level types
         LevelType[] levelTypes = (LevelType[])System.Enum.GetValues(typeof(LevelType));
 
-        foreach(LevelType type in levelTypes)
+        foreach (LevelType type in levelTypes)
         {
             int numLevelsOfType = LevelSettings.TotalLevelsOfType(type);
             // Set the completion data list to a new list
-            completionDatas.Set(type, new LevelCompletionDataList(numLevelsOfType));
+            data.completionDatas.Set(type, new LevelCompletionDataList(numLevelsOfType));
 
             // Set each completion data to the default
             for (int i = 0; i < numLevelsOfType; i++)
             {
-                completionDatas.Get(type).Array[i] = new LevelCompletionData();
+                data.completionDatas.Get(type).Array[i] = new LevelCompletionData();
             }
         }
 
         // Create the operations unlocked array
-        operationsUnlocked = new ArrayOnEnum<MatrixOperation.Type, bool>();
-    }
-    #endregion
+        data.operationsUnlocked = new ArrayOnEnum<MatrixOperation.Type, bool>();
 
-    #region Public Methods
+        // Return the data that was set up
+        return data;
+    }
     public static void SetInstanceFromFile() => SetInstance(Load());
     public static void SetInstance(PlayerData newInstance) => instance = newInstance;
     // Get the completion data for the specified level
@@ -134,13 +137,13 @@ public class PlayerData
                 if(numLevelsOfType != data.completionDatas.Get(type).Array.Length)
                 {
                     Delete();
-                    data = new PlayerData();
+                    data = Create();
                     break;
                 }
             }
         }
         // If no save file exists, create a new player data
-        else data = new PlayerData();
+        else data = Create();
 
         // Return the instance
         return data;

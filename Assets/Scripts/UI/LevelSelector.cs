@@ -21,15 +21,22 @@ public class LevelSelector : MonoBehaviour
     [SerializeField]
     [Tooltip("Reference to the main button to copy")]
     private ArrayOnEnum<LevelType, LevelSelectorButtonData> buttonData;
+    [SerializeField]
+    [Tooltip("Type of levels to select when playing from the scene view")]
+    private LevelType levelsToSelect;
     #endregion
 
     #region Private Fields
     private static LevelType levelType = LevelType.Enumerated;
+    private static bool levelTypeSet = false;
     #endregion
 
     #region Monobehaviour Messages
     private void Start()
     {
+        // If level type has not been set then use the editor level type
+        if (!levelTypeSet) SelectLevelsWithType(levelsToSelect);
+
         // Get a list of all the ids with the given type
         LevelID[] ids = LevelSettings.GetAllLevelIDsOfType(levelType);
         // Cache the level selector button data
@@ -48,6 +55,7 @@ public class LevelSelector : MonoBehaviour
     public static void SelectLevelsWithType(LevelType levelType)
     {
         LevelSelector.levelType = levelType;
+        levelTypeSet = true;
         SceneManager.LoadScene("LevelSelector");
     }
     #endregion

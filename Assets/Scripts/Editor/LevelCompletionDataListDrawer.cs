@@ -51,27 +51,43 @@ public class LevelCompletionDataListDrawer : PropertyDrawer
         }
         else EditorGUIAuto.PropertyField(ref position, array, label, true);
 
-        // Target state should be true if any are not completed
-        SerializedProperty[] elements = EditorGUIAuto.GetArrayElements(array);
-        bool targetState = elements
-            .Any(elem => !elem.FindPropertyRelative("completed").boolValue);
-
-        // Setup the button label
-        string buttonLabel = "Complete all levels";
-        if (!targetState) buttonLabel = "Un-complete all levels";
-
-        if (GUIAuto.Button(ref position, buttonLabel))
+        // Only display the button if the array is expanded
+        if (array.isExpanded)
         {
-            // Go through each element and set it to the target state
-            foreach (SerializedProperty elem in elements)
-            {
-                SerializedProperty encountered = elem.FindPropertyRelative(nameof(encountered));
-                SerializedProperty completed = elem.FindPropertyRelative(nameof(completed));
+            // Increase indent
+            EditorGUI.indentLevel++;
 
-                // Set encountered and completed to the target states
-                encountered.boolValue = targetState;
-                completed.boolValue = targetState;
+            // Target state should be true if any are not completed
+            SerializedProperty[] elements = EditorGUIAuto.GetArrayElements(array);
+            bool targetState = elements
+                .Any(elem => !elem.FindPropertyRelative("completed").boolValue);
+
+            // Setup the button label
+            string buttonLabel = "Complete all levels";
+            if (!targetState) buttonLabel = "Un-complete all levels";
+
+            // Indent the rect for the button
+            Rect buttonRect = EditorGUI.IndentedRect(position);
+
+            if (GUIAuto.Button(ref buttonRect, buttonLabel))
+            {
+                // Go through each element and set it to the target state
+                foreach (SerializedProperty elem in elements)
+                {
+                    SerializedProperty encountered = elem.FindPropertyRelative(nameof(encountered));
+                    SerializedProperty completed = elem.FindPropertyRelative(nameof(completed));
+
+                    // Set encountered and completed to the target states
+                    encountered.boolValue = targetState;
+                    completed.boolValue = targetState;
+                }
             }
+
+            // Move the position down by button rect
+            position.y = buttonRect.y;
+
+            // Reduce indent
+            EditorGUI.indentLevel--;
         }
     }
     public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
@@ -105,8 +121,12 @@ public class LevelCompletionDataListDrawer : PropertyDrawer
         }
         else height = EditorGUI.GetPropertyHeight(array, true);
 
-        // Add space for the special editor button
-        height += EditorExtensions.StandardControlHeight;
+        if (array.isExpanded)
+        {
+            // Add space for the special editor button
+            height += EditorExtensions.StandardControlHeight;
+        }
+
         return height;
     }
     #endregion

@@ -39,21 +39,8 @@ public class LevelSelectorButton : MonoBehaviour
         // Add listener to the button if it is interactable
         if (button.interactable) button.onClick.AddListener(() => GameplayManager.PlayLevel(levelID));
 
-        // Setup the text of the button
-        if (levelID.Type == LevelType.Enumerated)
-        {
-            text.text = (levelID.Index + 1).ToString();
-        }
-        else text.text = levelID.Data.Name;
-
-        // Modify the colors for the free play levels
-        if(levelID.Type == LevelType.FreePlay)
-        {
-            Color darkGreen = new Color(0.1f, 0.3f, 0.1f);
-            Color darkRed = new Color(0.3f, 0.1f, 0.1f);
-            float t = (float)levelID.Index / (LevelSettings.GetAllLevelIDsOfType(LevelType.FreePlay).Length - 1);
-            button.targetGraphic.color = Color.Lerp(darkGreen, darkRed, t);
-        }
+        // Set the text on the component
+        text.text = levelID.Data.Name;
     }
     #endregion
 }
