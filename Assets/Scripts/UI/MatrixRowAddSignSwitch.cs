@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using Hellmade.Sound;
+using Audio;
 
 public class MatrixRowAddSignSwitch : MatrixUIChild
 {
@@ -32,7 +32,7 @@ public class MatrixRowAddSignSwitch : MatrixUIChild
         {
             widget.ToggleAdding();
         }
-        EazySoundManager.PlayUISound(switchSound);
+        AudioManager.PlaySFX(switchSound);
     }
     private void OnMatrixOperationStarted()
     {

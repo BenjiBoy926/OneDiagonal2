@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.Events;
 using DG.Tweening;
 using TMPro;
-using Hellmade.Sound;
+using Audio;
 
 public class UnlockUI : MonoBehaviour
 {
@@ -61,7 +61,7 @@ public class UnlockUI : MonoBehaviour
         rootTransform.gameObject.SetActive(true);
 
         // Play the sound when we are displayed
-        EazySoundManager.PlayUISound(displaySound);
+        AudioManager.PlaySFX(displaySound);
 
         // Start tiny then scale
         rootTransform.localScale = Vector3.one * 0.1f;

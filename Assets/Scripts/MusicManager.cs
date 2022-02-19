@@ -1,12 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Hellmade.Sound;
+using Audio;
 
-public class MusicManager
+public class MusicManager : MonoBehaviour
 {
+    #region Private Editor Fields
+    [SerializeField]
+    [Tooltip("Audio clip to play for the music")]
+    private AudioClip music;
+    #endregion
+
     #region Public Fields
     public static readonly string prefabPath = nameof(MusicManager);
+    #endregion
+
+    #region Monobehaviour Messages
+    private void Start()
+    {
+        AudioManager.PlayMusic(music, true);
+    }
     #endregion
 
     #region Initialize On Load Methods
@@ -14,7 +27,7 @@ public class MusicManager
     public static void StartMusic()
     {
         GameObject managerPrefab = ResourcesExtensions.InstantiateFromResources(prefabPath, null);
-        Object.DontDestroyOnLoad(managerPrefab);
+        DontDestroyOnLoad(managerPrefab);
     }
     #endregion
 }

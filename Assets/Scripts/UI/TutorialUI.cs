@@ -6,7 +6,6 @@ using UnityEngine.Events;
 using UnityEngine.Video;
 using TMPro;
 using DG.Tweening;
-using Hellmade.Sound;
 
 public class TutorialUI : MonoBehaviour
 {

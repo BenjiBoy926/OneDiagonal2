@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using Hellmade.Sound;
+using Audio;
 
 public class MatrixMultiplyWidget : MatrixUIChild
 {
@@ -89,7 +89,7 @@ public class MatrixMultiplyWidget : MatrixUIChild
         if (scalar == Fraction.zero) scalar = Fraction.one + Fraction.one;
 
         // Play a sound!
-        EazySoundManager.PlayUISound(increaseSound);
+        AudioManager.PlaySFX(increaseSound);
 
         OnScalarChanged();
     }
@@ -100,16 +100,16 @@ public class MatrixMultiplyWidget : MatrixUIChild
         if (scalar == Fraction.one) scalar = -Fraction.one;
 
         // Play a sound!
-        EazySoundManager.PlayUISound(decreaseSound);
+        AudioManager.PlaySFX(decreaseSound);
 
         OnScalarChanged();
     }
     private void ToggleReciprocal()
     {
         reciprocate = !reciprocate;
-        
+
         // Play a sound!
-        EazySoundManager.PlayUISound(reciprocateSound);
+        AudioManager.PlaySFX(reciprocateSound);
 
         OnScalarChanged();
     }

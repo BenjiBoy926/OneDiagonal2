@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
-using Hellmade.Sound;
+using Audio;
 
 public class MatrixUI : MonoBehaviour
 {
@@ -151,7 +151,7 @@ public class MatrixUI : MonoBehaviour
         this.operationSource = operationSource;
 
         // Play a sound!
-        EazySoundManager.PlayUISound(operationBeginSound);
+        AudioManager.PlaySFX(operationBeginSound);
 
         // Invoke the operation finish event
         onOperationStart.Invoke();
@@ -167,7 +167,7 @@ public class MatrixUI : MonoBehaviour
             this.operationDestination = operationDestination;
 
             // Play a sound!
-            EazySoundManager.PlayUISound(operationDestinationSetSound);
+            AudioManager.PlaySFX(operationDestinationSetSound);
 
             // Set the color of the destination
             // Set the preview matrix and update all ui elements to display the preview
@@ -177,7 +177,7 @@ public class MatrixUI : MonoBehaviour
             // If we are previewing the identity then play the sound
             if(previewMatrix.isIdentity)
             {
-                EazySoundManager.PlayUISound(previewIdentitySound);
+                AudioManager.PlaySFX(previewIdentitySound);
             }
 
             // Invoke the event for the destination set
@@ -214,7 +214,7 @@ public class MatrixUI : MonoBehaviour
             ShowCurrent();
 
             // Play a sound!
-            EazySoundManager.PlayUISound(operationConfirmSound);
+            AudioManager.PlaySFX(operationConfirmSound);
 
             // If current matrix is the identity, then invoke the matrix solved event
             if(currentMatrix.isIdentity)
@@ -222,7 +222,7 @@ public class MatrixUI : MonoBehaviour
                 // None of the children block raycasts now that the matrix is solved
                 canvasGroup.blocksRaycasts = false;
                 // Play a sound!
-                EazySoundManager.PlayUISound(matrixSolveSound);
+                AudioManager.PlaySFX(matrixSolveSound);
                 // Create the highlight effect
                 currentHighlight = Instantiate(highlightPrefab, transform);
                 // Invoke the public event
@@ -232,7 +232,7 @@ public class MatrixUI : MonoBehaviour
         else
         {
             // Play a sound!
-            EazySoundManager.PlayUISound(operationCancelSound);
+            AudioManager.PlaySFX(operationCancelSound);
         }
 
         // Invoke operation finished event

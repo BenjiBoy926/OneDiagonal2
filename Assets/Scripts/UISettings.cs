@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
-using Hellmade.Sound;
+using Audio;
 
 [CreateAssetMenu]
 public class UISettings : ScriptableObjectSingleton<UISettings>
@@ -61,7 +61,7 @@ public class UISettings : ScriptableObjectSingleton<UISettings>
     public static DG.Tweening.Core.TweenerCore<Vector3, Vector3, DG.Tweening.Plugins.Options.VectorOptions> OpenWindow(RectTransform windowTransform)
     {
         // Play the appear sound
-        EazySoundManager.PlayUISound(Instance.windowOpenSound);
+        AudioManager.PlaySFX(Instance.windowOpenSound);
 
         // Set scale to zero at first
         windowTransform.localScale = Vector3.zero;
@@ -71,7 +71,7 @@ public class UISettings : ScriptableObjectSingleton<UISettings>
     public static DG.Tweening.Core.TweenerCore<Vector3, Vector3, DG.Tweening.Plugins.Options.VectorOptions> CloseWindow(RectTransform windowTransform)
     {
         // Play the appear sound
-        EazySoundManager.PlayUISound(Instance.windowCloseSound);
+        AudioManager.PlaySFX(Instance.windowCloseSound);
 
         // Set scale to zero at first
         windowTransform.localScale = Vector3.one;

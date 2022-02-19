@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
 using DG.Tweening;
-using Hellmade.Sound;
+using Audio;
 
 public class MatrixSolvedUI : MatrixUIChild
 {
@@ -126,7 +126,7 @@ public class MatrixSolvedUI : MatrixUIChild
 
         // Enable the text and play the reveal sound
         congratsText.enabled = true;
-        EazySoundManager.PlayUISound(revealSound);
+        AudioManager.PlaySFX(revealSound);
 
         // Wait for move text to appear
         yield return new WaitForSeconds(movesTextWait);
@@ -134,7 +134,7 @@ public class MatrixSolvedUI : MatrixUIChild
         // Enable the text to display the number of moves it took to solve the puzzle
         movesText.textRoot.gameObject.SetActive(true);
         movesText.text.text = MatrixParent.CurrentMoves.ToString();
-        EazySoundManager.PlayUISound(revealSound);
+        AudioManager.PlaySFX(revealSound);
 
         // Wait for the high score text to appear
         yield return new WaitForSeconds(fewestMovesTextWait);
@@ -142,7 +142,7 @@ public class MatrixSolvedUI : MatrixUIChild
         // Enable the text and set it to the minimum on start
         fewestMovesText.textRoot.gameObject.SetActive(true);
         fewestMovesText.text.text = completionDataOnPuzzleStart.FewestMovesString;
-        EazySoundManager.PlayUISound(revealSound);
+        AudioManager.PlaySFX(revealSound);
 
         // If current level completion is less than it was before, we'll update the text dramatically
         if (GameplayManager.CurrentLevelCompletionData.FewestMoves < completionDataOnPuzzleStart.FewestMoves)
@@ -155,7 +155,7 @@ public class MatrixSolvedUI : MatrixUIChild
 
             // Give the actual fewest moves
             fewestMovesText.text.text = GameplayManager.CurrentLevelCompletionData.FewestMovesString;
-            EazySoundManager.PlayUISound(newHighScoreSound);
+            AudioManager.PlaySFX(newHighScoreSound);
 
             // Punch the scale to make it really flashy
             fewestMovesText.textRoot.DOKill();
