@@ -44,27 +44,6 @@ public class MatrixRowUI : MatrixUIChild
     [SerializeField]
     [Tooltip("Root object for all row elements that are not in the layout")]
     private Transform nonLayoutObjects;
-
-    [Header("Cursors")]
-
-    [SerializeField]
-    [Tooltip("Cursor texture used when moving a row down")]
-    private CursorTexture cursorDown;
-    [SerializeField]
-    [Tooltip("Cursor texture used when moving a row up")]
-    private CursorTexture cursorUp;
-    [SerializeField]
-    [Tooltip("Cursor texture used when multiplying a row")]
-    private CursorTexture cursorMultiply;
-    [SerializeField]
-    [Tooltip("Cursor texture used when dividing a row")]
-    private CursorTexture cursorDivide;
-    [SerializeField]
-    [Tooltip("Cursot texture used when adding a row to a row")]
-    private CursorTexture cursorAdd;
-    [SerializeField]
-    [Tooltip("Cursor texture used when subtracting a row from a row")]
-    private CursorTexture cursorSubstract;
     #endregion
 
     #region Private Fields
@@ -145,36 +124,6 @@ public class MatrixRowUI : MatrixUIChild
             outlineGraphic.color = UISettings.GetOperatorColor(MatrixParent.IntendedNextOperationType);
             // Do a short grow animation
             UISettings.PunchOperator(transform);
-
-            MatrixOperation intendedOperation = MatrixParent.IntendedNextOperation;
-
-            // Change the cursor based on the type
-            switch(intendedOperation.type)
-            {
-                case MatrixOperation.Type.Swap:
-                    // If destination is above source then set cursor up 
-                    if (intendedOperation.sourceRow > intendedOperation.destinationRow)
-                    {
-                        cursorUp.SetCursor();
-                    }
-                    // Otherwise set cursor down
-                    else cursorDown.SetCursor();
-                    break;
-                case MatrixOperation.Type.Scale:
-                    // If the scalar is between -1 and 1, then it counts as a division, so we use the divide cursor
-                    if (intendedOperation.scalar > -Fraction.one && intendedOperation.scalar < Fraction.one)
-                    {
-                        cursorDivide.SetCursor();
-                    }
-                    else cursorMultiply.SetCursor();
-                    break;
-                case MatrixOperation.Type.Add:
-                    // If scalar is bigger than zero than set add cursor
-                    if (intendedOperation.scalar > Fraction.zero) cursorAdd.SetCursor();
-                    // If scalar is smaller than zero then set subtract cursor
-                    else cursorSubstract.SetCursor();
-                    break;
-            }
         }
     }
     public void OnPointerExit()
