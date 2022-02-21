@@ -93,6 +93,9 @@ public class TutorialUI : MonoBehaviour
         image.enabled = !tutorial.VideoStreamingPathExists;
         videoImage.enabled = !image.enabled;
 
+        Debug.Log($"Video streaming path exists: {tutorial.VideoStreamingPathExists}" +
+            $"\nVideo player url: {tutorial.VideoStreamingURL}");
+
         // Check if the video streaming path exists
         if (tutorial.VideoStreamingPathExists)
         {

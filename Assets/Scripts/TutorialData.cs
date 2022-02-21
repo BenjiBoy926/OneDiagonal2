@@ -12,7 +12,16 @@ public class TutorialData
     public Sprite Sprite => sprite;
     public string VideoStreamingSubPath => videoStreamingSubPath;
     public string VideoStreamingPath => Path.Combine(Application.streamingAssetsPath, VideoStreamingSubPath);
-    public string VideoStreamingURL => $"file://{VideoStreamingPath}";
+    public string VideoStreamingURL
+    {
+        get
+        {
+            // Modify the path if we are in the editor
+            if (Application.isEditor) return $"file://{VideoStreamingPath}";
+            // Otherwise return the path as is
+            else return VideoStreamingPath;
+        }
+    }
     public bool VideoStreamingPathExists => File.Exists(VideoStreamingPath);
     public string Explanation => explanation;
     #endregion
