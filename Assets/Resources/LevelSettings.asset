@@ -33,6 +33,7 @@ MonoBehaviour:
               unlockSprite: {fileID: 0}
               unlockItem: 
           title: Welcome to One Diagonal!
+          visualType: 0
           sprite: {fileID: 21300000, guid: 28bde2d4c5546644b9bfbb368561ea62, type: 3}
           videoStreamingSubPath: 
           explanation: Use the power of MATH to manipulate a MATRIX until you're
@@ -45,6 +46,7 @@ MonoBehaviour:
                 type: 3}
               unlockItem: the Row Swap
           title: Row Swap
+          visualType: 1
           sprite: {fileID: 0}
           videoStreamingSubPath: Swap.mp4
           explanation: Click and drag one row onto another row to swap their positions
@@ -114,6 +116,7 @@ MonoBehaviour:
                 type: 3}
               unlockItem: the Row Scale
           title: Row Scale
+          visualType: 1
           sprite: {fileID: 0}
           videoStreamingSubPath: Multiply.mp4
           explanation: Click and drag the Row Scale widget to multiply all of the
@@ -148,6 +151,7 @@ MonoBehaviour:
               unlockSprite: {fileID: 0}
               unlockItem: 
           title: Multiply by a Negative
+          visualType: 1
           sprite: {fileID: 0}
           videoStreamingSubPath: Multiply By Negative.mp4
           explanation: Remember that you can multiply a negative number by a negative
@@ -240,6 +244,7 @@ MonoBehaviour:
               unlockSprite: {fileID: 0}
               unlockItem: 
           title: Row Divide
+          visualType: 1
           sprite: {fileID: 0}
           videoStreamingSubPath: Divide.mp4
           explanation: Use the "reverse" icon to switch between multiplying and dividing
@@ -415,6 +420,7 @@ MonoBehaviour:
                 type: 3}
               unlockItem: Row Adding
           title: Row Adding
+          visualType: 1
           sprite: {fileID: 0}
           videoStreamingSubPath: Add.mp4
           explanation: Click and drag from the plus sign to add all of the numbers
@@ -540,6 +546,7 @@ MonoBehaviour:
               unlockSprite: {fileID: 0}
               unlockItem: 
           title: Row Subtraction
+          visualType: 1
           sprite: {fileID: 0}
           videoStreamingSubPath: Subtract.mp4
           explanation: Use the reverse arrows to switch between adding and subtracting

@@ -90,14 +90,11 @@ public class TutorialUI : MonoBehaviour
         // Set the display items
         title.text = tutorial.Title;
         explanation.text = tutorial.Explanation;
-        image.enabled = !tutorial.VideoStreamingPathExists;
-        videoImage.enabled = !image.enabled;
-
-        Debug.Log($"Video streaming path exists: {tutorial.VideoStreamingPathExists}" +
-            $"\nVideo player url: {tutorial.VideoStreamingURL}");
+        image.enabled = tutorial.VisualType == TutorialVisualType.Image;
+        videoImage.enabled = tutorial.VisualType == TutorialVisualType.Video;
 
         // Check if the video streaming path exists
-        if (tutorial.VideoStreamingPathExists)
+        if (videoImage.enabled)
         {
             // Set the video player source to a file url
             videoPlayer.source = VideoSource.Url;

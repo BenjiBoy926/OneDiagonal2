@@ -9,6 +9,7 @@ public class TutorialData
     #region Public Properties
     public OptionalUnlockOperation OptionalUnlockData => optionalUnlockData;
     public string Title => title;
+    public TutorialVisualType VisualType => visualType;
     public Sprite Sprite => sprite;
     public string VideoStreamingSubPath => videoStreamingSubPath;
     public string VideoStreamingPath => Path.Combine(Application.streamingAssetsPath, VideoStreamingSubPath);
@@ -22,7 +23,6 @@ public class TutorialData
             else return VideoStreamingPath;
         }
     }
-    public bool VideoStreamingPathExists => File.Exists(VideoStreamingPath);
     public string Explanation => explanation;
     #endregion
 
@@ -33,6 +33,9 @@ public class TutorialData
     [SerializeField]
     [Tooltip("Title of the tutorial")]
     private string title;
+    [SerializeField]
+    [Tooltip("Visual type for this tutorial")]
+    private TutorialVisualType visualType;
     [SerializeField]
     [Tooltip("Image to show for the tutorial")]
     private Sprite sprite;
