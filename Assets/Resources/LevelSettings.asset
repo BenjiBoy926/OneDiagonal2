@@ -34,7 +34,7 @@ MonoBehaviour:
               unlockItem: 
           title: Welcome to One Diagonal!
           sprite: {fileID: 21300000, guid: 28bde2d4c5546644b9bfbb368561ea62, type: 3}
-          video: {fileID: 0}
+          videoStreamingSubPath: 
           explanation: Use the power of MATH to manipulate a MATRIX until you're
             left with just one row of ones!
         - optionalUnlockData:
@@ -46,7 +46,7 @@ MonoBehaviour:
               unlockItem: the Row Swap
           title: Row Swap
           sprite: {fileID: 0}
-          video: {fileID: 32900000, guid: 2ba4d3388b46abf44b3552245f5d5ca6, type: 3}
+          videoStreamingSubPath: Swap.mp4
           explanation: Click and drag one row onto another row to swap their positions
             in the matrix.
       - name: Level 2
@@ -115,7 +115,7 @@ MonoBehaviour:
               unlockItem: the Row Scale
           title: Row Scale
           sprite: {fileID: 0}
-          video: {fileID: 32900000, guid: 8e6352f400e7e1c4ea92cd5a845c3250, type: 3}
+          videoStreamingSubPath: Multiply.mp4
           explanation: Click and drag the Row Scale widget to multiply all of the
             numbers in a row by a numer
       - name: Level 5
@@ -149,7 +149,7 @@ MonoBehaviour:
               unlockItem: 
           title: Multiply by a Negative
           sprite: {fileID: 0}
-          video: {fileID: 32900000, guid: 9ed507afd7abc404084d0323e611a2e0, type: 3}
+          videoStreamingSubPath: Multiply By Negative.mp4
           explanation: Remember that you can multiply a negative number by a negative
             number to flip it to a positive number!
       - name: Level 6
@@ -241,7 +241,7 @@ MonoBehaviour:
               unlockItem: 
           title: Row Divide
           sprite: {fileID: 0}
-          video: {fileID: 32900000, guid: 743c088bdc6a9934ea2373d03f030ef2, type: 3}
+          videoStreamingSubPath: Divide.mp4
           explanation: Use the "reverse" icon to switch between multiplying and dividing
             a row by the given number.
       - name: Level 9
@@ -416,7 +416,7 @@ MonoBehaviour:
               unlockItem: Row Adding
           title: Row Adding
           sprite: {fileID: 0}
-          video: {fileID: 32900000, guid: e97c0ed4acf694e429a8fd1049548502, type: 3}
+          videoStreamingSubPath: Add.mp4
           explanation: Click and drag from the plus sign to add all of the numbers
             in one row to all of the numbers in another row.
       - name: Level 14
@@ -541,7 +541,7 @@ MonoBehaviour:
               unlockItem: 
           title: Row Subtraction
           sprite: {fileID: 0}
-          video: {fileID: 32900000, guid: dba9cb92478d88d4992274202dd6c361, type: 3}
+          videoStreamingSubPath: Subtract.mp4
           explanation: Use the reverse arrows to switch between adding and subtracting
             rows.
       - name: Level 20

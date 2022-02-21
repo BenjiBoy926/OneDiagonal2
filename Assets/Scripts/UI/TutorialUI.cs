@@ -89,14 +89,21 @@ public class TutorialUI : MonoBehaviour
 
         // Set the display items
         title.text = tutorial.Title;
-        image.sprite = tutorial.Sprite;
-        videoPlayer.clip = tutorial.Video;
         explanation.text = tutorial.Explanation;
+        image.enabled = !tutorial.VideoStreamingPathExists;
+        videoImage.enabled = !image.enabled;
 
-        // Only enable visual elements that have data from the tutorial data
-        image.enabled = tutorial.Sprite;
-        videoImage.enabled = tutorial.Video;
-        if (videoImage.enabled) videoPlayer.Play();
+        // Check if the video streaming path exists
+        if (tutorial.VideoStreamingPathExists)
+        {
+            // Set the video player source to a file url
+            videoPlayer.source = VideoSource.Url;
+            videoPlayer.url = tutorial.VideoStreamingURL;
+            videoPlayer.Play();
+        }
+        // If video streaming path does not exist then 
+        // use the image for the tutorial
+        else image.sprite = tutorial.Sprite;
 
         // When button is clicked then close the tutorial
         closeButton.onClick.AddListener(Close);

@@ -1,7 +1,7 @@
+using System.IO;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Video;
 
 [System.Serializable]
 public class TutorialData
@@ -10,7 +10,10 @@ public class TutorialData
     public OptionalUnlockOperation OptionalUnlockData => optionalUnlockData;
     public string Title => title;
     public Sprite Sprite => sprite;
-    public VideoClip Video => video;
+    public string VideoStreamingSubPath => videoStreamingSubPath;
+    public string VideoStreamingPath => Path.Combine(Application.streamingAssetsPath, VideoStreamingSubPath);
+    public string VideoStreamingURL => $"file://{VideoStreamingPath}";
+    public bool VideoStreamingPathExists => File.Exists(VideoStreamingPath);
     public string Explanation => explanation;
     #endregion
 
@@ -25,8 +28,9 @@ public class TutorialData
     [Tooltip("Image to show for the tutorial")]
     private Sprite sprite;
     [SerializeField]
-    [Tooltip("Video to show for the tutorial")]
-    private VideoClip video;
+    [Tooltip("Video to show for the tutorial. Input " +
+        "as a path in the streaming assets")]
+    private string videoStreamingSubPath;
     [SerializeField]
     [TextArea]
     [Tooltip("Text to explain the next step in the tutorial")]

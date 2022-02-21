@@ -43,6 +43,7 @@ public class MatrixUI : MonoBehaviour
         }
     }
     public int CurrentMoves => currentMoves;
+    public bool OperationInProgress => operationSource;
     #endregion
 
     #region Private Editor Fields

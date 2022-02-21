@@ -129,8 +129,6 @@ public class MatrixRowUI : MatrixUIChild
     public void OnPointerExit()
     {
         MatrixParent.UnsetOperationDestination();
-        // In any case set cursor to default
-        Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
 
         // Set the color back to normal if this is not the operation source
         if(!rowOperationSource.IsCurrentOperationSource && !rowAddWidget.IsCurrentOperationSource)

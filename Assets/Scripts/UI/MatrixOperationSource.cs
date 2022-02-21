@@ -45,7 +45,6 @@ public class MatrixOperationSource : MatrixUIChild, IPointerDownHandler, IPointe
 
     #region Private Fields
     private Func<MatrixOperation> operationGetter = () => MatrixOperation.RowSwap(-1, -1);
-    private bool dragging = false;
     #endregion
 
     #region Public Methods
@@ -68,25 +67,28 @@ public class MatrixOperationSource : MatrixUIChild, IPointerDownHandler, IPointe
     #region Pointer Interface Implementations
     public void OnPointerDown(PointerEventData data)
     {
-        MatrixParent.SetOperationSource(this);
-
-        // Set the color of the graphics this source is responsible for
-        foreach (Graphic graphic in graphics)
+        if (!MatrixParent.OperationInProgress)
         {
-            graphic.enabled = true;
-            graphic.color = UISettings.GetOperatorColor(Operation.type);
+            MatrixParent.SetOperationSource(this);
+
+            // Set the color of the graphics this source is responsible for
+            foreach (Graphic graphic in graphics)
+            {
+                graphic.enabled = true;
+                graphic.color = UISettings.GetOperatorColor(Operation.type);
+            }
+            PunchSize();
         }
-        PunchSize();
     }
     // Do the same thing on pointer up if we did not drag the operator
     public void OnPointerUp(PointerEventData data)
     {
-        if (!dragging) OnEndDrag(data);
+        OnEndDrag(data);
     }
     // We only have this so that EndDrag actually works
     public void OnBeginDrag(PointerEventData data)
     {
-        dragging = true;
+
     }
     // We only have this so that EndDrag actually works
     public void OnDrag(PointerEventData data)
@@ -96,26 +98,27 @@ public class MatrixOperationSource : MatrixUIChild, IPointerDownHandler, IPointe
     // When the source stops dragging, ask the matrix to confirm operation
     public void OnEndDrag(PointerEventData data)
     {
-        // Attempt to confirm the operation
-        MatrixOperation.Type confirmedOperation = MatrixParent.IntendedNextOperationType;
-        bool success = MatrixParent.ConfirmOperation();
-
-        // If successful, use some fun effects
-        if (success)
+        if (MatrixParent.OperationInProgress)
         {
-            PunchSize();
+            // Attempt to confirm the operation
+            MatrixOperation.Type confirmedOperation = MatrixParent.IntendedNextOperationType;
+            bool success = MatrixParent.ConfirmOperation();
 
-            // Create a flash effect for each rect transform
-            foreach(TransformTarget target in targets)
+            // If successful, use some fun effects
+            if (success)
             {
-                target.Flash(UISettings.GetOperatorColor(confirmedOperation));
+                PunchSize();
+
+                // Create a flash effect for each rect transform
+                foreach (TransformTarget target in targets)
+                {
+                    target.Flash(UISettings.GetOperatorColor(confirmedOperation));
+                }
             }
+
+            // Disable graphics
+            SetGraphicsActive(false);
         }
-
-        // Disable graphics
-        SetGraphicsActive(false);
-
-        dragging = false;
     }
     #endregion
 
