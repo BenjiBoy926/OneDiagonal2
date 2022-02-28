@@ -86,7 +86,7 @@ PrefabInstance:
     - target: {fileID: 7000655486527566905, guid: 3e32fe817c969d74cbec821ec9663b34,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7000655486527566905, guid: 3e32fe817c969d74cbec821ec9663b34,
         type: 3}
@@ -101,7 +101,7 @@ PrefabInstance:
     - target: {fileID: 7000655486527566905, guid: 3e32fe817c969d74cbec821ec9663b34,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7000655486527566905, guid: 3e32fe817c969d74cbec821ec9663b34,
         type: 3}
@@ -126,12 +126,12 @@ PrefabInstance:
     - target: {fileID: 7000655486527566905, guid: 3e32fe817c969d74cbec821ec9663b34,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 180
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8549008059062818672, guid: 3e32fe817c969d74cbec821ec9663b34,
         type: 3}
       propertyPath: m_Name
-      value: TriangleFlash
+      value: TriangleDownFlash
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3e32fe817c969d74cbec821ec9663b34, type: 3}

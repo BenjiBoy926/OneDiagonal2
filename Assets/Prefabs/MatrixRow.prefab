@@ -66,7 +66,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: d66f54c5a5791ef418dde779cd0e24d7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: fc975e83e7cb42841b92fed098d40c87, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -127,7 +127,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2235669520526461191}
-  m_LocalRotation: {x: -0, y: -0, z: 1, w: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -135,12 +135,12 @@ RectTransform:
   - {fileID: 6131209988364764596}
   m_Father: {fileID: 5214422955855848107}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
   m_AnchoredPosition: {x: 20, y: 0}
   m_SizeDelta: {x: 50, y: 50}
-  m_Pivot: {x: 1, y: 0.5}
+  m_Pivot: {x: 0, y: 0.5}
 --- !u!222 &9122876124969264293
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -169,7 +169,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: d66f54c5a5791ef418dde779cd0e24d7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: fc975e83e7cb42841b92fed098d40c87, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -376,10 +376,10 @@ RectTransform:
   m_Father: {fileID: 4491996725249736347}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -5}
-  m_SizeDelta: {x: 50, y: 50}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2509347961200395115
 CanvasRenderer:
@@ -958,30 +958,6 @@ MonoBehaviour:
   rowAddWidget: {fileID: 547775832931351853}
   mouseDetector: {fileID: 7796225019908785704}
   nonLayoutObjects: {fileID: 5214422955855848107}
-  cursorDown:
-    texture: {fileID: 2800000, guid: aaa9d832f967d2c4f863066eaf3a277e, type: 3}
-    hotspotAnchor: {x: 0, y: 0}
-    mode: 0
-  cursorUp:
-    texture: {fileID: 2800000, guid: 038a1aff6e6b8f04a8ca8e29722edf4f, type: 3}
-    hotspotAnchor: {x: 0, y: 0}
-    mode: 0
-  cursorMultiply:
-    texture: {fileID: 2800000, guid: 8bf839021e420dd459a61f9c1c0354f7, type: 3}
-    hotspotAnchor: {x: 0, y: 0}
-    mode: 0
-  cursorDivide:
-    texture: {fileID: 2800000, guid: 3de84b461969c2b488f545e305d3f08a, type: 3}
-    hotspotAnchor: {x: 0, y: 0}
-    mode: 0
-  cursorAdd:
-    texture: {fileID: 2800000, guid: 8ee98e5afeb13384cb04affd2fccacf3, type: 3}
-    hotspotAnchor: {x: 0, y: 0}
-    mode: 0
-  cursorSubstract:
-    texture: {fileID: 2800000, guid: 819c8f6309b30fd4899429d080d15b50, type: 3}
-    hotspotAnchor: {x: 0, y: 0}
-    mode: 0
 --- !u!114 &7112834554779475980
 MonoBehaviour:
   m_ObjectHideFlags: 0

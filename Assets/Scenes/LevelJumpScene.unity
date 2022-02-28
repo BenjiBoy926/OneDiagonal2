@@ -167,5 +167,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   level:
-    type: 1
-    index: 2
+    type: 0
+    index: 12

@@ -42,8 +42,8 @@ public class MenuButtonEffects : MonoBehaviour, IPointerEnterHandler, IPointerEx
     #region Monobehaviour Messages
     private void Start()
     {
-        outline.SetActive(false);
-        defaultTextColor = text.color;
+        if (outline) outline.SetActive(false);
+        if (text) defaultTextColor = text.color;
     }
     #endregion
 
@@ -54,8 +54,8 @@ public class MenuButtonEffects : MonoBehaviour, IPointerEnterHandler, IPointerEx
         // perform the effect
         if (selectable.interactable)
         {
-            outline.SetActive(true);
-            text.color = textHoverColor;
+            if (outline) outline.SetActive(true);
+            if (text) text.color = textHoverColor;
 
             // Play flash effect
             MatrixFlashEffect flashEffect = Instantiate(flashEffectPrefab, selectable.transform);
@@ -67,8 +67,8 @@ public class MenuButtonEffects : MonoBehaviour, IPointerEnterHandler, IPointerEx
     }
     public void OnPointerExit(PointerEventData data)
     {
-        outline.SetActive(false);
-        text.color = defaultTextColor;
+        if (outline) outline.SetActive(false);
+        if (text) text.color = defaultTextColor;
     }
     public void OnPointerClick(PointerEventData data)
     {
