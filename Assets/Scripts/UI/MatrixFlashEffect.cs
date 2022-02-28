@@ -27,17 +27,7 @@ public class MatrixFlashEffect : MonoBehaviour
     private float finalScale = 5f;
     #endregion
 
-    #region Public Methods
-    public void Flash(Color color)
-    {
-        image.color = color;
-
-        // Start the flash routine
-        StartCoroutine(FlashRoutine());
-    }
-    #endregion
-
-    #region Private Methods
+    #region Monobehaviour Messages
     private void Start()
     {
         // Sort the flash to be above other things
@@ -54,6 +44,19 @@ public class MatrixFlashEffect : MonoBehaviour
         // Ensure correct starting scale
         rectTransform.localScale = Vector3.one;
     }
+    #endregion
+
+    #region Public Methods
+    public void Flash(Color color)
+    {
+        image.color = color;
+
+        // Start the flash routine
+        StartCoroutine(FlashRoutine());
+    }
+    #endregion
+
+    #region Private Methods
     private IEnumerator FlashRoutine()
     {
         // End color of the flash
