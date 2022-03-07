@@ -22,12 +22,6 @@ public class MenuButtonEffects : MonoBehaviour, IPointerEnterHandler, IPointerEx
     [Tooltip("The object to enable/disable when the button is hovered")]
     private GameObject outline;
     [SerializeField]
-    [Tooltip("Text to change color for when button is hovered")]
-    private TextMeshProUGUI text;
-    [SerializeField]
-    [Tooltip("Color of the text when it is hovered")]
-    private Color textHoverColor = Color.cyan;
-    [SerializeField]
     [Tooltip("Sound to play when the button is hovered")]
     private AudioClip hoverClip;
     [SerializeField]
@@ -35,15 +29,10 @@ public class MenuButtonEffects : MonoBehaviour, IPointerEnterHandler, IPointerEx
     private AudioClip clickClip;
     #endregion
 
-    #region Private Fields
-    private Color defaultTextColor;
-    #endregion
-
     #region Monobehaviour Messages
     private void Start()
     {
         if (outline) outline.SetActive(false);
-        if (text) defaultTextColor = text.color;
     }
     #endregion
 
@@ -55,7 +44,6 @@ public class MenuButtonEffects : MonoBehaviour, IPointerEnterHandler, IPointerEx
         if (selectable.interactable)
         {
             if (outline) outline.SetActive(true);
-            if (text) text.color = textHoverColor;
 
             // Play flash effect
             MatrixFlashEffect flashEffect = Instantiate(flashEffectPrefab, selectable.transform);
@@ -68,7 +56,6 @@ public class MenuButtonEffects : MonoBehaviour, IPointerEnterHandler, IPointerEx
     public void OnPointerExit(PointerEventData data)
     {
         if (outline) outline.SetActive(false);
-        if (text) text.color = defaultTextColor;
     }
     public void OnPointerClick(PointerEventData data)
     {
