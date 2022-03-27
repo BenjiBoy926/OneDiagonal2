@@ -58,6 +58,7 @@ public class ObjectConveyor : MonoBehaviour
     }
     public Vector3 GlobalStartPoint => transform.TransformPoint(localStartPoint);
     public Vector3 GlobalEndPoint => transform.TransformPoint(LocalEndPoint);
+    public Vector3 LocalOffset => LocalEndPoint - localStartPoint;
     #endregion
 
     #region Private Editor Fields
@@ -82,32 +83,67 @@ public class ObjectConveyor : MonoBehaviour
     [SerializeField]
     [Tooltip("The number of objects to be conveyed")]
     private int numberOfObjects;
+    [SerializeField]
+    [Tooltip("Number of units that the objects travel each second")]
+    private float conveyorSpeed = 1;
     #endregion
 
     #region Private Fields
-    private List<Transform> pool = new List<Transform>();
+    private Transform[] pool;
     #endregion
 
     #region Monobehaviour Messages
+    private void Start()
+    {
+        pool = new Transform[numberOfObjects];
+
+        // Setup a new object for each conveyed object
+        for (int i = 0; i < numberOfObjects; i++)
+        {
+            pool[i] = Instantiate(prefab, transform);
+            pool[i].localPosition = ObjectLocalStartPosition(i);
+        }
+    }
+    private void Update()
+    {
+        foreach (Transform obj in pool)
+        {
+            obj.Translate(conveyorSpeed * Time.deltaTime * Direction);
+
+            // Get the current offset of the object from the start
+            Vector3 currentOffset = obj.localPosition - localStartPoint;
+            float overshot = currentOffset.magnitude - LocalOffset.magnitude;
+
+            // If we have overshot the end point then
+            // move us back to the start point
+            if (overshot > 0)
+            {
+                obj.localPosition = localStartPoint + overshot * Direction;
+            }
+        }
+    }
     private void OnDrawGizmosSelected()
     {
+        float bigRadius = ObjectOffset / 2;
+        float littleRadius = ObjectOffset / 4;
+
         // Draw a line from start to finish
         Gizmos.color = Color.white;
         Gizmos.DrawLine(GlobalStartPoint, GlobalEndPoint);
 
         // Draw start point
         Gizmos.color = Color.cyan;
-        Gizmos.DrawSphere(GlobalStartPoint, 10f);
+        Gizmos.DrawSphere(GlobalStartPoint, bigRadius);
 
         // Draw end point
         Gizmos.color = Color.red;
-        Gizmos.DrawSphere(GlobalEndPoint, 10f);
+        Gizmos.DrawSphere(GlobalEndPoint, bigRadius);
 
         // Draw each intermediate point
         Gizmos.color = Color.green;
         for (int i = 0; i < numberOfObjects; i++)
         {
-            Gizmos.DrawSphere(ObjectGlobalStartPosition(i), 5f);
+            Gizmos.DrawSphere(ObjectGlobalStartPosition(i), littleRadius);
         }
     }
     #endregion

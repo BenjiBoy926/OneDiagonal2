@@ -123,6 +123,77 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &95097228
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 95097229}
+  - component: {fileID: 95097231}
+  - component: {fileID: 95097230}
+  m_Layer: 5
+  m_Name: AddingConveyor
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &95097229
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 95097228}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1034258975}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -10, y: -90}
+  m_SizeDelta: {x: 70, y: -110}
+  m_Pivot: {x: 1, y: 1}
+--- !u!114 &95097230
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 95097228}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 988aa4f133e297f488063cf9b862dc85, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  localStartPoint: {x: -35, y: 100, z: 0}
+  endPointType: 0
+  localEndPoint: {x: 0, y: 0, z: 0}
+  direction: {x: 0, y: -1, z: 0}
+  objectOffset: 70
+  prefab: {fileID: 5545972449535396433, guid: 4619e99f0481f9f4facbefd788034d7e, type: 3}
+  numberOfObjects: 10
+  conveyorSpeed: 100
+--- !u!114 &95097231
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 95097228}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3312d7739989d2b4e91e6319e9a96d76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding: {x: 0, y: 0, z: 0, w: 0}
+  m_Softness: {x: 0, y: 0}
 --- !u!1 &635020792
 GameObject:
   m_ObjectHideFlags: 0
@@ -240,8 +311,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 20, y: 20}
-  m_SizeDelta: {x: 50, y: -110}
+  m_AnchoredPosition: {x: 10, y: 20}
+  m_SizeDelta: {x: 70, y: -110}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &704213479
 MonoBehaviour:
@@ -269,13 +340,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 988aa4f133e297f488063cf9b862dc85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  localStartPoint: {x: 25, y: -100, z: 0}
+  localStartPoint: {x: 35, y: -100, z: 0}
   endPointType: 0
   localEndPoint: {x: 0, y: 0, z: 0}
   direction: {x: 0, y: 1, z: 0}
-  objectOffset: 50
-  prefab: {fileID: 0}
-  numberOfObjects: 20
+  objectOffset: 70
+  prefab: {fileID: 9132789242754265799, guid: d8bd7b3d84e416140a5ffce5ff66b128, type: 3}
+  numberOfObjects: 10
+  conveyorSpeed: 100
 --- !u!1 &769205823
 GameObject:
   m_ObjectHideFlags: 0
@@ -637,6 +709,7 @@ RectTransform:
   - {fileID: 769205824}
   - {fileID: 884819780}
   - {fileID: 704213478}
+  - {fileID: 95097229}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

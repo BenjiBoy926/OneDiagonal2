@@ -18,11 +18,16 @@ public class ObjectConveyorEditor : Editor
         // Get the first and last properties
         SerializedProperty start = serializedObject.FindProperty("localStartPoint");
         SerializedProperty end = serializedObject
-            .FindProperty("numberOfObjects")
+            .FindProperty("conveyorSpeed")
             .GetEndProperty();
 
         // Get all the properties in the object
         IEnumerable<SerializedProperty> properties = EditorGUIAuto.ToEnd(start, end, false, false);
+
+        // Show the script referenced by the object
+        GUI.enabled = false;
+        EditorGUILayout.PropertyField(serializedObject.FindProperty("m_Script"));
+        GUI.enabled = true;
     
         // Go through each property in the list of properties
         foreach (SerializedProperty property in properties)
@@ -55,6 +60,9 @@ public class ObjectConveyorEditor : Editor
             {
                 if (EditorGUI.EndChangeCheck())
                 {
+                    // Apply the modified end point type
+                    serializedObject.ApplyModifiedProperties();
+
                     // Get the object targetted by the editor
                     ObjectConveyor conveyor = target as ObjectConveyor;
 
@@ -76,8 +84,8 @@ public class ObjectConveyorEditor : Editor
                         objectOffset.floatValue = conveyor.ObjectOffset;
                     }
 
-                    // Apply any modified properties immediately
-                    serializedObject.ApplyModifiedProperties();
+                    // Update the serialized object to reflect the new values
+                    serializedObject.Update();
                 }
             }
         }
