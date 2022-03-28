@@ -32,11 +32,11 @@ public class FadeInPanel : MonoBehaviour
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
     private static void SetupCallback()
     {
-        if(!callbackIsAdded)
-        {
-            SceneManager.sceneLoaded += CreateFromResource;
-            callbackIsAdded = true;
-        }
+        //if(!callbackIsAdded)
+        //{
+        //    SceneManager.sceneLoaded += CreateFromResource;
+        //    callbackIsAdded = true;
+        //}
     }
     private static void CreateFromResource(Scene scene, LoadSceneMode mode)
     {

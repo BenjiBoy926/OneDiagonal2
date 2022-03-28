@@ -125,6 +125,7 @@ public class MatrixRowUI : MatrixUIChild
 
             // Do a short grow animation
             UISettings.PunchOperator(transform);
+            Flash();
         }
     }
     public void OnPointerExit()

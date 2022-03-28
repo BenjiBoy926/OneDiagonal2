@@ -115,7 +115,7 @@ MonoBehaviour:
   canvas: {fileID: 7966066980572661641}
   image: {fileID: 6065026091768984816}
   flashTime: 0.2
-  finalScale: 2
+  finalScale: 1.5
 --- !u!114 &-8393632706909225532
 MonoBehaviour:
   m_ObjectHideFlags: 0

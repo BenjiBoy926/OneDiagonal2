@@ -45,8 +45,8 @@ public class ButtonEffects : MonoBehaviour, IPointerEnterHandler, IPointerDownHa
         if (selectable.interactable && !OperationInProgress)
         {
             // Play flash effect
-            //MatrixFlashEffect flashEffect = Instantiate(flashEffectPrefab, selectable.transform);
-            //flashEffect.Flash(flashColor);
+            MatrixFlashEffect flashEffect = Instantiate(flashEffectPrefab, selectable.transform);
+            flashEffect.Flash(flashColor);
 
             UISettings.PlayButtonSound(ButtonSound.Hover);
             UISettings.PunchOperator(selectable.transform);
@@ -57,8 +57,8 @@ public class ButtonEffects : MonoBehaviour, IPointerEnterHandler, IPointerDownHa
         if (selectable.interactable && !operationSource)
         {
             // Play flash effect
-            //MatrixFlashEffect flashEffect = Instantiate(flashEffectPrefab, selectable.transform);
-            //flashEffect.Flash(flashColor);
+            MatrixFlashEffect flashEffect = Instantiate(flashEffectPrefab, selectable.transform);
+            flashEffect.Flash(flashColor);
 
             if (playConfirmSoundOnClick)
             {

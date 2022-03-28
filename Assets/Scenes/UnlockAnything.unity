@@ -276,6 +276,6 @@ MonoBehaviour:
           fewestMoves: 0
         levelTypeFilter: Recorded
     operationsUnlocked:
-      data: 000000
-    freePlayUnlocked: 0
+      data: 010101
+    freePlayUnlocked: 1
   save: 0
