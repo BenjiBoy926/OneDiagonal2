@@ -122,6 +122,7 @@ public class MatrixRowUI : MatrixUIChild
             // Enable the outline
             outlineGraphic.enabled = true;
             outlineGraphic.color = UISettings.GetOperatorColor(MatrixParent.IntendedNextOperationType);
+
             // Do a short grow animation
             UISettings.PunchOperator(transform);
         }
@@ -148,9 +149,13 @@ public class MatrixRowUI : MatrixUIChild
         if (success && IsCurrentOperationDestination)
         {
             UISettings.PunchOperator(transform);
-            MatrixFlashEffect flash = Instantiate(flashEffect, rowRectTransform);
-            flash.Flash(UISettings.GetOperatorColor(MatrixParent.IntendedNextOperationType));
+            Flash();
         }
+    }
+    private void Flash()
+    {
+        MatrixFlashEffect flash = Instantiate(flashEffect, rowRectTransform);
+        flash.Flash(UISettings.GetOperatorColor(MatrixParent.IntendedNextOperationType));
     }
     #endregion
 }

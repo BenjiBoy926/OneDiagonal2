@@ -18,8 +18,6 @@ MonoBehaviour:
   notDiagnonalColors:
     goodColor: {r: 0, g: 1, b: 1, a: 1}
     badColor: {r: 1, g: 0.5, b: 0.5, a: 1}
-  flashEffect: {fileID: 2930442416200011611, guid: 3e32fe817c969d74cbec821ec9663b34,
-    type: 3}
   operationColors:
     data:
     - {r: 0, g: 1, b: 1, a: 1}
@@ -31,3 +29,9 @@ MonoBehaviour:
   windowOpenTime: 0.3
   windowCloseSound: {fileID: 8300000, guid: 2eae66430c79749d9b13ab56bc988740, type: 3}
   windowCloseTime: 0.3
+  buttonSounds:
+    data:
+    - {fileID: 8300000, guid: 7f654842aaf974ca39064687927e7574, type: 3}
+    - {fileID: 8300000, guid: b896e2c860fa345bcb28f87e366be5bd, type: 3}
+    - {fileID: 8300000, guid: 3574ad7ac970b424487560607b782f4b, type: 3}
+    - {fileID: 8300000, guid: ac8a35c9f1eb74a30b15cca5df68110f, type: 3}

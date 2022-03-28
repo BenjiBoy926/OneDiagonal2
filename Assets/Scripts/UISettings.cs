@@ -2,7 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
-using Audio;
+using DG.Tweening.Core;
+using DG.Tweening.Plugins.Options;
+using AudioLibrary;
 
 [CreateAssetMenu]
 public class UISettings : ScriptableObjectSingleton<UISettings>
@@ -49,6 +51,12 @@ public class UISettings : ScriptableObjectSingleton<UISettings>
     [SerializeField]
     [Tooltip("Time it takes for a window shrink out of view")]
     private float windowCloseTime = 0.3f;
+
+    [Space]
+
+    [SerializeField]
+    [Tooltip("List of sounds available for buttons")]
+    private ArrayOnEnum<ButtonSound, AudioClip> buttonSounds;
     #endregion
 
     #region Public Methods
@@ -58,7 +66,7 @@ public class UISettings : ScriptableObjectSingleton<UISettings>
         op.DOPunchScale(Vector3.one * OperatorPunch, OperatorPunchTime);
     }
     public static Color GetOperatorColor(MatrixOperation.Type type) => Instance.operationColors.Get(type);
-    public static DG.Tweening.Core.TweenerCore<Vector3, Vector3, DG.Tweening.Plugins.Options.VectorOptions> OpenWindow(RectTransform windowTransform)
+    public static TweenerCore<Vector3, Vector3, VectorOptions> OpenWindow(RectTransform windowTransform)
     {
         // Play the appear sound
         AudioManager.PlaySFX(Instance.windowOpenSound);
@@ -68,7 +76,7 @@ public class UISettings : ScriptableObjectSingleton<UISettings>
         // Return the tween that makes the window appear
         return windowTransform.DOScale(1f, Instance.windowOpenTime).SetEase(Ease.OutBack);
     }
-    public static DG.Tweening.Core.TweenerCore<Vector3, Vector3, DG.Tweening.Plugins.Options.VectorOptions> CloseWindow(RectTransform windowTransform)
+    public static TweenerCore<Vector3, Vector3, VectorOptions> CloseWindow(RectTransform windowTransform)
     {
         // Play the appear sound
         AudioManager.PlaySFX(Instance.windowCloseSound);
@@ -77,6 +85,10 @@ public class UISettings : ScriptableObjectSingleton<UISettings>
         windowTransform.localScale = Vector3.one;
         // Return the tween that makes the window disappear
         return windowTransform.DOScale(0f, Instance.windowCloseTime).SetEase(Ease.OutQuint);
+    }
+    public static void PlayButtonSound(ButtonSound soundType)
+    {
+        AudioManager.PlaySFX(Instance.buttonSounds.Get(soundType));
     }
     #endregion
 }

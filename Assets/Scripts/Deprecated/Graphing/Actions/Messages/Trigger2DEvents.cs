@@ -6,7 +6,7 @@ public class Trigger2DEvents : MonoBehaviour
 {
     // FIELDS
     public Result<GameObject> otherGameObject;
-    public CollisionEvents events;
+    public CollisionEvents_DEPRECATED events;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

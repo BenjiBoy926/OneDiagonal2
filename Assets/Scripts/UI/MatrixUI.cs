@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
-using Audio;
+using AudioLibrary;
 
 public class MatrixUI : MonoBehaviour
 {
@@ -62,15 +62,6 @@ public class MatrixUI : MonoBehaviour
 
     [Space]
 
-    [SerializeField]
-    [Tooltip("Sound that plays when an operation begins")]
-    private AudioClip operationBeginSound;
-    [SerializeField]
-    [Tooltip("Sound that plays when a new operation destination is set")]
-    private AudioClip operationDestinationSetSound;
-    [SerializeField]
-    [Tooltip("Sound that plays when an operation is confirmed")]
-    private AudioClip operationConfirmSound;
     [SerializeField]
     [Tooltip("Sound that plays when an operation is cancelled")]
     private AudioClip operationCancelSound;
@@ -152,7 +143,7 @@ public class MatrixUI : MonoBehaviour
         this.operationSource = operationSource;
 
         // Play a sound!
-        AudioManager.PlaySFX(operationBeginSound);
+        UISettings.PlayButtonSound(ButtonSound.Start);
 
         // Invoke the operation finish event
         onOperationStart.Invoke();
@@ -168,7 +159,7 @@ public class MatrixUI : MonoBehaviour
             this.operationDestination = operationDestination;
 
             // Play a sound!
-            AudioManager.PlaySFX(operationDestinationSetSound);
+            UISettings.PlayButtonSound(ButtonSound.Preview);
 
             // Set the color of the destination
             // Set the preview matrix and update all ui elements to display the preview
@@ -215,7 +206,7 @@ public class MatrixUI : MonoBehaviour
             ShowCurrent();
 
             // Play a sound!
-            AudioManager.PlaySFX(operationConfirmSound);
+            UISettings.PlayButtonSound(ButtonSound.Confirm);
 
             // If current matrix is the identity, then invoke the matrix solved event
             if(currentMatrix.isIdentity)

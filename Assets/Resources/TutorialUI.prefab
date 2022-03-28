@@ -439,6 +439,7 @@ GameObject:
   - component: {fileID: 523803411161062862}
   - component: {fileID: 1887462777041096506}
   - component: {fileID: 6974146019268845536}
+  - component: {fileID: 2866426484060736269}
   m_Layer: 0
   m_Name: OK Button
   m_TagString: Untagged
@@ -549,6 +550,23 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &2866426484060736269
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3377172677071405267}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3bbf9e38155ebe4fbb434420f2eba92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selectable: {fileID: 6974146019268845536}
+  flashEffectPrefab: {fileID: 2930442416200011611, guid: 3e32fe817c969d74cbec821ec9663b34,
+    type: 3}
+  flashColor: {r: 0, g: 1, b: 0, a: 1}
+  playConfirmSoundOnClick: 1
 --- !u!1 &3769295773155471956
 GameObject:
   m_ObjectHideFlags: 0

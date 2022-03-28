@@ -2,7 +2,7 @@
 using System.Collections;
 
 [System.Serializable]
-public class CollisionEvents
+public class CollisionEvents_DEPRECATED
 {
     public UnityEvent enter;
     public UnityEvent stay;

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 71334166641758760}
   - component: {fileID: 6027944625733273856}
   - component: {fileID: 1423685601387072852}
+  - component: {fileID: 1772339181231321655}
   m_Layer: 0
   m_Name: ToggleButton
   m_TagString: Untagged
@@ -121,6 +122,23 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1772339181231321655
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6179628169561125265}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3bbf9e38155ebe4fbb434420f2eba92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selectable: {fileID: 1423685601387072852}
+  flashEffectPrefab: {fileID: 5579261382817344406, guid: 32213c3f356bf0149bd97b77439af291,
+    type: 3}
+  flashColor: {r: 1, g: 1, b: 0, a: 1}
+  playConfirmSoundOnClick: 0
 --- !u!1 &6770174989942878339
 GameObject:
   m_ObjectHideFlags: 0

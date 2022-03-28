@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
 using DG.Tweening;
-using Audio;
+using AudioLibrary;
 
 public class MatrixSolvedUI : MatrixUIChild
 {

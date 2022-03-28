@@ -5,12 +5,11 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using UnityEngine.Serialization;
-using DG.Tweening;
 
 public class MatrixOperationSource : MatrixUIChild, IPointerDownHandler, IPointerUpHandler, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     #region Public Typedefs
-    [System.Serializable]
+    [Serializable]
     public class TransformTarget
     {
         public RectTransform transform;

@@ -483,6 +483,7 @@ GameObject:
   - component: {fileID: 884819783}
   - component: {fileID: 884819782}
   - component: {fileID: 884819781}
+  - component: {fileID: 884819785}
   m_Layer: 5
   m_Name: MainMenuButton
   m_TagString: Untagged
@@ -610,6 +611,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 884819779}
   m_CullTransparentMesh: 1
+--- !u!114 &884819785
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 884819779}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3bbf9e38155ebe4fbb434420f2eba92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selectable: {fileID: 884819782}
+  flashEffectPrefab: {fileID: 5579261382817344406, guid: 32213c3f356bf0149bd97b77439af291,
+    type: 3}
+  flashColor: {r: 1, g: 1, b: 1, a: 1}
+  playConfirmSoundOnClick: 1
 --- !u!1 &1034258971
 GameObject:
   m_ObjectHideFlags: 0
