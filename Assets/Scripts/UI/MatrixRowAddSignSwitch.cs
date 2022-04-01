@@ -10,9 +10,6 @@ public class MatrixRowAddSignSwitch : MatrixUIChild
     [SerializeField]
     [Tooltip("Reference to the button that acts as the toggle")]
     private Button button;
-    [SerializeField]
-    [Tooltip("Sound that plays when the button is clicked")]
-    private AudioClip switchSound;
     #endregion
 
     #region Private Methods
@@ -32,7 +29,6 @@ public class MatrixRowAddSignSwitch : MatrixUIChild
         {
             widget.ToggleAdding();
         }
-        AudioManager.PlaySFX(switchSound);
     }
     private void OnMatrixOperationStarted()
     {

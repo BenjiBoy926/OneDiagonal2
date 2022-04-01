@@ -8,25 +8,6 @@ using UnityEngine.Serialization;
 
 public class MatrixOperationSource : MatrixUIChild, IPointerDownHandler, IPointerUpHandler, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
-    #region Public Typedefs
-    [Serializable]
-    public class TransformTarget
-    {
-        public RectTransform transform;
-        public MatrixFlashEffect flashEffect;
-
-        public void Punch()
-        {
-            UISettings.PunchOperator(transform);
-        }
-        public void Flash(Color color)
-        {
-            MatrixFlashEffect effectInstance = Instantiate(flashEffect, transform);
-            effectInstance.Flash(color);
-        }
-    }
-    #endregion
-
     #region Public Properties
     public MatrixOperation Operation => operationGetter.Invoke();
     public bool IsCurrentOperationSource => MatrixParent.IsCurrentOperationSource(this);
@@ -35,8 +16,7 @@ public class MatrixOperationSource : MatrixUIChild, IPointerDownHandler, IPointe
     #region Private Editor Fields
     [SerializeField]
     [Tooltip("Rect transform to punch the scale of when the operation begins, and destination is set")]
-    [FormerlySerializedAs("rectTransforms")]
-    private List<TransformTarget> targets;
+    private ButtonEffects targetEffect;
     [SerializeField]
     [Tooltip("List of graphics to change color when this is used as the operation source")]
     private List<Graphic> graphics;
@@ -55,7 +35,10 @@ public class MatrixOperationSource : MatrixUIChild, IPointerDownHandler, IPointe
         // Punch size each time that the destination is set, if this is the operation source
         MatrixParent.OnOperationDestinationSet.AddListener(() =>
         {
-            if (IsCurrentOperationSource) PunchSize();
+            if (IsCurrentOperationSource) 
+                targetEffect.Play(
+                    UISettings.GetOperatorColor(MatrixParent.IntendedNextOperationType),
+                    ButtonSound.Preview);
         });
 
         // Start all graphics as disabled
@@ -76,7 +59,6 @@ public class MatrixOperationSource : MatrixUIChild, IPointerDownHandler, IPointe
                 graphic.enabled = true;
                 graphic.color = UISettings.GetOperatorColor(Operation.type);
             }
-            PunchSize();
         }
     }
     // Do the same thing on pointer up if we did not drag the operator
@@ -100,19 +82,14 @@ public class MatrixOperationSource : MatrixUIChild, IPointerDownHandler, IPointe
         if (MatrixParent.OperationInProgress)
         {
             // Attempt to confirm the operation
-            MatrixOperation.Type confirmedOperation = MatrixParent.IntendedNextOperationType;
             bool success = MatrixParent.ConfirmOperation();
 
             // If successful, use some fun effects
             if (success)
             {
-                PunchSize();
-
-                // Create a flash effect for each rect transform
-                foreach (TransformTarget target in targets)
-                {
-                    target.Flash(UISettings.GetOperatorColor(confirmedOperation));
-                }
+                targetEffect.Play(
+                    UISettings.GetOperatorColor(MatrixParent.IntendedNextOperationType), 
+                    ButtonSound.NoSound);
             }
 
             // Disable graphics
@@ -122,13 +99,6 @@ public class MatrixOperationSource : MatrixUIChild, IPointerDownHandler, IPointe
     #endregion
 
     #region Private Methods
-    private void PunchSize()
-    {
-        foreach(TransformTarget target in targets)
-        {
-            target.Punch();
-        }
-    }
     private void SetGraphicsActive(bool active)
     {
         foreach(Graphic graphic in graphics)

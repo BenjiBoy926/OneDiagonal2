@@ -28,7 +28,7 @@ public class MatrixRowUI : MatrixUIChild
     private RectTransform rowRectTransform;
     [SerializeField]
     [Tooltip("Prefab used to create a flash effect on the matrix row when an operation is confirmed")]
-    private MatrixFlashEffect flashEffect;
+    private ButtonEffects effects;
     [SerializeField]
     [Tooltip("Reference to the graphic to change color on when the row is set as the destination")]
     private Graphic outlineGraphic;
@@ -122,10 +122,6 @@ public class MatrixRowUI : MatrixUIChild
             // Enable the outline
             outlineGraphic.enabled = true;
             outlineGraphic.color = UISettings.GetOperatorColor(MatrixParent.IntendedNextOperationType);
-
-            // Do a short grow animation
-            UISettings.PunchOperator(transform);
-            Flash();
         }
     }
     public void OnPointerExit()
@@ -149,14 +145,10 @@ public class MatrixRowUI : MatrixUIChild
         // If operation finish succeeds with this as the destination, then punch the size
         if (success && IsCurrentOperationDestination)
         {
-            UISettings.PunchOperator(transform);
-            Flash();
+            effects.Play(
+                UISettings.GetOperatorColor(MatrixParent.IntendedNextOperationType),
+                ButtonSound.Confirm);
         }
-    }
-    private void Flash()
-    {
-        MatrixFlashEffect flash = Instantiate(flashEffect, rowRectTransform);
-        flash.Flash(UISettings.GetOperatorColor(MatrixParent.IntendedNextOperationType));
     }
     #endregion
 }

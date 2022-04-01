@@ -7,5 +7,9 @@ public enum ButtonSound
     Hover,
     Start,
     Preview,
-    Confirm
+    Confirm,
+    Up,
+    Down,
+    Flip,
+    NoSound
 }

@@ -43,7 +43,7 @@ public class MatrixUI : MonoBehaviour
         }
     }
     public int CurrentMoves => currentMoves;
-    public bool OperationInProgress => operationSource;
+    public bool OperationInProgress => operationInProgress;
     #endregion
 
     #region Private Editor Fields
@@ -92,6 +92,7 @@ public class MatrixUI : MonoBehaviour
     #endregion
 
     #region Private Fields
+    private bool operationInProgress;
     private MatrixRowUI[] rowUIs = new MatrixRowUI[0];
 
     private Matrix currentMatrix;
@@ -141,25 +142,20 @@ public class MatrixUI : MonoBehaviour
     public void SetOperationSource(MatrixOperationSource operationSource)
     {
         this.operationSource = operationSource;
-
-        // Play a sound!
-        UISettings.PlayButtonSound(ButtonSound.Start);
+        operationInProgress = true;
 
         // Invoke the operation finish event
         onOperationStart.Invoke();
     }
     public bool SetOperationDestination(MatrixRowUI operationDestination)
     {
-        bool success = operationSource && operationSource.Operation.sourceRow != operationDestination.RowIndex;
+        bool success = operationInProgress && operationSource && operationSource.Operation.sourceRow != operationDestination.RowIndex;
 
         // Set the destination only if we have a source and the source row index is not the same as the destination row index
         // (prevents a self-swap and a self-add)
         if (success)
         {
             this.operationDestination = operationDestination;
-
-            // Play a sound!
-            UISettings.PlayButtonSound(ButtonSound.Preview);
 
             // Set the color of the destination
             // Set the preview matrix and update all ui elements to display the preview
@@ -227,12 +223,11 @@ public class MatrixUI : MonoBehaviour
             AudioManager.PlaySFX(operationCancelSound);
         }
 
+        // Operation no longer in progress
+        operationInProgress = false;
+
         // Invoke operation finished event
         onOperationFinish.Invoke(operationSuccess);
-
-        // No more operation source or destination
-        operationSource = null;
-        operationDestination = null;
 
         return operationSuccess;
     }

@@ -30,9 +30,6 @@ public class MatrixMultiplyWidget : MatrixUIChild
     [SerializeField]
     [Tooltip("Selectable component attached to the increase button")]
     private Selectable increaseSelectable;
-    [SerializeField]
-    [Tooltip("Sound that plays when the scalar increases")]
-    private AudioClip increaseSound;
 
     [Space]
 
@@ -42,18 +39,12 @@ public class MatrixMultiplyWidget : MatrixUIChild
     [SerializeField]
     [Tooltip("Selectable component attached to the decrease button")]
     private Selectable decreaseSelectable;
-    [SerializeField]
-    [Tooltip("Sound that plays when the scalar decreases")]
-    private AudioClip decreaseSound;
 
     [Space]
 
     [SerializeField]
     [Tooltip("Button that toggles if this is a multiplication or division")]
     private Button reciprocateButton;
-    [SerializeField]
-    [Tooltip("Sound that plays when the scalar is reciprocated")]
-    private AudioClip reciprocateSound;
     #endregion
 
     #region Private Data
@@ -88,9 +79,6 @@ public class MatrixMultiplyWidget : MatrixUIChild
         scalar++;
         if (scalar == Fraction.zero) scalar = Fraction.one + Fraction.one;
 
-        // Play a sound!
-        AudioManager.PlaySFX(increaseSound);
-
         OnScalarChanged();
     }
     private void DecrementScalar()
@@ -99,18 +87,11 @@ public class MatrixMultiplyWidget : MatrixUIChild
         scalar--;
         if (scalar == Fraction.one) scalar = -Fraction.one;
 
-        // Play a sound!
-        AudioManager.PlaySFX(decreaseSound);
-
         OnScalarChanged();
     }
     private void ToggleReciprocal()
     {
         reciprocate = !reciprocate;
-
-        // Play a sound!
-        AudioManager.PlaySFX(reciprocateSound);
-
         OnScalarChanged();
     }
     private void OnScalarChanged()

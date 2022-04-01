@@ -248,13 +248,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb958985158bc8c4db49194aa90e86dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targets:
-  - transform: {fileID: 9065783655618706868}
-    flashEffect: {fileID: 2930442416200011611, guid: 3e32fe817c969d74cbec821ec9663b34,
-      type: 3}
-  - transform: {fileID: 4491996725249736347}
-    flashEffect: {fileID: 6027379870344633419, guid: 23e2340f3354f82479106a6f73026aec,
-      type: 3}
+  targetEffect: {fileID: 5164705097867631380}
   graphics:
   - {fileID: 5704253800979421753}
   - {fileID: 2000541031760530705}
@@ -301,8 +295,7 @@ MonoBehaviour:
   flashEffectPrefab: {fileID: 6027379870344633419, guid: 23e2340f3354f82479106a6f73026aec,
     type: 3}
   flashColor: {r: 1, g: 1, b: 0, a: 1}
-  outline: {fileID: 0}
-  playConfirmSoundOnClick: 0
+  clickSound: 1
 --- !u!1 &4108043681121801551
 GameObject:
   m_ObjectHideFlags: 0
@@ -833,10 +826,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb958985158bc8c4db49194aa90e86dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targets:
-  - transform: {fileID: 9065783655618706868}
-    flashEffect: {fileID: 2930442416200011611, guid: 3e32fe817c969d74cbec821ec9663b34,
-      type: 3}
+  targetEffect: {fileID: 3572271292356511319}
   graphics:
   - {fileID: 5704253800979421753}
 --- !u!114 &3572271292356511319
@@ -855,8 +845,7 @@ MonoBehaviour:
   flashEffectPrefab: {fileID: 2930442416200011611, guid: 3e32fe817c969d74cbec821ec9663b34,
     type: 3}
   flashColor: {r: 0, g: 1, b: 1, a: 1}
-  outline: {fileID: 0}
-  playConfirmSoundOnClick: 0
+  clickSound: 1
 --- !u!1 &8508069442118821242
 GameObject:
   m_ObjectHideFlags: 0
@@ -990,8 +979,7 @@ MonoBehaviour:
   itemUIPrefab: {fileID: 2619748870723924317, guid: 61e298f87e6d89e498cec8b39124cb0a,
     type: 3}
   rowRectTransform: {fileID: 9065783655618706868}
-  flashEffect: {fileID: 2930442416200011611, guid: 3e32fe817c969d74cbec821ec9663b34,
-    type: 3}
+  effects: {fileID: 3572271292356511319}
   outlineGraphic: {fileID: 5704253800979421753}
   rowOperationSource: {fileID: 6987025623088813703}
   rowAddWidget: {fileID: 547775832931351853}

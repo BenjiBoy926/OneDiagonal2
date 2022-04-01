@@ -138,7 +138,7 @@ MonoBehaviour:
   flashEffectPrefab: {fileID: 5579261382817344406, guid: 32213c3f356bf0149bd97b77439af291,
     type: 3}
   flashColor: {r: 1, g: 1, b: 0, a: 1}
-  playConfirmSoundOnClick: 0
+  clickSound: 6
 --- !u!1 &6770174989942878339
 GameObject:
   m_ObjectHideFlags: 0

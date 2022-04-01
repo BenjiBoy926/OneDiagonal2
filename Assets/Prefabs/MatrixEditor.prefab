@@ -442,7 +442,7 @@ MonoBehaviour:
   flashEffectPrefab: {fileID: 5579261382817344406, guid: 32213c3f356bf0149bd97b77439af291,
     type: 3}
   flashColor: {r: 1, g: 1, b: 1, a: 1}
-  playConfirmSoundOnClick: 1
+  clickSound: 3
 --- !u!1 &985094134901530065
 GameObject:
   m_ObjectHideFlags: 0
@@ -730,7 +730,7 @@ MonoBehaviour:
   flashEffectPrefab: {fileID: 3157447336376678673, guid: 09be3ad10371be145b0cb3f65d8ae9db,
     type: 3}
   flashColor: {r: 1, g: 0, b: 1, a: 1}
-  playConfirmSoundOnClick: 0
+  clickSound: 4
 --- !u!1 &1441433030863307516
 GameObject:
   m_ObjectHideFlags: 0
@@ -1497,7 +1497,7 @@ MonoBehaviour:
   flashEffectPrefab: {fileID: 2930442416200011611, guid: 3e32fe817c969d74cbec821ec9663b34,
     type: 3}
   flashColor: {r: 1, g: 1, b: 1, a: 1}
-  playConfirmSoundOnClick: 1
+  clickSound: 3
 --- !u!1 &4166111831162659297
 GameObject:
   m_ObjectHideFlags: 0
@@ -1650,7 +1650,7 @@ MonoBehaviour:
   flashEffectPrefab: {fileID: 6027379870344633419, guid: 23e2340f3354f82479106a6f73026aec,
     type: 3}
   flashColor: {r: 1, g: 0, b: 1, a: 1}
-  playConfirmSoundOnClick: 0
+  clickSound: 5
 --- !u!1 &4272705022542817811
 GameObject:
   m_ObjectHideFlags: 0
@@ -1818,7 +1818,7 @@ MonoBehaviour:
   flashEffectPrefab: {fileID: 2930442416200011611, guid: 3e32fe817c969d74cbec821ec9663b34,
     type: 3}
   flashColor: {r: 1, g: 1, b: 1, a: 1}
-  playConfirmSoundOnClick: 1
+  clickSound: 3
 --- !u!1 &4501634155979702055
 GameObject:
   m_ObjectHideFlags: 0
@@ -2913,7 +2913,7 @@ MonoBehaviour:
   flashEffectPrefab: {fileID: 5579261382817344406, guid: 32213c3f356bf0149bd97b77439af291,
     type: 3}
   flashColor: {r: 1, g: 1, b: 1, a: 1}
-  playConfirmSoundOnClick: 1
+  clickSound: 3
 --- !u!1 &5782716456868012593
 GameObject:
   m_ObjectHideFlags: 0
@@ -3755,10 +3755,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb958985158bc8c4db49194aa90e86dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targets:
-  - transform: {fileID: 6401806503195197771}
-    flashEffect: {fileID: 5579261382817344406, guid: 32213c3f356bf0149bd97b77439af291,
-      type: 3}
+  targetEffect: {fileID: 8920282792989819487}
   graphics:
   - {fileID: 4618886082398543878}
 --- !u!114 &62341116066652088
@@ -3818,7 +3815,7 @@ MonoBehaviour:
   flashEffectPrefab: {fileID: 5579261382817344406, guid: 32213c3f356bf0149bd97b77439af291,
     type: 3}
   flashColor: {r: 1, g: 0, b: 1, a: 1}
-  playConfirmSoundOnClick: 0
+  clickSound: 1
 --- !u!1 &7852857547750081336
 GameObject:
   m_ObjectHideFlags: 0
@@ -4066,7 +4063,7 @@ MonoBehaviour:
   flashEffectPrefab: {fileID: 5579261382817344406, guid: 32213c3f356bf0149bd97b77439af291,
     type: 3}
   flashColor: {r: 1, g: 1, b: 1, a: 1}
-  playConfirmSoundOnClick: 1
+  clickSound: 3
 --- !u!1 &8142084645097638642
 GameObject:
   m_ObjectHideFlags: 0
@@ -4226,7 +4223,7 @@ MonoBehaviour:
   flashEffectPrefab: {fileID: 2930442416200011611, guid: 3e32fe817c969d74cbec821ec9663b34,
     type: 3}
   flashColor: {r: 1, g: 1, b: 1, a: 1}
-  playConfirmSoundOnClick: 1
+  clickSound: 3
 --- !u!1 &8368743654611722776
 GameObject:
   m_ObjectHideFlags: 0
