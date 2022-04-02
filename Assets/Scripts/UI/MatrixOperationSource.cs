@@ -31,6 +31,7 @@ public class MatrixOperationSource : MatrixUIChild, IPointerDownHandler, IPointe
     {
         Start();
         this.operationGetter = operationGetter;
+        targetEffect.OperationSource = this;
 
         // Punch size each time that the destination is set, if this is the operation source
         MatrixParent.OnOperationDestinationSet.AddListener(() =>

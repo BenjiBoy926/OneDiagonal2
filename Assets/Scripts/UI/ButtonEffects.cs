@@ -45,14 +45,6 @@ public class ButtonEffects : MonoBehaviour, IPointerEnterHandler, IPointerDownHa
     }
     #endregion
 
-    #region Monobehaviour Messages
-    private void Start()
-    {
-        // Try to get an operation source on this
-        OperationSource = GetComponent<MatrixOperationSource>();
-    }
-    #endregion
-
     #region Pointer Interface Implementations
     public void OnPointerEnter(PointerEventData data)
     {
