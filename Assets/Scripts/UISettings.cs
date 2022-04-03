@@ -4,7 +4,7 @@ using UnityEngine;
 using DG.Tweening;
 using DG.Tweening.Core;
 using DG.Tweening.Plugins.Options;
-using AudioLibrary;
+using AudioUtility;
 
 [CreateAssetMenu]
 public class UISettings : ScriptableObjectSingleton<UISettings>

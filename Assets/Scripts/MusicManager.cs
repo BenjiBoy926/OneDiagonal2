@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using AudioLibrary;
+using AudioUtility;
 
 public class MusicManager : MonoBehaviour
 {
@@ -18,7 +18,7 @@ public class MusicManager : MonoBehaviour
     #region Monobehaviour Messages
     private void Start()
     {
-        AudioManager.PlayMusic(music, true);
+        AudioManager.PlayMusic(music, looping: true);
     }
     #endregion
 

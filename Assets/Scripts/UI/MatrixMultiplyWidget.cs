@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using AudioLibrary;
+using AudioUtility;
 
 public class MatrixMultiplyWidget : MatrixUIChild
 {

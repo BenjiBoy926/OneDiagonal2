@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.Events;
 using DG.Tweening;
 using TMPro;
-using AudioLibrary;
+using AudioUtility;
 
 public class UnlockUI : MonoBehaviour
 {
