@@ -286,7 +286,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectable: {fileID: 4918760532824633246}
-  flashEffectPrefab: {fileID: 2930442416200011611, guid: 3e32fe817c969d74cbec821ec9663b34,
-    type: 3}
-  flashColor: {r: 0, g: 1, b: 1, a: 1}
-  playConfirmSoundOnClick: 1
+  effectType: 0
+  effectColor: {r: 0, g: 1, b: 1, a: 1}
+  clickSound: 3

@@ -292,9 +292,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectable: {fileID: 5979336877389066394}
-  flashEffectPrefab: {fileID: 6027379870344633419, guid: 23e2340f3354f82479106a6f73026aec,
-    type: 3}
-  flashColor: {r: 1, g: 1, b: 0, a: 1}
+  effectType: 3
+  effectColor: {r: 1, g: 1, b: 0, a: 1}
   clickSound: 1
 --- !u!1 &4108043681121801551
 GameObject:
@@ -842,9 +841,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectable: {fileID: 245300665939092414}
-  flashEffectPrefab: {fileID: 2930442416200011611, guid: 3e32fe817c969d74cbec821ec9663b34,
-    type: 3}
-  flashColor: {r: 0, g: 1, b: 1, a: 1}
+  effectType: 0
+  effectColor: {r: 0, g: 1, b: 1, a: 1}
   clickSound: 1
 --- !u!1 &8508069442118821242
 GameObject:
@@ -1051,7 +1049,7 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 0}
+  m_TargetGraphic: {fileID: 6719665574366523338}
 --- !u!222 &8823356615434311522
 CanvasRenderer:
   m_ObjectHideFlags: 0

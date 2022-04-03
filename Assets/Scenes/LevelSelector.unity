@@ -624,10 +624,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectable: {fileID: 884819782}
-  flashEffectPrefab: {fileID: 5579261382817344406, guid: 32213c3f356bf0149bd97b77439af291,
-    type: 3}
-  flashColor: {r: 1, g: 1, b: 1, a: 1}
-  playConfirmSoundOnClick: 1
+  effectType: 1
+  effectColor: {r: 1, g: 1, b: 1, a: 1}
+  clickSound: 3
 --- !u!1 &1034258971
 GameObject:
   m_ObjectHideFlags: 0

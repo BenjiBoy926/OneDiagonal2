@@ -439,9 +439,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectable: {fileID: 5057005297414670569}
-  flashEffectPrefab: {fileID: 5579261382817344406, guid: 32213c3f356bf0149bd97b77439af291,
-    type: 3}
-  flashColor: {r: 1, g: 1, b: 1, a: 1}
+  effectType: 1
+  effectColor: {r: 1, g: 1, b: 1, a: 1}
   clickSound: 3
 --- !u!1 &985094134901530065
 GameObject:
@@ -727,9 +726,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectable: {fileID: 2036226112120590031}
-  flashEffectPrefab: {fileID: 3157447336376678673, guid: 09be3ad10371be145b0cb3f65d8ae9db,
-    type: 3}
-  flashColor: {r: 1, g: 0, b: 1, a: 1}
+  effectType: 2
+  effectColor: {r: 1, g: 0, b: 1, a: 1}
   clickSound: 5
 --- !u!1 &1441433030863307516
 GameObject:
@@ -1493,9 +1491,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectable: {fileID: 8189271242552493018}
-  flashEffectPrefab: {fileID: 2930442416200011611, guid: 3e32fe817c969d74cbec821ec9663b34,
-    type: 3}
-  flashColor: {r: 1, g: 1, b: 1, a: 1}
+  effectType: 0
+  effectColor: {r: 1, g: 1, b: 1, a: 1}
   clickSound: 3
 --- !u!1 &4166111831162659297
 GameObject:
@@ -1646,9 +1643,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectable: {fileID: 8625013827426389322}
-  flashEffectPrefab: {fileID: 6027379870344633419, guid: 23e2340f3354f82479106a6f73026aec,
-    type: 3}
-  flashColor: {r: 1, g: 0, b: 1, a: 1}
+  effectType: 3
+  effectColor: {r: 1, g: 0, b: 1, a: 1}
   clickSound: 6
 --- !u!1 &4272705022542817811
 GameObject:
@@ -1814,9 +1810,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectable: {fileID: 8164103984909628950}
-  flashEffectPrefab: {fileID: 2930442416200011611, guid: 3e32fe817c969d74cbec821ec9663b34,
-    type: 3}
-  flashColor: {r: 1, g: 1, b: 1, a: 1}
+  effectType: 0
+  effectColor: {r: 1, g: 1, b: 1, a: 1}
   clickSound: 3
 --- !u!1 &4501634155979702055
 GameObject:
@@ -2909,9 +2904,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectable: {fileID: 3756656059757638374}
-  flashEffectPrefab: {fileID: 5579261382817344406, guid: 32213c3f356bf0149bd97b77439af291,
-    type: 3}
-  flashColor: {r: 1, g: 1, b: 1, a: 1}
+  effectType: 1
+  effectColor: {r: 1, g: 1, b: 1, a: 1}
   clickSound: 3
 --- !u!1 &5782716456868012593
 GameObject:
@@ -3811,9 +3805,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectable: {fileID: 62341116066652088}
-  flashEffectPrefab: {fileID: 5579261382817344406, guid: 32213c3f356bf0149bd97b77439af291,
-    type: 3}
-  flashColor: {r: 1, g: 0, b: 1, a: 1}
+  effectType: 1
+  effectColor: {r: 1, g: 0, b: 1, a: 1}
   clickSound: 1
 --- !u!1 &7852857547750081336
 GameObject:
@@ -4059,9 +4052,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectable: {fileID: 860767960978909383}
-  flashEffectPrefab: {fileID: 5579261382817344406, guid: 32213c3f356bf0149bd97b77439af291,
-    type: 3}
-  flashColor: {r: 1, g: 1, b: 1, a: 1}
+  effectType: 1
+  effectColor: {r: 1, g: 1, b: 1, a: 1}
   clickSound: 3
 --- !u!1 &8142084645097638642
 GameObject:
@@ -4219,9 +4211,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectable: {fileID: 8165463442418721068}
-  flashEffectPrefab: {fileID: 2930442416200011611, guid: 3e32fe817c969d74cbec821ec9663b34,
-    type: 3}
-  flashColor: {r: 1, g: 1, b: 1, a: 1}
+  effectType: 0
+  effectColor: {r: 1, g: 1, b: 1, a: 1}
   clickSound: 3
 --- !u!1 &8368743654611722776
 GameObject:
@@ -4926,6 +4917,16 @@ PrefabInstance:
     - target: {fileID: 1772339181231321655, guid: 39e2badde2b055a4aa620da723aad37b,
         type: 3}
       propertyPath: flashColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1772339181231321655, guid: 39e2badde2b055a4aa620da723aad37b,
+        type: 3}
+      propertyPath: effectColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1772339181231321655, guid: 39e2badde2b055a4aa620da723aad37b,
+        type: 3}
+      propertyPath: effectColor.g
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4047173368191705601, guid: 39e2badde2b055a4aa620da723aad37b,

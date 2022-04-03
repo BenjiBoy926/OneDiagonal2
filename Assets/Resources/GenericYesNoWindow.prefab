@@ -437,10 +437,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectable: {fileID: 3816013501527717286}
-  flashEffectPrefab: {fileID: 5579261382817344406, guid: 32213c3f356bf0149bd97b77439af291,
-    type: 3}
-  flashColor: {r: 0.9921569, g: 0.25490198, b: 0.25882354, a: 1}
-  playConfirmSoundOnClick: 1
+  effectType: 1
+  effectColor: {r: 0.9921569, g: 0.25490198, b: 0.25882354, a: 1}
+  clickSound: 3
 --- !u!1 &3024472825300559160
 GameObject:
   m_ObjectHideFlags: 0
@@ -980,10 +979,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectable: {fileID: 4431806261932632671}
-  flashEffectPrefab: {fileID: 2930442416200011611, guid: 3e32fe817c969d74cbec821ec9663b34,
-    type: 3}
-  flashColor: {r: 0.9960785, g: 0.29803923, b: 0.29803923, a: 1}
-  playConfirmSoundOnClick: 1
+  effectType: 0
+  effectColor: {r: 0.9960785, g: 0.29803923, b: 0.29803923, a: 1}
+  clickSound: 3
 --- !u!1 &7004276554635324011
 GameObject:
   m_ObjectHideFlags: 0
@@ -1457,7 +1455,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectable: {fileID: 8670358496751545055}
-  flashEffectPrefab: {fileID: 2930442416200011611, guid: 3e32fe817c969d74cbec821ec9663b34,
-    type: 3}
-  flashColor: {r: 0, g: 1, b: 0, a: 1}
-  playConfirmSoundOnClick: 1
+  effectType: 0
+  effectColor: {r: 0, g: 1, b: 0, a: 1}
+  clickSound: 3

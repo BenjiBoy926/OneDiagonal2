@@ -6,13 +6,14 @@ using DG.Tweening;
 
 public class FlashEffect : MonoBehaviour
 {
+    #region Public Methods
+    public Image Image => image;
+    #endregion
+
     #region Private Editor Fields
     [SerializeField]
     [Tooltip("Reference to the rect transform on this flash effect")]
     private RectTransform rectTransform;
-    [SerializeField]
-    [Tooltip("Canvas used to place this object on top of other objects")]
-    private Canvas canvas;
     [SerializeField]
     [Tooltip("Image for the flash effect display")]
     private Image image;
@@ -30,10 +31,18 @@ public class FlashEffect : MonoBehaviour
     #region Monobehaviour Messages
     private void Start()
     {
-        // Sort the flash to be above other things
-        canvas.overrideSorting = true;
-        canvas.sortingOrder = 10;
+        UpdateUI();
+        image.color = Color.clear;
+    }
+    private void OnValidate()
+    {
+        UpdateUI();
+    }
+    #endregion
 
+    #region Public Methods
+    public void UpdateUI()
+    {
         // Stretch the rect transform across the whole parent
         rectTransform.anchorMin = Vector2.zero;
         rectTransform.anchorMax = Vector2.one;
@@ -44,9 +53,6 @@ public class FlashEffect : MonoBehaviour
         // Ensure correct starting scale
         rectTransform.localScale = Vector3.one;
     }
-    #endregion
-
-    #region Public Methods
     public void Flash(Color color)
     {
         image.color = color;
@@ -59,15 +65,17 @@ public class FlashEffect : MonoBehaviour
     #region Private Methods
     private IEnumerator FlashRoutine()
     {
+        // Kill any animations that are still active
+        rectTransform.DOKill();
+        image.DOKill();
+
         // End color of the flash
         Color endColor = new Color(image.color.r, image.color.g, image.color.b, 0f);
+        rectTransform.localScale = Vector3.one;
 
         // Scale the rect transform and change the color over time
         rectTransform.DOScale(finalScale, flashTime);
         yield return image.DOColor(endColor, flashTime).WaitForCompletion();
-
-        // Destroy this game object
-        Destroy(gameObject);
     }
     #endregion
 }

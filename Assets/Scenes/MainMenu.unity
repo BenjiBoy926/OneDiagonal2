@@ -326,9 +326,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectable: {fileID: 429150129}
-  flashEffectPrefab: {fileID: 3157447336376678673, guid: 09be3ad10371be145b0cb3f65d8ae9db,
-    type: 3}
-  flashColor: {r: 1, g: 0, b: 1, a: 1}
+  effectType: 2
+  effectColor: {r: 1, g: 0, b: 1, a: 1}
   clickSound: 3
 --- !u!114 &429150129
 MonoBehaviour:
@@ -462,9 +461,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectable: {fileID: 514591021}
-  flashEffectPrefab: {fileID: 2930442416200011611, guid: 3e32fe817c969d74cbec821ec9663b34,
-    type: 3}
-  flashColor: {r: 0, g: 1, b: 1, a: 1}
+  effectType: 0
+  effectColor: {r: 0, g: 1, b: 1, a: 1}
   clickSound: 3
 --- !u!114 &514591021
 MonoBehaviour:
@@ -802,9 +800,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectable: {fileID: 606792361}
-  flashEffectPrefab: {fileID: 2930442416200011611, guid: 3e32fe817c969d74cbec821ec9663b34,
-    type: 3}
-  flashColor: {r: 0.42352945, g: 0.42352945, b: 0.42352945, a: 1}
+  effectType: 0
+  effectColor: {r: 0.42352945, g: 0.42352945, b: 0.42352945, a: 1}
   clickSound: 3
 --- !u!114 &606792361
 MonoBehaviour:
@@ -1043,9 +1040,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectable: {fileID: 622107043}
-  flashEffectPrefab: {fileID: 2930442416200011611, guid: 3e32fe817c969d74cbec821ec9663b34,
-    type: 3}
-  flashColor: {r: 0, g: 1, b: 1, a: 1}
+  effectType: 0
+  effectColor: {r: 0, g: 1, b: 1, a: 1}
   clickSound: 3
 --- !u!1 &666564026
 GameObject:
@@ -2037,9 +2033,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectable: {fileID: 1894569735}
-  flashEffectPrefab: {fileID: 2930442416200011611, guid: 3e32fe817c969d74cbec821ec9663b34,
-    type: 3}
-  flashColor: {r: 0, g: 1, b: 1, a: 1}
+  effectType: 0
+  effectColor: {r: 0, g: 1, b: 1, a: 1}
   clickSound: 3
 --- !u!114 &1894569735
 MonoBehaviour:
@@ -2313,9 +2308,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectable: {fileID: 2032320139}
-  flashEffectPrefab: {fileID: 6027379870344633419, guid: 23e2340f3354f82479106a6f73026aec,
-    type: 3}
-  flashColor: {r: 1, g: 0, b: 1, a: 1}
+  effectType: 3
+  effectColor: {r: 1, g: 0, b: 1, a: 1}
   clickSound: 3
 --- !u!1 &2046266777
 GameObject:

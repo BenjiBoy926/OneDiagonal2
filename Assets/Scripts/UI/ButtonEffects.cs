@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
@@ -23,11 +24,12 @@ public class ButtonEffects : MonoBehaviour, IPointerEnterHandler, IPointerDownHa
     [Tooltip("Selectable object used for this effect")]
     private Selectable selectable;
     [SerializeField]
-    [Tooltip("Flash effect used to flash when the button is clicked")]
-    private FlashEffect flashEffectPrefab;
+    [Tooltip("Type of effect to use for flashes and outlines")]
+    private EffectType effectType;
     [SerializeField]
-    [Tooltip("Color to use for the flash effect")]
-    private Color flashColor = Color.cyan;
+    [Tooltip("Color to use for the effects")]
+    [FormerlySerializedAs("flashColor")]
+    private Color effectColor = Color.cyan;
     [SerializeField]
     [Tooltip("If true, then the button will play the confirm sound when clicked")]
     private ButtonSound clickSound = ButtonSound.Confirm;
@@ -37,8 +39,7 @@ public class ButtonEffects : MonoBehaviour, IPointerEnterHandler, IPointerDownHa
     public void Play(Color color, ButtonSound sound)
     {
         // Play flash effect
-        FlashEffect flashEffect = Instantiate(flashEffectPrefab, selectable.transform);
-        flashEffect.Flash(color);
+        EffectsManager.Flash(transform, effectType, color);
 
         UISettings.PlayButtonSound(sound);
         UISettings.PunchOperator(selectable.transform);
@@ -53,7 +54,7 @@ public class ButtonEffects : MonoBehaviour, IPointerEnterHandler, IPointerDownHa
         if (selectable.interactable)
         {
             // Setup the color to use for the flash
-            Color color = flashColor;
+            Color color = effectColor;
             ButtonSound sound = ButtonSound.Hover;
 
             // If we have an operation source then instead set the color to the intended operation type color
@@ -72,7 +73,7 @@ public class ButtonEffects : MonoBehaviour, IPointerEnterHandler, IPointerDownHa
         if (selectable.interactable)
         {
             // Create the pop effect for clicking
-            Play(flashColor, clickSound);
+            Play(effectColor, clickSound);
         }
     }
     #endregion
