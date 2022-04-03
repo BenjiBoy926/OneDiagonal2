@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BackgroundOutline : MonoBehaviour
+public class OutlineEffect : MonoBehaviour
 {
     #region Private Editor Fields
     [SerializeField]
@@ -11,12 +11,5 @@ public class BackgroundOutline : MonoBehaviour
     [SerializeField]
     [Tooltip("Thickness of the outline")]
     private float thickness;
-    #endregion
-
-    #region Public Methods
-    public void Outline(RectTransform target)
-    {
-
-    }
     #endregion
 }
