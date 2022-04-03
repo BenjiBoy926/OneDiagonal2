@@ -24,7 +24,7 @@ public class ButtonEffects : MonoBehaviour, IPointerEnterHandler, IPointerDownHa
     private Selectable selectable;
     [SerializeField]
     [Tooltip("Flash effect used to flash when the button is clicked")]
-    private MatrixFlashEffect flashEffectPrefab;
+    private FlashEffect flashEffectPrefab;
     [SerializeField]
     [Tooltip("Color to use for the flash effect")]
     private Color flashColor = Color.cyan;
@@ -37,7 +37,7 @@ public class ButtonEffects : MonoBehaviour, IPointerEnterHandler, IPointerDownHa
     public void Play(Color color, ButtonSound sound)
     {
         // Play flash effect
-        MatrixFlashEffect flashEffect = Instantiate(flashEffectPrefab, selectable.transform);
+        FlashEffect flashEffect = Instantiate(flashEffectPrefab, selectable.transform);
         flashEffect.Flash(color);
 
         UISettings.PlayButtonSound(sound);

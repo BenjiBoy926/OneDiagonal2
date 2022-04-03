@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
 
-public class MatrixFlashEffect : MonoBehaviour
+public class FlashEffect : MonoBehaviour
 {
     #region Private Editor Fields
     [SerializeField]

@@ -10,7 +10,7 @@ public class MatrixOperationSource : MatrixUIChild, IPointerDownHandler, IPointe
 {
     #region Public Properties
     public MatrixOperation Operation => operationGetter.Invoke();
-    public bool IsCurrentOperationSource => MatrixParent.IsCurrentOperationSource(this);
+    public bool IsCurrentOperationSource => MatrixParent.OperationInProgress && MatrixParent.OperationSource == this;
     #endregion
 
     #region Private Editor Fields

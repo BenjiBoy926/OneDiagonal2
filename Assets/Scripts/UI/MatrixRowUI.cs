@@ -13,7 +13,7 @@ public class MatrixRowUI : MatrixUIChild
     public Fraction[] CurrentRow => MatrixParent.CurrentMatrix.GetRow(rowIndex);
     public Fraction[] PreviewRow => MatrixParent.PreviewMatrix.GetRow(rowIndex);
     public int RowIndex => rowIndex;
-    public bool IsCurrentOperationDestination => MatrixParent.IsCurrentOperationDestination(this);
+    public bool IsCurrentOperationDestination => MatrixParent.OperationInProgress && MatrixParent.OperationDestination == this;
     #endregion
 
     #region Private Editor Fields

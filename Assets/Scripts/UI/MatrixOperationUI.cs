@@ -75,6 +75,7 @@ public class MatrixOperationUI : MatrixUIChild
     }
     private void UpdateText()
     {
+        Debug.Log("Updating text");
         MatrixOperation intendedOperation = MatrixParent.IntendedNextOperation;
         string sprite;
 
