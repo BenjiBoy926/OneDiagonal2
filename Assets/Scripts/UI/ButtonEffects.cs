@@ -37,11 +37,11 @@ public class ButtonEffects : MonoBehaviour, IPointerEnterHandler, IPointerDownHa
     public void Play(Color color, ButtonSound sound)
     {
         // Play flash effect
-        MatrixFlashEffect flashEffect = Instantiate(flashEffectPrefab, selectable.transform);
+        MatrixFlashEffect flashEffect = Instantiate(flashEffectPrefab, transform);
         flashEffect.Flash(color);
 
         UISettings.PlayButtonSound(sound);
-        UISettings.PunchOperator(selectable.transform);
+        UISettings.PunchOperator(transform);
     }
     #endregion
 

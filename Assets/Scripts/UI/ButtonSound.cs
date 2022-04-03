@@ -8,6 +8,7 @@ public enum ButtonSound
     Start,
     Preview,
     Confirm,
+    Cancel,
     Up,
     Down,
     Flip,
