@@ -145,9 +145,7 @@ public class MatrixRowUI : MatrixUIChild
         // If operation finish succeeds with this as the destination, then punch the size
         if (success && IsCurrentOperationDestination)
         {
-            effects.Play(
-                UISettings.GetOperatorColor(MatrixParent.IntendedNextOperationType),
-                ButtonSound.Confirm);
+            effects.Punch(ButtonSound.Confirm);
         }
     }
     #endregion

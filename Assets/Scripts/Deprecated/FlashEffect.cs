@@ -55,27 +55,18 @@ public class FlashEffect : MonoBehaviour
     }
     public void Flash(Color color)
     {
-        image.color = color;
-
-        // Start the flash routine
-        StartCoroutine(FlashRoutine());
-    }
-    #endregion
-
-    #region Private Methods
-    private IEnumerator FlashRoutine()
-    {
         // Kill any animations that are still active
         rectTransform.DOKill();
         image.DOKill();
 
         // End color of the flash
-        Color endColor = new Color(image.color.r, image.color.g, image.color.b, 0f);
+        image.color = color;
+        Color endColor = color.SetAlpha(0f);
         rectTransform.localScale = Vector3.one;
 
         // Scale the rect transform and change the color over time
         rectTransform.DOScale(finalScale, flashTime);
-        yield return image.DOColor(endColor, flashTime).WaitForCompletion();
+        image.DOColor(endColor, flashTime).WaitForCompletion();
     }
     #endregion
 }

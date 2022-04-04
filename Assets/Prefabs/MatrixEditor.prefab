@@ -441,7 +441,8 @@ MonoBehaviour:
   selectable: {fileID: 5057005297414670569}
   effectType: 1
   effectColor: {r: 1, g: 1, b: 1, a: 1}
-  clickSound: 3
+  pointerDownSound: 8
+  pointerUpSound: 3
 --- !u!1 &985094134901530065
 GameObject:
   m_ObjectHideFlags: 0
@@ -728,7 +729,8 @@ MonoBehaviour:
   selectable: {fileID: 2036226112120590031}
   effectType: 2
   effectColor: {r: 1, g: 0, b: 1, a: 1}
-  clickSound: 5
+  pointerDownSound: 8
+  pointerUpSound: 5
 --- !u!1 &1441433030863307516
 GameObject:
   m_ObjectHideFlags: 0
@@ -1493,7 +1495,8 @@ MonoBehaviour:
   selectable: {fileID: 8189271242552493018}
   effectType: 0
   effectColor: {r: 1, g: 1, b: 1, a: 1}
-  clickSound: 3
+  pointerDownSound: 3
+  pointerUpSound: 3
 --- !u!1 &4166111831162659297
 GameObject:
   m_ObjectHideFlags: 0
@@ -1645,7 +1648,8 @@ MonoBehaviour:
   selectable: {fileID: 8625013827426389322}
   effectType: 3
   effectColor: {r: 1, g: 0, b: 1, a: 1}
-  clickSound: 6
+  pointerDownSound: 8
+  pointerUpSound: 5
 --- !u!1 &4272705022542817811
 GameObject:
   m_ObjectHideFlags: 0
@@ -1812,7 +1816,8 @@ MonoBehaviour:
   selectable: {fileID: 8164103984909628950}
   effectType: 0
   effectColor: {r: 1, g: 1, b: 1, a: 1}
-  clickSound: 3
+  pointerDownSound: 3
+  pointerUpSound: 3
 --- !u!1 &4501634155979702055
 GameObject:
   m_ObjectHideFlags: 0
@@ -2906,7 +2911,8 @@ MonoBehaviour:
   selectable: {fileID: 3756656059757638374}
   effectType: 1
   effectColor: {r: 1, g: 1, b: 1, a: 1}
-  clickSound: 3
+  pointerDownSound: 8
+  pointerUpSound: 3
 --- !u!1 &5782716456868012593
 GameObject:
   m_ObjectHideFlags: 0
@@ -3807,7 +3813,8 @@ MonoBehaviour:
   selectable: {fileID: 62341116066652088}
   effectType: 1
   effectColor: {r: 1, g: 0, b: 1, a: 1}
-  clickSound: 1
+  pointerDownSound: 1
+  pointerUpSound: 3
 --- !u!1 &7852857547750081336
 GameObject:
   m_ObjectHideFlags: 0
@@ -4054,7 +4061,8 @@ MonoBehaviour:
   selectable: {fileID: 860767960978909383}
   effectType: 1
   effectColor: {r: 1, g: 1, b: 1, a: 1}
-  clickSound: 3
+  pointerDownSound: 8
+  pointerUpSound: 3
 --- !u!1 &8142084645097638642
 GameObject:
   m_ObjectHideFlags: 0
@@ -4213,7 +4221,8 @@ MonoBehaviour:
   selectable: {fileID: 8165463442418721068}
   effectType: 0
   effectColor: {r: 1, g: 1, b: 1, a: 1}
-  clickSound: 3
+  pointerDownSound: 3
+  pointerUpSound: 3
 --- !u!1 &8368743654611722776
 GameObject:
   m_ObjectHideFlags: 0

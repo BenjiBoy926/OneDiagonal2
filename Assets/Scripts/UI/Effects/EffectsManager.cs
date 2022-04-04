@@ -8,12 +8,15 @@ public class EffectsManager : MonoBehaviour
     #region Private Editor Fields
     [SerializeField]
     [Tooltip("Array of flash effect config to instantiate for each pool")]
-    private ArrayOnEnum<EffectType, EffectConfig> configs = new ArrayOnEnum<EffectType, EffectConfig> ();
+    private ArrayOnEnum<EffectType, OutlineEffect> prefabs = new ArrayOnEnum<EffectType, OutlineEffect> ();
+    [SerializeField]
+    [Tooltip("Initial amount of effects to create for each type")]
+    private int initialSize = 2;
     #endregion
 
     #region Private Fields
     private static EffectsManager instance;
-    private ArrayOnEnum<EffectType, EffectPool> pools = new ArrayOnEnum<EffectType, EffectPool>();
+    private ArrayOnEnum<EffectType, Pool<OutlineEffect>> pools = new ArrayOnEnum<EffectType, Pool<OutlineEffect>>();
     #endregion
 
     #region Initialize Methods
@@ -42,18 +45,34 @@ public class EffectsManager : MonoBehaviour
         // Create a new effect pool for every type
         foreach (EffectType type in types)
         {
-            pools.Set(type, new EffectPool(configs.Get(type)));
+            // Get the config for this type of effect
+            OutlineEffect prefab = prefabs.Get(type);
+
+            // Set the pool in the array to a new pool
+            pools.Set(type, new Pool<OutlineEffect>(
+                initialSize,
+                () => Instantiate(prefab),
+                effect => effect.Image.color.a <= 0.5f));
         }
     }
     #endregion
 
     #region Public Methods
-    public static void Flash(Transform transform, EffectType type, Color color)
+    public static OutlineEffect FadeOutOutline(Transform transform, EffectType type, Color color)
     {
-        FlashEffect flash = instance.pools.Get(type).FlashPool.Get();
-        flash.transform.SetParent(transform, false);
-        flash.UpdateUI();
-        flash.Flash(color);
+        OutlineEffect outline = instance.pools.Get(type).Get();
+        outline.transform.SetParent(transform, false);
+        outline.UpdateUI();
+        outline.FadeOut(color);
+        return outline;
+    }
+    public static OutlineEffect FadeInOutline(Transform transform, EffectType type, Color color)
+    {
+        OutlineEffect outline = instance.pools.Get(type).Get();
+        outline.transform.SetParent(transform, false);
+        outline.UpdateUI();
+        outline.FadeIn(color);
+        return outline;
     }
     #endregion
 }

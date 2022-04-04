@@ -6,15 +6,11 @@ using UnityEngine;
 public class EffectConfig
 {
     #region Public Properties
-    public FlashEffect FlashEffectPrefab => flashEffectPrefab;
     public OutlineEffect OutlineEffectPrefab => outlineEffectPrefab;
     public int InitialSize => initialSize;
     #endregion
 
     #region Private Editor Fields
-    [SerializeField]
-    [Tooltip("Reference to the flash to use")]
-    private FlashEffect flashEffectPrefab;
     [SerializeField]
     [Tooltip("Reference to the outline to use")]
     private OutlineEffect outlineEffectPrefab;

@@ -204,7 +204,7 @@ MonoBehaviour:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: fc975e83e7cb42841b92fed098d40c87, type: 3}
   m_Type: 0
-  m_PreserveAspect: 1
+  m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -268,4 +268,5 @@ MonoBehaviour:
   selectable: {fileID: 5545972449535396437}
   effectType: 3
   effectColor: {r: 1, g: 1, b: 0, a: 1}
-  clickSound: 3
+  pointerDownSound: 1
+  pointerUpSound: 3

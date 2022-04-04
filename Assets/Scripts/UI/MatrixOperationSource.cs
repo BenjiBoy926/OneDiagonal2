@@ -37,9 +37,7 @@ public class MatrixOperationSource : MatrixUIChild, IPointerDownHandler, IPointe
         MatrixParent.OnOperationDestinationSet.AddListener(() =>
         {
             if (IsCurrentOperationSource) 
-                targetEffect.Play(
-                    UISettings.GetOperatorColor(MatrixParent.IntendedNextOperationType),
-                    ButtonSound.Preview);
+                targetEffect.Punch(ButtonSound.Preview);
         });
 
         // Start all graphics as disabled
@@ -88,9 +86,7 @@ public class MatrixOperationSource : MatrixUIChild, IPointerDownHandler, IPointe
             // If successful, use some fun effects
             if (success)
             {
-                targetEffect.Play(
-                    UISettings.GetOperatorColor(MatrixParent.IntendedNextOperationType), 
-                    ButtonSound.NoSound);
+                targetEffect.Punch(ButtonSound.NoSound);
             }
 
             // Disable graphics

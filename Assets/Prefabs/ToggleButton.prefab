@@ -137,7 +137,8 @@ MonoBehaviour:
   selectable: {fileID: 1423685601387072852}
   effectType: 1
   effectColor: {r: 1, g: 1, b: 0, a: 1}
-  clickSound: 7
+  pointerDownSound: 8
+  pointerUpSound: 7
 --- !u!1 &6770174989942878339
 GameObject:
   m_ObjectHideFlags: 0

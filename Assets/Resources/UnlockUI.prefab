@@ -788,7 +788,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 1, b: 0, a: 1}
+  m_Color: {r: 0, g: 1, b: 0, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -862,10 +862,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectable: {fileID: 2559383499617169557}
-  flashEffectPrefab: {fileID: 2930442416200011611, guid: 3e32fe817c969d74cbec821ec9663b34,
-    type: 3}
-  flashColor: {r: 0, g: 1, b: 0, a: 1}
-  playConfirmSoundOnClick: 1
+  effectType: 0
+  effectColor: {r: 0, g: 1, b: 0, a: 1}
+  pointerDownSound: 8
+  pointerUpSound: 3
 --- !u!1 &8050001219400574021
 GameObject:
   m_ObjectHideFlags: 0

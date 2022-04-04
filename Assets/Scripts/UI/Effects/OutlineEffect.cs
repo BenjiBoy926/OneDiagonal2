@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class OutlineEffect : MonoBehaviour
 {
@@ -48,9 +49,33 @@ public class OutlineEffect : MonoBehaviour
         rectTransform.pivot = Vector2.one * 0.5f;
         rectTransform.sizeDelta = offset;
     }
-    public void FadeIn()
+    public void FadeIn(Color color)
     {
+        // Kill any active tweens
+        image.DOKill();
+        transform.DOKill();
 
+        // Set the initial values
+        image.color = color.SetAlpha(0f);
+        transform.localScale = Vector3.one * fadeOutScale;
+
+        // Animate towards normal scale and target color
+        transform.DOScale(1f, fadeTime);
+        image.DOColor(color, fadeTime);
+    }
+    public void FadeOut(Color color)
+    {
+        // Kill any active tweens
+        image.DOKill();
+        transform.DOKill();
+
+        // Set the initial values
+        image.color = color.SetAlpha(1f);
+        transform.localScale = Vector3.one;
+
+        // Animate towards normal scale and target color
+        transform.DOScale(fadeOutScale, fadeTime);
+        image.DOColor(image.color.SetAlpha(0f), fadeTime);
     }
     #endregion
 

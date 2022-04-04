@@ -43,25 +43,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e169f589e92e16f4c9ebbe1d3aeacb19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  configs:
+  prefabs:
     data:
-    - flashEffectPrefab: {fileID: 2930442416200011611, guid: 3e32fe817c969d74cbec821ec9663b34,
-        type: 3}
-      outlineEffectPrefab: {fileID: 1137327844844760297, guid: 7eb6447ea1a4a9644bed39a029dc6b82,
-        type: 3}
-      initialSize: 2
-    - flashEffectPrefab: {fileID: 5579261382817344406, guid: 32213c3f356bf0149bd97b77439af291,
-        type: 3}
-      outlineEffectPrefab: {fileID: 3174024632612036758, guid: 62612f286aaf8cf40bc1053195c50e65,
-        type: 3}
-      initialSize: 2
-    - flashEffectPrefab: {fileID: 3157447336376678673, guid: 09be3ad10371be145b0cb3f65d8ae9db,
-        type: 3}
-      outlineEffectPrefab: {fileID: 1790655077664613775, guid: 07dfcda7aa56ea3439418bfe94d9f4a8,
-        type: 3}
-      initialSize: 2
-    - flashEffectPrefab: {fileID: 6027379870344633419, guid: 23e2340f3354f82479106a6f73026aec,
-        type: 3}
-      outlineEffectPrefab: {fileID: 4604524049647049776, guid: b3a85670f841e9844aa6229c7c702894,
-        type: 3}
-      initialSize: 2
+    - {fileID: 1137327844844760297, guid: 7eb6447ea1a4a9644bed39a029dc6b82, type: 3}
+    - {fileID: 3174024632612036758, guid: 62612f286aaf8cf40bc1053195c50e65, type: 3}
+    - {fileID: 1790655077664613775, guid: 07dfcda7aa56ea3439418bfe94d9f4a8, type: 3}
+    - {fileID: 4604524049647049776, guid: b3a85670f841e9844aa6229c7c702894, type: 3}
+  initialSize: 2

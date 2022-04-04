@@ -176,7 +176,7 @@ public class MatrixUI : MonoBehaviour
     }
     public void UnsetOperationDestination()
     {
-        if (operationInProgress)
+        if (operationInProgress && operationDestination)
         {
             // Set the color of the current destination back to normal
             // Update all the ui elements to display the current matrix

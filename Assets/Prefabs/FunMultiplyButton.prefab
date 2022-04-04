@@ -268,4 +268,5 @@ MonoBehaviour:
   selectable: {fileID: 9132789242754265795}
   effectType: 1
   effectColor: {r: 1, g: 0, b: 1, a: 1}
-  clickSound: 3
+  pointerDownSound: 1
+  pointerUpSound: 3

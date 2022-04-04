@@ -17,10 +17,10 @@ public class EffectPool
     #region Constructors
     public EffectPool(EffectConfig config)
     {
-        flashPool = new Pool<FlashEffect>(
-            config.InitialSize,
-            () => Object.Instantiate(config.FlashEffectPrefab),
-            effect => effect.Image.color.a <= 0.01f);
+        //flashPool = new Pool<FlashEffect>(
+        //    config.InitialSize,
+        //    () => Object.Instantiate(config.FlashEffectPrefab),
+        //    effect => effect.Image.color.a <= 0.01f);
 
         outlinePool = new Pool<OutlineEffect>(
             config.InitialSize,
