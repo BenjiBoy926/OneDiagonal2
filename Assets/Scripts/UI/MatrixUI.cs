@@ -42,6 +42,7 @@ public class MatrixUI : MonoBehaviour
             else return MatrixOperation.Invalid;
         }
     }
+    public bool OperationIsValid => operationSource && operationDestination;
     public int CurrentMoves => currentMoves;
     public bool OperationInProgress => operationInProgress;
     #endregion
@@ -139,10 +140,11 @@ public class MatrixUI : MonoBehaviour
         // Force the row parent to rebuild now that new rows are in it
         LayoutRebuilder.ForceRebuildLayoutImmediate(rowParent);
     }
-    public void SetOperationSource(MatrixOperationSource operationSource)
+    public void StartOperation(MatrixOperationSource operationSource)
     {
         this.operationSource = operationSource;
         operationInProgress = true;
+        operationDestination = null;
 
         // Invoke the operation finish event
         onOperationStart.Invoke();
@@ -188,48 +190,52 @@ public class MatrixUI : MonoBehaviour
         }
     }
 
-    public bool ConfirmOperation()
+    public bool EndOperation()
     {
-        bool operationSuccess = operationDestination;
-
-        // Check if operation destination is set or not
-        if(operationSuccess)
+        if (operationInProgress)
         {
-            // Update the current matrix and current moves
-            currentMatrix = currentMatrix.Operate(IntendedNextOperation);
-            currentMoves++;
+            bool operationSuccess = operationDestination;
 
-            ShowCurrent();
-
-            // Play a sound!
-            UISettings.PlayButtonSound(ButtonSound.Confirm);
-
-            // If current matrix is the identity, then invoke the matrix solved event
-            if(currentMatrix.isIdentity)
+            // Check if operation destination is set or not
+            if (operationSuccess)
             {
-                // None of the children block raycasts now that the matrix is solved
-                canvasGroup.blocksRaycasts = false;
+                // Update the current matrix and current moves
+                currentMatrix = currentMatrix.Operate(IntendedNextOperation);
+                currentMoves++;
+
+                ShowCurrent();
+
                 // Play a sound!
-                AudioManager.PlaySFX(matrixSolveSound);
-                // Create the highlight effect
-                currentHighlight = Instantiate(highlightPrefab, transform);
-                // Invoke the public event
-                onMatrixSolved.Invoke();
+                UISettings.PlayButtonSound(ButtonSound.Confirm);
+
+                // If current matrix is the identity, then invoke the matrix solved event
+                if (currentMatrix.isIdentity)
+                {
+                    // None of the children block raycasts now that the matrix is solved
+                    canvasGroup.blocksRaycasts = false;
+                    // Play a sound!
+                    AudioManager.PlaySFX(matrixSolveSound);
+                    // Create the highlight effect
+                    currentHighlight = Instantiate(highlightPrefab, transform);
+                    // Invoke the public event
+                    onMatrixSolved.Invoke();
+                }
             }
+            else
+            {
+                // Play a sound!
+                AudioManager.PlaySFX(operationCancelSound);
+            }
+
+            // Operation no longer in progress
+            operationInProgress = false;
+
+            // Invoke operation finished event
+            onOperationFinish.Invoke(operationSuccess);
+
+            return operationSuccess;
         }
-        else
-        {
-            // Play a sound!
-            AudioManager.PlaySFX(operationCancelSound);
-        }
-
-        // Operation no longer in progress
-        operationInProgress = false;
-
-        // Invoke operation finished event
-        onOperationFinish.Invoke(operationSuccess);
-
-        return operationSuccess;
+        else return false;
     }
     #endregion
 

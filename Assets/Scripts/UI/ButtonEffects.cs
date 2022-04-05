@@ -7,16 +7,13 @@ using UnityEngine.EventSystems;
 
 public class ButtonEffects : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler, IPointerUpHandler, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
-    #region Public Properties
-    public MatrixOperationSource OperationSource
-    {
-        get;
-        set;
-    }
-    #endregion
-
     #region Private Properties
-    private bool OperationInProgress => OperationSource && OperationSource.MatrixParent.OperationInProgress;
+    private bool OperationInProgress => operationSource && operationSource.MatrixParent.OperationInProgress;
+    /// <summary>
+    /// Check if the next operation will work by checking if the matrix parent
+    /// has an operation source and operation destination
+    /// </summary>
+    private bool OperationWillWork => operationSource && operationSource.MatrixParent.OperationSource && operationSource.MatrixParent.OperationDestination;
     #endregion
 
     #region Private Editor Fields
@@ -37,6 +34,15 @@ public class ButtonEffects : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     [SerializeField]
     [Tooltip("Sound played when the pointer comes up on the button")]
     private ButtonSound pointerUpSound = ButtonSound.Confirm;
+
+    [Header("Optional")]
+
+    [SerializeField]
+    [Tooltip("Referece to the operation source this creates effects for, if applicable")]
+    private MatrixOperationSource operationSource;
+    [SerializeField]
+    [Tooltip("Reference to the row this creates effects for, if applicable")]
+    private MatrixRowUI operationDestination;
     #endregion
 
     #region Private Fields
@@ -71,7 +77,7 @@ public class ButtonEffects : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
                 // If we have an operation source then instead set the color to the intended operation type color
                 if (OperationInProgress)
                 {
-                    color = UISettings.GetOperatorColor(OperationSource.MatrixParent.IntendedNextOperationType);
+                    color = UISettings.GetOperatorColor(operationSource.MatrixParent.IntendedNextOperationType);
                     sound = ButtonSound.Preview;
                 }
 
@@ -87,9 +93,12 @@ public class ButtonEffects : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         {
             hasPointer = false;
 
-            // Fade out the outline if we are not dragging on this button
-            if (!isDragging)
-                currentOutline.FadeOut(currentOutline.Image.color);
+            // Wait for end of frame before trying to remove the outline
+            // This is necessary because sometimes the pointer exits on the same frame
+            // that the dragging begins, but exit will execute first. We need to wait
+            // for the end of frame to see if dragging began in the same frame
+            // before removing the outline
+            StartCoroutine(RemoveOutlineOnEndOfFrame());
         }
     }
     public void OnPointerDown(PointerEventData data)
@@ -103,7 +112,7 @@ public class ButtonEffects : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     }
     public void OnPointerUp(PointerEventData data)
     {
-        if (selectable.interactable)
+        if (selectable.interactable && !isDragging)
         {
             // Create the pop effect for clicking
             EffectsManager.FadeOutOutline(transform, effectType, effectColor);
@@ -113,9 +122,7 @@ public class ButtonEffects : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     public void OnBeginDrag(PointerEventData data)
     {
         if (selectable.interactable)
-        {
             isDragging = true;
-        }
     }
     public void OnDrag(PointerEventData data)
     {
@@ -131,10 +138,28 @@ public class ButtonEffects : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
             if (!hasPointer) currentOutline.FadeOut(currentOutline.Image.color);
             // If we do have the pointer then make some other outline fade out
             else EffectsManager.FadeOutOutline(transform, effectType, effectColor);
+
+            // By default use the pointer up sound
+            ButtonSound sound = pointerUpSound;
+
+            // If the matrix has a valid operation then play the confirm sound instead
+            if (operationSource && operationSource.MatrixParent.OperationIsValid)
+                sound = ButtonSound.Confirm;
             
             // Punch the button with the pointer up sound
-            Punch(pointerUpSound);
+            Punch(sound);
         }
+    }
+    #endregion
+
+    #region Private Methods
+    private IEnumerator RemoveOutlineOnEndOfFrame()
+    {
+        yield return new WaitForEndOfFrame();
+
+        // Fade out the outline if we are not dragging on this button
+        if (!isDragging)
+            currentOutline.FadeOut(currentOutline.Image.color);
     }
     #endregion
 }

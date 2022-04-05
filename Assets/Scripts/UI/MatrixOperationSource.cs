@@ -13,15 +13,6 @@ public class MatrixOperationSource : MatrixUIChild, IPointerDownHandler, IPointe
     public bool IsCurrentOperationSource => MatrixParent.OperationInProgress && MatrixParent.OperationSource == this;
     #endregion
 
-    #region Private Editor Fields
-    [SerializeField]
-    [Tooltip("Rect transform to punch the scale of when the operation begins, and destination is set")]
-    private ButtonEffects targetEffect;
-    [SerializeField]
-    [Tooltip("List of graphics to change color when this is used as the operation source")]
-    private List<Graphic> graphics;
-    #endregion
-
     #region Private Fields
     private Func<MatrixOperation> operationGetter = () => MatrixOperation.RowSwap(-1, -1);
     #endregion
@@ -31,17 +22,6 @@ public class MatrixOperationSource : MatrixUIChild, IPointerDownHandler, IPointe
     {
         Start();
         this.operationGetter = operationGetter;
-        targetEffect.OperationSource = this;
-
-        // Punch size each time that the destination is set, if this is the operation source
-        MatrixParent.OnOperationDestinationSet.AddListener(() =>
-        {
-            if (IsCurrentOperationSource) 
-                targetEffect.Punch(ButtonSound.Preview);
-        });
-
-        // Start all graphics as disabled
-        SetGraphicsActive(false);
     }
     #endregion
 
@@ -50,14 +30,7 @@ public class MatrixOperationSource : MatrixUIChild, IPointerDownHandler, IPointe
     {
         if (!MatrixParent.OperationInProgress)
         {
-            MatrixParent.SetOperationSource(this);
-
-            // Set the color of the graphics this source is responsible for
-            foreach (Graphic graphic in graphics)
-            {
-                graphic.enabled = true;
-                graphic.color = UISettings.GetOperatorColor(Operation.type);
-            }
+            MatrixParent.StartOperation(this);
         }
     }
     // Do the same thing on pointer up if we did not drag the operator
@@ -78,30 +51,8 @@ public class MatrixOperationSource : MatrixUIChild, IPointerDownHandler, IPointe
     // When the source stops dragging, ask the matrix to confirm operation
     public void OnEndDrag(PointerEventData data)
     {
-        if (MatrixParent.OperationInProgress)
-        {
-            // Attempt to confirm the operation
-            bool success = MatrixParent.ConfirmOperation();
-
-            // If successful, use some fun effects
-            if (success)
-            {
-                targetEffect.Punch(ButtonSound.NoSound);
-            }
-
-            // Disable graphics
-            SetGraphicsActive(false);
-        }
-    }
-    #endregion
-
-    #region Private Methods
-    private void SetGraphicsActive(bool active)
-    {
-        foreach(Graphic graphic in graphics)
-        {
-            graphic.enabled = active;
-        }
+        // Attempt to confirm the operation
+        MatrixParent.EndOperation();
     }
     #endregion
 }

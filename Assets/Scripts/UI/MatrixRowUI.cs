@@ -27,12 +27,6 @@ public class MatrixRowUI : MatrixUIChild
     [Tooltip("Layout group that the items are instantiated into")]
     private RectTransform rowRectTransform;
     [SerializeField]
-    [Tooltip("Prefab used to create a flash effect on the matrix row when an operation is confirmed")]
-    private ButtonEffects effects;
-    [SerializeField]
-    [Tooltip("Reference to the graphic to change color on when the row is set as the destination")]
-    private Graphic outlineGraphic;
-    [SerializeField]
     [Tooltip("Script used to make the row a source of matrix operations")]
     private MatrixOperationSource rowOperationSource;
     [SerializeField]
@@ -73,12 +67,6 @@ public class MatrixRowUI : MatrixUIChild
         rowOperationSource.Setup(() => MatrixOperation.RowSwap(-1, rowIndex));
         rowAddWidget.Setup(rowIndex);
 
-        // Listen for operation end
-        MatrixParent.OnOperationFinish.AddListener(OnMatrixOperationFinished);
-
-        // Set the default graphic color
-        outlineGraphic.enabled = false;
-
         // Setup the entry from on pointer enter
         EventTrigger.Entry pointerEnter = new EventTrigger.Entry
         {
@@ -117,36 +105,11 @@ public class MatrixRowUI : MatrixUIChild
 
     public void OnPointerEnter()
     {
-        if(MatrixParent.SetOperationDestination(this))
-        {
-            // Enable the outline
-            outlineGraphic.enabled = true;
-            outlineGraphic.color = UISettings.GetOperatorColor(MatrixParent.IntendedNextOperationType);
-        }
+        MatrixParent.SetOperationDestination(this);
     }
     public void OnPointerExit()
     {
         MatrixParent.UnsetOperationDestination();
-
-        // Set the color back to normal if this is not the operation source
-        if(!rowOperationSource.IsCurrentOperationSource && !rowAddWidget.IsCurrentOperationSource)
-        {
-            outlineGraphic.enabled = false;
-        }
-    }
-    #endregion
-
-    #region Private Methods
-    private void OnMatrixOperationFinished(bool success)
-    {
-        // Gotta set the color back to normal
-        outlineGraphic.enabled = false;
-
-        // If operation finish succeeds with this as the destination, then punch the size
-        if (success && IsCurrentOperationDestination)
-        {
-            effects.Punch(ButtonSound.Confirm);
-        }
     }
     #endregion
 }
