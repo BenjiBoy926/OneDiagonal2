@@ -59,6 +59,15 @@ public class ButtonEffects : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     }
     #endregion
 
+    #region Monobehaviour Messages
+    private void Start()
+    {
+        // Listen for operation finish if we have an operation destination reference
+        if (operationDestination)
+            operationDestination.MatrixParent.OnOperationFinish.AddListener(OnMatrixOperationConfirmed);
+    }
+    #endregion
+
     #region Pointer Interface Implementations
     public void OnPointerEnter(PointerEventData data)
     {
@@ -153,6 +162,13 @@ public class ButtonEffects : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     #endregion
 
     #region Private Methods
+    private void OnMatrixOperationConfirmed(bool success)
+    {
+        // Set the color of the current outline back to normal
+        // when an operation is confirmed
+        if (currentOutline && currentOutline.Image.color.a > 0.5f)
+            currentOutline.Image.color = effectColor;
+    }
     private IEnumerator RemoveOutlineOnEndOfFrame()
     {
         yield return new WaitForEndOfFrame();
