@@ -190,7 +190,7 @@ public class MatrixUI : MonoBehaviour
         }
     }
 
-    public bool EndOperation()
+    public bool FinishOperation()
     {
         if (operationInProgress)
         {

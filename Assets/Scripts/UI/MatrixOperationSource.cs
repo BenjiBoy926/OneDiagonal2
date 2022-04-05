@@ -52,7 +52,7 @@ public class MatrixOperationSource : MatrixUIChild, IPointerDownHandler, IPointe
     public void OnEndDrag(PointerEventData data)
     {
         // Attempt to confirm the operation
-        MatrixParent.EndOperation();
+        MatrixParent.FinishOperation();
     }
     #endregion
 }

@@ -776,6 +776,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4811324fd0d70894596f97ae93f38140, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  selectable: {fileID: 245300665939092414}
   label: {fileID: 1981696697188184999}
   itemUIPrefab: {fileID: 2619748870723924317, guid: 61e298f87e6d89e498cec8b39124cb0a,
     type: 3}
@@ -829,7 +830,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 0
+  m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}

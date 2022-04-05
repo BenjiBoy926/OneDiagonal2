@@ -22,7 +22,7 @@ public class ButtonEffects : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     private Selectable selectable;
     [SerializeField]
     [Tooltip("Type of effect to use for flashes and outlines")]
-    private EffectType effectType;
+    private OutlineType effectType;
     [SerializeField]
     [Tooltip("Color to use for the effects")]
     [FormerlySerializedAs("flashColor")]
@@ -43,6 +43,9 @@ public class ButtonEffects : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     [SerializeField]
     [Tooltip("Reference to the row this creates effects for, if applicable")]
     private MatrixRowUI operationDestination;
+    [SerializeField]
+    [Tooltip("If true, then call the pointer functions on the selectable as well")]
+    private bool delegateToSelectable;
     #endregion
 
     #region Private Fields
@@ -64,7 +67,7 @@ public class ButtonEffects : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     {
         // Listen for operation finish if we have an operation destination reference
         if (operationDestination)
-            operationDestination.MatrixParent.OnOperationFinish.AddListener(OnMatrixOperationConfirmed);
+            operationDestination.MatrixParent.OnOperationFinish.AddListener(OnMatrixOperationFinished);
     }
     #endregion
 
@@ -92,8 +95,13 @@ public class ButtonEffects : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
                 // Create the pop effect for hovering
                 Punch(sound);
-                currentOutline = EffectsManager.FadeInOutline(transform, effectType, color);
+                currentOutline = OutlineManager.FadeInOutline(transform, effectType, color);
             }
+
+            // If we should delegate to the selectable then do so
+            if (delegateToSelectable)
+                if (selectable is IPointerEnterHandler pointerEnterHandler)
+                    pointerEnterHandler.OnPointerEnter(data);
         }
     }
     public void OnPointerExit(PointerEventData data)
@@ -108,6 +116,11 @@ public class ButtonEffects : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
             // for the end of frame to see if dragging began in the same frame
             // before removing the outline
             StartCoroutine(RemoveOutlineOnEndOfFrame());
+
+            // If we should delegate to the selectable then do so
+            if (delegateToSelectable)
+                if (selectable is IPointerExitHandler pointerEnterHandler)
+                    pointerEnterHandler.OnPointerExit(data);
         }
     }
     public void OnPointerDown(PointerEventData data)
@@ -115,8 +128,13 @@ public class ButtonEffects : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         if (selectable.interactable)
         {
             // Create the pop effect for clicking
-            EffectsManager.FadeOutOutline(transform, effectType, effectColor);
+            OutlineManager.FadeOutOutline(transform, effectType, effectColor);
             Punch(pointerDownSound);
+
+            // If we should delegate to the selectable then do so
+            if (delegateToSelectable)
+                if (selectable is IPointerDownHandler pointerEnterHandler)
+                    pointerEnterHandler.OnPointerDown(data);
         }
     }
     public void OnPointerUp(PointerEventData data)
@@ -124,18 +142,35 @@ public class ButtonEffects : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         if (selectable.interactable && !isDragging)
         {
             // Create the pop effect for clicking
-            EffectsManager.FadeOutOutline(transform, effectType, effectColor);
+            OutlineManager.FadeOutOutline(transform, effectType, effectColor);
             Punch(pointerUpSound);
+
+            // If we should delegate to the selectable then do so
+            if (delegateToSelectable)
+                if (selectable is IPointerUpHandler pointerEnterHandler)
+                    pointerEnterHandler.OnPointerUp(data);
         }
     }
     public void OnBeginDrag(PointerEventData data)
     {
         if (selectable.interactable)
+        {
             isDragging = true;
+
+            // If we should delegate to the selectable then do so
+            if (delegateToSelectable)
+                if (selectable is IBeginDragHandler pointerEnterHandler)
+                    pointerEnterHandler.OnBeginDrag(data);
+        }
     }
     public void OnDrag(PointerEventData data)
     {
         // This is just to make sure the other drag handlers work correctly
+
+        // If we should delegate to the selectable then do so
+        if (delegateToSelectable)
+            if (selectable is IDragHandler pointerEnterHandler)
+                pointerEnterHandler.OnDrag(data);
     }
     public void OnEndDrag(PointerEventData data)
     {
@@ -146,7 +181,7 @@ public class ButtonEffects : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
             // If we don't have the pointer then remove the current outline
             if (!hasPointer) currentOutline.FadeOut(currentOutline.Image.color);
             // If we do have the pointer then make some other outline fade out
-            else EffectsManager.FadeOutOutline(transform, effectType, effectColor);
+            else OutlineManager.FadeOutOutline(transform, effectType, effectColor);
 
             // By default use the pointer up sound
             ButtonSound sound = pointerUpSound;
@@ -157,12 +192,17 @@ public class ButtonEffects : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
             
             // Punch the button with the pointer up sound
             Punch(sound);
+
+            // If we should delegate to the selectable then do so
+            if (delegateToSelectable)
+                if (selectable is IEndDragHandler pointerEnterHandler)
+                    pointerEnterHandler.OnEndDrag(data);
         }
     }
     #endregion
 
     #region Private Methods
-    private void OnMatrixOperationConfirmed(bool success)
+    private void OnMatrixOperationFinished(bool success)
     {
         // Set the color of the current outline back to normal
         // when an operation is confirmed

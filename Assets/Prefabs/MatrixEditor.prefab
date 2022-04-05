@@ -1499,7 +1499,7 @@ MonoBehaviour:
   selectable: {fileID: 8189271242552493018}
   effectType: 0
   effectColor: {r: 1, g: 1, b: 1, a: 1}
-  pointerDownSound: 3
+  pointerDownSound: 8
   pointerUpSound: 3
   operationSource: {fileID: 0}
   operationDestination: {fileID: 0}
@@ -1824,7 +1824,7 @@ MonoBehaviour:
   selectable: {fileID: 8164103984909628950}
   effectType: 0
   effectColor: {r: 1, g: 1, b: 1, a: 1}
-  pointerDownSound: 3
+  pointerDownSound: 8
   pointerUpSound: 3
   operationSource: {fileID: 0}
   operationDestination: {fileID: 0}
@@ -4136,7 +4136,7 @@ MonoBehaviour:
   selectable: {fileID: 8165463442418721068}
   effectType: 0
   effectColor: {r: 1, g: 1, b: 1, a: 1}
-  pointerDownSound: 3
+  pointerDownSound: 8
   pointerUpSound: 3
   operationSource: {fileID: 0}
   operationDestination: {fileID: 0}

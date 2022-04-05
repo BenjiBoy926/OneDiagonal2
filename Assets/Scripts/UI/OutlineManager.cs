@@ -3,20 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class EffectsManager : MonoBehaviour
+public class OutlineManager : MonoBehaviour
 {
     #region Private Editor Fields
     [SerializeField]
     [Tooltip("Array of flash effect config to instantiate for each pool")]
-    private ArrayOnEnum<EffectType, OutlineEffect> prefabs = new ArrayOnEnum<EffectType, OutlineEffect> ();
+    private ArrayOnEnum<OutlineType, OutlineEffect> prefabs = new ArrayOnEnum<OutlineType, OutlineEffect> ();
     [SerializeField]
     [Tooltip("Initial amount of effects to create for each type")]
     private int initialSize = 2;
     #endregion
 
     #region Private Fields
-    private static EffectsManager instance;
-    private ArrayOnEnum<EffectType, Pool<OutlineEffect>> pools = new ArrayOnEnum<EffectType, Pool<OutlineEffect>>();
+    private static OutlineManager instance;
+    private ArrayOnEnum<OutlineType, Pool<OutlineEffect>> pools = new ArrayOnEnum<OutlineType, Pool<OutlineEffect>>();
     #endregion
 
     #region Initialize Methods
@@ -24,7 +24,7 @@ public class EffectsManager : MonoBehaviour
     public static void Initialize()
     {
         // Instantiate the effects manager from the resources and make it not destroy on load
-        instance = ResourcesExtensions.InstantiateFromResources<EffectsManager>(nameof(EffectsManager), null);
+        instance = ResourcesExtensions.InstantiateFromResources<OutlineManager>(nameof(OutlineManager), null);
         DontDestroyOnLoad(instance);
 
         // Re-initialize the pools on scene loaded
@@ -40,10 +40,10 @@ public class EffectsManager : MonoBehaviour
     private void Start()
     {
         // Get all effect types
-        EffectType[] types = (EffectType[])System.Enum.GetValues(typeof(EffectType));
+        OutlineType[] types = (OutlineType[])System.Enum.GetValues(typeof(OutlineType));
     
         // Create a new effect pool for every type
-        foreach (EffectType type in types)
+        foreach (OutlineType type in types)
         {
             // Get the config for this type of effect
             OutlineEffect prefab = prefabs.Get(type);
@@ -58,7 +58,7 @@ public class EffectsManager : MonoBehaviour
     #endregion
 
     #region Public Methods
-    public static OutlineEffect FadeOutOutline(Transform transform, EffectType type, Color color)
+    public static OutlineEffect FadeOutOutline(Transform transform, OutlineType type, Color color)
     {
         OutlineEffect outline = instance.pools.Get(type).Get();
         outline.transform.SetParent(transform, false);
@@ -66,7 +66,7 @@ public class EffectsManager : MonoBehaviour
         outline.FadeOut(color);
         return outline;
     }
-    public static OutlineEffect FadeInOutline(Transform transform, EffectType type, Color color)
+    public static OutlineEffect FadeInOutline(Transform transform, OutlineType type, Color color)
     {
         OutlineEffect outline = instance.pools.Get(type).Get();
         outline.transform.SetParent(transform, false);

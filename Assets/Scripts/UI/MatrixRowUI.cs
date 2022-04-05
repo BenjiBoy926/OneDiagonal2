@@ -18,6 +18,9 @@ public class MatrixRowUI : MatrixUIChild
 
     #region Private Editor Fields
     [SerializeField]
+    [Tooltip("Select for this matrix row that determines if it will react on mouse events")]
+    private Selectable selectable;
+    [SerializeField]
     [Tooltip("Text used to label this row")]
     private TextMeshProUGUI label;
     [SerializeField]
@@ -52,6 +55,10 @@ public class MatrixRowUI : MatrixUIChild
 
         this.rowIndex = rowIndex;
         label.text = (rowIndex + 1).ToString();
+
+        // Listen for start and end of an operation
+        MatrixParent.OnOperationStart.AddListener(OnMatrixOperationStart);
+        MatrixParent.OnOperationFinish.AddListener(OnMatrixOperationFinish);
 
         // Initialize the lsit of item uis
         itemUIs = new MatrixItemUI[MatrixParent.CurrentMatrix.cols];
@@ -102,14 +109,27 @@ public class MatrixRowUI : MatrixUIChild
             item.ShowPreview();
         }
     }
+    #endregion
 
-    public void OnPointerEnter()
+    #region Event Listeners
+    private void OnPointerEnter()
     {
         MatrixParent.SetOperationDestination(this);
     }
-    public void OnPointerExit()
+    private void OnPointerExit()
     {
         MatrixParent.UnsetOperationDestination();
+    }
+    private void OnMatrixOperationStart()
+    {
+        // Disable this row if we are adding this row to another row
+        if (MatrixParent.IntendedNextOperationType == MatrixOperation.Type.Add && 
+            MatrixParent.IntendedNextOperation.sourceRow == rowIndex) 
+            selectable.interactable = false;
+    }
+    private void OnMatrixOperationFinish(bool success)
+    {
+        selectable.interactable = true;
     }
     #endregion
 }

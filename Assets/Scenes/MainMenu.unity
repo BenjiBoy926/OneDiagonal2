@@ -330,6 +330,8 @@ MonoBehaviour:
   effectColor: {r: 1, g: 0, b: 1, a: 1}
   pointerDownSound: 1
   pointerUpSound: 3
+  operationSource: {fileID: 0}
+  operationDestination: {fileID: 0}
 --- !u!114 &429150129
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -466,6 +468,8 @@ MonoBehaviour:
   effectColor: {r: 0, g: 1, b: 1, a: 1}
   pointerDownSound: 8
   pointerUpSound: 3
+  operationSource: {fileID: 0}
+  operationDestination: {fileID: 0}
 --- !u!114 &514591021
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -806,6 +810,8 @@ MonoBehaviour:
   effectColor: {r: 0.42352945, g: 0.42352945, b: 0.42352945, a: 1}
   pointerDownSound: 8
   pointerUpSound: 3
+  operationSource: {fileID: 0}
+  operationDestination: {fileID: 0}
 --- !u!114 &606792361
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1047,6 +1053,8 @@ MonoBehaviour:
   effectColor: {r: 0, g: 1, b: 1, a: 1}
   pointerDownSound: 8
   pointerUpSound: 3
+  operationSource: {fileID: 0}
+  operationDestination: {fileID: 0}
 --- !u!1 &666564026
 GameObject:
   m_ObjectHideFlags: 0
@@ -2041,6 +2049,8 @@ MonoBehaviour:
   effectColor: {r: 0, g: 1, b: 1, a: 1}
   pointerDownSound: 8
   pointerUpSound: 3
+  operationSource: {fileID: 0}
+  operationDestination: {fileID: 0}
 --- !u!114 &1894569735
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2317,6 +2327,8 @@ MonoBehaviour:
   effectColor: {r: 1, g: 0, b: 1, a: 1}
   pointerDownSound: 1
   pointerUpSound: 3
+  operationSource: {fileID: 0}
+  operationDestination: {fileID: 0}
 --- !u!1 &2046266777
 GameObject:
   m_ObjectHideFlags: 0

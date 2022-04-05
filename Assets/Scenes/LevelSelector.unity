@@ -626,7 +626,10 @@ MonoBehaviour:
   selectable: {fileID: 884819782}
   effectType: 1
   effectColor: {r: 1, g: 1, b: 1, a: 1}
-  clickSound: 3
+  pointerDownSound: 8
+  pointerUpSound: 3
+  operationSource: {fileID: 0}
+  operationDestination: {fileID: 0}
 --- !u!1 &1034258971
 GameObject:
   m_ObjectHideFlags: 0
