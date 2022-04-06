@@ -12,6 +12,9 @@ public class RepeatButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
 
     #region Private Editor Fields
     [SerializeField]
+    [Tooltip("Script used to create some fun effects for this button")]
+    private ButtonEffects effects;
+    [SerializeField]
     [Tooltip("How much time to wait before starting the repeat invokation")]
     private float initialWaitTime = 0.3f;
     [SerializeField]
@@ -58,6 +61,8 @@ public class RepeatButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
         // Forever, invoke the repeat action every repeat wait seconds
         while(true)
         {
+            effects.Flash();
+            effects.PunchSize(effects.PointerDownSound);
             repeatAction.Invoke();
             yield return new WaitForSeconds(repeatWaitTime);
         }

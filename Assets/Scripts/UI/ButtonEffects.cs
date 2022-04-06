@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Reflection;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -7,13 +8,12 @@ using UnityEngine.EventSystems;
 
 public class ButtonEffects : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler, IPointerUpHandler, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
+    #region Public Properties
+    public ButtonSound PointerDownSound => pointerDownSound;
+    #endregion
+
     #region Private Properties
     private bool OperationInProgress => operationSource && operationSource.MatrixParent.OperationInProgress;
-    /// <summary>
-    /// Check if the next operation will work by checking if the matrix parent
-    /// has an operation source and operation destination
-    /// </summary>
-    private bool OperationWillWork => operationSource && operationSource.MatrixParent.OperationSource && operationSource.MatrixParent.OperationDestination;
     #endregion
 
     #region Private Editor Fields
@@ -55,7 +55,12 @@ public class ButtonEffects : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     #endregion
 
     #region Public Methods
-    public void Punch(ButtonSound sound)
+    public void Flash() => Flash(effectColor);
+    public void Flash(Color color)
+    {
+        OutlineManager.FadeOutOutline(transform, effectType, color);
+    }
+    public void PunchSize(ButtonSound sound)
     {
         UISettings.PlayButtonSound(sound);
         UISettings.PunchOperator(selectable.transform);
@@ -94,14 +99,12 @@ public class ButtonEffects : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
                 }
 
                 // Create the pop effect for hovering
-                Punch(sound);
+                PunchSize(sound);
                 currentOutline = OutlineManager.FadeInOutline(transform, effectType, color);
             }
 
             // If we should delegate to the selectable then do so
-            if (delegateToSelectable)
-                if (selectable is IPointerEnterHandler pointerEnterHandler)
-                    pointerEnterHandler.OnPointerEnter(data);
+            TryDelegatePointerEvent("PointerEnter", data);
         }
     }
     public void OnPointerExit(PointerEventData data)
@@ -118,9 +121,7 @@ public class ButtonEffects : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
             StartCoroutine(RemoveOutlineOnEndOfFrame());
 
             // If we should delegate to the selectable then do so
-            if (delegateToSelectable)
-                if (selectable is IPointerExitHandler pointerEnterHandler)
-                    pointerEnterHandler.OnPointerExit(data);
+            TryDelegatePointerEvent("PointerExit", data);
         }
     }
     public void OnPointerDown(PointerEventData data)
@@ -128,13 +129,11 @@ public class ButtonEffects : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         if (selectable.interactable)
         {
             // Create the pop effect for clicking
-            OutlineManager.FadeOutOutline(transform, effectType, effectColor);
-            Punch(pointerDownSound);
+            Flash(effectColor);
+            PunchSize(pointerDownSound);
 
             // If we should delegate to the selectable then do so
-            if (delegateToSelectable)
-                if (selectable is IPointerDownHandler pointerEnterHandler)
-                    pointerEnterHandler.OnPointerDown(data);
+            TryDelegatePointerEvent("PointerDown", data);
         }
     }
     public void OnPointerUp(PointerEventData data)
@@ -142,13 +141,11 @@ public class ButtonEffects : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         if (selectable.interactable && !isDragging)
         {
             // Create the pop effect for clicking
-            OutlineManager.FadeOutOutline(transform, effectType, effectColor);
-            Punch(pointerUpSound);
+            Flash(effectColor);
+            PunchSize(pointerUpSound);
 
             // If we should delegate to the selectable then do so
-            if (delegateToSelectable)
-                if (selectable is IPointerUpHandler pointerEnterHandler)
-                    pointerEnterHandler.OnPointerUp(data);
+            TryDelegatePointerEvent("PointerUp", data);
         }
     }
     public void OnBeginDrag(PointerEventData data)
@@ -158,9 +155,7 @@ public class ButtonEffects : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
             isDragging = true;
 
             // If we should delegate to the selectable then do so
-            if (delegateToSelectable)
-                if (selectable is IBeginDragHandler pointerEnterHandler)
-                    pointerEnterHandler.OnBeginDrag(data);
+            TryDelegatePointerEvent("BeginDrag", data);
         }
     }
     public void OnDrag(PointerEventData data)
@@ -168,9 +163,7 @@ public class ButtonEffects : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         // This is just to make sure the other drag handlers work correctly
 
         // If we should delegate to the selectable then do so
-        if (delegateToSelectable)
-            if (selectable is IDragHandler pointerEnterHandler)
-                pointerEnterHandler.OnDrag(data);
+        TryDelegatePointerEvent("Drag", data);
     }
     public void OnEndDrag(PointerEventData data)
     {
@@ -181,7 +174,7 @@ public class ButtonEffects : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
             // If we don't have the pointer then remove the current outline
             if (!hasPointer) currentOutline.FadeOut(currentOutline.Image.color);
             // If we do have the pointer then make some other outline fade out
-            else OutlineManager.FadeOutOutline(transform, effectType, effectColor);
+            else Flash(effectColor);
 
             // By default use the pointer up sound
             ButtonSound sound = pointerUpSound;
@@ -191,17 +184,26 @@ public class ButtonEffects : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
                 sound = ButtonSound.Confirm;
             
             // Punch the button with the pointer up sound
-            Punch(sound);
+            PunchSize(sound);
 
             // If we should delegate to the selectable then do so
-            if (delegateToSelectable)
-                if (selectable is IEndDragHandler pointerEnterHandler)
-                    pointerEnterHandler.OnEndDrag(data);
+            TryDelegatePointerEvent("EndDrag", data);
         }
     }
     #endregion
 
     #region Private Methods
+    private void TryDelegatePointerEvent(string pointerEvent, PointerEventData data)
+    {
+        if (delegateToSelectable)
+        {
+            MethodInfo method = selectable.GetType().GetMethod($"On{pointerEvent}");
+
+            // If the select has this method then invoke it
+            if (method != null)
+                method.Invoke(selectable, new object[] { data });
+        }
+    }
     private void OnMatrixOperationFinished(bool success)
     {
         // Set the color of the current outline back to normal
