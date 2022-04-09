@@ -63,6 +63,7 @@ public class RepeatButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
         {
             effects.Flash();
             effects.PunchSize(effects.PointerDownSound);
+
             repeatAction.Invoke();
             yield return new WaitForSeconds(repeatWaitTime);
         }

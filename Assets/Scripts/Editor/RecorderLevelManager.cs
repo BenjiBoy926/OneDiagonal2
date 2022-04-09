@@ -12,110 +12,81 @@ using TMPro;
 /// A simple manager used to setup the matrix used for recording
 /// operations for tutorials
 /// </summary>
-public class RecorderLevelManager : MonoBehaviour
+public class RecorderLevelManager
 {
-    #region Private Editor Fields
-    [SerializeField]
-    [Tooltip("Matrix to setup for recording")]
-    private MatrixUI matrixUI;
-
-    [SerializeField]
-    [Tooltip("Parent of the UI objects that display at the start of the recording")]
-    private GameObject startingUI;
-    [SerializeField]
-    [Tooltip("Text used to display the level that is about to be played")]
-    private TextMeshProUGUI levelTitle;
-    [SerializeField]
-    [Tooltip("Text used to display the countdown until the level starts recording")]
-    private TextMeshProUGUI countdownText;
-    [SerializeField]
-    [Tooltip("Button that can be used to skip recording this level")]
-    private Button skipButton;
-
-    [SerializeField]
-    [Tooltip("Number of seconds until the countdown completes")]
-    private int countdownTime = 3;
-    [SerializeField]
-    [Tooltip("Number of seconds after solving the puzzle that this recording ends and the next recording begins")]
-    private float endingTime = 3;
-    #endregion
-
-    #region Private Fields
-    private bool skipButtonPressed;
-    #endregion
-
-    #region Monobehaviour Messages
-    private void Start()
+    #region Initialize Methods
+    [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
+    public static void Start()
     {
-        // Unlock all operations
-        PlayerData.UnlockAllOperations();
-        // Make recorder verbose to show more information
-        RecorderOptions.VerboseMode = true;
-        // Record all of the levels
-        StartCoroutine(RecordAllLevels());
+        RecorderLevelEntryPoint scheduler = Object.FindObjectOfType<RecorderLevelEntryPoint>();
+
+        if (scheduler)
+        {
+            // Unlock all operations
+            PlayerData.UnlockAllOperations();
+            // Make recorder verbose to show more information
+            RecorderOptions.VerboseMode = true;
+
+            // Do something to stop the music
+            MusicManager.MusicSource.Stop();
+
+            // Record all of the levels
+            scheduler.StartCoroutine(RecordAllLevels(scheduler));
+        }
     }
     #endregion
 
     #region Private Methods
-    private IEnumerator RecordAllLevels()
+    private static IEnumerator RecordAllLevels(RecorderLevelEntryPoint entry)
     {
         LevelData[] levels = LevelSettings.GetAllLevelDataOfType(LevelType.Recorded);
 
         // Record each level in turn
         foreach(LevelData level in levels)
         {
-            yield return RecordOneLevel(level);
+            yield return RecordOneLevel(level, entry);
         }
 
         // Show UI to state that 
-        startingUI.SetActive(true);
-        levelTitle.text = "All done!";
-        countdownText.text = "";
+        entry.StartingUI.SetActive(true);
+        entry.LevelTitle.text = "All done!";
+        entry.CountdownText.text = "";
     }
-    private IEnumerator RecordOneLevel(LevelData level)
+    private static IEnumerator RecordOneLevel(LevelData level, RecorderLevelEntryPoint entry)
     {
-        skipButtonPressed = false;
-
         // Enable the starting UI
-        startingUI.SetActive(true);
-        levelTitle.text = $"Next Level: '{level.Name}'";
+        entry.StartingUI.SetActive(true);
+        entry.LevelTitle.text = $"Next Level: '{level.Name}'";
 
-        for(int i = countdownTime; i >= 1; i--)
+        for(int i = entry.CountdownTime; i >= 1; i--)
         {
-            countdownText.text = i.ToString();
+            entry.CountdownText.text = i.ToString();
 
             // Set time of current count and create a function to detect when one second has passed
-            float timeOfCurrentCount = Time.time;
-            bool OneSecondElapsed() => Time.time - timeOfCurrentCount >= 1f;
-
-            // Wait until one second has elapsed or the skip button was pressed
-            yield return new WaitUntil(() => OneSecondElapsed() || skipButtonPressed);
+            yield return new WaitForSeconds(1f);
         }
 
-        if (!skipButtonPressed)
-        {
-            // Setup the matrix
-            startingUI.SetActive(false);
-            matrixUI.Setup(level);
+        // Setup the matrix
+        entry.StartingUI.SetActive(false);
+        entry.MatrixUI.Setup(level);
 
-            // Start the recording
-            RecorderController recorder = GetRecorder(level.Name);
-            recorder.PrepareRecording();
+        // Start the recording
+        RecorderController recorder = GetRecorder(level.Name);
+        recorder.PrepareRecording();
             
-            if (!recorder.StartRecording())
-            {
-                Debug.Log("Failed to start the recording!");
-            }
-
-            // Wait until the current matrix is identity
-            yield return new WaitUntil(() => matrixUI.CurrentMatrix.isIdentity);
-            yield return new WaitForSeconds(endingTime);
-
-            // Stop the recording
-            recorder.StopRecording();
+        if (!recorder.StartRecording())
+        {
+            Debug.Log("Failed to start the recording!");
         }
+
+        // Wait until the current matrix is identity
+        yield return new WaitUntil(() => entry.MatrixUI.CurrentMatrix.isIdentity);
+        yield return new WaitForSeconds(entry.EndingTime);
+
+        // Stop the recording
+        recorder.StopRecording();
     }
-    private RecorderController GetRecorder(string levelName)
+    private static RecorderController GetRecorder(string levelName)
     {
         // Create the settings and setup the controller with them
         RecorderControllerSettings controllerSettings = ScriptableObject.CreateInstance<RecorderControllerSettings>();

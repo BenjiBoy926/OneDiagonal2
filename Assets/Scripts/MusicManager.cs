@@ -5,6 +5,10 @@ using AudioUtility;
 
 public class MusicManager : MonoBehaviour
 {
+    #region Public Properties
+    public static AudioSource MusicSource => instance.musicSource;
+    #endregion
+
     #region Private Editor Fields
     [SerializeField]
     [Tooltip("Audio clip to play for the music")]
@@ -15,19 +19,26 @@ public class MusicManager : MonoBehaviour
     public static readonly string prefabPath = nameof(MusicManager);
     #endregion
 
+    #region Private Fields
+    private static MusicManager instance;
+    private AudioSource musicSource;
+    #endregion
+
     #region Monobehaviour Messages
-    private void Start()
+    private void Awake()
     {
-        AudioManager.PlayMusic(music, looping: true);
+        musicSource = AudioManager.PlayMusic(music, looping: true);
     }
     #endregion
 
     #region Initialize On Load Methods
-    [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
+    [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
     public static void StartMusic()
     {
-        GameObject managerPrefab = ResourcesExtensions.InstantiateFromResources(prefabPath, null);
-        DontDestroyOnLoad(managerPrefab);
+        MusicManager managerInstance = ResourcesExtensions.InstantiateFromResources<MusicManager>(prefabPath, null);
+
+        instance = managerInstance;
+        DontDestroyOnLoad(managerInstance);
     }
     #endregion
 }

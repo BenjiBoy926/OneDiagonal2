@@ -526,7 +526,7 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &8373380489381727700
+--- !u!114 &8126906203056141229
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -535,14 +535,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 6592656440382252739}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7872b09708f79694194ca3c5562404da, type: 3}
+  m_Script: {fileID: 11500000, guid: 053ac2d53cdf45f43a0cd826fdce56d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   matrixUI: {fileID: 8398672740377852025}
   startingUI: {fileID: 1977747524889887727}
   levelTitle: {fileID: 1215383904639736720}
   countdownText: {fileID: 3214655426198069265}
-  skipButton: {fileID: 2410517005258965621}
   countdownTime: 3
   endingTime: 3
 --- !u!1 &7575842079961516364
