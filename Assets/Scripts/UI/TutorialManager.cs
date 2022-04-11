@@ -20,6 +20,17 @@ public class TutorialManager : MonoBehaviour
     #endregion
 
     #region Public Methods
+    public void OpenTutorial(TutorialData tutorial, bool displayUpgrade)
+    {
+        rootPanel.gameObject.SetActive(true);
+        rootPanel.color = Color.clear;
+
+        tutorial.OptionalUnlockData.TryUnlock();
+
+        // Fade in the panel then open the tutorial
+        rootPanel.DOColor(new Color(0f, 0f, 0f, 0.8f), fadeInTime)
+            .OnComplete(() => OpenTutorialUI(tutorial, displayUpgrade, null));
+    }
     public void OpenTutorials(TutorialData[] tutorials, bool displayUpgrades)
     {
         // If there is some data then fade in the back panel
@@ -35,7 +46,8 @@ public class TutorialManager : MonoBehaviour
             }
 
             // When fading is finished then setup all the uis
-            rootPanel.DOColor(new Color(0f, 0f, 0f, 0.8f), fadeInTime).OnComplete(() => SetupTutorialUIs(tutorials, displayUpgrades));
+            rootPanel.DOColor(new Color(0f, 0f, 0f, 0.8f), fadeInTime)
+                .OnComplete(() => OpenTutorialUIs(tutorials, displayUpgrades));
         }
         // If there is no data make sure that the panel is inactive
         else rootPanel.gameObject.SetActive(false);
@@ -43,7 +55,19 @@ public class TutorialManager : MonoBehaviour
     #endregion
 
     #region Private Methods
-    private void SetupTutorialUIs(TutorialData[] tutorials, bool displayUpgrades)
+    private void OpenTutorialUI(TutorialData tutorial, bool displayUpgrade, UnityAction callback)
+    {
+        TutorialUI ui = TutorialUI.InstantiateFromResources(rootPanel.transform);
+        ui.Open(tutorial, displayUpgrade);
+
+        // Setup the tutorial closed callback
+        if (callback == null)
+        {
+            ui.OnTutorialClosed.AddListener(Finish);
+        }
+        else ui.OnTutorialClosed.AddListener(callback);
+    }
+    private void OpenTutorialUIs(TutorialData[] tutorials, bool displayUpgrades)
     {
         // Local function returns the functor that opens the correct tutorial
         // this prevents capturing local variables
@@ -78,7 +102,8 @@ public class TutorialManager : MonoBehaviour
     }
     private void Finish()
     {
-        rootPanel.DOColor(Color.clear, fadeOutTime).OnComplete(() => rootPanel.gameObject.SetActive(false));
+        rootPanel.DOColor(Color.clear, fadeOutTime)
+            .OnComplete(() => rootPanel.gameObject.SetActive(false));
     }
     #endregion
 }

@@ -66,16 +66,19 @@ public class TutorialUI : MonoBehaviour
     public void Close()
     {
         // Shrink out of view
-        UISettings.CloseWindow(rootRect).OnComplete(() =>
-        {
-            onTutorialClosed.Invoke();
-            Destroy(gameObject);
-        });
+        UISettings.CloseWindow(rootRect).OnComplete(OnWindowFinishedClosing);
     }
     public static TutorialUI InstantiateFromResources(Transform parent, string resourcePath = null)
     {
         if (string.IsNullOrWhiteSpace(resourcePath)) resourcePath = defaultResourcePath;
         return ResourcesExtensions.InstantiateFromResources<TutorialUI>(resourcePath, parent);
+    }
+    #endregion
+
+    #region Monobehaviour Messages
+    private void OnDestroy()
+    {
+        rootRect.DOKill();
     }
     #endregion
 
@@ -107,6 +110,12 @@ public class TutorialUI : MonoBehaviour
 
         // When button is clicked then close the tutorial
         closeButton.onClick.AddListener(Close);
+    }
+    private void OnWindowFinishedClosing()
+    {
+        rootRect.DOKill();
+        onTutorialClosed.Invoke();
+        Destroy(gameObject);
     }
     #endregion
 }

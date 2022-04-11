@@ -38,6 +38,15 @@ public class LevelSettings : ScriptableObjectSingleton<LevelSettings>
     #region Public Methods
     public static int TotalLevelsOfType(LevelType type) => Instance.levelDatas.Get(type).list.Length;
     public static LevelData[] GetAllLevelDataOfType(LevelType type) => Instance.levelDatas.Get(type).list;
+    public static LevelData[] GetAllLevelData()
+    {
+        List<LevelData> levels = new List<LevelData>();
+        foreach (LevelDataList list in Instance.levelDatas.Data)
+        {
+            levels.AddRange(list.list);
+        }
+        return levels.ToArray();
+    }
     public static LevelData GetLevelData(LevelID id)
     {
         LevelData[] list = Instance.levelDatas.Get(id.Type).list;
@@ -45,6 +54,20 @@ public class LevelSettings : ScriptableObjectSingleton<LevelSettings>
         else return null;
     }
     public static bool IsLastLevel(LevelID id) => id.Index == (Instance.levelDatas.Get(id.Type).list.Length - 1);
+    public static LevelID[] GetAllLevelIDs()
+    {
+        List<LevelID> ids = new List<LevelID>();
+        LevelDataList[] lists = Instance.levelDatas.Data;
+        for (int type = 0; type < lists.Length; type++)
+        {
+            LevelDataList list = lists[type];
+            for (int index = 0; index < list.list.Length; index++)
+            {
+                ids.Add(new LevelID((LevelType)type, index));
+            }
+        }
+        return ids.ToArray();
+    }
     public static LevelID[] GetAllLevelIDsOfType(LevelType type)
     {
         LevelID[] ids = new LevelID[Instance.levelDatas.Get(type).list.Length];

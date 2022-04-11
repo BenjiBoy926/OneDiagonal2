@@ -52,8 +52,7 @@ public class OutlineEffect : MonoBehaviour
     public void FadeIn(Color color)
     {
         // Kill any active tweens
-        image.DOKill();
-        transform.DOKill();
+        KillTweens();
 
         // Set the initial values
         image.color = color.SetAlpha(0f);
@@ -66,8 +65,7 @@ public class OutlineEffect : MonoBehaviour
     public void FadeOut(Color color)
     {
         // Kill any active tweens
-        image.DOKill();
-        transform.DOKill();
+        KillTweens();
 
         // Set the initial values
         image.color = color.SetAlpha(1f);
@@ -80,9 +78,18 @@ public class OutlineEffect : MonoBehaviour
     #endregion
 
     #region Monobehaviour Messages
+    private void KillTweens()
+    {
+        transform.DOKill();
+        image.DOKill();
+    }
     private void OnValidate()
     {
         UpdateUI();
+    }
+    private void OnDestroy()
+    {
+        KillTweens();
     }
     #endregion
 }

@@ -52,7 +52,9 @@ public class TutorialDataDrawer : PropertyDrawer
     }
     public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
     {
-        return EditorGUI.GetPropertyHeight(property, label, true) - EditorGUIAuto.SingleControlHeight;
+        float height = EditorGUI.GetPropertyHeight(property, label, true);
+        if (property.isExpanded) height -= EditorGUIAuto.SingleControlHeight;
+        return height;
     }
     #endregion
 }

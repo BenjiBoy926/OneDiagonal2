@@ -74,6 +74,13 @@ public class ButtonEffects : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         if (operationDestination)
             operationDestination.MatrixParent.OnOperationFinish.AddListener(OnMatrixOperationFinished);
     }
+    private void OnDisable()
+    {
+        if (currentOutline)
+        {
+            currentOutline.Image.color = currentOutline.Image.color.SetAlpha(0f);
+        }
+    }
     #endregion
 
     #region Pointer Interface Implementations
