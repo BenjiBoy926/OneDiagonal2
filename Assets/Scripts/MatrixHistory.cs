@@ -23,23 +23,31 @@ public class MatrixHistory
     #region Public Methods
     public void Insert(Matrix matrix)
     {
+        int nextPosition = position + 1;
+
         // If position is in range of the states then remove all the states
         // after the position
-        if (position >= 0 && position < states.Count)
+        if (nextPosition >= 0 && nextPosition < states.Count)
         {
-            states.RemoveRange(position + 1, states.Count - position);
+            states.RemoveRange(nextPosition, states.Count - nextPosition);
         }
 
         states.Add(matrix);
         position++;
     }
-    public void Undo()
+    public bool Undo()
     {
-        position--;
+        bool success = position > 0;
+        if (success)
+            position--;
+        return success;
     }
-    public void Redo()
+    public bool Redo()
     {
-        position++;
+        bool success = position < (states.Count - 1);
+        if (success)
+            position++;
+        return success;
     }
     #endregion
 

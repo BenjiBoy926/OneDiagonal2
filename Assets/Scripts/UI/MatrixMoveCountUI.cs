@@ -16,25 +16,33 @@ public class MatrixMoveCountUI : MatrixUIChild
     private TextMeshProUGUI fewestMovesText;
     #endregion
 
+    #region Public Methods
+    public void UpdateText()
+    {
+        currentMoveText.text = "Moves: " + MatrixParent.CurrentMoves;
+        currentMoveText.rectTransform.DOKill();
+        currentMoveText.rectTransform.DOPunchScale(Vector3.one * UISettings.OperatorPunch, UISettings.OperatorPunchTime);
+    }
+    #endregion
+
     #region Monobehaviour Messages
     protected override void Start()
     {
         base.Start();
 
         // When operation finishes then update the current move text
-        MatrixParent.OnOperationFinish.AddListener(x =>
-        {
-            if(x)
-            {
-                currentMoveText.text = "Moves: " + MatrixParent.CurrentMoves;
-                currentMoveText.rectTransform.DOKill();
-                currentMoveText.rectTransform.DOPunchScale(Vector3.one * UISettings.OperatorPunch, UISettings.OperatorPunchTime);
-            }
-        });
+        MatrixParent.OnOperationFinish.AddListener(OnOperationFinish);
 
         // Use the current level completion data to determine how to display the fewest moves that the player has solved the puzzle in
         LevelCompletionData completionData = GameplayManager.CurrentLevelCompletionData;
         fewestMovesText.text = "Fewest Moves: " + completionData.FewestMovesString;
+    }
+    #endregion
+
+    #region Event Listeners
+    public void OnOperationFinish(bool success)
+    {
+        if (success) UpdateText();
     }
     #endregion
 }

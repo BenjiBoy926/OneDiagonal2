@@ -10,7 +10,15 @@ public class MatrixUI : MonoBehaviour
 {
     #region Public Properties
     public MatrixRowUI[] RowUIs => rowUIs;
-    public Matrix CurrentMatrix => currentMatrix;
+    public Matrix CurrentMatrix
+    {
+        get => currentMatrix;
+        set
+        {
+            currentMatrix = value;
+            ShowCurrent();
+        }
+    }
     public Matrix PreviewMatrix => previewMatrix;
     public int Rows => CurrentMatrix.rows;
     public int Cols => CurrentMatrix.cols;
@@ -237,17 +245,14 @@ public class MatrixUI : MonoBehaviour
         }
         else return false;
     }
-    #endregion
-
-    #region Private Methods
-    private void ShowCurrent()
+    public void ShowCurrent()
     {
         foreach (MatrixRowUI row in rowUIs)
         {
             row.ShowCurrent();
         }
     }
-    private void ShowPreview()
+    public void ShowPreview()
     {
         foreach (MatrixRowUI row in rowUIs)
         {
