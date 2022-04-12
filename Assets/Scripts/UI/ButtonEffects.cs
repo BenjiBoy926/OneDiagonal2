@@ -52,6 +52,7 @@ public class ButtonEffects : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     private OutlineEffect currentOutline;
     private bool hasPointer;
     private bool isDragging;
+    private bool previousInteractable;
     #endregion
 
     #region Public Methods
@@ -70,44 +71,45 @@ public class ButtonEffects : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     #region Monobehaviour Messages
     private void Start()
     {
+        previousInteractable = selectable.interactable;
+
         // Listen for operation finish if we have an operation destination reference
         if (operationDestination)
             operationDestination.MatrixParent.OnOperationFinish.AddListener(OnMatrixOperationFinished);
     }
     private void OnDisable()
     {
+        // What was this for, again?
         if (currentOutline)
         {
             currentOutline.Image.color = currentOutline.Image.color.SetAlpha(0f);
         }
+    }
+    private void Update()
+    {
+        // If the current interactable state is different from the previous one,
+        // then raise the event that the state changed
+        if (selectable.interactable != previousInteractable)
+            OnInteractableStateChanged();
+
+        // Set previous interactable at the end of the update
+        previousInteractable = selectable.interactable;
     }
     #endregion
 
     #region Pointer Interface Implementations
     public void OnPointerEnter(PointerEventData data)
     {
+        hasPointer = true;
+
         // If selectable is interactable then
         // perform the effect
         if (selectable.interactable)
         {
-            hasPointer = true;
-
+            // If we are not dragging then fade the outline back in
             if (!isDragging)
             {
-                // Setup the color to use for the flash
-                Color color = effectColor;
-                ButtonSound sound = ButtonSound.Hover;
-
-                // If we have an operation source then instead set the color to the intended operation type color
-                if (OperationInProgress)
-                {
-                    color = UISettings.GetOperatorColor(operationSource.MatrixParent.IntendedNextOperationType);
-                    sound = ButtonSound.Preview;
-                }
-
-                // Create the pop effect for hovering
-                PunchSize(sound);
-                currentOutline = OutlineManager.FadeInOutline(transform, effectType, color);
+                FadeInOutline();
             }
 
             // If we should delegate to the selectable then do so
@@ -116,10 +118,10 @@ public class ButtonEffects : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     }
     public void OnPointerExit(PointerEventData data)
     {
+        hasPointer = false;
+
         if (selectable.interactable)
         {
-            hasPointer = false;
-
             // Wait for end of frame before trying to remove the outline
             // This is necessary because sometimes the pointer exits on the same frame
             // that the dragging begins, but exit will execute first. We need to wait
@@ -147,7 +149,7 @@ public class ButtonEffects : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     {
         if (selectable.interactable && !isDragging)
         {
-            // Create the pop effect for clicking
+            // Flash and punch the size
             Flash(effectColor);
             PunchSize(pointerUpSound);
 
@@ -157,13 +159,11 @@ public class ButtonEffects : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     }
     public void OnBeginDrag(PointerEventData data)
     {
-        if (selectable.interactable)
-        {
-            isDragging = true;
+        isDragging = true;
 
-            // If we should delegate to the selectable then do so
+        // If we should delegate to the selectable then do so
+        if (selectable.interactable)
             TryDelegatePointerEvent("BeginDrag", data);
-        }
     }
     public void OnDrag(PointerEventData data)
     {
@@ -174,12 +174,12 @@ public class ButtonEffects : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     }
     public void OnEndDrag(PointerEventData data)
     {
+        isDragging = false;
+
         if (selectable.interactable)
         {
-            isDragging = false;
-
             // If we don't have the pointer then remove the current outline
-            if (!hasPointer) currentOutline.FadeOut(currentOutline.Image.color);
+            if (!hasPointer) RemoveCurrentOutline();
             // If we do have the pointer then make some other outline fade out
             else Flash(effectColor);
 
@@ -189,7 +189,7 @@ public class ButtonEffects : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
             // If the matrix has a valid operation then play the confirm sound instead
             if (operationSource && operationSource.MatrixParent.OperationIsValid)
                 sound = ButtonSound.Confirm;
-            
+
             // Punch the button with the pointer up sound
             PunchSize(sound);
 
@@ -200,13 +200,35 @@ public class ButtonEffects : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     #endregion
 
     #region Private Methods
+    private void FadeInOutline()
+    {
+        // Setup the color to use for the flash
+        Color color = effectColor;
+        ButtonSound sound = ButtonSound.Hover;
+
+        // If we have an operation source then instead set the color to the intended operation type color
+        if (OperationInProgress)
+        {
+            color = UISettings.GetOperatorColor(operationSource.MatrixParent.IntendedNextOperationType);
+            sound = ButtonSound.Preview;
+        }
+
+        // Create the pop effect for hovering
+        PunchSize(sound);
+        currentOutline = OutlineManager.FadeInOutline(transform, effectType, color);
+    }
+    private void RemoveCurrentOutline()
+    {
+        if (currentOutline)
+            currentOutline.FadeOut(currentOutline.Image.color);
+    }
     private void TryDelegatePointerEvent(string pointerEvent, PointerEventData data)
     {
         if (delegateToSelectable)
         {
             MethodInfo method = selectable.GetType().GetMethod($"On{pointerEvent}");
 
-            // If the select has this method then invoke it
+            // If the selectable has this method then invoke it
             if (method != null)
                 method.Invoke(selectable, new object[] { data });
         }
@@ -224,7 +246,22 @@ public class ButtonEffects : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
         // Fade out the outline if we are not dragging on this button
         if (!isDragging)
-            currentOutline.FadeOut(currentOutline.Image.color);
+            RemoveCurrentOutline();
+    }
+    private void OnInteractableStateChanged()
+    {
+        if (selectable.interactable && (hasPointer || isDragging))
+        {
+            if (currentOutline)
+                currentOutline.Image.color = currentOutline.Image.color.SetAlpha(0f);
+
+            // Restore the outline
+            FadeInOutline();
+        }
+        else if (!selectable.interactable)
+        {
+            RemoveCurrentOutline();
+        }
     }
     #endregion
 }
