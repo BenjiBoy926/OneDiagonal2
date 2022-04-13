@@ -28,6 +28,7 @@ public class MatrixUI : MonoBehaviour
     public UnityEvent OnOperationDestinationSet => onOperationDestinationSet;
     public UnityEvent OnOperationDestinationUnset => onOperationDestinationUnset;
     public UnityEvent<bool> OnOperationFinish => onOperationFinish;
+    public UnityEvent OnMovesIncreased => onMovesIncreased;
     public UnityEvent OnMatrixSolved => onMatrixSolved;
     // NOTE: you should only call this if the operations source is non-null
     public MatrixOperation.Type IntendedNextOperationType => operationSource.Operation.type;
@@ -96,6 +97,9 @@ public class MatrixUI : MonoBehaviour
     [Tooltip("Event invoked when the matrix finishes an operation")]
     private UnityEvent<bool> onOperationFinish;
     [SerializeField]
+    [Tooltip("Event invoked when the number of moves made on the matrix increases")]
+    private UnityEvent onMovesIncreased;
+    [SerializeField]
     [Tooltip("Event invoked when the matrix is solved")]
     private UnityEvent onMatrixSolved;
     #endregion
@@ -111,6 +115,8 @@ public class MatrixUI : MonoBehaviour
     private MatrixRowUI operationDestination;
 
     private MatrixDiagonalHighlightEffect currentHighlight;
+    private OutlineEffect operationSourceOutline;
+    private OutlineEffect operationDestinationOutline;
 
     // Current number of operations the player has performed on the matrix
     private int currentMoves = 0;
@@ -209,7 +215,6 @@ public class MatrixUI : MonoBehaviour
             {
                 // Update the current matrix and current moves
                 currentMatrix = currentMatrix.Operate(IntendedNextOperation);
-                currentMoves++;
 
                 ShowCurrent();
 
@@ -228,6 +233,9 @@ public class MatrixUI : MonoBehaviour
                     // Invoke the public event
                     onMatrixSolved.Invoke();
                 }
+
+                // Increase the moves made
+                IncreaseMovesMade();
             }
             else
             {
@@ -244,6 +252,49 @@ public class MatrixUI : MonoBehaviour
             return operationSuccess;
         }
         else return false;
+    }
+    public void IncreaseMovesMade()
+    {
+        currentMoves++;
+        onMovesIncreased.Invoke();
+    }
+    public void HighlightOperationParticipants(MatrixOperation operation)
+    {
+        ClearOperationParticipantHighlights();
+
+        Color color = UISettings.GetOperatorColor(operation.type);
+        Transform source = null;
+        OutlineType sourceType = OutlineType.Rect;
+
+        switch(operation.type)
+        {
+            case MatrixOperation.Type.Swap:
+                source = rowUIs[operation.destinationRow].transform;
+                sourceType = OutlineType.Rect;
+                break;
+            case MatrixOperation.Type.Scale:
+                source = GetComponentInChildren<MatrixMultiplyWidget>(true).transform;
+                sourceType = OutlineType.Circle;
+                break;
+            case MatrixOperation.Type.Add:
+                source = rowUIs[operation.destinationRow]
+                    .GetComponentInChildren<MatrixRowAddWidget>(true)
+                    .transform;
+                sourceType = OutlineType.TriangleDown;
+                break;
+        }
+        operationSourceOutline = OutlineManager.FadeInOutline(source, sourceType, color);
+
+        MatrixRowUI destination = rowUIs[operation.destinationRow];
+        operationDestinationOutline = OutlineManager.FadeInOutline(destination.transform, OutlineType.Rect, color);
+    }
+    public void ClearOperationParticipantHighlights()
+    {
+        if (operationSourceOutline)
+            operationSourceOutline.FadeOut();
+
+        if (operationDestinationOutline)
+            operationDestinationOutline.FadeOut();
     }
     public void ShowCurrent()
     {

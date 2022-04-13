@@ -45,14 +45,12 @@ public class OutlineManager : MonoBehaviour
         // Create a new effect pool for every type
         foreach (OutlineType type in types)
         {
-            // Get the config for this type of effect
-            OutlineEffect prefab = prefabs.Get(type);
-
             // Set the pool in the array to a new pool
             pools.Set(type, new Pool<OutlineEffect>(
                 initialSize,
-                () => Instantiate(prefab),
-                effect => effect.Image.color.a <= 0.5f));
+                () => InstantiateOutline(type),
+                OutlineIsUsable,
+                MakeOutlineUsable));
         }
     }
     #endregion
@@ -73,6 +71,21 @@ public class OutlineManager : MonoBehaviour
         outline.UpdateUI();
         outline.FadeIn(color);
         return outline;
+    }
+    #endregion
+
+    #region Private Methods
+    private OutlineEffect InstantiateOutline(OutlineType type)
+    {
+        return Instantiate(prefabs.Get(type));
+    }
+    private bool OutlineIsUsable(OutlineEffect effect)
+    {
+        return effect.IsRemoved;
+    }
+    private void MakeOutlineUsable(OutlineEffect effect)
+    {
+        effect.Remove();
     }
     #endregion
 }

@@ -6,22 +6,22 @@ using UnityEngine;
 public class MatrixHistory
 {
     #region Public Properties
-    public Matrix Previous => GetOrNull(position - 1);
-    public Matrix Current => GetOrNull(position);
-    public Matrix Next => GetOrNull(position + 1);
+    public MatrixHistoryItem Previous => GetOrNull(position - 1);
+    public MatrixHistoryItem Current => GetOrNull(position);
+    public MatrixHistoryItem Next => GetOrNull(position + 1);
     #endregion
 
     #region Private Editor Fields
     [SerializeField]
     [Tooltip("List of states in the history")]
-    private List<Matrix> states = new List<Matrix>();
+    private List<MatrixHistoryItem> states = new List<MatrixHistoryItem>();
     [SerializeField]
     [Tooltip("Current position of the history")]
     private int position = -1;
     #endregion
 
     #region Public Methods
-    public void Insert(Matrix matrix)
+    public void Insert(MatrixHistoryItem matrix)
     {
         int nextPosition = position + 1;
 
@@ -52,7 +52,7 @@ public class MatrixHistory
     #endregion
 
     #region Private Methods
-    public Matrix GetOrNull(int index)
+    public MatrixHistoryItem GetOrNull(int index)
     {
         if (index >= 0 && index < states.Count) return states[index];
         else return null;

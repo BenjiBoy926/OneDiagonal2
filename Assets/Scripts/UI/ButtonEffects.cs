@@ -82,7 +82,7 @@ public class ButtonEffects : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         // What was this for, again?
         if (currentOutline)
         {
-            currentOutline.Image.color = currentOutline.Image.color.SetAlpha(0f);
+            currentOutline.Remove();
         }
     }
     private void Update()
@@ -215,12 +215,18 @@ public class ButtonEffects : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
         // Create the pop effect for hovering
         PunchSize(sound);
+
+        // If wer still have an outline then make it invisible
+        if (currentOutline)
+            currentOutline.Remove();
+
+        // Fade in a new outline
         currentOutline = OutlineManager.FadeInOutline(transform, effectType, color);
     }
     private void RemoveCurrentOutline()
     {
         if (currentOutline)
-            currentOutline.FadeOut(currentOutline.Image.color);
+            currentOutline.FadeOut();
     }
     private void TryDelegatePointerEvent(string pointerEvent, PointerEventData data)
     {
@@ -237,7 +243,7 @@ public class ButtonEffects : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     {
         // Set the color of the current outline back to normal
         // when an operation is confirmed
-        if (currentOutline && currentOutline.Image.color.a > 0.5f)
+        if (currentOutline && !currentOutline.IsRemoved)
             currentOutline.Image.color = effectColor;
     }
     private IEnumerator RemoveOutlineOnEndOfFrame()
@@ -253,7 +259,7 @@ public class ButtonEffects : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         if (selectable.interactable && (hasPointer || isDragging))
         {
             if (currentOutline)
-                currentOutline.Image.color = currentOutline.Image.color.SetAlpha(0f);
+                currentOutline.Remove();
 
             // Restore the outline
             FadeInOutline();

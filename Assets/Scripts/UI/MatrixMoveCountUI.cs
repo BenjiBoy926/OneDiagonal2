@@ -31,7 +31,7 @@ public class MatrixMoveCountUI : MatrixUIChild
         base.Start();
 
         // When operation finishes then update the current move text
-        MatrixParent.OnOperationFinish.AddListener(OnOperationFinish);
+        MatrixParent.OnMovesIncreased.AddListener(OnMovesIncreased);
 
         // Use the current level completion data to determine how to display the fewest moves that the player has solved the puzzle in
         LevelCompletionData completionData = GameplayManager.CurrentLevelCompletionData;
@@ -40,9 +40,9 @@ public class MatrixMoveCountUI : MatrixUIChild
     #endregion
 
     #region Event Listeners
-    public void OnOperationFinish(bool success)
+    public void OnMovesIncreased()
     {
-        if (success) UpdateText();
+        UpdateText();
     }
     #endregion
 }

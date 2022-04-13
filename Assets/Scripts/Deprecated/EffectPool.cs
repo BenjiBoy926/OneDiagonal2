@@ -25,7 +25,8 @@ public class EffectPool
         outlinePool = new Pool<OutlineEffect>(
             config.InitialSize,
             () => Object.Instantiate(config.OutlineEffectPrefab),
-            effect => effect.Image.color.a <= 0.01f);
+            effect => effect.Image.color.a <= 0.01f,
+            null);
     }
     #endregion
 }

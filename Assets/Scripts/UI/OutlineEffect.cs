@@ -1,3 +1,4 @@
+using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,6 +9,7 @@ public class OutlineEffect : MonoBehaviour
 {
     #region Public Properties
     public Image Image => image;
+    public bool IsRemoved => image.color.a < 0.5f;
     #endregion
 
     #region Private Editor Fields
@@ -62,6 +64,7 @@ public class OutlineEffect : MonoBehaviour
         transform.DOScale(1f, fadeTime);
         image.DOColor(color, fadeTime);
     }
+    public void FadeOut() => FadeOut(image.color);
     public void FadeOut(Color color)
     {
         // Kill any active tweens
@@ -75,6 +78,10 @@ public class OutlineEffect : MonoBehaviour
         transform.DOScale(fadeOutScale, fadeTime);
         image.DOColor(image.color.SetAlpha(0f), fadeTime);
     }
+    public void Remove()
+    {
+        image.color = image.color.SetAlpha(0f);
+    }
     #endregion
 
     #region Monobehaviour Messages
@@ -82,6 +89,10 @@ public class OutlineEffect : MonoBehaviour
     {
         transform.DOKill();
         image.DOKill();
+    }
+    private void Awake()
+    {
+        Debug.Log("Outline effect created", this);
     }
     private void OnValidate()
     {
