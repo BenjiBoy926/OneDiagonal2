@@ -15,8 +15,6 @@ public class MatrixOperationUI : MatrixUIChild
         MatrixOperation.Type.Add => "{1} = {1} {2} {0}",
         _ => ""
     };
-    private string SourceRowName => RowName(MatrixParent.IntendedNextOperation.sourceRow);
-    private string DestinationRowName => RowName(MatrixParent.IntendedNextOperation.destinationRow);
     #endregion
 
     #region Private Editor Fields
@@ -25,42 +23,75 @@ public class MatrixOperationUI : MatrixUIChild
     private TextMeshProUGUI text;
     #endregion
 
+    #region Public Methods
+    public void ShowText(MatrixOperation operation, string format = "{0}")
+    {
+        string sprite;
+        string sourceRowName = RowName(operation.sourceRow);
+        string destinationRowName = RowName(operation.destinationRow);
+        format = string.Format(format, DisplayFormat);
+
+        switch (operation.type)
+        {
+            case MatrixOperation.Type.Swap:
+                sprite = "<sprite=\"swap icon\" index=0>";
+                text.text = string.Format(format, sourceRowName, destinationRowName, sprite);
+                break;
+            case MatrixOperation.Type.Scale:
+                sprite = "<sprite=\"scale icon\" index=0>";
+                text.text = string.Format(format, destinationRowName, operation.scalar, sprite);
+                break;
+            case MatrixOperation.Type.Add:
+                if (operation.scalar < Fraction.zero)
+                {
+                    sprite = "<sprite=\"subtract icon\" index=0>";
+                }
+                else sprite = "<sprite=\"add icon\" index=0>";
+
+                text.text = string.Format(format, sourceRowName, destinationRowName, sprite);
+                break;
+        }
+
+        text.color = UISettings.GetOperatorColor(operation.type);
+    }
+    public void HideText() => text.text = "";
+    #endregion
+
     #region Child Overrides
     protected override void Start()
     {
         base.Start();
 
-        text.text = "";
+        HideText();
 
         // Listen for operation events
         MatrixParent.OnOperationStart.AddListener(OnOperationStart);
         MatrixParent.OnOperationDestinationSet.AddListener(OnOperationDestinationSet);
         MatrixParent.OnOperationDestinationUnset.AddListener(OnOperationDestinationUnset);
-        MatrixParent.OnOperationFinish.AddListener(x => OnOperationFinished());
+        MatrixParent.OnOperationFinish.AddListener(OnOperationFinished);
     }
     #endregion
 
     #region Event Listeners
     private void OnOperationStart()
     {
-        UpdateText();
-        text.color = UISettings.GetOperatorColor(MatrixParent.IntendedNextOperationType);
+        ShowCurrentMatrixOperation();
     }
     private void OnOperationDestinationSet()
     {
-        UpdateText();
+        ShowCurrentMatrixOperation();
         UISettings.PunchOperator(text.transform);
     }
     // Operation unset is the same as operation confirm -
     // just disable the lines
     private void OnOperationDestinationUnset()
     {
-        UpdateText();
+        ShowCurrentMatrixOperation();
     }
-    private void OnOperationFinished()
+    private void OnOperationFinished(bool success)
     {
         // Disable all of the lines
-        text.text = "";
+        HideText();
     }
     #endregion
 
@@ -73,31 +104,9 @@ public class MatrixOperationUI : MatrixUIChild
         }
         else return "?";
     }
-    private void UpdateText()
+    private void ShowCurrentMatrixOperation()
     {
-        MatrixOperation intendedOperation = MatrixParent.IntendedNextOperation;
-        string sprite;
-
-        switch(intendedOperation.type)
-        {
-            case MatrixOperation.Type.Swap:
-                sprite = "<sprite=\"swap icon\" index=0>";
-                text.text = string.Format(DisplayFormat, SourceRowName, DestinationRowName, sprite);
-                break;
-            case MatrixOperation.Type.Scale:
-                sprite = "<sprite=\"scale icon\" index=0>";
-                text.text = string.Format(DisplayFormat, DestinationRowName, intendedOperation.scalar, sprite);
-                break;
-            case MatrixOperation.Type.Add:
-                if (intendedOperation.scalar < Fraction.zero)
-                {
-                    sprite = "<sprite=\"subtract icon\" index=0>";
-                }
-                else sprite = "<sprite=\"add icon\" index=0>";
-
-                text.text = string.Format(DisplayFormat, SourceRowName, DestinationRowName, sprite);
-                break;
-        }
+        ShowText(MatrixParent.IntendedNextOperation);
     }
     #endregion
 }

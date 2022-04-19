@@ -19,14 +19,7 @@ public struct MatrixOperation
         Type.Swap => destinationRow >= 0,
         Type.Scale => destinationRow >= 0 && sourceRow >= 0,
         Type.Add => destinationRow >= 0,
-        _ => true
-    };
-    public string OperationString => type switch
-    {
-        Type.Swap => "->",
-        Type.Scale => "*",
-        Type.Add => "+",
-        _ => "nop"
+        _ => false
     };
     #endregion
 
@@ -110,6 +103,19 @@ public struct MatrixOperation
             }
         }
         else return false;
+    }
+    #endregion
+
+    #region Object Overrides
+    public override string ToString()
+    {
+        return type switch
+        {
+            Type.Swap => $"R{destinationRow} <-> R{sourceRow}",
+            Type.Scale => $"R{destinationRow} = {scalar} * R{destinationRow}",
+            Type.Add => $"R{destinationRow} = ({scalar} * R{sourceRow}) + R{destinationRow}",
+            _ => "nop"
+        };
     }
     #endregion
 }

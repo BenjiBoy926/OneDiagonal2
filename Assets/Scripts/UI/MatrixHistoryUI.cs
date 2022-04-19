@@ -29,6 +29,7 @@ public class MatrixHistoryUI : MatrixUIChild
     #region Private Fields
     private EventTrigger undoTrigger;
     private EventTrigger redoTrigger;
+    private MatrixOperationUI operationUI;
     #endregion
 
     #region Public Methods
@@ -40,7 +41,8 @@ public class MatrixHistoryUI : MatrixUIChild
         // If undo succeeds then update the matrix
         if (success)
         {
-            ApplyHistoryToMatrix();
+            MatrixParent.CurrentMatrix = history.Current.Matrix;
+            MatrixParent.IncreaseMovesMade();
             OnHistoryUpdate();
             AttemptUndoPreview(new BaseEventData(EventSystem.current));
         }
@@ -55,7 +57,8 @@ public class MatrixHistoryUI : MatrixUIChild
         // If redo succeeds then update the matrix
         if (success)
         {
-            ApplyHistoryToMatrix();
+            MatrixParent.CurrentMatrix = history.Current.Matrix;
+            MatrixParent.IncreaseMovesMade();
             OnHistoryUpdate();
             AttemptRedoPreview(new BaseEventData(EventSystem.current));
         }
@@ -70,6 +73,7 @@ public class MatrixHistoryUI : MatrixUIChild
         base.Start();
         MatrixParent.OnOperationFinish.AddListener(OnOperationFinish);
         history.Insert(new MatrixHistoryItem(MatrixParent.CurrentMatrix));
+        operationUI = MatrixParent.GetComponentInChildren<MatrixOperationUI>(true);
 
         undoTrigger = undoButton.gameObject.GetOrAddComponent<EventTrigger>();
         undoTrigger.AddTrigger(EventTriggerType.PointerEnter, AttemptUndoPreview);
@@ -139,7 +143,9 @@ public class MatrixHistoryUI : MatrixUIChild
         {
             MatrixParent.PreviewMatrix = history.Previous.Matrix;
             MatrixParent.HighlightOperationParticipants(history.Current.PreviousOperation);
+            operationUI.ShowText(history.Current.PreviousOperation, "UNDO: {0}");
         }
+        else ClearPreview(new BaseEventData(EventSystem.current));
     }
     private void AttemptRedoPreview(BaseEventData data)
     {
@@ -147,22 +153,19 @@ public class MatrixHistoryUI : MatrixUIChild
         {
             MatrixParent.PreviewMatrix = history.Next.Matrix;
             MatrixParent.HighlightOperationParticipants(history.Next.PreviousOperation);
+            operationUI.ShowText(history.Next.PreviousOperation, "REDO: {0}");
         }
+        else ClearPreview(new BaseEventData(EventSystem.current));
     }
     private void ClearPreview(BaseEventData data)
     {
         MatrixParent.ClearOperationParticipantHighlights();
         MatrixParent.ShowCurrent();
+        operationUI.HideText();
     }
     #endregion
 
     #region Private Methods
-    private void ApplyHistoryToMatrix()
-    {
-        MatrixParent.CurrentMatrix = history.Current.Matrix;
-        MatrixParent.IncreaseMovesMade();
-        MatrixParent.ClearOperationParticipantHighlights();
-    }
     private void OnHistoryUpdate()
     {
         undoButton.interactable = UndoIsValid;
