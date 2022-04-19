@@ -3,9 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using NaughtyAttributes;
 
 public class MatrixHistoryUI : MatrixUIChild
 {
+    #region Private Properties
+    private bool UndoIsValid => history.Previous != null;
+    private bool RedoIsValid => history.Next != null;
+    #endregion
+
     #region Private Editor Fields
     [SerializeField]
     [Tooltip("Button the performs an Undo when clicked")]
@@ -15,6 +21,8 @@ public class MatrixHistoryUI : MatrixUIChild
     private Button redoButton;
     [SerializeField]
     [Tooltip("Matrix history")]
+    [ReadOnly]
+    [AllowNesting]
     private MatrixHistory history = new MatrixHistory();
     #endregion
 
@@ -24,7 +32,7 @@ public class MatrixHistoryUI : MatrixUIChild
     #endregion
 
     #region Public Methods
-    public void Undo()
+    public bool Undo()
     {
         // Try to undo
         bool success = history.Undo();
@@ -32,15 +40,14 @@ public class MatrixHistoryUI : MatrixUIChild
         // If undo succeeds then update the matrix
         if (success)
         {
-            MatrixParent.CurrentMatrix = history.Current.Matrix;
-            MatrixParent.IncreaseMovesMade();
-
-            // Flash the operators that participated in the undone operation
-
+            ApplyHistoryToMatrix();
             OnHistoryUpdate();
+            AttemptUndoPreview(new BaseEventData(EventSystem.current));
         }
+
+        return success;
     }
-    public void Redo()
+    public bool Redo()
     {
         // Try to redo
         bool success = history.Redo();
@@ -48,13 +55,12 @@ public class MatrixHistoryUI : MatrixUIChild
         // If redo succeeds then update the matrix
         if (success)
         {
-            MatrixParent.CurrentMatrix = history.Current.Matrix;
-            MatrixParent.IncreaseMovesMade();
-
-            // Flash the operators that participated in the redone operation
-
+            ApplyHistoryToMatrix();
             OnHistoryUpdate();
+            AttemptRedoPreview(new BaseEventData(EventSystem.current));
         }
+
+        return success;
     }
     #endregion
 
@@ -66,26 +72,26 @@ public class MatrixHistoryUI : MatrixUIChild
         history.Insert(new MatrixHistoryItem(MatrixParent.CurrentMatrix));
 
         undoTrigger = undoButton.gameObject.GetOrAddComponent<EventTrigger>();
-        undoTrigger.AddTrigger(EventTriggerType.PointerEnter, OnUndoButtonPointerEnter);
-        undoTrigger.AddTrigger(EventTriggerType.PointerExit, OnButtonPointerExit);
+        undoTrigger.AddTrigger(EventTriggerType.PointerEnter, AttemptUndoPreview);
+        undoTrigger.AddTrigger(EventTriggerType.PointerExit, ClearPreview);
 
         redoTrigger = redoButton.gameObject.GetOrAddComponent<EventTrigger>();
-        redoTrigger.AddTrigger(EventTriggerType.PointerEnter, OnRedoButtonPointerEnter);
-        redoTrigger.AddTrigger(EventTriggerType.PointerExit, OnButtonPointerExit);
+        redoTrigger.AddTrigger(EventTriggerType.PointerEnter, AttemptRedoPreview);
+        redoTrigger.AddTrigger(EventTriggerType.PointerExit, ClearPreview);
 
         OnHistoryUpdate();
     }
     protected override void OnEnable()
     {
         base.OnEnable();
-        undoButton.onClick.AddListener(Undo);
-        redoButton.onClick.AddListener(Redo);
+        undoButton.onClick.AddListener(UndoCallback);
+        redoButton.onClick.AddListener(RedoCallback);
     }
     protected override void OnDisable()
     {
         base.OnDisable();
-        undoButton.onClick.RemoveListener(Undo);
-        redoButton.onClick.RemoveListener(Redo);
+        undoButton.onClick.RemoveListener(UndoCallback);
+        redoButton.onClick.RemoveListener(RedoCallback);
     }
     private void Update()
     {
@@ -95,20 +101,25 @@ public class MatrixHistoryUI : MatrixUIChild
             // Check if a control key is pressed
             if (Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.RightControl))
             {
+                bool operationPerformed;
+
                 // If shift is also pressed it should be a redo
                 if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
-                    Redo();
+                    operationPerformed = Redo();
                 // No shifts means undo
-                else Undo();
+                else operationPerformed = Undo();
 
                 // Play the flip sound for the event
-                UISettings.PlayButtonSound(ButtonSound.Flip);
+                if (operationPerformed)
+                    UISettings.PlayButtonSound(ButtonSound.Flip);
             }
         }
     }
     #endregion
 
     #region Event Listeners
+    private void UndoCallback() => Undo();
+    private void RedoCallback() => Redo();
     /// <summary>
     /// Whenever an operation is a success, insert the current matrix
     /// into the history
@@ -122,28 +133,40 @@ public class MatrixHistoryUI : MatrixUIChild
             OnHistoryUpdate();
         }
     }
-    private void OnUndoButtonPointerEnter(BaseEventData data)
+    private void AttemptUndoPreview(BaseEventData data)
     {
-        if (undoButton.interactable)
+        if (UndoIsValid)
+        {
+            MatrixParent.PreviewMatrix = history.Previous.Matrix;
             MatrixParent.HighlightOperationParticipants(history.Current.PreviousOperation);
- 
+        }
     }
-    private void OnRedoButtonPointerEnter(BaseEventData data)
+    private void AttemptRedoPreview(BaseEventData data)
     {
-        if (redoButton.interactable)
+        if (RedoIsValid)
+        {
+            MatrixParent.PreviewMatrix = history.Next.Matrix;
             MatrixParent.HighlightOperationParticipants(history.Next.PreviousOperation);
+        }
     }
-    private void OnButtonPointerExit(BaseEventData data)
+    private void ClearPreview(BaseEventData data)
     {
         MatrixParent.ClearOperationParticipantHighlights();
+        MatrixParent.ShowCurrent();
     }
     #endregion
 
     #region Private Methods
+    private void ApplyHistoryToMatrix()
+    {
+        MatrixParent.CurrentMatrix = history.Current.Matrix;
+        MatrixParent.IncreaseMovesMade();
+        MatrixParent.ClearOperationParticipantHighlights();
+    }
     private void OnHistoryUpdate()
     {
-        undoButton.interactable = history.Previous != null;
-        redoButton.interactable = history.Next != null;
+        undoButton.interactable = UndoIsValid;
+        redoButton.interactable = RedoIsValid;
     }
     #endregion
 }

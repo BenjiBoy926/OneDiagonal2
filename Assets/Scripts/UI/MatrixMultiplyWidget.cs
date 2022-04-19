@@ -3,10 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using AudioUtility;
 
 public class MatrixMultiplyWidget : MatrixUIChild
 {
+    #region Public Properties
+    public Selectable Widget => widget;
+    #endregion
+
     #region Private Properties
     private Fraction CurrentScalar => reciprocate ? scalar.reciprocal : scalar;
     #endregion

@@ -19,7 +19,15 @@ public class MatrixUI : MonoBehaviour
             ShowCurrent();
         }
     }
-    public Matrix PreviewMatrix => previewMatrix;
+    public Matrix PreviewMatrix
+    {
+        get => previewMatrix;
+        set
+        {
+            previewMatrix = value;
+            ShowPreview();
+        }
+    }
     public int Rows => CurrentMatrix.rows;
     public int Cols => CurrentMatrix.cols;
     public MatrixOperationSource OperationSource => operationSource;
@@ -269,15 +277,15 @@ public class MatrixUI : MonoBehaviour
         switch(operation.type)
         {
             case MatrixOperation.Type.Swap:
-                source = rowUIs[operation.destinationRow].transform;
+                source = rowUIs[operation.sourceRow].transform;
                 sourceType = OutlineType.Rect;
                 break;
             case MatrixOperation.Type.Scale:
-                source = GetComponentInChildren<MatrixMultiplyWidget>(true).transform;
+                source = GetComponentInChildren<MatrixMultiplyWidget>(true).Widget.transform;
                 sourceType = OutlineType.Circle;
                 break;
             case MatrixOperation.Type.Add:
-                source = rowUIs[operation.destinationRow]
+                source = rowUIs[operation.sourceRow]
                     .GetComponentInChildren<MatrixRowAddWidget>(true)
                     .transform;
                 sourceType = OutlineType.TriangleDown;
@@ -290,10 +298,10 @@ public class MatrixUI : MonoBehaviour
     }
     public void ClearOperationParticipantHighlights()
     {
-        if (operationSourceOutline)
+        if (operationSourceOutline && !operationSourceOutline.IsRemoved)
             operationSourceOutline.FadeOut();
 
-        if (operationDestinationOutline)
+        if (operationDestinationOutline && !operationDestinationOutline.IsRemoved)
             operationDestinationOutline.FadeOut();
     }
     public void ShowCurrent()

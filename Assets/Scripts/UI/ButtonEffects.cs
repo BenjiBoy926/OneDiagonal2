@@ -225,7 +225,7 @@ public class ButtonEffects : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     }
     private void RemoveCurrentOutline()
     {
-        if (currentOutline)
+        if (currentOutline && !currentOutline.IsRemoved)
             currentOutline.FadeOut();
     }
     private void TryDelegatePointerEvent(string pointerEvent, PointerEventData data)

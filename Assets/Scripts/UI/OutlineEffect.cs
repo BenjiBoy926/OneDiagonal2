@@ -9,7 +9,7 @@ public class OutlineEffect : MonoBehaviour
 {
     #region Public Properties
     public Image Image => image;
-    public bool IsRemoved => image.color.a < 0.5f;
+    public bool IsRemoved => image.color.a < 0.01f;
     #endregion
 
     #region Private Editor Fields
@@ -89,10 +89,6 @@ public class OutlineEffect : MonoBehaviour
     {
         transform.DOKill();
         image.DOKill();
-    }
-    private void Awake()
-    {
-        Debug.Log("Outline effect created", this);
     }
     private void OnValidate()
     {
