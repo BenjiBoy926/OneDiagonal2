@@ -16,8 +16,14 @@ public class MatrixItemUI : MatrixUIChild
     [Tooltip("Reference to the object to create a focus effect on the matrix item when the matrix is solved")]
     private MatrixFocusEffect focusEffect;
     [SerializeField]
+    [Tooltip("Smaller text that appears during a preview")]
+    private TextMeshProUGUI smallText;
+    [SerializeField]
     [Tooltip("Text used to display the current matrix item")]
-    private TextMeshProUGUI text;
+    private TextMeshProUGUI mainText;
+    [SerializeField]
+    [Tooltip("Arrow that appears to suggest a transition during a preview")]
+    private UILine previewArrow;
     [SerializeField]
     [Tooltip("Reference to the object used to create the preview focus effect")]
     private MatrixFocusPreviewEffect focusPreviewEffect;
@@ -53,17 +59,27 @@ public class MatrixItemUI : MatrixUIChild
     }
     public void ShowCurrent()
     {
-        text.text = CurrentFraction.ToString();
-        SetColor(CurrentFraction);
+        // Display no text anymore in the small area
+        smallText.text = "";
+        previewArrow.gameObject.SetActive(false);
+        SetFraction(mainText, CurrentFraction);
     }
     public void ShowPreview()
     {
-        // Get the intended next operation
-        text.text = PreviewFraction.ToString();
-        SetColor(PreviewFraction);
+        // Set the text for the main text to the preview
+        SetFraction(mainText, PreviewFraction);
+
+        // Use the small text to display what the fraction was before
+        if (CurrentFraction != PreviewFraction)
+        {
+            SetFraction(smallText, CurrentFraction);
+            previewArrow.gameObject.SetActive(true);
+
+            // Set the points on the ui line based on the bounds of the two text objects
+        }
 
         // If this is along the diagonal and the preview is the identity then create the preview effect
-        if(columnIndex == rowParent.RowIndex && MatrixParent.PreviewMatrix.isIdentity)
+        if (columnIndex == rowParent.RowIndex && MatrixParent.PreviewMatrix.isIdentity)
         {
             currentPreviewEffect.FadeIn();
         }
@@ -71,22 +87,24 @@ public class MatrixItemUI : MatrixUIChild
     #endregion
 
     #region Private Methods
-    private void SetColor(Fraction displayedFraction)
+    private void SetFraction(TextMeshProUGUI textComponent, Fraction displayedFraction)
     {
+        textComponent.text = displayedFraction.ToString();
+
         // Check if we are on the diagonal
         if (columnIndex == rowParent.RowIndex)
         {
             // If we are on the diagonal and displaying a one, then set the good color
-            if (displayedFraction == Fraction.one) text.color = UISettings.DiagonalColors.goodColor;
+            if (displayedFraction == Fraction.one) textComponent.color = UISettings.DiagonalColors.goodColor;
             // If we are on the diagonal but not displaying a one then set the bad color
-            else text.color = UISettings.DiagonalColors.badColor;
+            else textComponent.color = UISettings.DiagonalColors.badColor;
         }
         else
         {
             // If we are not on the diagonal and displaying a zero then set the good color
-            if (displayedFraction == Fraction.zero) text.color = UISettings.NotDiagonalColors.goodColor;
+            if (displayedFraction == Fraction.zero) textComponent.color = UISettings.NotDiagonalColors.goodColor;
             // If we are not on the diagonal and not displaying a zero then set the bad color
-            else text.color = UISettings.NotDiagonalColors.badColor;
+            else textComponent.color = UISettings.NotDiagonalColors.badColor;
         }
     }
     private void OnMatrixSolved()
@@ -103,6 +121,20 @@ public class MatrixItemUI : MatrixUIChild
     private void OnMatrixOperationDestinationUnset()
     {
         if (MatrixParent.PreviewMatrix.isIdentity && currentPreviewEffect) currentPreviewEffect.FadeOut();
+    }
+    private void OnDrawGizmosSelected()
+    {
+        if (smallText)
+        {
+            Gizmos.color = Color.yellow;
+            Gizmos.DrawWireCube(smallText.bounds.center + smallText.transform.position, smallText.bounds.size);
+        }
+
+        if (mainText)
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireCube(mainText.bounds.center + mainText.transform.position, mainText.bounds.size);
+        }
     }
     #endregion
 }
