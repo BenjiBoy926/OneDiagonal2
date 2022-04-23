@@ -148,7 +148,7 @@ MonoBehaviour:
     type: 3}
   smallText: {fileID: 488200084964972980}
   mainText: {fileID: 1469971569435153140}
-  previewArrow: {fileID: 0}
+  previewArrow: {fileID: 8876101030324547118}
   focusPreviewEffect: {fileID: 1095029982541794794, guid: 2f7a449c293a9a7449645cd628dbae92,
     type: 3}
 --- !u!114 &8932768337501707731

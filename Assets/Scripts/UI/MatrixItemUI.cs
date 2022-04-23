@@ -25,6 +25,9 @@ public class MatrixItemUI : MatrixUIChild
     [Tooltip("Arrow that appears to suggest a transition during a preview")]
     private UILine previewArrow;
     [SerializeField]
+    [Tooltip("Margin given to the arrow off to the left of the item graphic")]
+    private float arrowMargin = 10;
+    [SerializeField]
     [Tooltip("Reference to the object used to create the preview focus effect")]
     private MatrixFocusPreviewEffect focusPreviewEffect;
     #endregion
@@ -76,12 +79,34 @@ public class MatrixItemUI : MatrixUIChild
             previewArrow.gameObject.SetActive(true);
 
             // Set the points on the ui line based on the bounds of the two text objects
+            Vector3 topRight = smallText.bounds.GetPointInside(0f, 0.5f, 0f) + smallText.transform.position;
+            Vector3 topLeft = topRight + Vector3.left * arrowMargin;
+            Vector3 bottomRight = mainText.bounds.GetPointInside(0f, 0.5f, 0f) + mainText.transform.position;
+            Vector3 bottomLeft = new Vector3(topLeft.x, bottomRight.y, bottomRight.z);
+            previewArrow.SetPoints(topRight, topLeft, bottomLeft, bottomRight);
         }
 
         // If this is along the diagonal and the preview is the identity then create the preview effect
         if (columnIndex == rowParent.RowIndex && MatrixParent.PreviewMatrix.isIdentity)
         {
             currentPreviewEffect.FadeIn();
+        }
+    }
+    #endregion
+
+    #region Monobehaviour Messages
+    private void OnDrawGizmosSelected()
+    {
+        if (smallText)
+        {
+            Gizmos.color = Color.yellow;
+            Gizmos.DrawWireCube(smallText.bounds.center + smallText.transform.position, smallText.bounds.size);
+        }
+
+        if (mainText)
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireCube(mainText.bounds.center + mainText.transform.position, mainText.bounds.size);
         }
     }
     #endregion
@@ -121,20 +146,6 @@ public class MatrixItemUI : MatrixUIChild
     private void OnMatrixOperationDestinationUnset()
     {
         if (MatrixParent.PreviewMatrix.isIdentity && currentPreviewEffect) currentPreviewEffect.FadeOut();
-    }
-    private void OnDrawGizmosSelected()
-    {
-        if (smallText)
-        {
-            Gizmos.color = Color.yellow;
-            Gizmos.DrawWireCube(smallText.bounds.center + smallText.transform.position, smallText.bounds.size);
-        }
-
-        if (mainText)
-        {
-            Gizmos.color = Color.red;
-            Gizmos.DrawWireCube(mainText.bounds.center + mainText.transform.position, mainText.bounds.size);
-        }
     }
     #endregion
 }
