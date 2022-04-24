@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class MatrixItemUI : MatrixUIChild
@@ -26,7 +27,10 @@ public class MatrixItemUI : MatrixUIChild
     private UILine previewArrow;
     [SerializeField]
     [Tooltip("Margin given to the arrow off to the left of the item graphic")]
-    private float arrowMargin = 10;
+    private float arrowMargin = 5;
+    [SerializeField]
+    [Tooltip("Width of the arrow")]
+    private float arrowWidth = 10;
     [SerializeField]
     [Tooltip("Reference to the object used to create the preview focus effect")]
     private MatrixFocusPreviewEffect focusPreviewEffect;
@@ -36,6 +40,7 @@ public class MatrixItemUI : MatrixUIChild
     private MatrixRowUI rowParent;
     private int columnIndex;
     private MatrixFocusPreviewEffect currentPreviewEffect;
+    private Graphic[] arrowGraphics;
     #endregion
 
     #region Public Methods
@@ -56,6 +61,9 @@ public class MatrixItemUI : MatrixUIChild
         // Add listener for matrix events
         MatrixParent.OnMatrixSolved.AddListener(OnMatrixSolved);
         MatrixParent.OnOperationDestinationUnset.AddListener(OnMatrixOperationDestinationUnset);
+
+        // Get a list of all graphics in the arrow
+        arrowGraphics = previewArrow.GetComponentsInChildren<Graphic>(true);
 
         // Show the current fraction
         ShowCurrent();
@@ -78,12 +86,9 @@ public class MatrixItemUI : MatrixUIChild
             SetFraction(smallText, CurrentFraction);
             previewArrow.gameObject.SetActive(true);
 
-            // Set the points on the ui line based on the bounds of the two text objects
-            Vector3 topRight = smallText.bounds.GetPointInside(0f, 0.5f, 0f) + smallText.transform.position;
-            Vector3 topLeft = topRight + Vector3.left * arrowMargin;
-            Vector3 bottomRight = mainText.bounds.GetPointInside(0f, 0.5f, 0f) + mainText.transform.position;
-            Vector3 bottomLeft = new Vector3(topLeft.x, bottomRight.y, bottomRight.z);
-            previewArrow.SetPoints(topRight, topLeft, bottomLeft, bottomRight);
+            // Set the color of the arrow to the intended operation color
+            foreach (Graphic graphic in arrowGraphics)
+                graphic.color = UISettings.GetOperatorColor(MatrixParent.IntendedNextOperationType);
         }
 
         // If this is along the diagonal and the preview is the identity then create the preview effect
@@ -95,6 +100,20 @@ public class MatrixItemUI : MatrixUIChild
     #endregion
 
     #region Monobehaviour Messages
+    private void Update()
+    {
+        // We have to do this every frame because
+        // apparently the text bounds do not update immediately
+        if (previewArrow.gameObject.activeInHierarchy)
+        {
+            // Set the points on the ui line based on the bounds of the two text objects
+            Vector3 topRight = smallText.bounds.GetPointInside(0f, 0.5f, 0f) + smallText.transform.position + (arrowMargin * Vector3.left);
+            Vector3 topLeft = topRight + Vector3.left * arrowWidth;
+            Vector3 bottomRight = mainText.bounds.GetPointInside(0f, 0.5f, 0f) + mainText.transform.position + (arrowMargin * Vector3.left);
+            Vector3 bottomLeft = new Vector3(topLeft.x, bottomRight.y, bottomRight.z);
+            previewArrow.SetPoints(topRight, topLeft, bottomLeft, bottomRight);
+        }
+    }
     private void OnDrawGizmosSelected()
     {
         if (smallText)

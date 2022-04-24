@@ -15,10 +15,10 @@ public class MatrixHistoryUI : MatrixUIChild
     #region Private Editor Fields
     [SerializeField]
     [Tooltip("Button the performs an Undo when clicked")]
-    private Button undoButton;
+    private EventHandler undoButton;
     [SerializeField]
     [Tooltip("Button that performs a Redo when clicked")]
-    private Button redoButton;
+    private EventHandler redoButton;
     [SerializeField]
     [Tooltip("Matrix history")]
     [ReadOnly]
@@ -27,8 +27,6 @@ public class MatrixHistoryUI : MatrixUIChild
     #endregion
 
     #region Private Fields
-    private EventTrigger undoTrigger;
-    private EventTrigger redoTrigger;
     private MatrixOperationUI operationUI;
     #endregion
 
@@ -44,7 +42,7 @@ public class MatrixHistoryUI : MatrixUIChild
             MatrixParent.CurrentMatrix = history.Current.Matrix;
             MatrixParent.IncreaseMovesMade();
             OnHistoryUpdate();
-            AttemptUndoPreview(new BaseEventData(EventSystem.current));
+            AttemptUndoPreview();
         }
 
         return success;
@@ -60,42 +58,73 @@ public class MatrixHistoryUI : MatrixUIChild
             MatrixParent.CurrentMatrix = history.Current.Matrix;
             MatrixParent.IncreaseMovesMade();
             OnHistoryUpdate();
-            AttemptRedoPreview(new BaseEventData(EventSystem.current));
+            AttemptRedoPreview();
         }
 
         return success;
     }
+    public void AttemptUndoPreview()
+    {
+        if (UndoIsValid && undoButton.IsPointerPresent)
+        {
+            MatrixParent.PreviewMatrix = history.Previous.Matrix;
+            MatrixParent.HighlightOperationParticipants(history.Current.PreviousOperation);
+            operationUI.ShowText(history.Current.PreviousOperation, "UNDO: {0}");
+        }
+        else ClearPreview();
+    }
+    public void AttemptRedoPreview()
+    {
+        if (RedoIsValid && redoButton.IsPointerPresent)
+        {
+            MatrixParent.PreviewMatrix = history.Next.Matrix;
+            MatrixParent.HighlightOperationParticipants(history.Next.PreviousOperation);
+            operationUI.ShowText(history.Next.PreviousOperation, "REDO: {0}");
+        }
+        else ClearPreview();
+    }
+    public void ClearPreview()
+    {
+        MatrixParent.ClearOperationParticipantHighlights();
+        MatrixParent.ShowCurrent();
+        operationUI.HideText();
+    }
     #endregion
 
     #region Monobehaviour Messages
-    protected override void Start()
-    {
-        base.Start();
-        MatrixParent.OnOperationFinish.AddListener(OnOperationFinish);
-        history.Insert(new MatrixHistoryItem(MatrixParent.CurrentMatrix));
-        operationUI = MatrixParent.GetComponentInChildren<MatrixOperationUI>(true);
-
-        undoTrigger = undoButton.gameObject.GetOrAddComponent<EventTrigger>();
-        undoTrigger.AddTrigger(EventTriggerType.PointerEnter, AttemptUndoPreview);
-        undoTrigger.AddTrigger(EventTriggerType.PointerExit, ClearPreview);
-
-        redoTrigger = redoButton.gameObject.GetOrAddComponent<EventTrigger>();
-        redoTrigger.AddTrigger(EventTriggerType.PointerEnter, AttemptRedoPreview);
-        redoTrigger.AddTrigger(EventTriggerType.PointerExit, ClearPreview);
-
-        OnHistoryUpdate();
-    }
     protected override void OnEnable()
     {
         base.OnEnable();
-        undoButton.onClick.AddListener(UndoCallback);
-        redoButton.onClick.AddListener(RedoCallback);
+
+        undoButton.PointerEnterEvent += AttemptUndoPreviewCallback;
+        undoButton.PointerExitEvent += ClearPreviewCallback;
+        undoButton.PointerClickEvent += UndoCallback;
+
+        redoButton.PointerEnterEvent += AttemptRedoPreviewCallback;
+        redoButton.PointerExitEvent += ClearPreviewCallback;
+        redoButton.PointerClickEvent += RedoCallback;
     }
     protected override void OnDisable()
     {
         base.OnDisable();
-        undoButton.onClick.RemoveListener(UndoCallback);
-        redoButton.onClick.RemoveListener(RedoCallback);
+
+        undoButton.PointerEnterEvent -= AttemptUndoPreviewCallback;
+        undoButton.PointerExitEvent -= ClearPreviewCallback;
+        undoButton.PointerClickEvent -= UndoCallback;
+
+        redoButton.PointerEnterEvent -= AttemptRedoPreviewCallback;
+        redoButton.PointerExitEvent -= ClearPreviewCallback;
+        redoButton.PointerClickEvent -= RedoCallback;
+    }
+    protected override void Start()
+    {
+        base.Start();
+
+        MatrixParent.OnOperationFinish.AddListener(OnOperationFinish);
+        history.Insert(new MatrixHistoryItem(MatrixParent.CurrentMatrix));
+        operationUI = MatrixParent.GetComponentInChildren<MatrixOperationUI>(true);
+
+        OnHistoryUpdate();
     }
     private void Update()
     {
@@ -122,8 +151,11 @@ public class MatrixHistoryUI : MatrixUIChild
     #endregion
 
     #region Event Listeners
-    private void UndoCallback() => Undo();
-    private void RedoCallback() => Redo();
+    private void UndoCallback(PointerEventData data) => Undo();
+    private void RedoCallback(PointerEventData data) => Redo();
+    private void AttemptUndoPreviewCallback(PointerEventData data) => AttemptUndoPreview();
+    private void AttemptRedoPreviewCallback(PointerEventData data) => AttemptRedoPreview();
+    private void ClearPreviewCallback(PointerEventData data) => ClearPreview();
     /// <summary>
     /// Whenever an operation is a success, insert the current matrix
     /// into the history
@@ -136,32 +168,6 @@ public class MatrixHistoryUI : MatrixUIChild
             history.Insert(new MatrixHistoryItem(MatrixParent.CurrentMatrix, MatrixParent.IntendedNextOperation));
             OnHistoryUpdate();
         }
-    }
-    private void AttemptUndoPreview(BaseEventData data)
-    {
-        if (UndoIsValid)
-        {
-            MatrixParent.PreviewMatrix = history.Previous.Matrix;
-            MatrixParent.HighlightOperationParticipants(history.Current.PreviousOperation);
-            operationUI.ShowText(history.Current.PreviousOperation, "UNDO: {0}");
-        }
-        else ClearPreview(new BaseEventData(EventSystem.current));
-    }
-    private void AttemptRedoPreview(BaseEventData data)
-    {
-        if (RedoIsValid)
-        {
-            MatrixParent.PreviewMatrix = history.Next.Matrix;
-            MatrixParent.HighlightOperationParticipants(history.Next.PreviousOperation);
-            operationUI.ShowText(history.Next.PreviousOperation, "REDO: {0}");
-        }
-        else ClearPreview(new BaseEventData(EventSystem.current));
-    }
-    private void ClearPreview(BaseEventData data)
-    {
-        MatrixParent.ClearOperationParticipantHighlights();
-        MatrixParent.ShowCurrent();
-        operationUI.HideText();
     }
     #endregion
 
