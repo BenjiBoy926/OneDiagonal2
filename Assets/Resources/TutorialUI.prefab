@@ -291,7 +291,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_AspectMode: 2
-  m_AspectRatio: 2.4
+  m_AspectRatio: 2.6
 --- !u!1 &3244939967391422783
 GameObject:
   m_ObjectHideFlags: 0
@@ -567,6 +567,9 @@ MonoBehaviour:
   effectColor: {r: 0, g: 1, b: 0, a: 1}
   pointerDownSound: 8
   pointerUpSound: 3
+  operationSource: {fileID: 0}
+  operationDestination: {fileID: 0}
+  delegateToSelectable: 0
 --- !u!1 &3769295773155471956
 GameObject:
   m_ObjectHideFlags: 0
