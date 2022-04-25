@@ -19,15 +19,7 @@ public class MatrixUI : MonoBehaviour
             ShowCurrent();
         }
     }
-    public Matrix PreviewMatrix
-    {
-        get => previewMatrix;
-        set
-        {
-            previewMatrix = value;
-            ShowPreview();
-        }
-    }
+    public Matrix PreviewMatrix => previewMatrix;
     public int Rows => CurrentMatrix.rows;
     public int Cols => CurrentMatrix.cols;
     public MatrixOperationSource OperationSource => operationSource;
@@ -184,7 +176,7 @@ public class MatrixUI : MonoBehaviour
             // Set the color of the destination
             // Set the preview matrix and update all ui elements to display the preview
             previewMatrix = currentMatrix.Operate(IntendedNextOperation);
-            ShowPreview();
+            ShowPreview(IntendedNextOperation);
 
             // If we are previewing the identity then play the sound
             if(previewMatrix.isIdentity)
@@ -311,12 +303,17 @@ public class MatrixUI : MonoBehaviour
             row.ShowCurrent();
         }
     }
-    public void ShowPreview()
+    public void ShowPreview(MatrixOperation operation)
     {
         foreach (MatrixRowUI row in rowUIs)
         {
-            row.ShowPreview();
+            row.ShowPreview(operation);
         }
+    }
+    public void SetPreviewMatrix(Matrix previewMatrix, MatrixOperation operation)
+    {
+        this.previewMatrix = previewMatrix;
+        ShowPreview(operation);
     }
     #endregion
 }

@@ -67,7 +67,7 @@ public class MatrixHistoryUI : MatrixUIChild
     {
         if (UndoIsValid && undoButton.IsPointerPresent)
         {
-            MatrixParent.PreviewMatrix = history.Previous.Matrix;
+            MatrixParent.SetPreviewMatrix(history.Previous.Matrix, history.Current.PreviousOperation);
             MatrixParent.HighlightOperationParticipants(history.Current.PreviousOperation);
             operationUI.ShowText(history.Current.PreviousOperation, "UNDO: {0}");
         }
@@ -77,7 +77,7 @@ public class MatrixHistoryUI : MatrixUIChild
     {
         if (RedoIsValid && redoButton.IsPointerPresent)
         {
-            MatrixParent.PreviewMatrix = history.Next.Matrix;
+            MatrixParent.SetPreviewMatrix(history.Next.Matrix, history.Next.PreviousOperation);
             MatrixParent.HighlightOperationParticipants(history.Next.PreviousOperation);
             operationUI.ShowText(history.Next.PreviousOperation, "REDO: {0}");
         }

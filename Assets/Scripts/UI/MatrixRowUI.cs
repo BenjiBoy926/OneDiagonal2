@@ -102,11 +102,11 @@ public class MatrixRowUI : MatrixUIChild
             item.ShowCurrent();
         }
     }
-    public void ShowPreview()
+    public void ShowPreview(MatrixOperation operation)
     {
         foreach(MatrixItemUI item in itemUIs)
         {
-            item.ShowPreview();
+            item.ShowPreview(operation);
         }
     }
     #endregion

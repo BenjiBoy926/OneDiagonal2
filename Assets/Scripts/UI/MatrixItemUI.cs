@@ -75,7 +75,7 @@ public class MatrixItemUI : MatrixUIChild
         previewArrow.gameObject.SetActive(false);
         SetFraction(mainText, CurrentFraction);
     }
-    public void ShowPreview()
+    public void ShowPreview(MatrixOperation operation)
     {
         // Set the text for the main text to the preview
         SetFraction(mainText, PreviewFraction);
@@ -88,7 +88,7 @@ public class MatrixItemUI : MatrixUIChild
 
             // Set the color of the arrow to the intended operation color
             foreach (Graphic graphic in arrowGraphics)
-                graphic.color = UISettings.GetOperatorColor(MatrixParent.IntendedNextOperationType);
+                graphic.color = UISettings.GetOperatorColor(operation.type);
         }
 
         // If this is along the diagonal and the preview is the identity then create the preview effect
