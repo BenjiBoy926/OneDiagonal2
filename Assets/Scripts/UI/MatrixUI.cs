@@ -220,6 +220,9 @@ public class MatrixUI : MonoBehaviour
 
                 // Play a sound!
                 UISettings.PlayButtonSound(ButtonSound.Confirm);
+                
+                // Increase the moves made
+                IncreaseMovesMade();
 
                 // If current matrix is the identity, then invoke the matrix solved event
                 if (currentMatrix.isIdentity)
@@ -233,9 +236,6 @@ public class MatrixUI : MonoBehaviour
                     // Invoke the public event
                     onMatrixSolved.Invoke();
                 }
-
-                // Increase the moves made
-                IncreaseMovesMade();
             }
             else
             {
